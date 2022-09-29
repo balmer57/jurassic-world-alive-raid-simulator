@@ -10,12 +10,13 @@
 #include "dino.h"
 #include "actions.h"
 #include "modifiers.h"
+#include "logger.h"
 
 using namespace std;
 
 
 bool SpeedCmp(const Dino &dino1, const Dino &dino2) {
-    return dino1.Speed() < dino2.Speed() || (dino1.Speed() == dino2.Speed() && dino1.index < dino2.index);
+    return dino1.Speed() > dino2.Speed() || (dino1.Speed() == dino2.Speed() && dino1.index < dino2.index);
 }
 
 struct State
@@ -23,15 +24,14 @@ struct State
     Dino boss, teammate[4];
 };
 
-int Step(Dino *dino[], int dino_size, int ability[])
+int Step(Dino boss[], int boss_size, Dino team[], int team_size, int ability[])
 {
     int i;
-    Dino &boss = *dino[0];
-    Dino *teammate[] = {dino[1], dino[2], dino[3], dino[4]};
-    int teammate_size = 4;
-    if (boss.health == 0) {
-        printf("Round %d\n", boss.round + 1);
-        boss.health = boss.kind[boss.round].health;
+    Dino *dino[] = {boss, &team[0], &team[1], &team[2], &team[3]};
+    int dino_size = sizeof(dino) / sizeof(*dino);
+    if (boss->health == 0) {
+        Logger::Log("Round %d\n", boss->round + 1);
+        boss->health = boss->kind[boss->round].health;
     }
     // TODO: devour heal
 //        for (i = 0; i < (int)dino.size(); ++i) {
@@ -41,54 +41,50 @@ int Step(Dino *dino[], int dino_size, int ability[])
         dino[i]->Prepare(ability[i]);
     }
 
-    for (int size = dino_size; dino_size > 0; --dino_size) {
-        sort(dino, dino + size, [](const Dino *dino1, const Dino *dino2) { return SpeedCmp(*dino1, *dino2); });
-        Dino &curr_dino = *dino[size-1];
-        curr_dino.Attack(dino, dino_size);
-        if (!boss.Alive()) {
-            printf("Win!\n");
-            return 1;
-        }
-        for (i = 0; i < teammate_size; ++i) {
-            if (teammate[i]->Alive())
+    for (int j = 0; j < dino_size; ++j) {
+        sort(dino + j, dino + dino_size, [](const Dino *dino1, const Dino *dino2) { return SpeedCmp(*dino1, *dino2); });
+        dino[j]->Attack(dino, dino_size);
+        for (i = 0; i < team_size; ++i) {
+            if (team[i].Alive())
                 break;
         }
-        if (i == teammate_size) {
+        if (i == team_size) {
             printf("Defeat!\n");
             return -1;
+        }
+        if (!boss->Alive()) {
+            printf("Win!\n");
+            return 1;
         }
     }
     // TODO: dot
 //        for (i = 0; i < (int)dino.size(); ++i) {
 //            dino->DoT();
 //        }
-    if (!boss.Alive()) {
-        printf("Win!\n");
-        return 1;
-    }
-    for (i = 0; i < teammate_size; ++i) {
-        if (teammate[i]->Alive())
+    for (i = 0; i < team_size; ++i) {
+        if (team[i].Alive())
             break;
     }
-    if (i == teammate_size) {
+    if (i == team_size) {
         printf("Defeat!\n");
         return -1;
     }
-    for (i = 0; i < dino_size; ++i) {
-        for (auto mod_it = dino[i]->mods.begin(); mod_it != dino[i]->mods.end(); ) {
-            if (mod_it->duration == 0)
-                dino[i]->mods.erase(mod_it++);
-            else
-                --mod_it++->duration;
-        }
+    if (!boss->Alive()) {
+        printf("Win!\n");
+        return 1;
     }
-    if (boss.health == 0)
-        ++boss.round;
+    for (i = 0; i < dino_size; ++i) {
+        dino[i]->PassTurn();
+    }
+    if (boss->health == 0)
+        ++boss->round;
     return 0;
 }
 
 int main()
 {
+    setbuf(stdout, NULL);
+
     DinoKind meiolania_boss[] = {
         DinoKind("Meiolania boss #1", 3973, 342, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
             new Ability(0, 0, false, {
@@ -99,12 +95,10 @@ int main()
             }),
             new Ability(0, 1, false, {
                 new ActionGroup(TARGET_SELF, {
-                    new CleanseReducedDamage()
+                    new Cleanse(REDUCED_DAMAGE)
                 }),
                 new ActionGroup(TARGET_FASTEST, {
-                    new RemoveDodge(),
-                    new RemoveCloak(),
-                    new RemoveIncresedSpeed(),
+                    new Remove(DODGE | CLOAK | INCRESED_SPEED),
                     new Attack(1.5),
                     new ImposeVulnerability(50, 2, 2)
                 })
@@ -127,7 +121,7 @@ int main()
             }),
             new Ability(0, 0, false, {
                 new ActionGroup(TARGET_SELF, {
-                    new CleanseReducedDamage()
+                    new Cleanse(REDUCED_DAMAGE)
                 }),
                 new ActionGroup(TARGET_ALL_OPPONENTS, {
                     new ReduceSpeed(50, 2),
@@ -146,23 +140,20 @@ int main()
     DinoKind irritator("Irritator", 2061, 458, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
         new Ability(0, 0, false, {
             new ActionGroup(TARGET_LOWEST_HP, {
-                new BreakShields(),
-                new RemoveTaunt(),
+                new Remove(SHIELD | TAUNT),
                 new Attack(1, BYPASS_ARMOR)
             })
         }),
         new Ability(0, 2, false, {
             new ActionGroup(TARGET_TEAM, {
-                new CleanseCritChanceReduction(),
-                new CleanseReducedDamage(),
+                new Cleanse(CRIT_CHANCE_REDUCTION | REDUCED_DAMAGE),
                 new IncreaseCritChance(30, 4, 2),
                 new IncreaseDamage(50, 4, 2)
             })
         }),
         new Ability(1, 2, true, {
             new ActionGroup(TARGET_TEAM, {
-                new CleanseReducedDamage(),
-                new CleanseCritChanceReduction(),
+                new Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION),
                 new IncreaseDamage(50, 2, 1)
             })
         })
@@ -171,28 +162,25 @@ int main()
     DinoKind albertosaurus("Albertosaurus", 1992, 801, 106, 0, 30, 100, 50, 0, 0, 100, 0, 0, 25, {
         new Ability(0, 0, false, {
             new ActionGroup(TARGET_SELF, {
-                new CleanseVulnerable()
+                new Cleanse(VULNERABILITY)
             }),
             new ActionGroup(TARGET_LOWEST_HP, {
-                new BreakShields(),
-                new RemoveTaunt(),
+                new Remove(SHIELD | TAUNT),
                 new Attack(1, BYPASS_ARMOR)
             })
         }),
         new Ability(1, 1, true, {
             new ActionGroup(TARGET_LOWEST_HP, {
-                new BreakShields(),
-                new RemoveTaunt(),
+                new Remove(SHIELD | TAUNT),
                 new Attack(1.5, BYPASS_ARMOR)
             })
         }),
         new Ability(0, 1, false, {
             new ActionGroup(TARGET_SELF, {
-                new CleanseVulnerable()
+                new Cleanse(VULNERABILITY)
             }),
             new ActionGroup(TARGET_LOWEST_HP, {
-                new BreakShields(),
-                new RemoveTaunt(),
+                new Remove(SHIELD | TAUNT),
                 new Attack(1.5, BYPASS_ARMOR)
             })
         })
@@ -202,20 +190,19 @@ int main()
         {0, 1, 1, 2, 2},
         {0, 0, 0, 1, 1},
     };
+    int n_turns = sizeof(ability) / sizeof(*ability);
 
     Dino boss(0, 0, meiolania_boss, 2);
     boss.health = 0;
-    Dino teammate[] = {
+    Dino team[] = {
         Dino(1, 1, &irritator),
         Dino(1, 2, &irritator),
         Dino(1, 3, &albertosaurus),
         Dino(1, 4, &albertosaurus)
     };
-    //int teammate_size = sizeof(teammate) / sizeof(*teammate);
-    Dino *dino[] = {&boss, &teammate[0], &teammate[1], &teammate[2], &teammate[3]};
-    int dino_size = sizeof(dino) / sizeof(*dino);
-    for (int turn = 0; turn < 10; ++turn) {
-        int result = Step(dino, dino_size, ability[turn]);
+    int team_size = sizeof(team) / sizeof(*team);
+    for (int turn = 0; turn < n_turns; ++turn) {
+        int result = Step(&boss, 1, team, team_size, ability[turn]);
         if (result != 0)
             break;
     }

@@ -69,9 +69,12 @@ struct ImposeVulnerability : public Action
     virtual void Do(Dino &self, Dino &target) const;
 };
 
-struct CleanseReducedDamage : public Action
+struct Cleanse : public Action
 {
-    CleanseReducedDamage() {}
+    int flags;
+    Cleanse(int _flags)
+        : flags(_flags)
+    {}
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
@@ -84,48 +87,12 @@ struct Remove : public Action
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
-struct RemoveDodge : public Action
-{
-    RemoveDodge() {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct RemoveCloak : public Action
-{
-    RemoveCloak() {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct RemoveIncresedSpeed : public Action
-{
-    RemoveIncresedSpeed() {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
 struct ImposeTaunt : public Action
 {
-    int duration;
+    Taunt taunt;
     ImposeTaunt(int _duration)
-        : duration(_duration)
+        : taunt(_duration)
     {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct BreakShields : public Action
-{
-    BreakShields() {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct RemoveTaunt : public Action
-{
-    RemoveTaunt() {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct CleanseCritChanceReduction : public Action
-{
-    CleanseCritChanceReduction() {}
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
@@ -144,12 +111,6 @@ struct IncreaseDamage : public Action
     IncreaseDamage(int _factor, int _duration, int _number)
         : increased_damage(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target) const override;
-};
-
-struct CleanseVulnerable : public Action
-{
-    CleanseVulnerable() {}
     virtual void Do(Dino &self, Dino &target) const override;
 };
 

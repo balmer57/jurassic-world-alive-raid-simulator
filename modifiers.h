@@ -1,16 +1,20 @@
 #ifndef __JWA_CALC__MODIFIERS__H__
 #define __JWA_CALC__MODIFIERS__H__
 
+#include <string>
+
 struct Dino;
 struct Mod;
 
 struct Modifier
 {
+    const std::string name;
     int duration;
     int number;
 
-    Modifier(int _duration, int _number = -1)
-        : duration(_duration)
+    Modifier(const std::string &_name, int _duration, int _number = 0)
+        : name(_name)
+        , duration(_duration)
         , number(_number)
     {
     }
@@ -48,7 +52,7 @@ struct Mod
     }
 };
 
-static const int REDUCE_DAMAGE = 1 << 0;
+static const int REDUCED_DAMAGE = 1 << 0;
 static const int DODGE = 1 << 1;
 static const int CLOAK = 1 << 2;
 static const int INCRESED_SPEED = 1 << 3;
@@ -65,7 +69,7 @@ struct Vulnerability: public Modifier
     double factor;
 
     Vulnerability(int _factor, int _duration, int _number)
-        : Modifier(_duration, _number)
+        : Modifier("vulnerability", _duration, _number)
         , factor(_factor / 100.)
     {
     }
@@ -80,7 +84,7 @@ struct Vulnerability: public Modifier
 struct Taunt: public Modifier
 {
     Taunt(int _duration)
-        : Modifier(_duration)
+        : Modifier("taunt", _duration)
     {}
     virtual void Impose(Dino &target) const override;
     virtual void Dispose(Dino &target) const override;
@@ -94,7 +98,7 @@ struct IncreasedCritChance: public Modifier
 {
     double factor;
     IncreasedCritChance(int _factor, int _duration, int _number)
-        : Modifier(_duration, _number)
+        : Modifier("increased crit chance", _duration, _number)
         , factor(_factor / 100.)
     {}
     virtual void Impose(Dino &target) const override;
@@ -113,7 +117,7 @@ struct IncreasedDamage: public Modifier
 {
     double factor;
     IncreasedDamage(int _factor, int _duration, int _number)
-        : Modifier(_duration, _number)
+        : Modifier("increased damage", _duration, _number)
         , factor(_factor / 100.)
     {}
     virtual void Impose(Dino &target) const override;
@@ -132,7 +136,7 @@ struct ReducedSpeed: public Modifier
 {
     double factor;
     ReducedSpeed(int _factor, int _duration)
-        : Modifier(_duration)
+        : Modifier("reduced speed", _duration)
         , factor(_factor / 100.)
     {}
     virtual void Impose(Dino &target) const override;

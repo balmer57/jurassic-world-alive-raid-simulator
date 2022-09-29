@@ -27,7 +27,7 @@ struct Ability
     }
     bool Priority(Dino &dino) const
     {
-        return false;
+        return priority;
     }
     void Do(Dino &self, Dino *team[], int size) const;
 };
@@ -135,8 +135,8 @@ struct Dino
     void Prepare(int _ability_id);
     void Attack(Dino *team[], int size);
     void CounterAttack(Dino &target);
-    void Impose(const Modifier *mod);
-    int Dispose(int type_flags);
+    void Impose(const Modifier *mod, Dino &author);
+    int Dispose(int type_flags, Dino &author);
     double DamageFactor() const
     {
         if (damage_factor < 0)
@@ -153,6 +153,7 @@ struct Dino
     {
         return health > 0 || round + 1 < rounds;
     }
+    void PassTurn();
 };
 
 #endif // __JWA_CALC__DINO__H__
