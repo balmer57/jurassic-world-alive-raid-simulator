@@ -11,6 +11,7 @@
 #include "actions.h"
 #include "modifiers.h"
 #include "logger.h"
+#include "dinodex.h"
 
 using namespace std;
 
@@ -85,120 +86,19 @@ int main()
 {
     setbuf(stdout, NULL);
 
-    DinoKind meiolania_boss[] = {
-        DinoKind("Meiolania boss #1", 3973, 342, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
-            new Ability(0, 0, false, {
-                new ActionGroup(TARGET_ALL_OPPONENTS, {
-                    new Attack(1, GROUP),
-                    new ImposeVulnerability(50, 1, 2)
-                })
-            }),
-            new Ability(0, 1, false, {
-                new ActionGroup(TARGET_SELF, {
-                    new Cleanse(REDUCED_DAMAGE)
-                }),
-                new ActionGroup(TARGET_FASTEST, {
-                    new Remove(DODGE | CLOAK | INCRESED_SPEED),
-                    new Attack(1.5),
-                    new ImposeVulnerability(50, 2, 2)
-                })
-            }),
-            new Ability(2, 1, false, {
-                new ActionGroup(TARGET_HIGHEST_HP, {
-                    new Attack(3, PRECISE)
-                }),
-                new ActionGroup(TARGET_SELF, {
-                    new ImposeTaunt(1)
-                })
-            })
-        }, nullptr),
-        DinoKind("Meiolania boss #2", 3973, 342, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
-            new Ability(0, 1, false, {
-                new ActionGroup(TARGET_HIGHEST_HP, {
-                    new Attack(1.5),
-                    new ImposeVulnerability(50, 2, 2)
-                })
-            }),
-            new Ability(0, 0, false, {
-                new ActionGroup(TARGET_SELF, {
-                    new Cleanse(REDUCED_DAMAGE)
-                }),
-                new ActionGroup(TARGET_ALL_OPPONENTS, {
-                    new ReduceSpeed(50, 2),
-                    new Attack(1, PRECISE),
-                    new ImposeVulnerability(50, 2, 1)
-                })
-            }),
-            new Ability(0, 0, false, {
-                new ActionGroup(TARGET_ALL_OPPONENTS, {
-                    new Attack(3, PRECISE)
-                })
-            })
-        }, nullptr),
-    };
-
-    DinoKind irritator("Irritator", 2061, 458, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
-        new Ability(0, 0, false, {
-            new ActionGroup(TARGET_LOWEST_HP, {
-                new Remove(SHIELD | TAUNT),
-                new Attack(1, BYPASS_ARMOR)
-            })
-        }),
-        new Ability(0, 2, false, {
-            new ActionGroup(TARGET_TEAM, {
-                new Cleanse(CRIT_CHANCE_REDUCTION | REDUCED_DAMAGE),
-                new IncreaseCritChance(30, 4, 2),
-                new IncreaseDamage(50, 4, 2)
-            })
-        }),
-        new Ability(1, 2, true, {
-            new ActionGroup(TARGET_TEAM, {
-                new Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION),
-                new IncreaseDamage(50, 2, 1)
-            })
-        })
-    }, nullptr);
-
-    DinoKind albertosaurus("Albertosaurus", 1992, 801, 106, 0, 30, 100, 50, 0, 0, 100, 0, 0, 25, {
-        new Ability(0, 0, false, {
-            new ActionGroup(TARGET_SELF, {
-                new Cleanse(VULNERABILITY)
-            }),
-            new ActionGroup(TARGET_LOWEST_HP, {
-                new Remove(SHIELD | TAUNT),
-                new Attack(1, BYPASS_ARMOR)
-            })
-        }),
-        new Ability(1, 1, true, {
-            new ActionGroup(TARGET_LOWEST_HP, {
-                new Remove(SHIELD | TAUNT),
-                new Attack(1.5, BYPASS_ARMOR)
-            })
-        }),
-        new Ability(0, 1, false, {
-            new ActionGroup(TARGET_SELF, {
-                new Cleanse(VULNERABILITY)
-            }),
-            new ActionGroup(TARGET_LOWEST_HP, {
-                new Remove(SHIELD | TAUNT),
-                new Attack(1.5, BYPASS_ARMOR)
-            })
-        })
-    }, nullptr);
-
     int ability[][5] = {
         {0, 1, 1, 2, 2},
         {0, 0, 0, 1, 1},
     };
     int n_turns = sizeof(ability) / sizeof(*ability);
 
-    Dino boss(0, 0, meiolania_boss, 2);
+    Dino boss(0, 0, MeiolaniaBoss, sizeof(MeiolaniaBoss) / sizeof(*MeiolaniaBoss));
     boss.health = 0;
     Dino team[] = {
-        Dino(1, 1, &irritator),
-        Dino(1, 2, &irritator),
-        Dino(1, 3, &albertosaurus),
-        Dino(1, 4, &albertosaurus)
+        Dino(1, 1, &Irritator),
+        Dino(1, 2, &Irritator),
+        Dino(1, 3, &Albertosaurus),
+        Dino(1, 4, &Albertosaurus)
     };
     int team_size = sizeof(team) / sizeof(*team);
     for (int turn = 0; turn < n_turns; ++turn) {

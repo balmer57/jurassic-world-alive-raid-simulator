@@ -98,8 +98,7 @@ void Attack::Do(Dino &self, Dino &target) const
     target.health -= damage;
     if (target.health < 0)
         target.health = 0;
-    if (target.Alive())
-        target.CounterAttack(self);
+    target.attacker = &self;
 }
 
 void ImposeVulnerability::Do(Dino &self, Dino &target) const
