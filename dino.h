@@ -6,37 +6,56 @@
 #include <string>
 #include <list>
 #include <initializer_list>
+#include <functional>
+#include <set>
 #include "strprintf.h"
 #include "modifiers.h"
 #include "actions.h"
+#include "utils.h"
 
-struct ActionGroup;
+extern modifiers::Revenge Revenge;
+
 struct Dino;
 
 struct Ability
 {
+    std::string name;
     int delay;
     int cooldown;
     bool priority;
-    std::vector<std::unique_ptr<ActionGroup>> action_groups;
+    std::vector<std::unique_ptr<actions::ActionGroup>> action_groups;
+    std::function<bool(Dino&)> threat_checker;
+    std::unique_ptr<Ability> threatened_ability;
 
-    Ability(int _delay, int _cooldown, bool _priority, std::initializer_list<ActionGroup *> _action_groups);
+    Ability(const std::string &_name, int _delay, int _cooldown, bool _priority, std::initializer_list<actions::ActionGroup *> _action_groups, std::function<bool(Dino&)> _threat_checker = [](Dino&) { return false; }, Ability *_threatened_ability = nullptr)
+        : name(_name)
+        , delay(_delay)
+        , cooldown(_cooldown)
+        , priority(_priority)
+        , action_groups(_action_groups.begin(), _action_groups.end())
+        , threat_checker(std::move(_threat_checker))
+        , threatened_ability(_threatened_ability)
+    {
+    }
     bool Threatened(Dino &dino) const
     {
-        return false;
+        return threat_checker(dino);
     }
-    bool Priority(Dino &dino) const
-    {
-        return priority;
-    }
+    bool Priority(Dino &dino) const;
     void Do(Dino &self, Dino *team[], int size) const;
 };
 
-struct Attack;
+static const int COMMON = 0;
+static const int RARE = 1;
+static const int EPIC = 2;
+static const int LEGENDARY = 3;
+static const int UNIQUE = 4;
+static const int APEX = 5;
 
 struct DinoKind
 {
     std::string name;
+    int rarity;
     int health;
     int damage;
     int speed;
@@ -53,7 +72,7 @@ struct DinoKind
     std::vector<std::unique_ptr<Ability>> ability;
     std::unique_ptr<Ability> counter_attack;
 
-    DinoKind(const std::string &_name, int _health, int _damage, int _speed, int _armor, int _crit,
+    DinoKind(const std::string &_name, int _rarity, int _health, int _damage, int _speed, int _armor, int _crit,
             double _crit_reduction_resistance,
             double _damage_over_time_resistance,
             double _reduced_damage_resistance,
@@ -64,6 +83,7 @@ struct DinoKind
             double _vulnerable_resistance,
             std::initializer_list<Ability *> _ability, Ability *_counter_attack)
         : name(_name)
+        , rarity(_rarity)
         , health(_health)
         , damage(_damage)
         , speed(_speed)
@@ -83,60 +103,73 @@ struct DinoKind
     }
 };
 
-struct Modifier;
+struct dodge_cmp : public std::binary_function<std::pair<double, double>, std::pair<double, double>, bool>
+{
+    constexpr bool operator()(const std::pair<double, double> &lhs, const std::pair<double, double> &rhs ) const
+    {
+        if (lhs.first * lhs.second > rhs.first * rhs.second)
+            return true;
+        if (lhs.first * lhs.second < rhs.first * rhs.second)
+            return false;
+        if (lhs.first > rhs.first)
+            return true;
+//        if (lhs.first < rhs.first)
+//            return false;
+        return false;
+    }
+};
 
 struct Dino
 {
-    std::string name;
-    DinoKind *kind; // базовые параметры
+    const DinoKind *kind; // базовые параметры
     int rounds;
-    int team; // команда (0 - босс, 1 - игроки)
+    int team; // команда
     int index; // позиция в схеме
+    int level;
+    int health_boost;
+    int damage_boost;
+    int speed_boost;
+    int max_health;
     int health; // текущее количество жизней
     int damage; // текущая атака
     int speed; // текущая скорость
     int ability_id = -1; // номер атаки
     bool priority = false; // приоритет в текущем ходу
     bool threatened = false; // угнетение в текущем ходу
-    std::list<Mod> mods;
+    std::list<modifiers::Mod> mods;
     double vulnerability = 0;
     double damage_factor = 1;
+    double speed_factor = 1;
     double crit_chance_factor;
-    double shields = 0;
     double armor;
-    double dodge = 0;
-    double dodge_factor = 0;
     bool taunt = false;
     int total_health = 0;
+    int max_total_health = 0;
     int round = 0;
+    Dino *attacker = nullptr; // это норм
+    int revenge = 0;
+    int last_damage = 0;
+    int devour_heal = 0;
+    int damage_over_time = 0;
+    std::multiset<double, std::greater<double>> shield{0};
+    std::multiset<std::pair<double, double>, dodge_cmp> dodge{std::make_pair(0, 0)};
+    int cooldown[4] = {};
 
-    Dino(int _team, int _index, DinoKind *_kind, int _rounds = 1)
-        : name(strprintf("%s(%d)", _kind->name.c_str(), _index))
-        , kind(_kind)
-        , rounds(_rounds)
-        , team(_team)
-        , index(_index)
-        , health(_kind->health)
-        , damage(_kind->damage)
-        , speed(_kind->speed)
-        , crit_chance_factor(_kind->crit)
-        , armor(_kind->armor)
+    Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
+
+    int Damage() const
     {
-        for (int i = 0; i < rounds; ++i) {
-            total_health += kind[i].health;
-        }
+        return Round(damage * damage_factor);
     }
-
     int Speed() const
     {
-        return priority * 1000 + speed;
+        return Round(speed * speed_factor);
     }
-
-    void Prepare(int _ability_id);
-    void Attack(Dino *team[], int size);
-    void CounterAttack(Dino &target);
-    void Impose(const Modifier *mod, Dino &author);
-    int Dispose(int type_flags, Dino &author);
+    bool Prepare(int ability_id);
+    void Attack(Dino *team[], int team_size);
+    void CounterAttack(Dino *team[], int team_size);
+    void Impose(const modifiers::Modifier *mod, Dino &author);
+    void Dispose(int type_flags, Dino &author);
     double DamageFactor() const
     {
         if (damage_factor < 0)
@@ -154,6 +187,29 @@ struct Dino
         return health > 0 || round + 1 < rounds;
     }
     void PassTurn();
+    bool Taunt() const
+    {
+        return taunt;
+    }
+    void DevourHeal();
+    void DamageOverTime(Dino *team[], int team_size);
+    std::string Name() const;
+    void Revive();
+    void Revenge(Dino *team[], int team_size);
+    double Shield() const
+    {
+        return *shield.begin();
+    }
+    double DodgeChance() const
+    {
+        return dodge.begin()->first;
+    }
+    double DodgeFactor() const
+    {
+        return dodge.begin()->second;
+    }
+    void Hit(int damage);
+    void Heal(int heal);
 };
 
 #endif // __JWA_CALC__DINO__H__
