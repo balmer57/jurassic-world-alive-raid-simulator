@@ -23,6 +23,7 @@ static const int DEVOUR_HEAL = 1 << 14;
 
 static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|CRIT_CHANCE_REDUCTION|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE;
 static const int POSITIVE_EFFECTS = DODGE|CLOAK|INCREASED_SPEED|SHIELD|TAUNT|INCREASED_CRIT_CHANCE|INCREASED_DAMAGE|DEVOUR_HEAL;
+static const int ALL_EFFECTS = NEGATIVE_EFFECTS|POSITIVE_EFFECTS|REVENGE;
 
 namespace modifiers
 {
@@ -207,7 +208,7 @@ struct Dodge : public Modifier
     }
     virtual bool OutgoingAttack(Mod *mod) const override
     {
-        return mod->number == 0;
+        return mod->duration == 0;
     }
 };
 
@@ -264,7 +265,7 @@ struct Shield : public Modifier
     }
     virtual bool OutgoingAttack(Mod *mod) const override
     {
-        return mod->number == 0;
+        return mod->duration == 0;
     }
 };
 

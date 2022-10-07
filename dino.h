@@ -8,12 +8,11 @@
 #include <initializer_list>
 #include <functional>
 #include <set>
+#include <list>
 #include "strprintf.h"
 #include "modifiers.h"
 #include "actions.h"
 #include "utils.h"
-
-extern modifiers::Revenge Revenge;
 
 struct Dino;
 
@@ -23,19 +22,24 @@ struct Ability
     int delay;
     int cooldown;
     bool priority;
-    std::vector<std::unique_ptr<actions::ActionGroup>> action_groups;
+    std::list<std::unique_ptr<actions::Action>> actions;
     std::function<bool(Dino&)> threat_checker;
     std::unique_ptr<Ability> threatened_ability;
 
-    Ability(const std::string &_name, int _delay, int _cooldown, bool _priority, std::initializer_list<actions::ActionGroup *> _action_groups, std::function<bool(Dino&)> _threat_checker = [](Dino&) { return false; }, Ability *_threatened_ability = nullptr)
+    Ability(const std::string &_name, int _delay, int _cooldown, bool _priority, std::initializer_list<std::list<std::unique_ptr<actions::Action>>> _action_lists, std::function<bool(Dino&)> _threat_checker = [](Dino&) { return false; }, Ability *_threatened_ability = nullptr)
         : name(_name)
         , delay(_delay)
         , cooldown(_cooldown)
         , priority(_priority)
-        , action_groups(_action_groups.begin(), _action_groups.end())
+        , actions()
         , threat_checker(std::move(_threat_checker))
         , threatened_ability(_threatened_ability)
     {
+        for (auto list_it = _action_lists.begin(); list_it != _action_lists.end(); ++list_it) {
+            for (auto action_it = const_cast<std::list<std::unique_ptr<actions::Action>>*>(&*list_it)->begin(); action_it != const_cast<std::list<std::unique_ptr<actions::Action>>*>(&*list_it)->end(); ++action_it) {
+                actions.push_back(std::move(*action_it));
+            }
+        }
     }
     bool Threatened(Dino &dino) const
     {
@@ -154,6 +158,9 @@ struct Dino
     std::multiset<double, std::greater<double>> shield{0};
     std::multiset<std::pair<double, double>, dodge_cmp> dodge{std::make_pair(0, 0)};
     int cooldown[4] = {};
+    int prepared_damage_factor = 0;
+    bool crit = false;
+    bool killer = false;
 
     Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
 
@@ -195,7 +202,6 @@ struct Dino
     void DamageOverTime(Dino *team[], int team_size);
     std::string Name() const;
     void Revive();
-    void Revenge(Dino *team[], int team_size);
     double Shield() const
     {
         return *shield.begin();

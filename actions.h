@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory>
 #include <initializer_list>
+#include <list>
+#include <utility>
 
 #include "modifiers.h"
 
@@ -12,17 +14,9 @@ struct Dino;
 namespace actions
 {
 
-struct Action
-{
-    Action()
-    {
-    }
-    virtual ~Action() {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const = 0;
-};
-
 enum Target
 {
+    TARGET_INHERIT = -1,
     TARGET_RANDOM = 0,
     TARGET_LOWEST_HP,
     TARGET_HIGHEST_HP,
@@ -37,33 +31,101 @@ enum Target
     TARGET_TEAM,
 };
 
-struct ActionGroup
+struct Action
 {
     int target;
-    std::vector<std::unique_ptr<Action>> actions;
-    ActionGroup(int _target, std::initializer_list<Action *> _actions)
-        : target(_target)
-        , actions(_actions.begin(), _actions.end())
+    Action()
+        : target(TARGET_INHERIT)
     {
     }
-    virtual ~ActionGroup() {}
-    virtual void Do(Dino &self, Dino *team[], int size) const;
+    virtual ~Action() {}
+    virtual void Do(Dino &self, Dino &target) const = 0;
 };
+
+#define ActionGroup(...) std::move(actions::ActionGroupFunction(__VA_ARGS__))
+
+template<typename ...Args>
+std::list<std::unique_ptr<Action>> ActionGroupFunction(int target, Args &&...args);
+
+template<typename ...Args>
+class ActionGroupClass;
+
+template<typename ...Args>
+class ActionGroupClass<std::list<std::unique_ptr<Action>>, Args...>
+{
+public:
+    static std::list<std::unique_ptr<Action>> Make(int target, std::list<std::unique_ptr<Action>> &&actions, Args&&...args)
+    {
+        std::list<std::unique_ptr<Action>> list(std::move(ActionGroup(target, std::forward<Args>(args)...)));
+        for (auto it = actions.rbegin(); it != actions.rend(); ++it) {
+            if ((*it)->target == TARGET_INHERIT)
+                (*it)->target = target;
+            list.push_front(std::move(*it));
+        }
+        return std::move(list);
+    }
+};
+
+template<typename A, typename ...Args>
+class ActionGroupClass<A, Args...>
+{
+public:
+    static std::list<std::unique_ptr<Action>> Make(int target, A &&action, Args&&...args)
+    {
+        std::list<std::unique_ptr<Action>> list(std::move(ActionGroup(target, std::forward<Args>(args)...)));
+        if (action.target == TARGET_INHERIT)
+            action.target = target;
+        list.push_front(std::move(std::unique_ptr<A>(new A(std::forward<A&&>(action)))));
+        return std::move(list);
+    }
+};
+
+template<>
+class ActionGroupClass<>
+{
+public:
+    static std::list<std::unique_ptr<Action>> Make(int target)
+    {
+        return std::move(std::list<std::unique_ptr<Action>>());
+    }
+};
+
+template<typename ...Args>
+std::list<std::unique_ptr<Action>> ActionGroupFunction(int target, Args &&...args)
+{
+    return std::move(ActionGroupClass<Args...>::Make(target, std::forward<Args>(args)...));
+}
 
 static const int GROUP = 1;
 static const int PRECISE = 2;
 static const int BYPASS_ARMOR = 4;
 
-struct Attack : public Action
+std::list<std::unique_ptr<Action>> Attack(double _factor, int _flags = 0);
+
+struct PrepareAttack : public Action
+{
+    PrepareAttack()
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
+struct AttackAction : public Action
 {
     double factor;
     int flags;
-    Attack(double _factor, int _flags = 0)
+    AttackAction(double _factor, int _flags = 0)
         : factor(_factor)
         , flags(_flags)
-    {
-    }
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
+struct Revenge : public Action
+{
+    modifiers::Revenge revenge;
+    Revenge()
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct Heal : public Action
@@ -75,7 +137,7 @@ struct Heal : public Action
         , flags(_flags)
     {
     }
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct ImposeVulnerability : public Action
@@ -84,7 +146,7 @@ struct ImposeVulnerability : public Action
     ImposeVulnerability(double _factor, int _duration, int _number)
         : vulnerability(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct Cleanse : public Action
@@ -93,7 +155,7 @@ struct Cleanse : public Action
     Cleanse(int _flags)
         : flags(_flags)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct Remove : public Action
@@ -102,16 +164,18 @@ struct Remove : public Action
     Remove(int _flags)
         : flags(_flags)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
-struct Taunt : public Action
+std::list<std::unique_ptr<Action>> Taunt(int _duration);
+
+struct TauntAction : public Action
 {
     modifiers::Taunt taunt;
-    Taunt(int _duration)
+    TauntAction(int _duration)
         : taunt(_duration)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct IncreaseCritChance : public Action
@@ -120,7 +184,7 @@ struct IncreaseCritChance : public Action
     IncreaseCritChance(double _factor, int _duration, int _number)
         : increased_crit_chance(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct IncreaseDamage : public Action
@@ -129,7 +193,7 @@ struct IncreaseDamage : public Action
     IncreaseDamage(double _factor, int _duration, int _number)
         : increased_damage(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct ReduceSpeed : public Action
@@ -138,7 +202,7 @@ struct ReduceSpeed : public Action
     ReduceSpeed(double _factor, int _duration)
         : reduced_speed(_factor, _duration)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct ReduceDamage : public Action
@@ -147,7 +211,7 @@ struct ReduceDamage : public Action
     ReduceDamage(double _factor, int _duration, int _number)
         : reduced_damage(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct Dodge : public Action
@@ -156,7 +220,7 @@ struct Dodge : public Action
     Dodge(double _chance, double _factor, int _duration, int _number)
         : dodge(_chance, _factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct IncreaseSpeed : public Action
@@ -165,7 +229,7 @@ struct IncreaseSpeed : public Action
     IncreaseSpeed(double _factor, int _duration)
         : increased_speed(_factor, _duration)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct ReduceCritChance : public Action
@@ -174,7 +238,7 @@ struct ReduceCritChance : public Action
     ReduceCritChance(double _factor, int _duration, int _number)
         : reduced_crit_chance(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct Shield : public Action
@@ -183,7 +247,7 @@ struct Shield : public Action
     Shield(double _factor, int _duration, int _number)
         : shield(_factor, _duration, _number)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct DevourHeal : public Action
@@ -192,7 +256,7 @@ struct DevourHeal : public Action
     DevourHeal(double _factor, int _duration)
         : devour_heal(_factor, _duration)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 struct DamageOverTime : public Action
@@ -201,7 +265,7 @@ struct DamageOverTime : public Action
     DamageOverTime(double _factor, int _duration)
         : damage_over_time(_factor, _duration)
     {}
-    virtual void Do(Dino &self, Dino &target, Dino *team[], int size) const override;
+    virtual void Do(Dino &self, Dino &target) const override;
 };
 
 } // namespace actions

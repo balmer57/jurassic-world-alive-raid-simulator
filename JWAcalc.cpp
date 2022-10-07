@@ -57,8 +57,7 @@ int Step(Dino team[], int team_size)
             continue;
         dino[j]->Attack(dino, team_size);
         for (i = 0; i < team_size; ++i) {
-            if (dino[i]->Alive() && dino[i]->attacker)
-                dino[i]->CounterAttack(dino, team_size);
+            dino[i]->CounterAttack(dino, team_size);
         }
         for (i = 0; i < team_size; ++i) {
             if (team[i].team == 0)
@@ -94,6 +93,10 @@ int Step(Dino team[], int team_size)
             if (team[i].team != 0)
                 continue;
             team[i].Revive();
+            if (i != 0)
+                actions::Remove(ALL_EFFECTS).Do(team[i], team[i]);
+            else
+                actions::Remove(REVENGE).Do(team[i], team[i]);
         }
     }
     return 0;
