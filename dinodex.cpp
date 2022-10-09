@@ -10,6 +10,104 @@ using namespace actions;
 // boss dex
 //
 
+DinoKind BrachiosaurusBossKind[] = {
+    DinoKind("Brachiosaurus Boss #1", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+        new Ability("Group Shield Strike", 0, 0, true, {
+            ActionGroup(TARGET_LOWEST_HP,
+                Attack(1.)
+            ),
+            ActionGroup(TARGET_TEAM,
+                Shield(50, 2, 4)
+            )
+        }),
+        new Ability("Group Resilient Strike", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(1.),
+                ImposeVulnerability(50, 2, 2)
+            )
+        }),
+        new Ability("Resilient Vulnerability Rampage", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_FASTEST,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(2.),
+                ImposeVulnerability(50, 2, 2)
+            )
+        })
+    }, nullptr),
+    DinoKind("Brachiosaurus Boss #2", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+        new Ability("Shielded Group Strike", 0, 0, true, {
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                Attack(1.)
+            ),
+            ActionGroup(TARGET_TEAM,
+                Shield(50, 2, 4)
+            )
+        }),
+        new Ability("Group Resilient Impact", 0, 0, true, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(1.5),
+                ImposeVulnerability(50, 2, 2)
+            )
+        })
+    }, nullptr),
+    DinoKind("Brachiosaurus Boss #3", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+        new Ability("Group Shield Strike", 0, 0, true, {
+            ActionGroup(TARGET_LOWEST_HP,
+                Attack(1.)
+            ),
+            ActionGroup(TARGET_TEAM,
+                Shield(50, 2, 4)
+            )
+        }),
+        new Ability("Boom", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(2.),
+                ImposeVulnerability(50, 2, 1)
+            )
+        }),
+        new Ability("Shielded Resilient Strike", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_FASTEST,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(1.),
+                ImposeVulnerability(50, 2, 2)
+            ),
+            ActionGroup(TARGET_SELF,
+                Shield(50, 2, 4)
+            )
+        }),
+        new Ability("Resilient Impact", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Cleanse(REDUCED_DAMAGE)
+            ),
+            ActionGroup(TARGET_FASTEST,
+                Remove(DODGE|CLOAK|INCREASED_SPEED),
+                Attack(1.5),
+                ImposeVulnerability(50, 2, 2)
+            )
+        })
+    }, nullptr)
+};
+
+DECLARE_BOSS(BrachiosaurusBoss, 14, 0, 0, 0);
+
 DinoKind MeiolaniaBossKind[] = {
     DinoKind("Meiolania boss #1", RARE, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
         new Ability("Steady Group Vulnerability Strike", 0, 0, false, {
@@ -369,6 +467,76 @@ DinoKind Albertosaurus("Albertosaurus", RARE, 4350, 1750, 106, 0, 30, 100, 50, 0
         )
     })
 }, nullptr);
+
+DinoKind Andrewtherium("Andrewtherium", EPIC, 3600, 1300, 119, 5, 25, 100, 0, 50, 0, 50, 50, 0, 50, {
+    new Ability("Group Cleansing Strike", 0, 0, false, {
+        ActionGroup(TARGET_TEAM,
+            Cleanse(NEGATIVE_EFFECTS)
+        ),
+        ActionGroup(TARGET_LOWEST_HP,
+            Attack(1.)
+        )
+    }),
+    new Ability("Ferocious Strike", 0, 3, false, {
+        ActionGroup(TARGET_SELF,
+            IncreaseDamage(50, 3, 6)
+        ),
+        ActionGroup(TARGET_LOWEST_HP,
+            Attack(1.)
+        )
+    }),
+    new Ability("Group Warning Squeal", 0, 3, true, {
+        ActionGroup(TARGET_TEAM,
+            Shield(50, 2, 4),
+            IncreaseCritChance(20, 2, 2),
+            IncreaseDamage(25, 2, 4)
+        ),
+        ActionGroup(TARGET_FASTEST,
+            ReduceSpeed(50, 2)
+        )
+    }),
+    new Ability("Rending Attack", 0, 1, false, {
+        ActionGroup(TARGET_HIGHEST_HP,
+            Remove(SHIELD),
+            Rend(40, BYPASS_ARMOR)
+        )
+    })
+}, nullptr);
+
+DinoKind Andrewtodon("Andrewtodon", EPIC, 3450, 1300, 112, 15, 25, 0, 0, 0, 0, 100, 50, 0, 0, {
+    new Ability("Fierce Strike", 0, 0, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(VULNERABILITY)
+        ),
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD | TAUNT),
+            Attack(1, BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Armor Piercing Impact", 0, 1, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Attack(1.5, BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Cleansing Impact", 0, 2, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(NEGATIVE_EFFECTS)
+        ),
+        ActionGroup(TARGET_LOWEST_HP,
+            Attack(1.5)
+        )
+    }),
+    new Ability("Rending Takedown", 1, 1, false, {
+        ActionGroup(TARGET_HIGHEST_HP,
+            Remove(SHIELD),
+            Rend(60, BYPASS_ARMOR)
+        )
+    })
+}, new Ability("Exposing Counter", 0, 0, false, {
+    ActionGroup(TARGET_ATTACKER,
+        ImposeVulnerability(50, 1, 2)
+    )
+}));
 
 DinoKind Irritator("Irritator", RARE, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
     new Ability("Defense Shattering Strike", 0, 0, false, {

@@ -3,6 +3,7 @@
 
 #include "dino.h"
 
+extern Dino BrachiosaurusBoss;
 extern Dino MeiolaniaBoss;
 extern Dino FukuimimusBoss;
 
@@ -10,6 +11,8 @@ extern DinoKind GroupShatteringMinion;
 extern DinoKind DecelerationMinion;
 
 extern DinoKind Albertosaurus;
+extern DinoKind Andrewtherium;
+extern DinoKind Andrewtodon;
 extern DinoKind Irritator;
 extern DinoKind Rexy;
 extern DinoKind Skoolasaurus;

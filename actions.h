@@ -99,8 +99,10 @@ std::list<std::unique_ptr<Action>> ActionGroupFunction(int target, Args &&...arg
 static const int GROUP = 1;
 static const int PRECISE = 2;
 static const int BYPASS_ARMOR = 4;
+static const int REND = 8;
 
 std::list<std::unique_ptr<Action>> Attack(double _factor, int _flags = 0);
+std::list<std::unique_ptr<Action>> Rend(double _factor, int _flags = 0);
 
 struct PrepareAttack : public Action
 {

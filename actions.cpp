@@ -4,6 +4,7 @@
 #include "logger.h"
 #include <functional>
 #include "utils.h"
+#include <cmath>
 
 using namespace std;
 using namespace actions;
@@ -15,6 +16,11 @@ std::list<std::unique_ptr<Action>> actions::Attack(double _factor, int _flags)
     list.emplace_back(new AttackAction(_factor, _flags))->target = TARGET_INHERIT;
     list.emplace_back(new Revenge())->target = TARGET_ALL_OPPONENTS;
     return std::move(list);
+}
+
+std::list<std::unique_ptr<Action>> actions::Rend(double _factor, int _flags)
+{
+    return std::move(actions::Attack(_factor / 100., _flags | REND));
 }
 
 void PrepareAttack::Do(Dino &self, Dino &target) const
@@ -35,20 +41,27 @@ void PrepareAttack::Do(Dino &self, Dino &target) const
 
 void AttackAction::Do(Dino &self, Dino &target) const
 {
-    // учитывать стаи
-    int damage = Round(Round(self.damage * factor) * (self.prepared_damage_factor + target.vulnerability));
+    double damage;
+    if (flags & REND)
+        damage = (target.max_total_health * factor * (1 - target.kind[target.round].rend_resistance));
+    else
+        damage = (self.damage * factor); // здесь определённо хуйня
+    damage = (damage * self.prepared_damage_factor);
+    damage = (damage * (1 + target.vulnerability));
+    damage = floor(damage); // тут определённо floor
     bool crit = self.crit;
     if (crit)
-        damage = Round(damage * 1.25);
+        damage = floor(damage * 1.25);
     bool shield = target.Shield();
     if (shield)
-        damage = Round(damage * (1 - target.Shield()));
+        damage = floor(damage * (1 - target.Shield()));
     bool dodge = (~flags & PRECISE) && rand() % 100 < target.DodgeChance() * 100;
     if (dodge)
-        damage = Round(damage * (1 - target.DodgeFactor()));
+        damage = floor(damage * (1 - target.DodgeFactor()));
     bool armor = (~flags & BYPASS_ARMOR) && target.armor > 0;
     if (armor)
-        damage = Round(damage * (1 - target.armor));
+        damage = floor(damage * (1 - target.armor));
+    damage = floor(damage);
     for (auto mod_it = target.mods.begin(); mod_it != target.mods.end(); ) {
         if (mod_it->IncomingAttack()) {
             auto modifier = mod_it->modifier;
@@ -61,7 +74,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
     self.last_damage = damage;
     target.attacker = &self;
     target.Hit(damage);
-    LOG("%s attacks %s for %d%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), damage, crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "");
+    LOG("%s attacks %s for %d%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "");
     if (!target.Alive()) {
         LOG("%s dies!\n", target.Name().c_str());
         self.killer = true;

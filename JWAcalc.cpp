@@ -139,40 +139,56 @@ int main()
     setbuf(stdout, NULL);
     Logger::on = true;
 
-//    vector<int> ability[] = {
-//        {0, 1, 1, 2, 2},
-//        {0, 0, 0, 1, 1},
-//    };
-//    int n_turns = sizeof(ability) / sizeof(*ability);
-//
-//    Dino team[] = {
-//        MeiolaniaBoss,
-//        Dino(1, 1, 10, 0, 0, 0, &Irritator),
-//        Dino(1, 2, 10, 0, 0, 0, &Irritator),
-//        Dino(1, 3, 10, 0, 0, 0, &Albertosaurus),
-//        Dino(1, 4, 10, 0, 0, 0, &Albertosaurus)
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
     vector<int> ability[] = {
-        {0, 1, 1, 2, 0, 2, 1},
-        {1, 3, 2, 1, 2, 1, 0},
-        {0, 0, 3, 3, 3, 2, 1},
-        {0, 1, 1, 2, 0, 2, 1},
-        {1, 0, 3, 3, 2, 1, 0},
+        {0, 1, 1, 2, 2},
+        {0, 0, 0, 1, 1},
     };
     int n_turns = sizeof(ability) / sizeof(*ability);
 
     Dino team[] = {
-        FukuimimusBoss,
-        Dino(1, 1, 20, 0, 0, 0, &Skoolasaurus),
-        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
-        Dino(1, 3, 20, 0, 0, 0, &Rexy),
-        Dino(1, 4, 20, 0, 0, 0, &Rexy),
-        Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion),
-        Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion),
+        MeiolaniaBoss,
+        Dino(1, 1, 10, 0, 0, 0, &Irritator),
+        Dino(1, 2, 10, 0, 0, 0, &Irritator),
+        Dino(1, 3, 10, 0, 0, 0, &Albertosaurus),
+        Dino(1, 4, 10, 0, 0, 0, &Albertosaurus)
     };
     int team_size = sizeof(team) / sizeof(*team);
+
+//    vector<int> ability[] = {
+//        {0, 1, 1, 2, 0, 2, 1},
+//        {1, 3, 2, 1, 2, 1, 0},
+//        {0, 0, 3, 3, 3, 2, 1},
+//        {0, 1, 1, 2, 0, 2, 1},
+//        {1, 0, 3, 3, 2, 1, 0},
+//    };
+//    int n_turns = sizeof(ability) / sizeof(*ability);
+//
+//    Dino team[] = {
+//        FukuimimusBoss,
+//        Dino(1, 1, 20, 0, 0, 0, &Skoolasaurus),
+//        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
+//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
+//        Dino(1, 4, 20, 0, 0, 0, &Rexy),
+//        Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion),
+//        Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion),
+//    };
+//    int team_size = sizeof(team) / sizeof(*team);
+
+//    vector<int> ability[] = {
+//        {0, 1, 3, 3, 1},
+//        {0, 0, 2, 2, 3},
+//        {0, 2, 3, 3, 1},
+//    };
+//    int n_turns = sizeof(ability) / sizeof(*ability);
+//
+//    Dino team[] = {
+//        BrachiosaurusBoss,
+//        Dino(1, 1, 11, 0, 0, 0, &Irritator),
+//        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
+//        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
+//        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
+//    };
+//    int team_size = sizeof(team) / sizeof(*team);
 
     Check(team, team_size, ability, n_turns);
     return 0;
