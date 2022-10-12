@@ -188,17 +188,13 @@ void Dino::Attack(Dino team[], int size)
 {
     if (!Alive())
         return;
+    if (stun) {
+        REMOVE_MODS(*this, (mod_it->Type() & STUN) && mod_it->OnAction(), LOG("%s woke up!\n", Name().c_str()));
+        return;
+    }
     LOG("%s uses %s!\n", Name().c_str(), kind[round].ability[ability_id]->name.c_str());
     kind[round].ability[ability_id]->Do(*this, team, size);
-    for (auto mod_it = mods.begin(); mod_it != mods.end(); ) {
-        if (mod_it->OnAction()) {
-            auto modifier = mod_it->modifier;
-            modifier->Dispose(*this, &*mod_it);
-            mods.erase(mod_it++);
-            LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str());
-        } else
-            ++mod_it;
-    }
+    REMOVE_MODS(*this, mod_it->OnAction(), LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::CounterAttack(Dino team[], int size)
@@ -221,28 +217,12 @@ void Dino::Impose(const Modifier *mod, Dino &author)
 
 void Dino::Dispose(int type_flags, Dino &author)
 {
-    for(auto mod_it = mods.begin(); mod_it != mods.end(); ) {
-        if (mod_it->modifier->Type() & type_flags) {
-            auto modifier = mod_it->modifier;
-            modifier->Dispose(*this, &*mod_it);
-            mods.erase(mod_it++);
-            LOG("%s disposes %s from %s\n", author.Name().c_str(), modifier->name.c_str(), Name().c_str());
-        } else
-            ++mod_it;
-    }
+    REMOVE_MODS(*this, mod_it->Type() & type_flags, LOG("%s disposes %s from %s\n", author.Name().c_str(), modifier->name.c_str(), Name().c_str()));
 }
 
 void Dino::PassTurn()
 {
-    for (auto mod_it = mods.begin(); mod_it != mods.end(); ) {
-        if (mod_it->duration == 0) {
-            auto modifier = mod_it->modifier;
-            modifier->Dispose(*this, &*mod_it);
-            mods.erase(mod_it++);
-            LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str());
-        } else
-            --mod_it++->duration;
-    }
+    REMOVE_MODS(*this, mod_it->duration-- == 0, LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::DevourHeal()

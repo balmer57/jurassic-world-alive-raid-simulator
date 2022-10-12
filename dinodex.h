@@ -7,6 +7,7 @@ extern Dino BrachiosaurusBoss;
 extern Dino MeiolaniaBoss;
 extern Dino FukuimimusBoss;
 extern Dino TroodoboaBoss;
+extern Dino GlyptocerasBoss;
 
 extern DinoKind GroupShatteringMinion;
 extern DinoKind DecelerationMinion;

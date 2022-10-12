@@ -142,7 +142,7 @@ struct Dino
     int ability_id = -1; // номер атаки
     bool priority = false; // приоритет в текущем ходу
     bool threatened = false; // угнетение в текущем ходу
-    std::list<modifiers::Mod> mods;
+    std::vector<modifiers::Mod> mods;
     double vulnerability = 0;
     double damage_factor = 1;
     double speed_factor = 1;
@@ -165,6 +165,7 @@ struct Dino
     bool killer = false;
     std::vector<int> flock_segment;
     int n_positive_effects = 0;
+    int stun = 0;
 
     Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
 
@@ -174,7 +175,11 @@ struct Dino
     }
     int Speed() const
     {
-        return floor(speed * speed_factor);
+        if (stun)
+            return -1;
+        if (speed_factor < 0)
+            return 0;
+        return Round(speed * speed_factor);
     }
     bool Prepare(int ability_id);
     void Attack(Dino team[], int team_size);

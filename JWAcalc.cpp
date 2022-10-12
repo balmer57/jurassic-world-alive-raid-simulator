@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <string>
 #include <list>
+#include <ctime>
 
 #include "dino.h"
 #include "actions.h"
@@ -17,6 +18,10 @@ using namespace std;
 
 
 bool SpeedCmp(const Dino &dino1, const Dino &dino2) {
+    if (dino1.stun < dino2.stun)
+        return true;
+    if (dino1.stun > dino2.stun)
+        return false;
     if (dino1.priority > dino2.priority)
         return true;
     if (dino1.priority < dino2.priority)
@@ -141,8 +146,23 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
     return false;
 }
 
+int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns)
+{
+    int result = 0;
+    auto log = Logger::on;
+    Logger::on = false;
+    for (int i = 0; i < 100; ++i) {
+        vector<Dino> team(team0, team0 + team_size);
+        if (Check(team.data(), team_size, ability, n_turns))
+            ++result;
+    }
+    Logger::on = log;
+    return result;
+}
+
 int main()
 {
+    srand((unsigned)time(NULL));
     setbuf(stdout, NULL);
     Logger::on = true;
 
@@ -182,22 +202,22 @@ int main()
 //    };
 //    int team_size = sizeof(team) / sizeof(*team);
 
-    vector<int> ability[] = {
-        {2, 1, 3},
-        {4, 3, 4},
-        {4, 3, 4},
-        {2, 4, 2},
-    };
-    int n_turns = (int)ability[0].size();
-
-    Dino team[] = {
-        BrachiosaurusBoss,
-        Dino(1, 1, 11, 0, 0, 0, &Irritator),
-        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
-        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
-        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
-    };
-    int team_size = sizeof(team) / sizeof(*team);
+//    vector<int> ability[] = {
+//        {2, 1, 3},
+//        {4, 3, 4},
+//        {4, 3, 4},
+//        {2, 4, 2},
+//    };
+//    int n_turns = (int)ability[0].size();
+//
+//    Dino team[] = {
+//        BrachiosaurusBoss,
+//        Dino(1, 1, 11, 0, 0, 0, &Irritator),
+//        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
+//        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
+//        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
+//    };
+//    int team_size = sizeof(team) / sizeof(*team);
 
 //    vector<int> ability[] = {
 //        {2, 4, 3, 2},
@@ -218,6 +238,27 @@ int main()
 //    };
 //    int team_size = sizeof(team) / sizeof(*team);
 
-    Check(team, team_size, ability, n_turns);
+    vector<int> ability[] = {
+        {1, 3, 2, 4},
+        {2, 3, 4, 2},
+        {3, 4, 2, 3},
+        {1, 4, 3, 4},
+    };
+    int n_turns = (int)ability[0].size();
+
+    Dino team[] = {
+        GlyptocerasBoss,
+        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
+        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
+        Dino(1, 3, 20, 0, 0, 0, &Rexy),
+        Dino(1, 4, 20, 0, 0, 0, &Rexy),
+        Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion),
+        Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion),
+    };
+    int team_size = sizeof(team) / sizeof(*team);
+
+    //Check(team, team_size, ability, n_turns);
+    int chance = Chance(team, team_size, ability, n_turns);
+    LOG("Chance: %d%%\n", chance);
     return 0;
 }

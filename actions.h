@@ -43,7 +43,19 @@ struct Action
     virtual void Do(Dino &self, Dino &target) const = 0;
 };
 
-#define ActionGroup(...) std::move(actions::ActionGroupFunction(__VA_ARGS__))
+#define TargetRandom(...) std::move(actions::ActionGroupFunction(TARGET_RANDOM, __VA_ARGS__))
+#define TargetLowestHP(...) std::move(actions::ActionGroupFunction(TARGET_LOWEST_HP, __VA_ARGS__))
+#define TargetHighestHP(...) std::move(actions::ActionGroupFunction(TARGET_HIGHEST_HP, __VA_ARGS__))
+#define TargetLowestDamage(...) std::move(actions::ActionGroupFunction(TARGET_LOWEST_DAMAGE, __VA_ARGS__))
+#define TargetHighestDamage(...) std::move(actions::ActionGroupFunction(TARGET_HIGHEST_DAMAGE, __VA_ARGS__))
+#define TargetSlowest(...) std::move(actions::ActionGroupFunction(TARGET_SLOWEST, __VA_ARGS__))
+#define TargetFastest(...) std::move(actions::ActionGroupFunction(TARGET_FASTEST, __VA_ARGS__))
+#define TargetMostPositiveEffects(...) std::move(actions::ActionGroupFunction(TARGET_MOST_POSITIVE_EFFECTS, __VA_ARGS__))
+#define TargetLowestHPTeammate(...) std::move(actions::ActionGroupFunction(TARGET_LOWEST_HP_TEAMMATE, __VA_ARGS__))
+#define TargetAllOpponents(...) std::move(actions::ActionGroupFunction(TARGET_ALL_OPPONENTS, __VA_ARGS__))
+#define TargetAttacker(...) std::move(actions::ActionGroupFunction(TARGET_ATTACKER, __VA_ARGS__))
+#define TargetSelf(...) std::move(actions::ActionGroupFunction(TARGET_SELF, __VA_ARGS__))
+#define TargetTeam(...) std::move(actions::ActionGroupFunction(TARGET_TEAM, __VA_ARGS__))
 
 template<typename ...Args>
 std::list<std::unique_ptr<Action>> ActionGroupFunction(int target, Args &&...args);
@@ -57,7 +69,7 @@ class ActionGroupClass<std::list<std::unique_ptr<Action>>, Args...>
 public:
     static std::list<std::unique_ptr<Action>> Make(int target, std::list<std::unique_ptr<Action>> &&actions, Args&&...args)
     {
-        std::list<std::unique_ptr<Action>> list(std::move(ActionGroup(target, std::forward<Args>(args)...)));
+        std::list<std::unique_ptr<Action>> list(std::move(ActionGroupFunction(target, std::forward<Args>(args)...)));
         for (auto it = actions.rbegin(); it != actions.rend(); ++it) {
             if ((*it)->target == TARGET_INHERIT)
                 (*it)->target = target;
@@ -73,7 +85,7 @@ class ActionGroupClass<A, Args...>
 public:
     static std::list<std::unique_ptr<Action>> Make(int target, A &&action, Args&&...args)
     {
-        std::list<std::unique_ptr<Action>> list(std::move(ActionGroup(target, std::forward<Args>(args)...)));
+        std::list<std::unique_ptr<Action>> list(std::move(ActionGroupFunction(target, std::forward<Args>(args)...)));
         if (action.target == TARGET_INHERIT)
             action.target = target;
         list.push_front(std::move(std::unique_ptr<A>(new A(std::forward<A&&>(action)))));
@@ -279,6 +291,17 @@ struct DamageOverTime : public Action
     modifiers::DamageOverTime damage_over_time;
     DamageOverTime(double _factor, int _duration)
         : damage_over_time(_factor, _duration)
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
+struct Stun : public Action
+{
+    double factor;
+    modifiers::Stun stun;
+    Stun(double _factor, int _duration)
+        : factor(_factor / 100.)
+        , stun(_duration)
     {}
     virtual void Do(Dino &self, Dino &target) const override;
 };

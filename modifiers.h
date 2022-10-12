@@ -20,10 +20,11 @@ static const int DAMAGE_OVER_TIME = 1 << 11;
 static const int REDUCED_CRIT_CHANCE = 1 << 12;
 static const int REVENGE = 1 << 13;
 static const int DEVOUR_HEAL = 1 << 14;
+static const int STUN = 1 << 15;
 
 static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|CRIT_CHANCE_REDUCTION|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE;
 static const int POSITIVE_EFFECTS = DODGE|CLOAK|INCREASED_SPEED|SHIELD|TAUNT|INCREASED_CRIT_CHANCE|INCREASED_DAMAGE|DEVOUR_HEAL;
-static const int ALL_EFFECTS = NEGATIVE_EFFECTS|POSITIVE_EFFECTS|REVENGE;
+static const int ALL_EFFECTS = NEGATIVE_EFFECTS|POSITIVE_EFFECTS|REVENGE|STUN;
 
 namespace modifiers
 {
@@ -92,6 +93,21 @@ struct Mod
         return modifier->Type();
     }
 };
+
+#define REMOVE_MODS(self, condition, log) \
+    do { \
+        for (auto mod_it = (self).mods.begin(); mod_it != (self).mods.end(); ) { \
+            if (condition) { \
+                auto modifier = mod_it->modifier; \
+                modifier->Dispose((self), &*mod_it); \
+                std::swap(*mod_it, (self).mods.back()); \
+                (self).mods.pop_back(); \
+                (log); \
+            } else \
+                ++mod_it; \
+        } \
+    } while(false)
+
 
 struct Vulnerability: public Modifier
 {
@@ -325,6 +341,23 @@ struct DamageOverTime : public Modifier
     virtual int Type() const override
     {
         return DAMAGE_OVER_TIME;
+    }
+};
+
+struct Stun : public Modifier
+{
+    Stun(int _duration)
+        : Modifier("stun", _duration, _duration)
+    {}
+    virtual void Impose(Dino &target, Mod *mod) const override;
+    virtual void Dispose(Dino &target, Mod *mod) const override;
+    virtual int Type() const override
+    {
+        return STUN;
+    }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->number == 0;
     }
 };
 

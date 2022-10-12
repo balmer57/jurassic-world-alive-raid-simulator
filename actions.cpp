@@ -5,6 +5,7 @@
 #include <functional>
 #include "utils.h"
 #include <cmath>
+#include <algorithm>
 
 using namespace std;
 using namespace actions;
@@ -27,15 +28,7 @@ void PrepareAttack::Do(Dino &self, Dino &target) const
 {
     self.crit = rand() % 100 < self.CritChanceFactor() * 100;
     self.prepared_damage_factor = self.DamageFactor();
-    for (auto mod_it = self.mods.begin(); mod_it != self.mods.end(); ) {
-        if (mod_it->OutgoingAttack()) {
-            auto modifier = mod_it->modifier;
-            modifier->Dispose(self, &*mod_it);
-            self.mods.erase(mod_it++);
-            LOG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str());
-        } else
-            ++mod_it;
-    }
+    REMOVE_MODS(self, mod_it->OutgoingAttack(), LOG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str()));
     self.killer = false;
 }
 
@@ -62,15 +55,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
     if (armor)
         damage *= 1 - target.armor;
     damage = floor(damage);
-    for (auto mod_it = target.mods.begin(); mod_it != target.mods.end(); ) {
-        if (mod_it->IncomingAttack()) {
-            auto modifier = mod_it->modifier;
-            modifier->Dispose(target, &*mod_it);
-            target.mods.erase(mod_it++);
-            LOG("%s used out %s\n", target.Name().c_str(), modifier->name.c_str());
-        } else
-            ++mod_it;
-    }
+    REMOVE_MODS(target, mod_it->IncomingAttack(), LOG("%s used out %s\n", target.Name().c_str(), modifier->name.c_str()));
     int absorbed = 0;
     if ((~flags & GROUP) && this->target != TARGET_ALL_OPPONENTS) {
         absorbed = (int)damage - target.Absorb((int)damage);
@@ -207,4 +192,10 @@ void DevourHeal::Do(Dino &self, Dino &target) const
 void DamageOverTime::Do(Dino &self, Dino &target) const
 {
     target.Impose(&damage_over_time, self);
+}
+
+void Stun::Do(Dino &self, Dino &target) const
+{
+    if (rand() % 100 < (factor * (1 - target.kind[target.round].stun_resistance)) * 100.)
+        target.Impose(&stun, self);
 }

@@ -149,3 +149,13 @@ void DamageOverTime::Dispose(Dino &target, Mod *) const
 {
     target.damage_over_time -= Round(target.max_total_health * factor * (1 - target.kind[target.round].damage_over_time_resistance));
 }
+
+void Stun::Impose(Dino &target, Mod *mod) const
+{
+    ++target.stun;
+}
+
+void Stun::Dispose(Dino &target, Mod *mod) const
+{
+    --target.stun;
+}
