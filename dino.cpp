@@ -24,6 +24,7 @@ function<bool(const Dino &,const Dino &)> TargetCmp[] = {
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Damage() > dino2.Damage(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() < dino2.Speed(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() > dino2.Speed(); },
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.n_positive_effects > dino2.n_positive_effects; },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; },
 };
 
@@ -35,31 +36,33 @@ function<bool(const Dino &, const Dino &)> CheckTarget[] = {
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // highest damage
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // lowest speed
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // highest speed
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // most positive effects
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team == dino2.team; }, // lowest hp teammate
 };
 
-void Ability::Do(Dino &self, Dino *team[], int team_size) const
+void Ability::Do(Dino &self, Dino team[], int team_size) const
 {
     auto &actions = self.threatened ? threatened_ability->actions : this->actions;
-    int dino_id[8];
+    int n_targets = (int)(sizeof(TargetCmp) / sizeof(*TargetCmp));
+    int dino_id[n_targets];
     memset(dino_id, -1, sizeof(dino_id));
-    for (int target = 0; target < 8; ++target) {
+    for (int target = 0; target < n_targets; ++target) {
         int count = 0;
         for (int i = 0; i < team_size; ++i) {
-            if (!team[i]->Alive())
+            if (!team[i].Alive())
                 continue;
-            if (!CheckTarget[target](self, *team[i]))
+            if (!CheckTarget[target](self, team[i]))
                 continue;
-            if (target != TARGET_RANDOM && team[i]->Taunt() && rand() % 100 < (1 - self.kind[self.round].taunt_resistance) * 100) {
+            if (target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind[self.round].taunt_resistance) * 100) {
                 dino_id[target] = i;
                 break;
             }
             if (dino_id[target] == -1) {
                 dino_id[target] = i;
                 count = 1;
-            } else if (TargetCmp[target](*team[dino_id[target]], *team[i]))
+            } else if (TargetCmp[target](team[dino_id[target]], team[i]))
                 continue;
-            else if (TargetCmp[target](*team[i], *team[dino_id[target]])) {
+            else if (TargetCmp[target](team[i], team[dino_id[target]])) {
                 dino_id[target] = i;
                 count = 1;
             } else if (rand() % ++count == 0)
@@ -70,20 +73,20 @@ void Ability::Do(Dino &self, Dino *team[], int team_size) const
         switch(action->target) {
         case TARGET_ALL_OPPONENTS:
             for (int i = 0; i < team_size; ++i) {
-                if (team[i]->team == self.team)
+                if (team[i].team == self.team)
                     continue;
-                if (!team[i]->Alive())
+                if (!team[i].Alive())
                     continue;
-                action->Do(self, *team[i]);
+                action->Do(self, team[i]);
             }
             break;
         case TARGET_TEAM:
             for (int i = 0; i < team_size; ++i) {
-                if (team[i]->team != self.team)
+                if (team[i].team != self.team)
                     continue;
-                if (!team[i]->Alive())
+                if (!team[i].Alive())
                     continue;
-                action->Do(self, *team[i]);
+                action->Do(self, team[i]);
             }
             break;
         case TARGET_SELF:
@@ -95,7 +98,7 @@ void Ability::Do(Dino &self, Dino *team[], int team_size) const
             action->Do(self, *self.attacker);
             break;
         default:
-            action->Do(self, *team[dino_id[action->target]]);
+            action->Do(self, team[dino_id[action->target]]);
             break;
         }
     }
@@ -159,6 +162,9 @@ Dino::Dino(int _team, int _index, int _level, int _health_boost, int _damage_boo
     for (int i = 0; i < (int)kind[round].ability.size(); ++i) {
         cooldown[i] = kind[round].ability[i]->delay;
     }
+    for (int i = 1; i < kind[round].flock; ++i) {
+        flock_segment.push_back(i * max_health / kind[round].flock);
+    }
 }
 
 bool Dino::Prepare(int _ability_id)
@@ -178,15 +184,24 @@ bool Dino::Prepare(int _ability_id)
     return true;
 }
 
-void Dino::Attack(Dino *team[], int size)
+void Dino::Attack(Dino team[], int size)
 {
     if (!Alive())
         return;
     LOG("%s uses %s!\n", Name().c_str(), kind[round].ability[ability_id]->name.c_str());
     kind[round].ability[ability_id]->Do(*this, team, size);
+    for (auto mod_it = mods.begin(); mod_it != mods.end(); ) {
+        if (mod_it->OnAction()) {
+            auto modifier = mod_it->modifier;
+            modifier->Dispose(*this, &*mod_it);
+            mods.erase(mod_it++);
+            LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str());
+        } else
+            ++mod_it;
+    }
 }
 
-void Dino::CounterAttack(Dino *team[], int size)
+void Dino::CounterAttack(Dino team[], int size)
 {
     if (Alive() && attacker && kind[round].counter_attack) {
         LOG("%s uses %s!\n", Name().c_str(), kind[round].counter_attack->name.c_str());
@@ -234,11 +249,12 @@ void Dino::DevourHeal()
 {
     if (health == 0 || devour_heal == 0)
         return;
+    devour_heal = HealAbsorb(devour_heal);
     Heal(devour_heal);
     LOG("%s is [devour] healed by %d\n", Name().c_str(), devour_heal);
 }
 
-void Dino::DamageOverTime(Dino *team[], int team_size)
+void Dino::DamageOverTime(Dino team[], int team_size)
 {
     if (health == 0 || damage_over_time == 0)
         return;
@@ -246,6 +262,9 @@ void Dino::DamageOverTime(Dino *team[], int team_size)
     LOG("%s is damaged [over time] by %d\n", Name().c_str(), damage_over_time);
     if (!Alive()) {
         LOG("%s dies!\n", Name().c_str());
+        static modifiers::Revenge revenge;
+        for (int i = 0; i < team_size; ++i)
+            team[i].Impose(&revenge, *this);
     } else if (health == 0)
         LOG("%s is immune to HP changes.\n", Name().c_str());
 }
@@ -280,4 +299,24 @@ void Dino::Heal(int heal)
         heal = max_health - health;
     health += heal;
     total_health += heal;
+}
+
+int Dino::Absorb(int damage)
+{
+    if (kind[round].flock == 1)
+        return damage;
+    auto it = upper_bound(flock_segment.rbegin(), flock_segment.rend(), health, greater<int>());
+    if (it != flock_segment.rend() && health - *it < damage)
+        return health - *it;
+    return damage;
+}
+
+int Dino::HealAbsorb(int heal)
+{
+    if (kind[round].flock == 1)
+        return heal;
+    auto it = lower_bound(flock_segment.begin(), flock_segment.end(), health, less<int>());
+    if (it != flock_segment.end() && *it - health < heal)
+        return *it - health;
+    return heal;
 }

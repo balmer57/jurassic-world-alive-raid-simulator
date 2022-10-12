@@ -6,11 +6,15 @@
 extern Dino BrachiosaurusBoss;
 extern Dino MeiolaniaBoss;
 extern Dino FukuimimusBoss;
+extern Dino TroodoboaBoss;
 
 extern DinoKind GroupShatteringMinion;
 extern DinoKind DecelerationMinion;
+extern DinoKind ShatteringMinion;
+extern DinoKind NullifyingMinion;
 
 extern DinoKind Albertosaurus;
+extern DinoKind Allodrigues;
 extern DinoKind Andrewtherium;
 extern DinoKind Andrewtodon;
 extern DinoKind Irritator;

@@ -11,7 +11,7 @@ using namespace actions;
 //
 
 DinoKind BrachiosaurusBossKind[] = {
-    DinoKind("Brachiosaurus Boss #1", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    DinoKind("Brachiosaurus Boss #1", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
         new Ability("Group Shield Strike", 0, 0, true, {
             ActionGroup(TARGET_LOWEST_HP,
                 Attack(1.)
@@ -41,7 +41,7 @@ DinoKind BrachiosaurusBossKind[] = {
             )
         })
     }, nullptr),
-    DinoKind("Brachiosaurus Boss #2", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    DinoKind("Brachiosaurus Boss #2", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
         new Ability("Shielded Group Strike", 0, 0, true, {
             ActionGroup(TARGET_ALL_OPPONENTS,
                 Attack(1.)
@@ -61,7 +61,7 @@ DinoKind BrachiosaurusBossKind[] = {
             )
         })
     }, nullptr),
-    DinoKind("Brachiosaurus Boss #3", EPIC, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    DinoKind("Brachiosaurus Boss #3", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
         new Ability("Group Shield Strike", 0, 0, true, {
             ActionGroup(TARGET_LOWEST_HP,
                 Attack(1.)
@@ -109,7 +109,7 @@ DinoKind BrachiosaurusBossKind[] = {
 DECLARE_BOSS(BrachiosaurusBoss, 14, 0, 0, 0);
 
 DinoKind MeiolaniaBossKind[] = {
-    DinoKind("Meiolania boss #1", RARE, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
+    DinoKind("Meiolania boss #1", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
         new Ability("Steady Group Vulnerability Strike", 0, 0, false, {
             ActionGroup(TARGET_ALL_OPPONENTS,
                 Attack(1, GROUP),
@@ -135,7 +135,7 @@ DinoKind MeiolaniaBossKind[] = {
             )
         })
     }, nullptr),
-    DinoKind("Meiolania boss #2", RARE, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
+    DinoKind("Meiolania boss #2", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
         new Ability("Vulnerability Impact", 0, 1, false, {
             ActionGroup(TARGET_HIGHEST_HP,
                 Attack(1.5),
@@ -163,7 +163,7 @@ DinoKind MeiolaniaBossKind[] = {
 DECLARE_BOSS(MeiolaniaBoss, 8, 0, 0, 0);
 
 DinoKind FukuimimusBossKind[] = {
-    DinoKind("Fukuimimus boss #1", LEGENDARY, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    DinoKind("Fukuimimus boss #1", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
         new Ability("Alert Mimic", 0, 0, true, {
             ActionGroup(TARGET_SELF,
                 Cleanse(NEGATIVE_EFFECTS)
@@ -222,7 +222,7 @@ DinoKind FukuimimusBossKind[] = {
             IncreaseDamage(5, 3, 3)
         )
     })),
-    DinoKind("Fukuimimus boss #2", LEGENDARY, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    DinoKind("Fukuimimus boss #2", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
         new Ability("Alert Mimic", 0, 0, true, {
             ActionGroup(TARGET_SELF,
                 Cleanse(NEGATIVE_EFFECTS)
@@ -298,7 +298,7 @@ DinoKind FukuimimusBossKind[] = {
             IncreaseDamage(5, 3, 3)
         )
     })),
-    DinoKind("Fukuimimus boss #3", LEGENDARY, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    DinoKind("Fukuimimus boss #3", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
         new Ability("Alert Mimic", 0, 0, true, {
             ActionGroup(TARGET_SELF,
                 Cleanse(NEGATIVE_EFFECTS)
@@ -389,16 +389,123 @@ DinoKind FukuimimusBossKind[] = {
 
 DECLARE_BOSS(FukuimimusBoss, 19, 7, 7, 5);
 
+DinoKind TroodoboaBossKind[] = {
+    DinoKind("Troodoboa Boss #1", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+        new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
+            ActionGroup(TARGET_SELF,
+                Shield(50, 1, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_HP,
+                Attack(1.),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new Ability("Targeted Cleansing Strike", 0, 0, false, {
+            ActionGroup(TARGET_TEAM,
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            ActionGroup(TARGET_HIGHEST_DAMAGE,
+                Attack(1.)
+            )
+        }),
+        new Ability("Group Ferocious Strike", 0, 0, false, {
+            ActionGroup(TARGET_TEAM,
+                IncreaseDamage(25, 2, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_HP,
+                Attack(1.)
+            )
+        })
+    }, nullptr),
+    DinoKind("Troodoboa Boss #2", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+        new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
+            ActionGroup(TARGET_SELF,
+                Shield(50, 1, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_HP,
+                Attack(1.),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new Ability("Coiling Rampage", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Shield(75, 3, 12)
+            ),
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                ReduceDamage(75, 2, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_DAMAGE,
+                Attack(2.)
+            )
+        }),
+        new Ability("Targeted Cleansing Impact", 0, 0, false, {
+            ActionGroup(TARGET_TEAM,
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            ActionGroup(TARGET_HIGHEST_DAMAGE,
+                Attack(1.5)
+            )
+        }),
+        new Ability("Raking Piercing Strike", 0, 0, false, {
+            ActionGroup(TARGET_MOST_POSITIVE_EFFECTS,
+                Remove(DODGE|CLOAK),
+                Attack(1., BYPASS_ARMOR)
+            )
+        })
+    }, nullptr),
+    DinoKind("Troodoboa Boss #3", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+        new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
+            ActionGroup(TARGET_SELF,
+                Shield(50, 1, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_HP,
+                Attack(1.),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new Ability("Coiling Rampage", 0, 0, false, {
+            ActionGroup(TARGET_SELF,
+                Shield(75, 3, 12)
+            ),
+            ActionGroup(TARGET_ALL_OPPONENTS,
+                ReduceDamage(75, 2, 4)
+            ),
+            ActionGroup(TARGET_HIGHEST_DAMAGE,
+                Attack(2.)
+            )
+        }),
+        new Ability("Targeted Cleansing Impact", 0, 0, false, {
+            ActionGroup(TARGET_TEAM,
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            ActionGroup(TARGET_HIGHEST_DAMAGE,
+                Attack(2.)
+            )
+        }),
+        new Ability("Group Ferocious Impact", 0, 0, false, {
+            ActionGroup(TARGET_TEAM,
+                IncreaseDamage(50, 2, 4)
+            ),
+            ActionGroup(TARGET_MOST_POSITIVE_EFFECTS,
+                Remove(DODGE|CLOAK),
+                Attack(1.5, BYPASS_ARMOR)
+            )
+        })
+    }, nullptr)
+};
+
+DECLARE_BOSS(TroodoboaBoss, 25, 10, 10, 5);
+
 //
 // minion dex
 //
 
-DinoKind GroupShatteringMinion("Group Shattering Minion", RARE, 3600, 1000, 122, 0, 30, 0, 0, 0, 0, 0, 100, 0, 0, {
+DinoKind GroupShatteringMinion("Group Shattering Minion", RARE, 1, 3600, 1000, 122, 0, 30, 0, 0, 0, 0, 0, 100, 0, 0, {
     new Ability("Group Defense Shattering Strike", 0, 0, false, {
         ActionGroup(TARGET_ALL_OPPONENTS,
             Remove(SHIELD),
             Attack(1., BYPASS_ARMOR|GROUP)
-       )
+        )
     }),
     new Ability("Group Ferocity", 0, 2, true, {
         ActionGroup(TARGET_TEAM,
@@ -414,7 +521,7 @@ DinoKind GroupShatteringMinion("Group Shattering Minion", RARE, 3600, 1000, 122,
     })
 }, nullptr);
 
-DinoKind DecelerationMinion("Deceleration Minion", COMMON, 4050, 1000, 112, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+DinoKind DecelerationMinion("Deceleration Minion", COMMON, 1, 4050, 1000, 112, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
     new Ability("Shielded Decelerating Strike", 0, 0, false, {
         ActionGroup(TARGET_SELF,
             Shield(50, 1, 4)
@@ -437,11 +544,52 @@ DinoKind DecelerationMinion("Deceleration Minion", COMMON, 4050, 1000, 112, 0, 5
     )
 }));
 
+DinoKind ShatteringMinion("Shattering Minion", RARE, 1, 4500, 1750, 103, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Defense Shattering Strike", 0, 0, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD|TAUNT),
+            Attack(1., BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Defense Shattering Impact", 0, 1, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD|TAUNT),
+            Attack(1.5, BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Defense Shattering Rampage", 1, 1, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD|TAUNT),
+            Attack(2., BYPASS_ARMOR)
+        )
+    })
+}, nullptr);
+
+DinoKind NullifyingMinion("Nullifying Minion", RARE, 1, 4500, 1100, 127, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Nullifying Strike", 0, 0, false, {
+        ActionGroup(TARGET_MOST_POSITIVE_EFFECTS,
+            Remove(POSITIVE_EFFECTS),
+            Attack(1.)
+        )
+    }),
+    new Ability("Nullifying Impact", 0, 2, false, {
+        ActionGroup(TARGET_MOST_POSITIVE_EFFECTS,
+            Remove(POSITIVE_EFFECTS),
+            Attack(1.5)
+        )
+    }),
+    new Ability("Group Distraction", 0, 2, true, {
+        ActionGroup(TARGET_ALL_OPPONENTS,
+            ReduceDamage(50, 2, 3)
+        )
+    })
+}, nullptr);
+
 //
 // dino dex
 //
 
-DinoKind Albertosaurus("Albertosaurus", RARE, 4350, 1750, 106, 0, 30, 100, 50, 0, 0, 100, 0, 0, 25, {
+DinoKind Albertosaurus("Albertosaurus", RARE, 1, 4350, 1750, 106, 0, 30, 100, 50, 0, 0, 100, 0, 0, 25, {
     new Ability("Fierce Strike", 0, 0, false, {
         ActionGroup(TARGET_SELF,
             Cleanse(VULNERABILITY)
@@ -468,7 +616,58 @@ DinoKind Albertosaurus("Albertosaurus", RARE, 4350, 1750, 106, 0, 30, 100, 50, 0
     })
 }, nullptr);
 
-DinoKind Andrewtherium("Andrewtherium", EPIC, 3600, 1300, 119, 5, 25, 100, 0, 50, 0, 50, 50, 0, 50, {
+DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0, 15, 0, 50, 75, 66, 100, 67, 0, 0, {
+    new Ability("Fierce Strike", 0, 0, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(VULNERABILITY)
+        ),
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD | TAUNT),
+            Attack(1., BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Protective Alert [2]", 0, 3, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(NEGATIVE_EFFECTS)
+        ),
+        ActionGroup(TARGET_ALL_OPPONENTS,
+            ImposeVulnerability(50, 2, 4),
+            ReduceDamage(50, 2, 4)
+        )
+    }, [](Dino &self) -> bool { return self.health <= 2 * self.max_health / 3; }, new Ability("Protective Alert [2]", 0, 3, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(NEGATIVE_EFFECTS),
+            RallyHeal(1./3)
+        ),
+        ActionGroup(TARGET_ALL_OPPONENTS,
+            ReduceDamage(50, 2, 4)
+        )
+    })),
+    new Ability("Cunning Rampage", 1, 1, false, {
+        ActionGroup(TARGET_SELF,
+            Cleanse(DAMAGE_OVER_TIME)
+        ),
+        ActionGroup(TARGET_HIGHEST_DAMAGE,
+            Remove(INCREASED_CRIT_CHANCE | INCREASED_DAMAGE),
+            ReduceCritChance(100, 1, 2),
+            ReduceDamage(50, 1, 2),
+            Attack(2.)
+        )
+    }),
+    new Ability("Alert Peck", 0, 2, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD|INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
+            Rend(60, BYPASS_ARMOR)
+        )
+    }, [](Dino &self) -> bool { return self.health <= self.max_health / 3; }, new Ability("Alert Peck", 1, 2, false, {
+        ActionGroup(TARGET_LOWEST_HP,
+            Remove(SHIELD|INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
+            Rend(60, BYPASS_ARMOR)
+        )
+    }))
+}, nullptr);
+
+DinoKind Andrewtherium("Andrewtherium", EPIC, 1, 3600, 1300, 119, 5, 25, 100, 0, 50, 0, 50, 50, 0, 50, {
     new Ability("Group Cleansing Strike", 0, 0, false, {
         ActionGroup(TARGET_TEAM,
             Cleanse(NEGATIVE_EFFECTS)
@@ -503,7 +702,7 @@ DinoKind Andrewtherium("Andrewtherium", EPIC, 3600, 1300, 119, 5, 25, 100, 0, 50
     })
 }, nullptr);
 
-DinoKind Andrewtodon("Andrewtodon", EPIC, 3450, 1300, 112, 15, 25, 0, 0, 0, 0, 100, 50, 0, 0, {
+DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15, 25, 0, 0, 0, 0, 100, 50, 0, 0, {
     new Ability("Fierce Strike", 0, 0, false, {
         ActionGroup(TARGET_SELF,
             Cleanse(VULNERABILITY)
@@ -538,7 +737,7 @@ DinoKind Andrewtodon("Andrewtodon", EPIC, 3450, 1300, 112, 15, 25, 0, 0, 0, 0, 1
     )
 }));
 
-DinoKind Irritator("Irritator", RARE, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
+DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
     new Ability("Defense Shattering Strike", 0, 0, false, {
         ActionGroup(TARGET_LOWEST_HP,
             Remove(SHIELD | TAUNT),
@@ -560,7 +759,7 @@ DinoKind Irritator("Irritator", RARE, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100, 0
     })
 }, nullptr);
 
-DinoKind Rexy("Rexy", LEGENDARY, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 75, 0, 100, {
+DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 75, 0, 100, {
     new Ability("Alert Fierce Strike", 0, 0, false, {
         ActionGroup(TARGET_ALL_OPPONENTS,
             Remove(SHIELD | TAUNT),
@@ -618,7 +817,7 @@ DinoKind Rexy("Rexy", LEGENDARY, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 75, 
     })
 }, nullptr);
 
-DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 4500, 1000, 124, 30, 5, 0, 0, 0, 0, 100, 75, 0, 50, {
+DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 1, 4500, 1000, 124, 30, 5, 0, 0, 0, 0, 100, 75, 0, 50, {
     new Ability("Resilient Strike", 0, 0, false, {
         ActionGroup(TARGET_SELF,
             Cleanse(REDUCED_DAMAGE)
@@ -655,7 +854,7 @@ DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 4500, 1000, 124, 30, 5, 0, 0, 0
     })
 }, nullptr);
 
-DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 4800, 1250, 122, 0, 25, 0, 25, 0, 75, 100, 100, 0, 100, {
+DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0, 75, 100, 100, 0, 100, {
     new Ability("Defense Shattering Strike", 0, 0, false, {
         ActionGroup(TARGET_LOWEST_HP,
             Remove(SHIELD | TAUNT),

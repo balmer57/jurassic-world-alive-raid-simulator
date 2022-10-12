@@ -24,6 +24,7 @@ enum Target
     TARGET_HIGHEST_DAMAGE,
     TARGET_SLOWEST,
     TARGET_FASTEST,
+    TARGET_MOST_POSITIVE_EFFECTS,
     TARGET_LOWEST_HP_TEAMMATE,
     TARGET_ALL_OPPONENTS,
     TARGET_ATTACKER,
@@ -130,15 +131,27 @@ struct Revenge : public Action
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
-struct Heal : public Action
+static const int FIXED = 1;
+
+std::list<std::unique_ptr<Action>> Heal(double _factor, int _flags = 0);
+
+struct HealAction : public Action
 {
     double factor;
     int flags;
-    Heal(double _factor, int _flags = 0)
+    HealAction(double _factor, int _flags)
         : factor(_factor)
         , flags(_flags)
-    {
-    }
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
+struct RallyHeal : public Action
+{
+    double factor;
+    RallyHeal(double _factor)
+        : factor(_factor)
+    {}
     virtual void Do(Dino &self, Dino &target) const override;
 };
 

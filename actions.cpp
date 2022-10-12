@@ -43,24 +43,24 @@ void AttackAction::Do(Dino &self, Dino &target) const
 {
     double damage;
     if (flags & REND)
-        damage = (target.max_total_health * factor * (1 - target.kind[target.round].rend_resistance));
+        damage = target.max_total_health * (1 - target.kind[target.round].rend_resistance);
     else
-        damage = (self.damage * factor); // здесь определённо хуйня
-    damage = (damage * self.prepared_damage_factor);
-    damage = (damage * (1 + target.vulnerability));
-    damage = floor(damage); // тут определённо floor
+        damage = self.damage;
+    damage = floor(damage * self.prepared_damage_factor);
+    damage *= factor;
+    damage *= 1 + target.vulnerability;
     bool crit = self.crit;
     if (crit)
-        damage = floor(damage * 1.25);
+        damage *= 1.25;
     bool shield = target.Shield();
     if (shield)
-        damage = floor(damage * (1 - target.Shield()));
+        damage *= 1 - target.Shield();
     bool dodge = (~flags & PRECISE) && rand() % 100 < target.DodgeChance() * 100;
     if (dodge)
-        damage = floor(damage * (1 - target.DodgeFactor()));
+        damage *= 1 - target.DodgeFactor();
     bool armor = (~flags & BYPASS_ARMOR) && target.armor > 0;
     if (armor)
-        damage = floor(damage * (1 - target.armor));
+        damage *= 1 - target.armor;
     damage = floor(damage);
     for (auto mod_it = target.mods.begin(); mod_it != target.mods.end(); ) {
         if (mod_it->IncomingAttack()) {
@@ -71,10 +71,15 @@ void AttackAction::Do(Dino &self, Dino &target) const
         } else
             ++mod_it;
     }
+    int absorbed = 0;
+    if ((~flags & GROUP) && this->target != TARGET_ALL_OPPONENTS) {
+        absorbed = (int)damage - target.Absorb((int)damage);
+        damage -= absorbed;
+    }
     self.last_damage = damage;
     target.attacker = &self;
     target.Hit(damage);
-    LOG("%s attacks %s for %d%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "");
+    LOG("%s attacks %s for %d%s%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
     if (!target.Alive()) {
         LOG("%s dies!\n", target.Name().c_str());
         self.killer = true;
@@ -88,15 +93,42 @@ void Revenge::Do(Dino &self, Dino &target) const
         target.Impose(&revenge, self);
 }
 
-void Heal::Do(Dino &self, Dino &target) const
+std::list<std::unique_ptr<Action>> actions::Heal(double _factor, int _flags)
 {
-    int heal = Round(Round(self.damage * factor) * self.DamageFactor());
+    std::list<std::unique_ptr<Action>> list;
+    list.emplace_back(new PrepareAttack())->target = TARGET_SELF;
+    list.emplace_back(new HealAction(_factor, _flags))->target = TARGET_INHERIT;
+    return std::move(list);
+}
+
+void HealAction::Do(Dino &self, Dino &target) const
+{
+    double heal;
+    if (flags & FIXED)
+        heal = self.max_health;
+    else
+        heal = self.damage;
+    heal = floor(heal * self.prepared_damage_factor);
+    heal *= factor;
+    heal = floor(heal);
+    if (target.health == 0) {
+        LOG("%s is immune to HP changes\n", target.Name().c_str());
+        return;
+    }
+    heal = target.HealAbsorb((int)heal);
+    target.Heal((int)heal);
+    LOG("%s heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), (int)heal);
+}
+
+void RallyHeal::Do(Dino &self, Dino &target) const
+{
+    int heal = floor(self.max_health * factor);
     if (target.health == 0) {
         LOG("%s is immune to HP changes\n", target.Name().c_str());
         return;
     }
     target.Heal(heal);
-    LOG("%s heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), heal);
+    LOG("%s rally heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), heal);
 }
 
 void ImposeVulnerability::Do(Dino &self, Dino &target) const

@@ -46,7 +46,7 @@ struct Ability
         return threat_checker(dino);
     }
     bool Priority(Dino &dino) const;
-    void Do(Dino &self, Dino *team[], int size) const;
+    void Do(Dino &self, Dino team[], int size) const;
 };
 
 static const int COMMON = 0;
@@ -60,6 +60,7 @@ struct DinoKind
 {
     std::string name;
     int rarity;
+    int flock;
     int health;
     int damage;
     int speed;
@@ -76,7 +77,7 @@ struct DinoKind
     std::vector<std::unique_ptr<Ability>> ability;
     std::unique_ptr<Ability> counter_attack;
 
-    DinoKind(const std::string &_name, int _rarity, int _health, int _damage, int _speed, int _armor, int _crit,
+    DinoKind(const std::string &_name, int _rarity, int _flock, int _health, int _damage, int _speed, int _armor, int _crit,
             double _crit_reduction_resistance,
             double _damage_over_time_resistance,
             double _reduced_damage_resistance,
@@ -88,6 +89,7 @@ struct DinoKind
             std::initializer_list<Ability *> _ability, Ability *_counter_attack)
         : name(_name)
         , rarity(_rarity)
+        , flock(_flock)
         , health(_health)
         , damage(_damage)
         , speed(_speed)
@@ -135,7 +137,7 @@ struct Dino
     int speed_boost;
     int max_health;
     int health; // текущее количество жизней
-    int damage; // текущая атака
+    double damage; // базовая атака
     int speed; // текущая скорость
     int ability_id = -1; // номер атаки
     bool priority = false; // приоритет в текущем ходу
@@ -161,20 +163,22 @@ struct Dino
     double prepared_damage_factor = 0;
     bool crit = false;
     bool killer = false;
+    std::vector<int> flock_segment;
+    int n_positive_effects = 0;
 
     Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
 
     int Damage() const
     {
-        return Round(damage * damage_factor);
+        return floor(damage * DamageFactor());
     }
     int Speed() const
     {
-        return Round(speed * speed_factor);
+        return floor(speed * speed_factor);
     }
     bool Prepare(int ability_id);
-    void Attack(Dino *team[], int team_size);
-    void CounterAttack(Dino *team[], int team_size);
+    void Attack(Dino team[], int team_size);
+    void CounterAttack(Dino team[], int team_size);
     void Impose(const modifiers::Modifier *mod, Dino &author);
     void Dispose(int type_flags, Dino &author);
     double DamageFactor() const
@@ -199,7 +203,7 @@ struct Dino
         return taunt;
     }
     void DevourHeal();
-    void DamageOverTime(Dino *team[], int team_size);
+    void DamageOverTime(Dino team[], int team_size);
     std::string Name() const;
     void Revive();
     double Shield() const
@@ -216,6 +220,8 @@ struct Dino
     }
     void Hit(int damage);
     void Heal(int heal);
+    int Absorb(int damage);
+    int HealAbsorb(int heal);
 };
 
 #endif // __JWA_CALC__DINO__H__

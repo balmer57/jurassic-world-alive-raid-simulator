@@ -54,6 +54,10 @@ struct Modifier
     {
         return false;
     }
+    virtual bool OnAction(Mod *mod) const
+    {
+        return false;
+    }
 };
 
 struct Mod
@@ -78,6 +82,14 @@ struct Mod
     bool IncomingAttack()
     {
         return modifier->IncomingAttack(this);
+    }
+    bool OnAction()
+    {
+        return modifier->OnAction(this);
+    }
+    int Type()
+    {
+        return modifier->Type();
     }
 };
 
@@ -206,7 +218,7 @@ struct Dodge : public Modifier
     {
         return !--mod->number;
     }
-    virtual bool OutgoingAttack(Mod *mod) const override
+    virtual bool OnAction(Mod *mod) const override
     {
         return mod->duration == 0;
     }
@@ -263,7 +275,7 @@ struct Shield : public Modifier
     {
         return !--mod->number;
     }
-    virtual bool OutgoingAttack(Mod *mod) const override
+    virtual bool OnAction(Mod *mod) const override
     {
         return mod->duration == 0;
     }

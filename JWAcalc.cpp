@@ -48,16 +48,16 @@ int Step(Dino team[], int team_size)
     for (i = 0; i < team_size; ++i)
         dino[i] = &team[i];
     for (i = 0; i < team_size; ++i) {
-        if (dino[i]->Alive())
-            dino[i]->DevourHeal();
+        if (team[i].Alive())
+            team[i].DevourHeal();
     }
     for (int j = 0; j < team_size; ++j) {
         sort(dino + j, dino + team_size, [](const Dino *dino1, const Dino *dino2) { return SpeedCmp(*dino1, *dino2); });
         if (!dino[j]->Alive())
             continue;
-        dino[j]->Attack(dino, team_size);
+        dino[j]->Attack(team, team_size);
         for (i = 0; i < team_size; ++i) {
-            dino[i]->CounterAttack(dino, team_size);
+            team[i].CounterAttack(team, team_size);
         }
         for (i = 0; i < team_size; ++i) {
             if (team[i].team == 0)
@@ -71,8 +71,8 @@ int Step(Dino team[], int team_size)
             return 1;
     }
     for (i = 0; i < team_size; ++i) {
-        if (dino[i]->Alive())
-            dino[i]->DamageOverTime(dino, team_size);
+        if (team[i].Alive())
+            team[i].DamageOverTime(team, team_size);
     }
     for (i = 0; i < team_size; ++i) {
         if (team[i].team == 0)
@@ -85,7 +85,7 @@ int Step(Dino team[], int team_size)
     if (!boss->Alive())
         return 1;
     for (i = 0; i < team_size; ++i) {
-        dino[i]->PassTurn();
+        team[i].PassTurn();
     }
     if (boss->health == 0) {
         ++boss->round;
@@ -112,15 +112,22 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
             turn = 0;
             LOG("Round %d\n", round);
         }
-        LOG("Turn %d\n", ++turn);
-        for (int i = 0; i < team_size; ++i) {
+        boss->Prepare(turn++ % (int)boss->kind[boss->round].ability.size());
+        LOG("Turn %d\n", turn);
+        for (int i = 1; i < team_size; ++i) {
             if (!team[i].Alive())
                 continue;
-            if (team[i].Prepare(ability[t][i]))
-                continue;
-            LOG("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].kind[team[i].round].ability[ability[t][i]]->name.c_str());
-            return false;
+            if (team[i].team == 1) { // Teammates
+                if (!team[i].Prepare(ability[i-1][t]-1)) {
+                    LOG("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].kind[team[i].round].ability[ability[t][i]]->name.c_str());
+                    return false;
+                }
+            } else { // Minions
+                while (!team[i].Prepare(rand() % team[i].kind->ability.size()))
+                    ;
+            }
         }
+
         int result = Step(team, team_size);
         if (result == 0)
             continue;
@@ -139,29 +146,30 @@ int main()
     setbuf(stdout, NULL);
     Logger::on = true;
 
-    vector<int> ability[] = {
-        {0, 1, 1, 2, 2},
-        {0, 0, 0, 1, 1},
-    };
-    int n_turns = sizeof(ability) / sizeof(*ability);
-
-    Dino team[] = {
-        MeiolaniaBoss,
-        Dino(1, 1, 10, 0, 0, 0, &Irritator),
-        Dino(1, 2, 10, 0, 0, 0, &Irritator),
-        Dino(1, 3, 10, 0, 0, 0, &Albertosaurus),
-        Dino(1, 4, 10, 0, 0, 0, &Albertosaurus)
-    };
-    int team_size = sizeof(team) / sizeof(*team);
+//    vector<int> ability[] = {
+//        {2, 1},
+//        {2, 1},
+//        {3, 2},
+//        {3, 2},
+//    };
+//    int n_turns = (int)ability[0].size();
+//
+//    Dino team[] = {
+//        MeiolaniaBoss,
+//        Dino(1, 1, 10, 0, 0, 0, &Irritator),
+//        Dino(1, 2, 10, 0, 0, 0, &Irritator),
+//        Dino(1, 3, 10, 0, 0, 0, &Albertosaurus),
+//        Dino(1, 4, 10, 0, 0, 0, &Albertosaurus)
+//    };
+//    int team_size = sizeof(team) / sizeof(*team);
 
 //    vector<int> ability[] = {
-//        {0, 1, 1, 2, 0, 2, 1},
-//        {1, 3, 2, 1, 2, 1, 0},
-//        {0, 0, 3, 3, 3, 2, 1},
-//        {0, 1, 1, 2, 0, 2, 1},
-//        {1, 0, 3, 3, 2, 1, 0},
+//        {2, 4, 1, 2, 1},
+//        {2, 3, 4, 2, 4},
+//        {3, 2, 4, 3, 4},
+//        {1, 3, 4, 1, 3},
 //    };
-//    int n_turns = sizeof(ability) / sizeof(*ability);
+//    int n_turns = (int)ability[0].size();
 //
 //    Dino team[] = {
 //        FukuimimusBoss,
@@ -174,19 +182,39 @@ int main()
 //    };
 //    int team_size = sizeof(team) / sizeof(*team);
 
+    vector<int> ability[] = {
+        {2, 1, 3},
+        {4, 3, 4},
+        {4, 3, 4},
+        {2, 4, 2},
+    };
+    int n_turns = (int)ability[0].size();
+
+    Dino team[] = {
+        BrachiosaurusBoss,
+        Dino(1, 1, 11, 0, 0, 0, &Irritator),
+        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
+        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
+        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
+    };
+    int team_size = sizeof(team) / sizeof(*team);
+
 //    vector<int> ability[] = {
-//        {0, 1, 3, 3, 1},
-//        {0, 0, 2, 2, 3},
-//        {0, 2, 3, 3, 1},
+//        {2, 4, 3, 2},
+//        {3, 2, 4, 3},
+//        {3, 2, 4, 3},
+//        {4, 2, 3, 4},
 //    };
-//    int n_turns = sizeof(ability) / sizeof(*ability);
+//    int n_turns = (int)ability[0].size();
 //
 //    Dino team[] = {
-//        BrachiosaurusBoss,
-//        Dino(1, 1, 11, 0, 0, 0, &Irritator),
-//        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
-//        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
-//        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
+//        TroodoboaBoss,
+//        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
+//        Dino(1, 2, 20, 0, 0, 0, &Rexy),
+//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
+//        Dino(1, 4, 21, 0, 0, 0, &Allodrigues),
+//        Dino(0, 5, 24, 4, 10, 10, &ShatteringMinion),
+//        Dino(0, 6, 24, 10, 4, 10, &NullifyingMinion),
 //    };
 //    int team_size = sizeof(team) / sizeof(*team);
 
