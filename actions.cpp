@@ -45,6 +45,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
     bool crit = self.crit;
     if (crit)
         damage *= 1.25;
+    damage *= self.CloakFactor();
     bool shield = target.Shield();
     if (shield)
         damage *= 1 - target.Shield();
@@ -198,4 +199,9 @@ void Stun::Do(Dino &self, Dino &target) const
 {
     if (rand() % 100 < (factor * (1 - target.kind[target.round].stun_resistance)) * 100.)
         target.Impose(&stun, self);
+}
+
+void Cloak::Do(Dino &self, Dino &target) const
+{
+    target.Impose(&cloak, self);
 }

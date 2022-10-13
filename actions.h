@@ -306,6 +306,15 @@ struct Stun : public Action
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
+struct Cloak : public Action
+{
+    modifiers::Cloak cloak;
+    Cloak(double _attack_factor, double _dodge_chance, double _dodge_factor, int _duration)
+        : cloak(_attack_factor, _dodge_chance, _dodge_factor, _duration)
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
 } // namespace actions
 
 #endif // __JWA_CALC__ACTIONS__H__

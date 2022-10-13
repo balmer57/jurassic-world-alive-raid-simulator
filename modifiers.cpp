@@ -159,3 +159,17 @@ void Stun::Dispose(Dino &target, Mod *mod) const
 {
     --target.stun;
 }
+
+void Cloak::Impose(Dino &target, Mod *mod) const
+{
+    target.dodge.insert(make_pair(dodge_chance, dodge_factor));
+    target.cloak_factor.insert(attack_factor);
+    ++target.n_positive_effects;
+}
+
+void Cloak::Dispose(Dino &target, Mod *mod) const
+{
+    target.dodge.erase(target.dodge.find(make_pair(dodge_chance, dodge_factor)));
+    target.cloak_factor.erase(target.cloak_factor.find(attack_factor));
+    --target.n_positive_effects;
+}

@@ -172,7 +172,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetSelf(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
@@ -184,7 +184,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetTeam(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2)
             ),
             TargetSelf(
@@ -231,7 +231,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetSelf(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
@@ -243,7 +243,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetTeam(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2)
             ),
             TargetSelf(
@@ -307,7 +307,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetSelf(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
@@ -319,7 +319,7 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceDamage(50, 2, 4)
             ),
             TargetTeam(
-                Dodge(100, 200./3, 1, 4),
+                Dodge(100, 67, 1, 4),
                 IncreaseSpeed(10, 2)
             ),
             TargetSelf(
@@ -349,7 +349,7 @@ DinoKind FukuimimusBossKind[] = {
                 Attack(1.5)
             ),
             TargetSelf(
-                Dodge(75, 200./3, 2, 4),
+                Dodge(75, 67, 2, 4),
                 Taunt(2)
             )
         }, [](Dino &self) { return self.revenge; }, new Ability("Revenge Cunning Impact", 0, 0, false, {
@@ -361,7 +361,7 @@ DinoKind FukuimimusBossKind[] = {
                 Attack(1.5, BYPASS_ARMOR|GROUP)
             ),
             TargetSelf(
-                Dodge(75, 200./3, 3, 4),
+                Dodge(75, 67, 3, 4),
                 Taunt(2)
             )
         })),
@@ -602,6 +602,63 @@ DinoKind GlyptocerasBossKind[] = {
 
 DECLARE_BOSS(GlyptocerasBoss, 19, 5, 3, 8);
 
+DinoKind SmilonemysBossKind[] = {
+    DinoKind("Smilonemys Boss #1", UNIQUE, 1, 20000, 1500, 127, 50, 5, 0, 80, 50, 80, 50, 100, 0, 50, {
+        new Ability("Shielded Group Strike", 0, 0, false, {
+            TargetSelf(
+                Shield(50, 4, 4)
+            ),
+            TargetAllOpponents(
+                Attack(1.)
+            )
+        }),
+        new Ability("Primal Prowl", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(75, 67, 2, 4),
+                IncreaseCritChance(50, 2, 2)
+            )
+        }),
+        new Ability("Precise Pounce", 0, 0, false, {
+            TargetLowestHP(
+                Attack(2., PRECISE),
+                ReduceDamage(50, 1, 2)
+            )
+        })
+    }, nullptr),
+    DinoKind("Smilonemys Boss #2", UNIQUE, 1, 20000, 1500, 127, 50, 5, 0, 80, 50, 80, 50, 100, 0, 50, {
+        new Ability("Shielded Group Strike", 0, 0, false, {
+            TargetSelf(
+                Shield(50, 4, 4)
+            ),
+            TargetAllOpponents(
+                Attack(1.)
+            )
+        }),
+        new Ability("Prowling Shields", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(75, 67, 2, 4),
+                IncreaseCritChance(50, 2, 2),
+                Shield(50, 4, 4)
+            )
+        }),
+        new Ability("Cautious Precise Pounce", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                IncreaseSpeed(10, 3),
+                Dodge(75, 67, 2, 4)
+            ),
+            TargetLowestHP(
+                Attack(2., PRECISE),
+                ReduceDamage(50, 1, 2)
+            )
+        }),
+    }, nullptr)
+};
+
+DECLARE_BOSS(SmilonemysBoss, 22, 6, 9, 7);
+
 //
 // minion dex
 //
@@ -690,6 +747,59 @@ DinoKind NullifyingMinion("Nullifying Minion", RARE, 1, 4500, 1100, 127, 0, 5, 0
         )
     })
 }, nullptr);
+
+DinoKind DistractionMinion("Distraction Minion", COMMON, 1, 3000, 1350, 129, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Distraction", 0, 0, false, {
+        TargetHighestDamage(
+            ReduceDamage(50, 1, 2),
+            Attack(1.)
+        )
+    }),
+    new Ability("Cunning Impact", 0, 1, false, {
+        TargetSelf(
+            Cleanse(DAMAGE_OVER_TIME)
+        ),
+        TargetHighestDamage(
+            ReduceDamage(50, 1, 2),
+            ReduceCritChance(100, 1, 2),
+            Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE)
+        )
+    })
+}, nullptr);
+
+DinoKind CounterAttackMinion("Counter-Attack Minion", RARE, 1, 4500, 1000, 104, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Resilient Strike", 0, 0, false, {
+        TargetSelf(
+            Cleanse(REDUCED_DAMAGE)
+        ),
+        TargetLowestHP(
+            Remove(DODGE|CLOAK|INCREASED_SPEED),
+            Attack(1.),
+            ImposeVulnerability(50, 2, 2)
+        )
+    }),
+    new Ability("Group Taunting Shields", 0, 1, true, {
+        TargetTeam(
+            Shield(50, 2, 2)
+        ),
+        TargetSelf(
+            Taunt(1)
+        )
+    }),
+    new Ability("Cleansing Impact", 0, 2, false, {
+        TargetSelf(
+            Cleanse(NEGATIVE_EFFECTS)
+        ),
+        TargetLowestHP(
+            Attack(1.5)
+        )
+    })
+}, new Ability("Greater Rending Counter-Attack", 0, 0, false, {
+    TargetAttacker(
+        Remove(SHIELD),
+        Rend(33, BYPASS_ARMOR)
+    )
+}));
 
 //
 // dino dex
@@ -843,6 +953,47 @@ DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15, 25, 0, 0, 0, 0
     )
 }));
 
+DinoKind Indotaurus("Indotaurus", UNIQUE, 1, 4650, 1600, 106, 0, 20, 0, 0, 0, 34, 75, 50, 0, 50, {
+    new Ability("Fierce Strike", 0, 0, false, {
+        TargetSelf(
+            Cleanse(VULNERABILITY)
+        ),
+        TargetLowestHP(
+            Remove(SHIELD|TAUNT),
+            Attack(1., BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Intimidating Impact", 0, 1, false, {
+        TargetLowestHP(
+            Remove(SHIELD),
+            Attack(1.5, BYPASS_ARMOR),
+            ImposeVulnerability(50, 1, 2)
+        )
+    }),
+    new Ability("Cleansing Rampage", 1, 2, false, {
+        TargetSelf(
+            Cleanse(NEGATIVE_EFFECTS),
+            Attack(2.)
+        )
+    }),
+    new Ability("Revenge Taunting Cloak", 0, 3, true, {
+        TargetSelf(
+            Cloak(2., 75, 67, 2),
+            Taunt(1)
+        )
+    }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Revenge Taunting Cloak", 0, 3, true, {
+        TargetSelf(
+            Cloak(2.5, 75, 67, 2),
+            Taunt(1)
+        )
+    }))
+}, new Ability("Greater Rending Counter-Attack", 0, 0, false, {
+    TargetAttacker(
+        Remove(SHIELD),
+        Rend(33, BYPASS_ARMOR)
+    )
+}));
+
 DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100, 0, 0, 100, {
     new Ability("Defense Shattering Strike", 0, 0, false, {
         TargetLowestHP(
@@ -971,7 +1122,7 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0
         TargetSelf(
             Cleanse(NEGATIVE_EFFECTS),
             IncreaseCritChance(75, 2, 2),
-            Dodge(75, 200./3, 1, 2)
+            Dodge(75, 67, 1, 2)
         ),
         TargetTeam(
             IncreaseDamage(50, 4, 2),

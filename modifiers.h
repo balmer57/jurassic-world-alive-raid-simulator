@@ -300,7 +300,7 @@ struct Shield : public Modifier
 struct Revenge : public Modifier
 {
     Revenge()
-        : Modifier("revenge", 1, 1)
+        : Modifier("revenge", 1)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -308,9 +308,9 @@ struct Revenge : public Modifier
     {
         return REVENGE;
     }
-    virtual bool OutgoingAttack(Mod *mod) const override
+    virtual bool OnAction(Mod *mod) const override
     {
-        return !--mod->number;
+        return mod->duration == 0;
     }
 };
 
@@ -358,6 +358,29 @@ struct Stun : public Modifier
     virtual bool OnAction(Mod *mod) const override
     {
         return --mod->number == 0;
+    }
+};
+
+struct Cloak : public Modifier
+{
+    double attack_factor;
+    double dodge_chance;
+    double dodge_factor;
+    Cloak(double _attack_factor, double _dodge_chance, double _dodge_factor, int _duration)
+        : Modifier("cloak", _duration)
+        , attack_factor(_attack_factor)
+        , dodge_chance(_dodge_chance / 100.)
+        , dodge_factor(_dodge_factor / 100.)
+    {}
+    virtual void Impose(Dino &target, Mod *mod) const override;
+    virtual void Dispose(Dino &target, Mod *mod) const override;
+    virtual int Type() const override
+    {
+        return CLOAK;
+    }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return mod->duration <= 1; // ???
     }
 };
 

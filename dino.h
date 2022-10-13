@@ -166,6 +166,7 @@ struct Dino
     std::vector<int> flock_segment;
     int n_positive_effects = 0;
     int stun = 0;
+    std::set<double, std::greater<double>> cloak_factor;
 
     Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
 
@@ -217,11 +218,21 @@ struct Dino
     }
     double DodgeChance() const
     {
+        if (dodge.size() == 0)
+            return 0;
         return dodge.begin()->first;
     }
     double DodgeFactor() const
     {
+        if (dodge.size() == 0)
+            return 1;
         return dodge.begin()->second;
+    }
+    double CloakFactor()
+    {
+        if (cloak_factor.size() == 0)
+            return 1;
+        return *cloak_factor.begin();
     }
     void Hit(int damage);
     void Heal(int heal);

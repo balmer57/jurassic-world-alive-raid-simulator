@@ -238,27 +238,46 @@ int main()
 //    };
 //    int team_size = sizeof(team) / sizeof(*team);
 
+//    vector<int> ability[] = {
+//        {1, 3, 2, 4},
+//        {2, 3, 4, 2},
+//        {3, 4, 2, 3},
+//        {1, 4, 3, 4},
+//    };
+//    int n_turns = (int)ability[0].size();
+//
+//    Dino team[] = {
+//        GlyptocerasBoss,
+//        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
+//        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
+//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
+//        Dino(1, 4, 20, 0, 0, 0, &Rexy),
+//        Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion),
+//        Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion),
+//    };
+//    int team_size = sizeof(team) / sizeof(*team);
+
     vector<int> ability[] = {
-        {1, 3, 2, 4},
-        {2, 3, 4, 2},
-        {3, 4, 2, 3},
-        {1, 4, 3, 4},
+        {3, 4},
+        {3, 4},
+        {4, 2},
+        {4, 2},
     };
     int n_turns = (int)ability[0].size();
 
     Dino team[] = {
-        GlyptocerasBoss,
-        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
-        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
-        Dino(1, 3, 20, 0, 0, 0, &Rexy),
-        Dino(1, 4, 20, 0, 0, 0, &Rexy),
-        Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion),
-        Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion),
+        SmilonemysBoss,
+        Dino(1, 1, 24, 0, 0, 0, &Rexy),
+        Dino(1, 2, 24, 0, 0, 0, &Rexy),
+        Dino(1, 3, 21, 0, 0, 0, &Indotaurus),
+        Dino(1, 4, 21, 0, 0, 0, &Indotaurus),
+        Dino(0, 5, 17, 7, 6, 1, &DistractionMinion),
+        Dino(0, 6, 17, 8, 3, 3, &CounterAttackMinion),
     };
     int team_size = sizeof(team) / sizeof(*team);
 
-    //Check(team, team_size, ability, n_turns);
-    int chance = Chance(team, team_size, ability, n_turns);
-    LOG("Chance: %d%%\n", chance);
+    Check(team, team_size, ability, n_turns);
+//    int chance = Chance(team, team_size, ability, n_turns);
+//    LOG("Chance: %d%%\n", chance);
     return 0;
 }
