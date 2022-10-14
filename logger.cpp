@@ -2,7 +2,7 @@
 
 #include <cstdio>
 
-bool Logger::on = true;
+int Logger::level = LOG_LEVEL_DEBUG;
 
 int Logger::Log(const char fmt[], ...)
 {

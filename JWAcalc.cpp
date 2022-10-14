@@ -7,6 +7,7 @@
 #include <string>
 #include <list>
 #include <ctime>
+#include <cstring>
 
 #include "dino.h"
 #include "actions.h"
@@ -94,6 +95,7 @@ int Step(Dino team[], int team_size)
     }
     if (boss->health == 0) {
         ++boss->round;
+        boss->turn = 0;
         for (i = 0; i < team_size; ++i) {
             if (team[i].team != 0)
                 continue;
@@ -103,181 +105,155 @@ int Step(Dino team[], int team_size)
             else
                 actions::Remove(REVENGE).Do(team[i], team[i]);
         }
+    } else {
+        ++boss->turn;
     }
     return 0;
 }
 
 bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
 {
-    int round = 0, turn = 0;
+    int round = 0;
     Dino *boss = team;
     for (int t = 0; t < n_turns; ++t) {
         if (round < boss->round + 1) {
             ++round;
-            turn = 0;
-            LOG("Round %d\n", round);
+            ERROR("Round %d\n", round);
         }
-        boss->Prepare(turn++ % (int)boss->kind[boss->round].ability.size());
-        LOG("Turn %d\n", turn);
-        for (int i = 1; i < team_size; ++i) {
+        ERROR("Turn %d\n", boss->turn+1);
+        for (int i = 0; i < team_size; ++i) {
             if (!team[i].Alive())
                 continue;
-            if (team[i].team == 1) { // Teammates
+            if (i == 0)
+                boss->Prepare(boss->turn % (int)boss->kind[boss->round].ability.size());
+            else if (team[i].team == 1) { // Teammates
                 if (!team[i].Prepare(ability[i-1][t]-1)) {
-                    LOG("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].kind[team[i].round].ability[ability[t][i]]->name.c_str());
+                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].kind[team[i].round].ability[ability[t][i]]->name.c_str());
                     return false;
                 }
             } else { // Minions
                 while (!team[i].Prepare(rand() % team[i].kind->ability.size()))
                     ;
             }
+            WARNING("%s chose %s\n", team[i].Name().c_str(), team[i].kind->ability[team[i].ability_id]->name.c_str());
         }
 
         int result = Step(team, team_size);
         if (result == 0)
             continue;
         if (result == 1)
-            LOG("Win!\n");
+            ERROR("Win!\n");
         else
-            LOG("Defeat!\n");
+            ERROR("Defeat!\n");
         return result == 1;
     }
-    LOG("You are out of turns!\n");
+    ERROR("You are out of turns!\n");
     return false;
 }
 
 int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns)
 {
     int result = 0;
-    auto log = Logger::on;
-    Logger::on = false;
+    auto log = Logger::level;
+    Logger::level = 0;
     for (int i = 0; i < 100; ++i) {
         vector<Dino> team(team0, team0 + team_size);
         if (Check(team.data(), team_size, ability, n_turns))
             ++result;
     }
-    Logger::on = log;
+    Logger::level = log;
     return result;
+}
+
+//int FindAll(Dino boss[], int boss_size, Dino team[], int team_size, int max_turns)
+//{
+//    ;
+//}
+//
+//int Find(Dino team[], int team_size, int max_turns, int turn = 0, int teammate_id = 0)
+//{
+//    if (teammate_id == 0) { // boss
+//        Dino boss = *team;
+//        team->Prepare(team->turn % (int)team->kind[team->round].ability.size());
+//        int r = Find(team, team_size, max_turns, turn, teammate_id + 1);
+//        *team = boss;
+//        return r;
+//    } else if (team[teammate_id] == 1) { // teammate
+//        if (!team[teammate_id].Alive())
+//            return Find(team, team_size, max_turns, turn, teammate_id + 1);
+//        for (int i = 0; i < (int)team[teammate_id].kind->ability.size(); ++i) {
+//            if (!team[teammate_id].Prepare(i))
+//                continue;
+//            int r = Find(
+//        }
+//    }
+//}
+
+int Input(vector<Dino> &team, vector<vector<int>> &ability)
+{
+    int team_size, n_turns;
+    char boss[32];
+    if (scanf("%s", boss) != 1)
+        return 1;
+    if (scanf("%d%d%d", &team_size, &n_turns, &Logger::level) != 3)
+        return 1;
+    auto boss_it = BossDex.find(boss);
+    if (boss_it == BossDex.end())
+        return 1;
+    team.push_back(boss_it->second[0]);
+    for (int i = 0; i < team_size; ++i) {
+        char dino[32];
+        int level, health_boost, damage_boost, speed_boost;
+        if (scanf("%s%d%d%d%d", dino, &level, &health_boost, &damage_boost, &speed_boost) != 5)
+            return 1;
+        auto dino_it = DinoDex.find(dino);
+        if (dino_it == DinoDex.end())
+            return 1;
+        team.push_back(Dino(1, i+1, level, health_boost, damage_boost, speed_boost, dino_it->second));
+    }
+    for (int i = 1; i < (int)boss_it->second.size(); ++i)
+        team.push_back(boss_it->second[i]);
+    for (int i = 0; i < team_size; ++i) {
+        ability.emplace_back(n_turns);
+        for (int j = 0; j < n_turns; ++j) {
+            if (scanf("%d", &ability[i][j]) != 1)
+                return 1;
+        }
+    }
+    return 0;
+}
+
+int CheckInput()
+{
+    vector<vector<int>> ability;
+    vector<Dino> team;
+    Input(team, ability);
+    Check(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    return 0;
+}
+
+int ChanceInput()
+{
+    vector<vector<int>> ability;
+    vector<Dino> team;
+    Input(team, ability);
+    int chance = Chance(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    LOG("Chance: %d%%\n", chance);
+    return 0;
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
     setbuf(stdout, NULL);
-    Logger::on = true;
 
-//    vector<int> ability[] = {
-//        {2, 1},
-//        {2, 1},
-//        {3, 2},
-//        {3, 2},
-//    };
-//    int n_turns = (int)ability[0].size();
-//
-//    Dino team[] = {
-//        MeiolaniaBoss,
-//        Dino(1, 1, 10, 0, 0, 0, &Irritator),
-//        Dino(1, 2, 10, 0, 0, 0, &Irritator),
-//        Dino(1, 3, 10, 0, 0, 0, &Albertosaurus),
-//        Dino(1, 4, 10, 0, 0, 0, &Albertosaurus)
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
-//    vector<int> ability[] = {
-//        {2, 4, 1, 2, 1},
-//        {2, 3, 4, 2, 4},
-//        {3, 2, 4, 3, 4},
-//        {1, 3, 4, 1, 3},
-//    };
-//    int n_turns = (int)ability[0].size();
-//
-//    Dino team[] = {
-//        FukuimimusBoss,
-//        Dino(1, 1, 20, 0, 0, 0, &Skoolasaurus),
-//        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
-//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
-//        Dino(1, 4, 20, 0, 0, 0, &Rexy),
-//        Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion),
-//        Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion),
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
-//    vector<int> ability[] = {
-//        {2, 1, 3},
-//        {4, 3, 4},
-//        {4, 3, 4},
-//        {2, 4, 2},
-//    };
-//    int n_turns = (int)ability[0].size();
-//
-//    Dino team[] = {
-//        BrachiosaurusBoss,
-//        Dino(1, 1, 11, 0, 0, 0, &Irritator),
-//        Dino(1, 2, 11, 0, 0, 0, &Andrewtherium),
-//        Dino(1, 3, 11, 0, 0, 0, &Andrewtherium),
-//        Dino(1, 4, 11, 0, 0, 0, &Andrewtodon),
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
-//    vector<int> ability[] = {
-//        {2, 4, 3, 2},
-//        {3, 2, 4, 3},
-//        {3, 2, 4, 3},
-//        {4, 2, 3, 4},
-//    };
-//    int n_turns = (int)ability[0].size();
-//
-//    Dino team[] = {
-//        TroodoboaBoss,
-//        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
-//        Dino(1, 2, 20, 0, 0, 0, &Rexy),
-//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
-//        Dino(1, 4, 21, 0, 0, 0, &Allodrigues),
-//        Dino(0, 5, 24, 4, 10, 10, &ShatteringMinion),
-//        Dino(0, 6, 24, 10, 4, 10, &NullifyingMinion),
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
-//    vector<int> ability[] = {
-//        {1, 3, 2, 4},
-//        {2, 3, 4, 2},
-//        {3, 4, 2, 3},
-//        {1, 4, 3, 4},
-//    };
-//    int n_turns = (int)ability[0].size();
-//
-//    Dino team[] = {
-//        GlyptocerasBoss,
-//        Dino(1, 1, 20, 0, 0, 0, &Thylaconyx),
-//        Dino(1, 2, 20, 0, 0, 0, &Thylaconyx),
-//        Dino(1, 3, 20, 0, 0, 0, &Rexy),
-//        Dino(1, 4, 20, 0, 0, 0, &Rexy),
-//        Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion),
-//        Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion),
-//    };
-//    int team_size = sizeof(team) / sizeof(*team);
-
-    vector<int> ability[] = {
-        {3, 4},
-        {3, 4},
-        {4, 2},
-        {4, 2},
-    };
-    int n_turns = (int)ability[0].size();
-
-    Dino team[] = {
-        SmilonemysBoss,
-        Dino(1, 1, 24, 0, 0, 0, &Rexy),
-        Dino(1, 2, 24, 0, 0, 0, &Rexy),
-        Dino(1, 3, 21, 0, 0, 0, &Indotaurus),
-        Dino(1, 4, 21, 0, 0, 0, &Indotaurus),
-        Dino(0, 5, 17, 7, 6, 1, &DistractionMinion),
-        Dino(0, 6, 17, 8, 3, 3, &CounterAttackMinion),
-    };
-    int team_size = sizeof(team) / sizeof(*team);
-
-    Check(team, team_size, ability, n_turns);
-//    int chance = Chance(team, team_size, ability, n_turns);
-//    LOG("Chance: %d%%\n", chance);
+    char command[32];
+    scanf("%s", command);
+    if (strcasecmp(command, "check") == 0)
+        return CheckInput();
+    else if(strcasecmp(command, "chance") == 0)
+        return ChanceInput();
+    else
+        ERROR("Unknown command \"%s\"\n", command);
     return 0;
 }

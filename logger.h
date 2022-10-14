@@ -3,13 +3,25 @@
 
 #include <cstdarg>
 
+enum {
+    LOG_LEVEL_NONE = 0,
+    LOG_LEVEL_ERROR,
+    LOG_LEVEL_WARNING,
+    LOG_LEVEL_INFO,
+    LOG_LEVEL_DEBUG,
+};
+
 class Logger
 {
 public:
-    static bool on;
+    static int level;
     static int Log(const char fmt[], ...) __attribute__((format(printf, 1, 2)));
 };
 
-#define LOG(...) (Logger::on ? Logger::Log(__VA_ARGS__) : 0)
+#define LOG(...) (Logger::Log(__VA_ARGS__))
+#define ERROR(...) (Logger::level >= LOG_LEVEL_ERROR ? Logger::Log(__VA_ARGS__) : 0)
+#define WARNING(...) (Logger::level >= LOG_LEVEL_WARNING ? Logger::Log(__VA_ARGS__) : 0)
+#define INFO(...) (Logger::level >= LOG_LEVEL_INFO ? Logger::Log(__VA_ARGS__) : 0)
+#define DEBUG(...) (Logger::level >= LOG_LEVEL_DEBUG ? Logger::Log(__VA_ARGS__) : 0)
 
 #endif // __LOGGER__H__

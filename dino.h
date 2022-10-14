@@ -152,6 +152,7 @@ struct Dino
     int total_health = 0;
     int max_total_health = 0;
     int round = 0;
+    int turn = 0;
     Dino *attacker = nullptr; // это норм
     int revenge = 0;
     int last_damage = 0;

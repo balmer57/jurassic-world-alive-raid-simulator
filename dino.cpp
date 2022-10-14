@@ -189,18 +189,18 @@ void Dino::Attack(Dino team[], int size)
     if (!Alive())
         return;
     if (stun) {
-        REMOVE_MODS(*this, (mod_it->Type() & STUN) && mod_it->OnAction(), LOG("%s woke up!\n", Name().c_str()));
+        REMOVE_MODS(*this, (mod_it->Type() & STUN) && mod_it->OnAction(), INFO("%s woke up!\n", Name().c_str()));
         return;
     }
-    LOG("%s uses %s!\n", Name().c_str(), kind[round].ability[ability_id]->name.c_str());
+    INFO("%s uses %s!\n", Name().c_str(), kind[round].ability[ability_id]->name.c_str());
     kind[round].ability[ability_id]->Do(*this, team, size);
-    REMOVE_MODS(*this, mod_it->OnAction(), LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
+    REMOVE_MODS(*this, mod_it->OnAction(), DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::CounterAttack(Dino team[], int size)
 {
     if (Alive() && attacker && kind[round].counter_attack) {
-        LOG("%s uses %s!\n", Name().c_str(), kind[round].counter_attack->name.c_str());
+        INFO("%s uses %s!\n", Name().c_str(), kind[round].counter_attack->name.c_str());
         bool thrtnd = threatened;
         threatened = kind[round].counter_attack->Threatened(*this);
         kind[round].counter_attack->Do(*this, team, size);
@@ -212,17 +212,17 @@ void Dino::CounterAttack(Dino team[], int size)
 void Dino::Impose(const Modifier *mod, Dino &author)
 {
     mod->Impose(*this, &mods.emplace_back(mod));
-    LOG("%s imposes %s to %s for %d turn(s)%s\n", author.Name().c_str(), mod->name.c_str(), Name().c_str(), mod->duration, mod->number ? strprintf(" %d attack(s)", mod->number).c_str() : "");
+    INFO("%s imposes %s to %s for %d turn(s)%s\n", author.Name().c_str(), mod->name.c_str(), Name().c_str(), mod->duration, mod->number ? strprintf(" %d attack(s)", mod->number).c_str() : "");
 }
 
 void Dino::Dispose(int type_flags, Dino &author)
 {
-    REMOVE_MODS(*this, mod_it->Type() & type_flags, LOG("%s disposes %s from %s\n", author.Name().c_str(), modifier->name.c_str(), Name().c_str()));
+    REMOVE_MODS(*this, mod_it->Type() & type_flags, INFO("%s disposes %s from %s\n", author.Name().c_str(), modifier->name.c_str(), Name().c_str()));
 }
 
 void Dino::PassTurn()
 {
-    REMOVE_MODS(*this, mod_it->duration-- == 0, LOG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
+    REMOVE_MODS(*this, mod_it->duration-- == 0, DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::DevourHeal()
@@ -231,7 +231,7 @@ void Dino::DevourHeal()
         return;
     devour_heal = HealAbsorb(devour_heal);
     Heal(devour_heal);
-    LOG("%s is [devour] healed by %d\n", Name().c_str(), devour_heal);
+    WARNING("%s is [devour] healed by %d\n", Name().c_str(), devour_heal);
 }
 
 void Dino::DamageOverTime(Dino team[], int team_size)
@@ -239,14 +239,14 @@ void Dino::DamageOverTime(Dino team[], int team_size)
     if (health == 0 || damage_over_time == 0)
         return;
     Hit(damage_over_time);
-    LOG("%s is damaged [over time] by %d\n", Name().c_str(), damage_over_time);
+    WARNING("%s is damaged [over time] by %d\n", Name().c_str(), damage_over_time);
     if (!Alive()) {
-        LOG("%s dies!\n", Name().c_str());
+        ERROR("%s dies!\n", Name().c_str());
         static modifiers::Revenge revenge;
         for (int i = 0; i < team_size; ++i)
             team[i].Impose(&revenge, *this);
     } else if (health == 0)
-        LOG("%s is immune to HP changes.\n", Name().c_str());
+        INFO("%s is immune to HP changes.\n", Name().c_str());
 }
 
 std::string Dino::Name() const
@@ -262,7 +262,7 @@ void Dino::Revive()
     for (int i = 0; i < (int)kind[round].ability.size(); ++i) {
         cooldown[i] = kind[round].ability[i]->delay;
     }
-    LOG("%s is revived!\n", Name().c_str());
+    INFO("%s is revived!\n", Name().c_str());
 }
 
 void Dino::Hit(int damage)

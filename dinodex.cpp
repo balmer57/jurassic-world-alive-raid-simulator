@@ -3,6 +3,7 @@
 #include "modifiers.h"
 
 using namespace actions;
+using namespace std;
 
 #define DECLARE_BOSS(name, level, health_boost, damage_boost, speed_boost) Dino name(0, 0, level, health_boost, damage_boost, speed_boost, name##Kind, sizeof(name##Kind) / sizeof(*name##Kind))
 
@@ -1154,3 +1155,24 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0
         Attack(0.5, BYPASS_ARMOR)
     )
 }));
+
+std::map<std::string, std::vector<Dino>> BossDex = {
+    make_pair<string, vector<Dino>>("Meiolania", {MeiolaniaBoss}),
+    make_pair<string, vector<Dino>>("Brachiosaurus", {BrachiosaurusBoss}),
+    make_pair<string, vector<Dino>>("Fukuimimus", {FukuimimusBoss, Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion), Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion)}),
+    make_pair<string, vector<Dino>>("Glyptoceras", {GlyptocerasBoss, Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion), Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion)}),
+    make_pair<string, vector<Dino>>("Troodoboa", {TroodoboaBoss, Dino(0, 5, 24, 4, 10, 10, &ShatteringMinion), Dino(0, 6, 24, 10, 4, 10, &NullifyingMinion)}),
+    make_pair<string, vector<Dino>>("Smilonemys", {SmilonemysBoss, Dino(0, 5, 17, 7, 6, 1, &DistractionMinion), Dino(0, 6, 17, 8, 3, 3, &CounterAttackMinion)}),
+};
+
+std::map<std::string, const DinoKind *> DinoDex = {
+    make_pair("Albertosaurus", &Albertosaurus),
+    make_pair("Allodrigues", &Allodrigues),
+    make_pair("Andrewtherium", &Andrewtherium),
+    make_pair("Andrewtodon", &Andrewtodon),
+    make_pair("Indotaurus", &Indotaurus),
+    make_pair("Irritator", &Irritator),
+    make_pair("Rexy", &Rexy),
+    make_pair("Skoolasaurus", &Skoolasaurus),
+    make_pair("Thylaconyx", &Thylaconyx),
+};
