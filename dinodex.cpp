@@ -11,8 +11,8 @@ using namespace std;
 // boss dex
 //
 
-DinoKind BrachiosaurusBossKind[] = {
-    DinoKind("Brachiosaurus Boss #1", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+DinoKind BrachiosaurusBossKind("Brachiosaurus Boss", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    { // Round 1
         new Ability("Group Shield Strike", 0, 0, true, {
             TargetLowestHP(
                 Attack(1.)
@@ -41,8 +41,7 @@ DinoKind BrachiosaurusBossKind[] = {
                 ImposeVulnerability(50, 2, 2)
             )
         })
-    }, nullptr),
-    DinoKind("Brachiosaurus Boss #2", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    }, { // Round 2
         new Ability("Shielded Group Strike", 0, 0, true, {
             TargetAllOpponents(
                 Attack(1.)
@@ -61,8 +60,7 @@ DinoKind BrachiosaurusBossKind[] = {
                 ImposeVulnerability(50, 2, 2)
             )
         })
-    }, nullptr),
-    DinoKind("Brachiosaurus Boss #3", EPIC, 1, 24000, 1350, 109, 0, 15, 50, 85, 100, 80, 100, 100, 0, 50, {
+    }, { // Round 3
         new Ability("Group Shield Strike", 0, 0, true, {
             TargetLowestHP(
                 Attack(1.)
@@ -104,13 +102,11 @@ DinoKind BrachiosaurusBossKind[] = {
                 ImposeVulnerability(50, 2, 2)
             )
         })
-    }, nullptr)
-};
+    }
+}, nullptr);
 
-DECLARE_BOSS(BrachiosaurusBoss, 14, 0, 0, 0);
-
-DinoKind MeiolaniaBossKind[] = {
-    DinoKind("Meiolania boss #1", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
+DinoKind MeiolaniaBossKind("Meiolania boss", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
+    { // Round 1
         new Ability("Steady Group Vulnerability Strike", 0, 0, false, {
             TargetAllOpponents(
                 Attack(1, GROUP),
@@ -135,8 +131,7 @@ DinoKind MeiolaniaBossKind[] = {
                 Taunt(1)
             )
         })
-    }, nullptr),
-    DinoKind("Meiolania boss #2", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 50, 70, 80, 100, 0, 50, {
+    }, { // Round 2
         new Ability("Vulnerability Impact", 0, 1, false, {
             TargetHighestHP(
                 Attack(1.5),
@@ -158,13 +153,11 @@ DinoKind MeiolaniaBossKind[] = {
                 Attack(3, PRECISE|GROUP)
             )
         })
-    }, nullptr),
-};
+    }
+}, nullptr);
 
-DECLARE_BOSS(MeiolaniaBoss, 8, 0, 0, 0);
-
-DinoKind FukuimimusBossKind[] = {
-    DinoKind("Fukuimimus boss #1", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+DinoKind FukuimimusBossKind("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    { // Round 1
         new Ability("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
@@ -215,15 +208,7 @@ DinoKind FukuimimusBossKind[] = {
                 Attack(2.)
             )
         })
-    }, new Ability("Ferocious Feathers", 0, 0, false, {
-        TargetSelf(
-            IncreaseDamage(5, 3, 3)
-        ),
-        TargetTeam(
-            IncreaseDamage(5, 3, 3)
-        )
-    })),
-    DinoKind("Fukuimimus boss #2", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    }, { // Round 2
         new Ability("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
@@ -291,15 +276,7 @@ DinoKind FukuimimusBossKind[] = {
                 ImposeVulnerability(50, 2, 2)
             )
         }))
-    }, new Ability("Ferocious Feathers", 0, 0, false, {
-        TargetSelf(
-            IncreaseDamage(5, 3, 3)
-        ),
-        TargetTeam(
-            IncreaseDamage(5, 3, 3)
-        )
-    })),
-    DinoKind("Fukuimimus boss #3", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
+    }, { // Round 3
         new Ability("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
@@ -378,20 +355,18 @@ DinoKind FukuimimusBossKind[] = {
                 ReduceCritChance(100, 1, 2)
             )
         })
-    }, new Ability("Ferocious Feathers", 0, 0, false, {
-        TargetSelf(
-            IncreaseDamage(5, 3, 3)
-        ),
-        TargetTeam(
-            IncreaseDamage(5, 3, 3)
-        )
-    }))
-};
+    }
+}, new Ability("Ferocious Feathers", 0, 0, false, {
+    TargetSelf(
+        IncreaseDamage(5, 3, 3)
+    ),
+    TargetTeam(
+        IncreaseDamage(5, 3, 3)
+    )
+}));
 
-DECLARE_BOSS(FukuimimusBoss, 19, 7, 7, 5);
-
-DinoKind TroodoboaBossKind[] = {
-    DinoKind("Troodoboa Boss #1", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+DinoKind TroodoboaBossKind("Troodoboa Boss", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+    { // Round 1
         new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
             TargetSelf(
                 Shield(50, 1, 4)
@@ -417,8 +392,7 @@ DinoKind TroodoboaBossKind[] = {
                 Attack(1.)
             )
         })
-    }, nullptr),
-    DinoKind("Troodoboa Boss #2", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+    }, { // Round 2
         new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
             TargetSelf(
                 Shield(50, 1, 4)
@@ -453,8 +427,7 @@ DinoKind TroodoboaBossKind[] = {
                 Attack(1., BYPASS_ARMOR)
             )
         })
-    }, nullptr),
-    DinoKind("Troodoboa Boss #3", UNIQUE, 1, 16666, 1300, 120, 0, 10, 0, 90, 60, 80, 75, 100, 100, 15, {
+    }, { // Round 3
         new Ability("Instant Shielded Decelerating Strike", 0, 0, true, {
             TargetSelf(
                 Shield(50, 1, 4)
@@ -492,13 +465,11 @@ DinoKind TroodoboaBossKind[] = {
                 Attack(1.5, BYPASS_ARMOR)
             )
         })
-    }, nullptr)
-};
+    }
+}, nullptr);
 
-DECLARE_BOSS(TroodoboaBoss, 25, 10, 10, 5);
-
-DinoKind GlyptocerasBossKind[] = {
-    DinoKind("Glyptoceras Boss #1", LEGENDARY, 1, 13000, 1350, 110, 15, 15, 25, 80, 75, 70, 50, 95, 0, 25, {
+DinoKind GlyptocerasBossKind("Glyptoceras Boss #1", LEGENDARY, 1, 13000, 1350, 110, 15, 15, 25, 80, 75, 70, 50, 95, 0, 25, {
+    { // Round 1
         new Ability("Primal Instant Charge", 0, 0, true, {
             TargetHighestDamage(
                 Attack(1., BYPASS_ARMOR),
@@ -523,8 +494,7 @@ DinoKind GlyptocerasBossKind[] = {
                 Attack(2.)
             )
         })
-    }, nullptr),
-    DinoKind("Glyptoceras Boss #2", LEGENDARY, 1, 13000, 1350, 110, 15, 15, 25, 80, 75, 70, 50, 95, 0, 25, {
+    }, { // Round 2
         new Ability("Instant Defense Charge", 0, 0, true, {
             TargetHighestDamage(
                 Attack(1.),
@@ -563,8 +533,7 @@ DinoKind GlyptocerasBossKind[] = {
                 Attack(1.5)
             )
         })
-    }, nullptr),
-    DinoKind("Glyptoceras Boss #3", LEGENDARY, 1, 13000, 1350, 110, 15, 15, 25, 80, 75, 70, 50, 95, 0, 25, {
+    }, { // Round 3
         new Ability("Primal Instant Charge", 0, 0, true, {
             TargetHighestDamage(
                 Attack(1., BYPASS_ARMOR),
@@ -598,13 +567,11 @@ DinoKind GlyptocerasBossKind[] = {
                 Attack(1.5)
             )
         })
-    }, nullptr)
-};
+    }
+}, nullptr);
 
-DECLARE_BOSS(GlyptocerasBoss, 19, 5, 3, 8);
-
-DinoKind SmilonemysBossKind[] = {
-    DinoKind("Smilonemys Boss #1", UNIQUE, 1, 20000, 1500, 127, 50, 5, 0, 80, 50, 80, 50, 100, 0, 50, {
+DinoKind SmilonemysBossKind("Smilonemys Boss #1", UNIQUE, 1, 20000, 1500, 127, 50, 5, 0, 80, 50, 80, 50, 100, 0, 50, {
+    { // Round 1
         new Ability("Shielded Group Strike", 0, 0, false, {
             TargetSelf(
                 Shield(50, 4, 4)
@@ -626,8 +593,7 @@ DinoKind SmilonemysBossKind[] = {
                 ReduceDamage(50, 1, 2)
             )
         })
-    }, nullptr),
-    DinoKind("Smilonemys Boss #2", UNIQUE, 1, 20000, 1500, 127, 50, 5, 0, 80, 50, 80, 50, 100, 0, 50, {
+    }, { // Round 2
         new Ability("Shielded Group Strike", 0, 0, false, {
             TargetSelf(
                 Shield(50, 4, 4)
@@ -655,10 +621,8 @@ DinoKind SmilonemysBossKind[] = {
                 ReduceDamage(50, 1, 2)
             )
         }),
-    }, nullptr)
-};
-
-DECLARE_BOSS(SmilonemysBoss, 22, 6, 9, 7);
+    }
+}, nullptr);
 
 //
 // minion dex
@@ -1157,12 +1121,12 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0
 }));
 
 std::map<std::string, std::vector<Dino>> BossDex = {
-    make_pair<string, vector<Dino>>("Meiolania", {MeiolaniaBoss}),
-    make_pair<string, vector<Dino>>("Brachiosaurus", {BrachiosaurusBoss}),
-    make_pair<string, vector<Dino>>("Fukuimimus", {FukuimimusBoss, Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion), Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion)}),
-    make_pair<string, vector<Dino>>("Glyptoceras", {GlyptocerasBoss, Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion), Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion)}),
-    make_pair<string, vector<Dino>>("Troodoboa", {TroodoboaBoss, Dino(0, 5, 24, 4, 10, 10, &ShatteringMinion), Dino(0, 6, 24, 10, 4, 10, &NullifyingMinion)}),
-    make_pair<string, vector<Dino>>("Smilonemys", {SmilonemysBoss, Dino(0, 5, 17, 7, 6, 1, &DistractionMinion), Dino(0, 6, 17, 8, 3, 3, &CounterAttackMinion)}),
+    make_pair<string, vector<Dino>>("Meiolania", {Dino(0, 0, 8, 0, 0, 0, &MeiolaniaBossKind)}),
+    make_pair<string, vector<Dino>>("Brachiosaurus", {Dino(0, 0, 14, 0, 0, 0, &BrachiosaurusBossKind)}),
+    make_pair<string, vector<Dino>>("Fukuimimus", {Dino(0, 0, 19, 7, 7, 5, &FukuimimusBossKind), Dino(0, 5, 18, 9, 5, 3, &GroupShatteringMinion), Dino(0, 6, 18, 7, 5, 6, &DecelerationMinion)}),
+    make_pair<string, vector<Dino>>("Glyptoceras", {Dino(0, 0, 19, 5, 3, 8, &GlyptocerasBossKind), Dino(0, 5, 17, 7, 6, 1, &NullifyingMinion), Dino(0, 6, 17, 8, 3, 3, &DecelerationMinion)}),
+    make_pair<string, vector<Dino>>("Troodoboa", {Dino(0, 0, 25, 10, 10, 5, &TroodoboaBossKind), Dino(0, 5, 24, 4, 10, 10, &ShatteringMinion), Dino(0, 6, 24, 10, 4, 10, &NullifyingMinion)}),
+    make_pair<string, vector<Dino>>("Smilonemys", {Dino(0, 0, 22, 6, 9, 7, &SmilonemysBossKind), Dino(0, 5, 17, 7, 6, 1, &DistractionMinion), Dino(0, 6, 17, 8, 3, 3, &CounterAttackMinion)}),
 };
 
 std::map<std::string, const DinoKind *> DinoDex = {

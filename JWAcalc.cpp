@@ -125,17 +125,17 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
             if (!team[i].Alive())
                 continue;
             if (i == 0)
-                boss->Prepare(boss->turn % (int)boss->kind[boss->round].ability.size());
+                boss->Prepare(boss->turn % (int)boss->kind->ability[boss->round].size());
             else if (team[i].team == 1) { // Teammates
                 if (!team[i].Prepare(ability[i-1][t]-1)) {
-                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].kind[team[i].round].ability[ability[t][i]]->name.c_str());
+                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].Ability(ability[t][i])->name.c_str());
                     return false;
                 }
             } else { // Minions
-                while (!team[i].Prepare(rand() % team[i].kind->ability.size()))
+                while (!team[i].Prepare(rand() % team[i].kind->ability[team[i].round].size()))
                     ;
             }
-            WARNING("%s chose %s\n", team[i].Name().c_str(), team[i].kind->ability[team[i].ability_id]->name.c_str());
+            WARNING("%s chose %s\n", team[i].Name().c_str(), team[i].Ability(team[i].ability_id)->name.c_str());
         }
 
         int result = Step(team, team_size);
@@ -174,14 +174,14 @@ int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns
 //{
 //    if (teammate_id == 0) { // boss
 //        Dino boss = *team;
-//        team->Prepare(team->turn % (int)team->kind[team->round].ability.size());
+//        team->Prepare(team->turn % (int)team->kind->ability[team->round].size());
 //        int r = Find(team, team_size, max_turns, turn, teammate_id + 1);
 //        *team = boss;
 //        return r;
 //    } else if (team[teammate_id] == 1) { // teammate
 //        if (!team[teammate_id].Alive())
 //            return Find(team, team_size, max_turns, turn, teammate_id + 1);
-//        for (int i = 0; i < (int)team[teammate_id].kind->ability.size(); ++i) {
+//        for (int i = 0; i < (int)team[teammate_id].kind->ability[team[teammate_id].round].size(); ++i) {
 //            if (!team[teammate_id].Prepare(i))
 //                continue;
 //            int r = Find(
@@ -242,10 +242,13 @@ int ChanceInput()
     return 0;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     srand((unsigned)time(NULL));
     setbuf(stdout, NULL);
+
+    if (argc >= 2)
+        freopen(argv[1], "r", stdin);
 
     char command[32];
     scanf("%s", command);

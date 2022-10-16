@@ -74,7 +74,7 @@ struct DinoKind
     double stun_resistance;
     double taunt_resistance;
     double vulnerable_resistance;
-    std::vector<std::unique_ptr<Ability>> ability;
+    std::vector<std::vector<std::unique_ptr<Ability>>> ability;
     std::unique_ptr<Ability> counter_attack;
 
     DinoKind(const std::string &_name, int _rarity, int _flock, int _health, int _damage, int _speed, int _armor, int _crit,
@@ -86,7 +86,7 @@ struct DinoKind
             double _stun_resistance,
             double _taunt_resistance,
             double _vulnerable_resistance,
-            std::initializer_list<Ability *> _ability, Ability *_counter_attack)
+            std::initializer_list<std::initializer_list<Ability *>> _ability, Ability *_counter_attack)
         : name(_name)
         , rarity(_rarity)
         , flock(_flock)
@@ -103,10 +103,23 @@ struct DinoKind
         , stun_resistance(_stun_resistance / 100.)
         , taunt_resistance(_taunt_resistance / 100.)
         , vulnerable_resistance(_vulnerable_resistance / 100.)
-        , ability(_ability.begin(), _ability.end())
         , counter_attack(_counter_attack)
     {
+        for (auto &ability_it: _ability)
+            ability.emplace_back(ability_it.begin(), ability_it.end());
     }
+    DinoKind(const std::string &_name, int _rarity, int _flock, int _health, int _damage, int _speed, int _armor, int _crit,
+            double _crit_reduction_resistance,
+            double _damage_over_time_resistance,
+            double _reduced_damage_resistance,
+            double _rend_resistance,
+            double _reduce_speed_resistance,
+            double _stun_resistance,
+            double _taunt_resistance,
+            double _vulnerable_resistance,
+            std::initializer_list<Ability *> _ability, Ability *_counter_attack)
+        : DinoKind(_name, _rarity, _flock, _health, _damage, _speed, _armor, _crit, _crit_reduction_resistance, _damage_over_time_resistance, _reduced_damage_resistance, _rend_resistance, _reduce_speed_resistance, _stun_resistance, _taunt_resistance, _vulnerable_resistance, {_ability}, _counter_attack)
+    {}
 };
 
 struct dodge_cmp : public std::binary_function<std::pair<double, double>, std::pair<double, double>, bool>
@@ -149,8 +162,8 @@ struct Dino
     double crit_chance_factor;
     double armor;
     bool taunt = false;
-    int total_health = 0;
-    int max_total_health = 0;
+    int total_health;
+    int max_total_health;
     int round = 0;
     int turn = 0;
     Dino *attacker = nullptr; // это норм
@@ -169,7 +182,7 @@ struct Dino
     int stun = 0;
     std::set<double, std::greater<double>> cloak_factor;
 
-    Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds = 1);
+    Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind);
 
     int Damage() const
     {
@@ -239,6 +252,10 @@ struct Dino
     void Heal(int heal);
     int Absorb(int damage);
     int HealAbsorb(int heal);
+    auto Ability(int i) const
+    {
+        return kind->ability[round][i].get();
+    }
 };
 
 #endif // __JWA_CALC__DINO__H__

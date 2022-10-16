@@ -7,12 +7,12 @@ using namespace modifiers;
 
 void Vulnerability::Impose(Dino &target, Mod *) const
 {
-    target.vulnerability += factor * (1 - target.kind[target.round].vulnerable_resistance);
+    target.vulnerability += factor * (1 - target.kind->vulnerable_resistance);
 }
 
 void Vulnerability::Dispose(Dino &target, Mod *) const
 {
-    target.vulnerability -= factor * (1 - target.kind[target.round].vulnerable_resistance);
+    target.vulnerability -= factor * (1 - target.kind->vulnerable_resistance);
 }
 
 void Taunt::Impose(Dino &target, Mod *) const
@@ -53,22 +53,22 @@ void IncreasedDamage::Dispose(Dino &target, Mod *) const
 
 void ReducedSpeed::Impose(Dino &target, Mod *) const
 {
-    target.speed_factor -= factor * (1 - target.kind[target.round].reduce_speed_resistance);
+    target.speed_factor -= factor * (1 - target.kind->reduce_speed_resistance);
 }
 
 void ReducedSpeed::Dispose(Dino &target, Mod *) const
 {
-    target.speed_factor += factor * (1 - target.kind[target.round].reduce_speed_resistance);
+    target.speed_factor += factor * (1 - target.kind->reduce_speed_resistance);
 }
 
 void ReducedDamage::Impose(Dino &target, Mod *) const
 {
-    target.damage_factor -= factor * (1 - target.kind[target.round].reduced_damage_resistance);
+    target.damage_factor -= factor * (1 - target.kind->reduced_damage_resistance);
 }
 
 void ReducedDamage::Dispose(Dino &target, Mod *) const
 {
-    target.damage_factor += factor * (1 - target.kind[target.round].reduced_damage_resistance);
+    target.damage_factor += factor * (1 - target.kind->reduced_damage_resistance);
 }
 
 void Dodge::Impose(Dino &target, Mod *) const
@@ -97,12 +97,12 @@ void IncreasedSpeed::Dispose(Dino &target, Mod *) const
 
 void ReducedCritChance::Impose(Dino &target, Mod *) const
 {
-    target.crit_chance_factor -= factor * (1 - target.kind[target.round].crit_reduction_resistance);
+    target.crit_chance_factor -= factor * (1 - target.kind->crit_reduction_resistance);
 }
 
 void ReducedCritChance::Dispose(Dino &target, Mod *) const
 {
-    target.crit_chance_factor += factor * (1 - target.kind[target.round].crit_reduction_resistance);
+    target.crit_chance_factor += factor * (1 - target.kind->crit_reduction_resistance);
 }
 
 void Shield::Impose(Dino &target, Mod *) const
@@ -142,12 +142,12 @@ void DevourHeal::Dispose(Dino &target, Mod *mod) const
 
 void DamageOverTime::Impose(Dino &target, Mod *) const
 {
-    target.damage_over_time += Round(target.max_total_health * factor * (1 - target.kind[target.round].damage_over_time_resistance));
+    target.damage_over_time += Round(target.max_total_health * factor * (1 - target.kind->damage_over_time_resistance));
 }
 
 void DamageOverTime::Dispose(Dino &target, Mod *) const
 {
-    target.damage_over_time -= Round(target.max_total_health * factor * (1 - target.kind[target.round].damage_over_time_resistance));
+    target.damage_over_time -= Round(target.max_total_health * factor * (1 - target.kind->damage_over_time_resistance));
 }
 
 void Stun::Impose(Dino &target, Mod *mod) const

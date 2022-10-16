@@ -53,7 +53,7 @@ void Ability::Do(Dino &self, Dino team[], int team_size) const
                 continue;
             if (!CheckTarget[target](self, team[i]))
                 continue;
-            if (target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind[self.round].taunt_resistance) * 100) {
+            if (target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind->taunt_resistance) * 100) {
                 dino_id[target] = i;
                 break;
             }
@@ -139,9 +139,9 @@ static const double LevelFactor[] = {
 };
 static const double BoostFactor[] = {1.0, 1.025, 1.05, 1.075, 1.1, 1.125, 1.15, 1.175, 1.2, 1.225, 1.25, 1.275, 1.3, 1.325, 1.35, 1.375, 1.4, 1.425, 1.45, 1.475, 1.5};
 
-Dino::Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind, int _rounds)
+Dino::Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind)
     : kind(_kind)
-    , rounds(_rounds)
+    , rounds((int)kind->ability.size())
     , team(_team)
     , index(_index)
     , level(_level)
@@ -154,16 +154,14 @@ Dino::Dino(int _team, int _index, int _level, int _health_boost, int _damage_boo
     , speed(_kind->speed + 2 * speed_boost)
     , crit_chance_factor(_kind->crit)
     , armor(_kind->armor)
+    , total_health(rounds * (int)(kind->health * LevelFactor[level] * BoostFactor[health_boost]))
+    , max_total_health(total_health)
 {
-    for (int i = 0; i < rounds; ++i) {
-        total_health += kind[i].health * LevelFactor[level] * BoostFactor[health_boost];
+    for (int i = 0; i < (int)kind->ability[round].size(); ++i) {
+        cooldown[i] = Ability(i)->delay;
     }
-    max_total_health = total_health;
-    for (int i = 0; i < (int)kind[round].ability.size(); ++i) {
-        cooldown[i] = kind[round].ability[i]->delay;
-    }
-    for (int i = 1; i < kind[round].flock; ++i) {
-        flock_segment.push_back(i * max_health / kind[round].flock);
+    for (int i = 1; i < kind->flock; ++i) {
+        flock_segment.push_back(i * max_health / kind->flock);
     }
 }
 
@@ -178,9 +176,9 @@ bool Dino::Prepare(int _ability_id)
             --cooldown[i];
     }
     ability_id = _ability_id;
-    cooldown[ability_id] = kind[round].ability[ability_id]->cooldown;
-    threatened = kind[round].ability[ability_id]->Threatened(*this);
-    priority = kind[round].ability[ability_id]->Priority(*this);
+    cooldown[ability_id] = Ability(ability_id)->cooldown;
+    threatened = Ability(ability_id)->Threatened(*this);
+    priority = Ability(ability_id)->Priority(*this);
     return true;
 }
 
@@ -192,18 +190,18 @@ void Dino::Attack(Dino team[], int size)
         REMOVE_MODS(*this, (mod_it->Type() & STUN) && mod_it->OnAction(), INFO("%s woke up!\n", Name().c_str()));
         return;
     }
-    INFO("%s uses %s!\n", Name().c_str(), kind[round].ability[ability_id]->name.c_str());
-    kind[round].ability[ability_id]->Do(*this, team, size);
+    INFO("%s uses %s!\n", Name().c_str(), Ability(ability_id)->name.c_str());
+    Ability(ability_id)->Do(*this, team, size);
     REMOVE_MODS(*this, mod_it->OnAction(), DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::CounterAttack(Dino team[], int size)
 {
-    if (Alive() && attacker && kind[round].counter_attack) {
-        INFO("%s uses %s!\n", Name().c_str(), kind[round].counter_attack->name.c_str());
+    if (Alive() && attacker && !stun && kind->counter_attack) {
+        INFO("%s counter-attacks using %s!\n", Name().c_str(), kind->counter_attack->name.c_str());
         bool thrtnd = threatened;
-        threatened = kind[round].counter_attack->Threatened(*this);
-        kind[round].counter_attack->Do(*this, team, size);
+        threatened = kind->counter_attack->Threatened(*this);
+        kind->counter_attack->Do(*this, team, size);
         threatened = thrtnd;
     }
     attacker = nullptr;
@@ -252,15 +250,15 @@ void Dino::DamageOverTime(Dino team[], int team_size)
 std::string Dino::Name() const
 {
     if (team != 0)
-        return strprintf("%s#%d (+%d,*%d,>%d)", kind[round].name.c_str(), index, health, Damage(), Speed());
-    return strprintf("%s (+%d,*%d,>%d)", kind[round].name.c_str(), health, Damage(), Speed());
+        return strprintf("%s#%d (+%d,*%d,>%d)", kind->name.c_str(), index, health, Damage(), Speed());
+    return strprintf("%s (+%d,*%d,>%d)", kind->name.c_str(), health, Damage(), Speed());
 }
 
 void Dino::Revive()
 {
-    health = max_health = kind[round].health * LevelFactor[level] * BoostFactor[health_boost];
-    for (int i = 0; i < (int)kind[round].ability.size(); ++i) {
-        cooldown[i] = kind[round].ability[i]->delay;
+    health = max_health = kind->health * LevelFactor[level] * BoostFactor[health_boost];
+    for (int i = 0; i < (int)kind->ability[round].size(); ++i) {
+        cooldown[i] = Ability(i)->delay;
     }
     INFO("%s is revived!\n", Name().c_str());
 }
@@ -283,7 +281,7 @@ void Dino::Heal(int heal)
 
 int Dino::Absorb(int damage)
 {
-    if (kind[round].flock == 1)
+    if (kind->flock == 1)
         return damage;
     auto it = upper_bound(flock_segment.rbegin(), flock_segment.rend(), health, greater<int>());
     if (it != flock_segment.rend() && health - *it < damage)
@@ -293,7 +291,7 @@ int Dino::Absorb(int damage)
 
 int Dino::HealAbsorb(int heal)
 {
-    if (kind[round].flock == 1)
+    if (kind->flock == 1)
         return heal;
     auto it = lower_bound(flock_segment.begin(), flock_segment.end(), health, less<int>());
     if (it != flock_segment.end() && *it - health < heal)
