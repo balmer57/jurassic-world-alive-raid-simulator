@@ -59,6 +59,10 @@ struct Modifier
     {
         return false;
     }
+    virtual bool OnEndOfTurn(Mod *mod) const
+    {
+        return false;
+    }
 };
 
 struct Mod
@@ -87,6 +91,10 @@ struct Mod
     bool OnAction()
     {
         return modifier->OnAction(this);
+    }
+    bool OnEndOfTurn()
+    {
+        return modifier->OnEndOfTurn(this);
     }
     int Type()
     {
@@ -128,6 +136,10 @@ struct Vulnerability: public Modifier
     {
         return !--mod->number;
     }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
+    }
 };
 
 struct Taunt: public Modifier
@@ -140,6 +152,10 @@ struct Taunt: public Modifier
     virtual int Type() const override
     {
         return TAUNT;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
     }
 };
 
@@ -160,6 +176,10 @@ struct IncreasedCritChance: public Modifier
     {
         return !--mod->number;
     }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
 };
 
 struct IncreasedDamage: public Modifier
@@ -179,6 +199,10 @@ struct IncreasedDamage: public Modifier
     {
         return !--mod->number;
     }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
 };
 
 struct ReducedSpeed: public Modifier
@@ -193,6 +217,10 @@ struct ReducedSpeed: public Modifier
     virtual int Type() const override
     {
         return REDUCED_SPEED;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
     }
 };
 
@@ -213,6 +241,10 @@ struct ReducedDamage: public Modifier
     {
         return !--mod->number;
     }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
 };
 
 struct Dodge : public Modifier
@@ -220,7 +252,7 @@ struct Dodge : public Modifier
     double chance;
     double factor;
     Dodge(double _chance, double _factor, int _duration, int _number)
-        : Modifier("dodge", _duration, _number)
+        : Modifier("dodge", std::max(2, _duration * 2 + 1), _number)
         , chance(_chance / 100.)
         , factor(_factor / 100.)
     {}
@@ -236,7 +268,11 @@ struct Dodge : public Modifier
     }
     virtual bool OnAction(Mod *mod) const override
     {
-        return mod->duration == 0;
+        return --mod->duration == 0;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return --mod->duration == 0;
     }
 };
 
@@ -252,6 +288,10 @@ struct IncreasedSpeed: public Modifier
     virtual int Type() const override
     {
         return INCREASED_SPEED;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
     }
 };
 
@@ -272,13 +312,17 @@ struct ReducedCritChance: public Modifier
     {
         return !--mod->number;
     }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
 };
 
 struct Shield : public Modifier
 {
     double factor;
     Shield(double _factor, int _duration, int _number)
-        : Modifier("shield", _duration, _number)
+        : Modifier("shield", std::max(2, _duration * 2 + 1), _number)
         , factor(_factor / 100.)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
@@ -293,7 +337,11 @@ struct Shield : public Modifier
     }
     virtual bool OnAction(Mod *mod) const override
     {
-        return mod->duration == 0;
+        return --mod->duration == 0;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return --mod->duration == 0;
     }
 };
 
@@ -312,6 +360,10 @@ struct Revenge : public Modifier
     {
         return mod->duration == 0;
     }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
+    }
 };
 
 struct DevourHeal : public Modifier
@@ -326,6 +378,10 @@ struct DevourHeal : public Modifier
     virtual int Type() const override
     {
         return DEVOUR_HEAL;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
     }
 };
 
@@ -342,12 +398,16 @@ struct DamageOverTime : public Modifier
     {
         return DAMAGE_OVER_TIME;
     }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return mod->duration-- == 0;
+    }
 };
 
 struct Stun : public Modifier
 {
     Stun(int _duration)
-        : Modifier("stun", _duration, _duration)
+        : Modifier("stun", _duration)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -357,7 +417,7 @@ struct Stun : public Modifier
     }
     virtual bool OnAction(Mod *mod) const override
     {
-        return --mod->number == 0;
+        return --mod->duration == 0;
     }
 };
 
@@ -367,7 +427,7 @@ struct Cloak : public Modifier
     double dodge_chance;
     double dodge_factor;
     Cloak(double _attack_factor, double _dodge_chance, double _dodge_factor, int _duration)
-        : Modifier("cloak", _duration)
+        : Modifier("cloak", std::max(2, _duration * 2 + 1))
         , attack_factor(_attack_factor)
         , dodge_chance(_dodge_chance / 100.)
         , dodge_factor(_dodge_factor / 100.)
@@ -380,7 +440,11 @@ struct Cloak : public Modifier
     }
     virtual bool OnAction(Mod *mod) const override
     {
-        return mod->duration <= 1; // ???
+        return --mod->duration == 0;
+    }
+    virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return --mod->duration == 0;
     }
 };
 

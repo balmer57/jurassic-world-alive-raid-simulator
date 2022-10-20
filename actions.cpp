@@ -45,7 +45,12 @@ void AttackAction::Do(Dino &self, Dino &target) const
     bool crit = self.crit;
     if (crit)
         damage *= 1.25;
-    damage *= self.CloakFactor();
+    bool cloak = self.CloakFactor() != 1;
+    if (cloak) {
+        damage *= self.CloakFactor();
+        if (!self.attacker)
+            REMOVE_MODS(self, mod_it->Type() == CLOAK, DEBUG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str()));
+    }
     bool shield = target.Shield();
     if (shield)
         damage *= 1 - target.Shield();
@@ -63,9 +68,10 @@ void AttackAction::Do(Dino &self, Dino &target) const
         damage -= absorbed;
     }
     self.last_damage = damage;
-    target.attacker = &self;
+    if (!self.attacker)
+        target.attacker = &self;
     target.Hit(damage);
-    WARNING("%s attacks %s for %d%s%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
+    WARNING("%s attacks %s for %d%s%s%s%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, target.vulnerability ? " Vulnerability" : "", cloak ? strprintf(" Cloak*%.1lf", self.CloakFactor()).c_str() : "", crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
     if (!target.Alive()) {
         ERROR("%s dies!\n", target.Name().c_str());
         self.killer = true;
@@ -87,14 +93,21 @@ std::list<std::unique_ptr<Action>> actions::Heal(double _factor, int _flags)
     return std::move(list);
 }
 
+std::list<std::unique_ptr<Action>> actions::FixedHeal(double _factor, int _flags)
+{
+    std::list<std::unique_ptr<Action>> list;
+    list.emplace_back(new HealAction(_factor / 100., _flags|FIXED))->target = TARGET_INHERIT;
+    return std::move(list);
+}
+
 void HealAction::Do(Dino &self, Dino &target) const
 {
     double heal;
     if (flags & FIXED)
         heal = self.max_health;
     else
-        heal = self.damage;
-    heal = floor(heal * self.prepared_damage_factor);
+        heal = self.damage * self.prepared_damage_factor;
+    heal = floor(heal);
     heal *= factor;
     heal = floor(heal);
     if (target.health == 0) {
@@ -204,4 +217,9 @@ void Stun::Do(Dino &self, Dino &target) const
 void Cloak::Do(Dino &self, Dino &target) const
 {
     target.Impose(&cloak, self);
+}
+
+std::list<std::unique_ptr<Action>> actions::UnableToSwap(int _duration)
+{
+    return std::move(std::list<std::unique_ptr<Action>>());
 }

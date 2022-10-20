@@ -186,12 +186,10 @@ void Dino::Attack(Dino team[], int size)
 {
     if (!Alive())
         return;
-    if (stun) {
-        REMOVE_MODS(*this, (mod_it->Type() & STUN) && mod_it->OnAction(), INFO("%s woke up!\n", Name().c_str()));
-        return;
+    if (!stun) {
+        INFO("%s uses %s!\n", Name().c_str(), Ability(ability_id)->name.c_str());
+        Ability(ability_id)->Do(*this, team, size);
     }
-    INFO("%s uses %s!\n", Name().c_str(), Ability(ability_id)->name.c_str());
-    Ability(ability_id)->Do(*this, team, size);
     REMOVE_MODS(*this, mod_it->OnAction(), DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
@@ -220,7 +218,7 @@ void Dino::Dispose(int type_flags, Dino &author)
 
 void Dino::PassTurn()
 {
-    REMOVE_MODS(*this, mod_it->duration-- == 0, DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
+    REMOVE_MODS(*this, mod_it->OnEndOfTurn(), DEBUG("%s has %s expired\n", Name().c_str(), modifier->name.c_str()));
 }
 
 void Dino::DevourHeal()

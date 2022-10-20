@@ -127,8 +127,9 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
             if (i == 0)
                 boss->Prepare(boss->turn % (int)boss->kind->ability[boss->round].size());
             else if (team[i].team == 1) { // Teammates
-                if (!team[i].Prepare(ability[i-1][t]-1)) {
-                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].Ability(ability[t][i])->name.c_str());
+                int ability_id = ability[i-1][t]-1;
+                if (!team[i].Prepare(ability_id)) {
+                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].Ability(ability_id)->name.c_str());
                     return false;
                 }
             } else { // Minions
@@ -151,18 +152,18 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
     return false;
 }
 
-int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns)
+int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns, int n_checks = 1000)
 {
     int result = 0;
     auto log = Logger::level;
     Logger::level = 0;
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < n_checks; ++i) {
         vector<Dino> team(team0, team0 + team_size);
         if (Check(team.data(), team_size, ability, n_turns))
             ++result;
     }
     Logger::level = log;
-    return result;
+    return 100 * result / n_checks;
 }
 
 //int FindAll(Dino boss[], int boss_size, Dino team[], int team_size, int max_turns)
@@ -198,8 +199,10 @@ int Input(vector<Dino> &team, vector<vector<int>> &ability)
     if (scanf("%d%d%d", &team_size, &n_turns, &Logger::level) != 3)
         return 1;
     auto boss_it = BossDex.find(boss);
-    if (boss_it == BossDex.end())
+    if (boss_it == BossDex.end()) {
+        ERROR("Unable to find %s boss\n", boss);
         return 1;
+    }
     team.push_back(boss_it->second[0]);
     for (int i = 0; i < team_size; ++i) {
         char dino[32];
@@ -207,8 +210,10 @@ int Input(vector<Dino> &team, vector<vector<int>> &ability)
         if (scanf("%s%d%d%d%d", dino, &level, &health_boost, &damage_boost, &speed_boost) != 5)
             return 1;
         auto dino_it = DinoDex.find(dino);
-        if (dino_it == DinoDex.end())
+        if (dino_it == DinoDex.end()) {
+            ERROR("Unable to find %s\n", dino);
             return 1;
+        }
         team.push_back(Dino(1, i+1, level, health_boost, damage_boost, speed_boost, dino_it->second));
     }
     for (int i = 1; i < (int)boss_it->second.size(); ++i)
@@ -227,7 +232,10 @@ int CheckInput()
 {
     vector<vector<int>> ability;
     vector<Dino> team;
-    Input(team, ability);
+    if (Input(team, ability) != 0) {
+        ERROR("Input error!\n");
+        return 1;
+    }
     Check(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
     return 0;
 }

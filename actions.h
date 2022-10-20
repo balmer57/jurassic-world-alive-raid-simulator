@@ -146,6 +146,7 @@ struct Revenge : public Action
 static const int FIXED = 1;
 
 std::list<std::unique_ptr<Action>> Heal(double _factor, int _flags = 0);
+std::list<std::unique_ptr<Action>> FixedHeal(double _factor, int _flags = 0);
 
 struct HealAction : public Action
 {
@@ -314,6 +315,8 @@ struct Cloak : public Action
     {}
     virtual void Do(Dino &self, Dino &target) const override;
 };
+
+std::list<std::unique_ptr<Action>> UnableToSwap(int _duration);
 
 } // namespace actions
 
