@@ -82,7 +82,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
 void Revenge::Do(Dino &self, Dino &target) const
 {
     if (self.killer)
-        target.Impose(&revenge, self);
+        target.Revenge(self);
 }
 
 std::list<std::unique_ptr<Action>> actions::Heal(double _factor, int _flags)

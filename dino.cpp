@@ -9,101 +9,6 @@ using namespace std;
 using namespace modifiers;
 using namespace actions;
 
-bool Ability::Priority(Dino &dino) const
-{
-    if (dino.threatened)
-        return threatened_ability->priority;
-    return priority;
-}
-
-function<bool(const Dino &,const Dino &)> TargetCmp[] = {
-    [](const Dino &dino1, const Dino &dino2) -> bool { return false; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health > dino2.health; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Damage() < dino2.Damage(); },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Damage() > dino2.Damage(); },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() < dino2.Speed(); },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() > dino2.Speed(); },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.n_positive_effects > dino2.n_positive_effects; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; },
-};
-
-function<bool(const Dino &, const Dino &)> CheckTarget[] = {
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // random
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // lowest hp
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // highest hp
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // lowest damage
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // highest damage
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // lowest speed
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // highest speed
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team != dino2.team; }, // most positive effects
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.team == dino2.team; }, // lowest hp teammate
-};
-
-void Ability::Do(Dino &self, Dino team[], int team_size) const
-{
-    auto &actions = self.threatened ? threatened_ability->actions : this->actions;
-    int n_targets = (int)(sizeof(TargetCmp) / sizeof(*TargetCmp));
-    int dino_id[n_targets];
-    memset(dino_id, -1, sizeof(dino_id));
-    for (int target = 0; target < n_targets; ++target) {
-        int count = 0;
-        for (int i = 0; i < team_size; ++i) {
-            if (!team[i].Alive())
-                continue;
-            if (!CheckTarget[target](self, team[i]))
-                continue;
-            if (target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind->taunt_resistance) * 100) {
-                dino_id[target] = i;
-                break;
-            }
-            if (dino_id[target] == -1) {
-                dino_id[target] = i;
-                count = 1;
-            } else if (TargetCmp[target](team[dino_id[target]], team[i]))
-                continue;
-            else if (TargetCmp[target](team[i], team[dino_id[target]])) {
-                dino_id[target] = i;
-                count = 1;
-            } else if (rand() % ++count == 0)
-                dino_id[target] = i;
-        }
-    }
-    for (const auto &action: actions) {
-        switch(action->target) {
-        case TARGET_ALL_OPPONENTS:
-            for (int i = 0; i < team_size; ++i) {
-                if (team[i].team == self.team)
-                    continue;
-                if (!team[i].Alive())
-                    continue;
-                action->Do(self, team[i]);
-            }
-            break;
-        case TARGET_TEAM:
-            for (int i = 0; i < team_size; ++i) {
-                if (team[i].team != self.team)
-                    continue;
-                if (!team[i].Alive())
-                    continue;
-                action->Do(self, team[i]);
-            }
-            break;
-        case TARGET_SELF:
-            action->Do(self, self);
-            break;
-        case TARGET_ATTACKER:
-            if (!self.attacker->Alive())
-                continue;
-            action->Do(self, *self.attacker);
-            break;
-        default:
-            action->Do(self, team[dino_id[action->target]]);
-            break;
-        }
-    }
-}
-
 static const double LevelFactor[] = {
         0,
         0.2953027716977619,
@@ -176,9 +81,7 @@ bool Dino::Prepare(int _ability_id)
             --cooldown[i];
     }
     ability_id = _ability_id;
-    cooldown[ability_id] = Ability(ability_id)->cooldown;
-    threatened = Ability(ability_id)->Threatened(*this);
-    priority = Ability(ability_id)->Priority(*this);
+    Ability(ability_id)->Prepare(*this, &cooldown[ability_id], &priority);
     return true;
 }
 
@@ -197,10 +100,7 @@ void Dino::CounterAttack(Dino team[], int size)
 {
     if (Alive() && attacker && !stun && kind->counter_attack) {
         INFO("%s counter-attacks using %s!\n", Name().c_str(), kind->counter_attack->name.c_str());
-        bool thrtnd = threatened;
-        threatened = kind->counter_attack->Threatened(*this);
         kind->counter_attack->Do(*this, team, size);
-        threatened = thrtnd;
     }
     attacker = nullptr;
 }
@@ -238,9 +138,11 @@ void Dino::DamageOverTime(Dino team[], int team_size)
     WARNING("%s is damaged [over time] by %d\n", Name().c_str(), damage_over_time);
     if (!Alive()) {
         ERROR("%s dies!\n", Name().c_str());
-        static modifiers::Revenge revenge;
-        for (int i = 0; i < team_size; ++i)
-            team[i].Impose(&revenge, *this);
+        for (int i = 0; i < team_size; ++i) {
+            if (team[i].team != this->team)
+                continue;
+            team[i].Revenge(*this);
+        }
     } else if (health == 0)
         INFO("%s is immune to HP changes.\n", Name().c_str());
 }
@@ -295,4 +197,14 @@ int Dino::HealAbsorb(int heal)
     if (it != flock_segment.end() && *it - health < heal)
         return *it - health;
     return heal;
+}
+
+void Dino::Revenge(Dino &source)
+{
+    static const modifiers::Revenge revenge;
+    if (revenge_ready) {
+        Dispose(REVENGE, source);
+        revenge_ready = false;
+    }
+    Impose(&revenge, source);
 }

@@ -158,7 +158,7 @@ DinoKind MeiolaniaBoss("Meiolania boss", RARE, 1, 9500, 825, 105, 50, 5, 0, 70, 
 
 DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25, 100, 90, 50, 85, 75, 95, 0, 15, {
     { // Round 1
-        new Ability("Alert Mimic", 0, 0, true, {
+        new ThreatenedAbility("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -170,7 +170,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
-        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Mimic", 0, 0, true, {
+        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -184,7 +184,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
             TargetSelf(
                 Taunt(2)
             )
-        })),
+        }),
         new Ability("Protective Strike", 0, 0, false, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS),
@@ -209,7 +209,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
             )
         })
     }, { // Round 2
-        new Ability("Alert Mimic", 0, 0, true, {
+        new ThreatenedAbility("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -221,7 +221,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
-        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Mimic", 0, 0, true, {
+        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -235,8 +235,8 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
             TargetSelf(
                 Taunt(2)
             )
-        })),
-        new Ability("Cunning Cleanse Revenge", 0, 0, false, {
+        }),
+        new RevengeAbility("Cunning Cleanse Revenge", 0, 0, false, {
             TargetSelf(
                 Cleanse(DAMAGE_OVER_TIME)
             ),
@@ -246,7 +246,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Remove(INCREASED_CRIT_CHANCE | INCREASED_DAMAGE),
                 Attack(2., GROUP)
             )
-        }, [](Dino &self) { return self.revenge; }, new Ability("Cunning Cleanse Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetTeam(
                 Cleanse(DAMAGE_OVER_TIME)
             ),
@@ -256,8 +256,8 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Remove(INCREASED_CRIT_CHANCE | INCREASED_DAMAGE),
                 Attack(2., GROUP)
             )
-        })),
-        new Ability("Resilient Cleanse Revenge", 0, 0, false, {
+        }),
+        new RevengeAbility("Resilient Cleanse Revenge", 0, 0, false, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -266,7 +266,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Attack(2.),
                 ImposeVulnerability(50, 2, 2)
             )
-        }, [](Dino &self) { return self.revenge; }, new Ability("Resilient Cleanse Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -275,9 +275,9 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Attack(2., GROUP),
                 ImposeVulnerability(50, 2, 2)
             )
-        }))
+        })
     }, { // Round 3
-        new Ability("Alert Mimic", 0, 0, true, {
+        new ThreatenedAbility("Alert Mimic", 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -289,7 +289,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 IncreaseSpeed(10, 2),
                 Taunt(2)
             )
-        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Mimic", 0, 0, true, {
+        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -303,7 +303,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
             TargetSelf(
                 Taunt(2)
             )
-        })),
+        }),
         new Ability("Protective Strike", 0, 0, false, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS),
@@ -316,7 +316,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Attack(1.)
             )
         }),
-        new Ability("Revenge Cunning Impact", 0, 0, false, {
+        new RevengeAbility("Revenge Cunning Impact", 0, 0, false, {
             TargetSelf(
                 Cleanse(DAMAGE_OVER_TIME)
             ),
@@ -330,7 +330,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Dodge(75, 67, 2, 4),
                 Taunt(2)
             )
-        }, [](Dino &self) { return self.revenge; }, new Ability("Revenge Cunning Impact", 0, 0, false, {
+        }, 0, 0, false, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS)
             ),
@@ -342,7 +342,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
                 Dodge(75, 67, 3, 4),
                 Taunt(2)
             )
-        })),
+        }),
         new Ability("Determined Group Rampage", 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE | DAMAGE_OVER_TIME)
@@ -356,7 +356,7 @@ DinoKind FukuimimusBoss("Fukuimimus boss", LEGENDARY, 1, 15000, 1500, 123, 0, 25
             )
         })
     }
-}, new Ability("Ferocious Feathers", 0, 0, false, {
+}, new CounterAbility("Ferocious Feathers", {
     TargetSelf(
         IncreaseDamage(5, 3, 3)
     ),
@@ -685,7 +685,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Attack(1.5)
             )
         }),
-        new Ability("Resilient Impact Revenge", 0, 0, false, {
+        new RevengeAbility("Resilient Impact Revenge", 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE)
             ),
@@ -694,7 +694,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Attack(1.5),
                 ImposeVulnerability(50, 2, 2)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Resilient Impact Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE)
             ),
@@ -703,7 +703,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Attack(1.5),
                 ImposeVulnerability(50, 2, 2)
             )
-        })),
+        }),
         new Ability("Emergency Regroup", 0, 0, true, {
             TargetTeam(
                 Cleanse(NEGATIVE_EFFECTS),
@@ -737,7 +737,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Shield(50, 2, 4)
             )
         }),
-        new Ability("Revenge Group Cunning Strike", 0, 0, false, {
+        new RevengeAbility("Revenge Group Cunning Strike", 0, 0, false, {
             TargetAllOpponents(
                 Remove(INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
                 ReduceDamage(50, 2, 3),
@@ -747,7 +747,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
             TargetSelf(
                 Cleanse(DAMAGE_OVER_TIME)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Revenge Group Cunning Strike", 0, 0, false, {
+        }, 0, 0, false, {
             TargetAllOpponents(
                 Remove(INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
                 ReduceDamage(50, 2, 3),
@@ -757,7 +757,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
             TargetSelf(
                 Cleanse(DAMAGE_OVER_TIME)
             )
-        })),
+        }),
         new Ability("Resilient Vulnerability Rampage", 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE)
@@ -776,7 +776,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Shield(50, 2, 4)
             )
         }),
-        new Ability("Resilient Rampage Revenge", 0, 0, false, {
+        new RevengeAbility("Resilient Rampage Revenge", 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE)
             ),
@@ -785,7 +785,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Attack(2.),
                 ImposeVulnerability(50, 2, 2)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Resilient Rampage Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetSelf(
                 Cleanse(REDUCED_DAMAGE)
             ),
@@ -794,7 +794,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
                 Attack(2.),
                 ImposeVulnerability(50, 2, 2)
             )
-        })),
+        }),
         new Ability("Group Fierce Impact", 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
@@ -816,7 +816,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
             )
         })
     }
-}, new Ability("Power Heal", 0, 0, false, {
+}, new CounterAbility("Power Heal", {
     TargetSelf(
         Heal(0.3)
     )
@@ -824,7 +824,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0, 2
 
 DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15, 5, 75, 90, 75, 85, 80, 100, 0, 60, {
     { // Round 1
-        new Ability("Alert Assist", 0, 0, true, {
+        new ThreatenedAbility("Alert Assist", 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -832,7 +832,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseDamage(50, 2, 2),
                 Shield(50, 2, 4)
             )
-        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Assist", 0, 0, true, {
+        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -842,7 +842,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseSpeed(30, 2),
                 Shield(100, 2, 4)
             )
-        })),
+        }),
         new Ability("Group Fierce Decelerating Strike", 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
@@ -863,7 +863,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
             )
         })
     }, { // Round 2
-        new Ability("Alert Assist", 0, 0, true, {
+        new ThreatenedAbility("Alert Assist", 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -871,7 +871,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseDamage(50, 2, 2),
                 Shield(50, 2, 4)
             )
-        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Assist", 0, 0, true, {
+        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -881,20 +881,20 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseSpeed(30, 2),
                 Shield(100, 2, 4)
             )
-        })),
-        new Ability("Infectious Revenge", 0, 0, false, {
+        }),
+        new RevengeAbility("Infectious Revenge", 0, 0, false, {
             TargetFastest(
                 ReduceSpeed(50, 2),
                 Attack(1.5),
                 DamageOverTime(15, 2)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Infectious Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetAllOpponents(
                 ReduceSpeed(75, 2),
                 Attack(1.5),
                 DamageOverTime(20, 2)
             )
-        })),
+        }),
         new Ability("Group Fierce Decelerating Strike", 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
@@ -916,7 +916,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
             )
         })
     }, { // Round 3
-        new Ability("Alert Assist", 0, 0, true, {
+        new ThreatenedAbility("Alert Assist", 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -924,7 +924,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseDamage(50, 2, 2),
                 Shield(50, 2, 4)
             )
-        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Assist", 0, 0, true, {
+        }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
             TargetSelf(
                 Shield(100, 1, 4)
             ),
@@ -934,21 +934,21 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 IncreaseSpeed(30, 2),
                 Shield(100, 2, 4)
             )
-        })),
-        new Ability("Braking Revenge", 0, 0, false, {
+        }),
+        new RevengeAbility("Braking Revenge", 0, 0, false, {
             TargetFastest(
                 ReduceSpeed(50, 2),
                 Attack(2.),
                 DamageOverTime(15, 2)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Braking Revenge", 0, 0, true, {
+        }, 0, 0, true, {
             TargetAllOpponents(
                 ReduceSpeed(75, 2),
                 Attack(2.),
                 DamageOverTime(34, 2)
             )
-        })),
-        new Ability("Waning Revenge", 0, 0, false, {
+        }),
+        new RevengeAbility("Waning Revenge", 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
             ),
@@ -957,7 +957,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 Attack(2., BYPASS_ARMOR),
                 ReduceSpeed(50, 2)
             )
-        }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Waning Revenge", 0, 0, false, {
+        }, 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
             ),
@@ -968,7 +968,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
                 Attack(2., BYPASS_ARMOR),
                 ReduceSpeed(50, 2)
             )
-        })),
+        }),
         new Ability("Group Fierce Decelerating Strike", 0, 0, false, {
             TargetSelf(
                 Cleanse(VULNERABILITY)
@@ -980,7 +980,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
             )
         })
     }
-}, new Ability("Counter Spike", 0, 0, false, {
+}, new CounterAbility("Counter Spike", {
     TargetAttacker(
         Remove(SHIELD),
         Attack(0.5, BYPASS_ARMOR)
@@ -989,6 +989,97 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
         IncreaseDamage(10, 2, 2)
     )
 }));
+
+DinoKind AlacranixBoss("Alacranix Boss", APEX, 1, 15000, 1550, 116, 40, 20, 50, 100, 50, 90, 20, 100, 100, 15, {
+    { // Round 1
+        new Ability("Evasive Fierce Strike", 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY)
+            ),
+            TargetLowestHP(
+                Remove(SHIELD|TAUNT),
+                Attack(1., BYPASS_ARMOR)
+            ),
+            TargetSelf(
+                Dodge(75, 67, 2, 8)
+            )
+        }),
+        new Ability("Group Fierce Decelerating Strike", 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY)
+            ),
+            TargetAllOpponents(
+                Remove(SHIELD|TAUNT),
+                Attack(1., BYPASS_ARMOR),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new Ability("Enfeebling Raking Impact", 0, 0, false, {
+            TargetMostPositiveEffects(
+                Remove(DODGE|CLOAK),
+                Attack(1.5, BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Piercing Destruction", 0, 0, true, {
+            TargetMostPositiveEffects(
+                Remove(POSITIVE_EFFECTS),
+                Rend(100, BYPASS_ARMOR)
+            )
+        })
+    }, { // Round 2
+        new Ability("Evasive Piercing Impact", 0, 0, false, {
+            TargetLowestHP(
+                Remove(SHIELD),
+                Attack(1.5, BYPASS_ARMOR)
+            ),
+            TargetSelf(
+                Dodge(75, 67, 2, 8)
+            )
+        }),
+        new Ability("Dispersed Decelerating Impact", 0, 0, false, {
+            TargetAllOpponents(
+                ReduceSpeed(50, 2),
+                Attack(1.5)
+            )
+        }),
+        new Ability("Piercing Destruction", 0, 0, true, {
+            TargetMostPositiveEffects(
+                Remove(POSITIVE_EFFECTS),
+                Rend(100, BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Group Necrotic Strike", 0, 0, false, {
+            TargetAllOpponents(
+                Remove(POSITIVE_EFFECTS),
+                Attack(1., BYPASS_ARMOR)
+            ),
+            TargetSelf(
+                DevourHeal(50, 2)
+            )
+        })
+    }, { // Round 3
+        new Ability("Group Necrotic Strike", 0, 0, false, {
+            TargetAllOpponents(
+                Remove(POSITIVE_EFFECTS),
+                Attack(1., BYPASS_ARMOR)
+            ),
+            TargetSelf(
+                DevourHeal(50, 2)
+            )
+        }),
+        new Ability("Piercing Destruction", 0, 0, true, {
+            TargetMostPositiveEffects(
+                Remove(POSITIVE_EFFECTS),
+                Rend(100, BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Cold-Blooded Rampage", 0, 0, false, {
+            TargetLowestHP(
+                Attack(2., PRECISE)
+            )
+        })
+    }
+}, nullptr);
 
 //
 // minion dex
@@ -1031,7 +1122,7 @@ DinoKind MiragaiaMinion("Deceleration Minion", COMMON, 1, 4050, 1000, 112, 0, 5,
             Attack(1., GROUP)
         )
     })
-}, new Ability("Decelerating Counter", 0, 0, false, {
+}, new CounterAbility("Decelerating Counter", {
     TargetAttacker(
         ReduceSpeed(50, 1),
         Attack(1.)
@@ -1125,7 +1216,7 @@ DinoKind CarnotaurusMinion("Counter-Attack Minion", RARE, 1, 4500, 1000, 104, 0,
             Attack(1.5)
         )
     })
-}, new Ability("Greater Rending Counter-Attack", 0, 0, false, {
+}, new CounterAbility("Greater Rending Counter-Attack", {
     TargetAttacker(
         Remove(SHIELD),
         Rend(33, BYPASS_ARMOR)
@@ -1182,7 +1273,7 @@ DinoKind MajungasaurusMinion("Counter-Attack Minion", COMMON, 1, 3450, 1300, 105
             Attack(1.)
         )
     })
-}, new Ability("Armor Piercing Counter", 0, 0, false, {
+}, new CounterAbility("Armor Piercing Counter", {
     TargetAttacker(
         Attack(1., BYPASS_ARMOR)
     )
@@ -1213,6 +1304,22 @@ DinoKind SuchomimusMinion("Dot Minion", COMMON, 1, 3900, 900, 104, 0, 5, 0, 0, 0
         TargetHighestHP(
             Attack(1.),
             DamageOverTime(33, 3)
+        )
+    })
+}, nullptr);
+
+DinoKind GallimimusMinion("Dodge Minion", COMMON, 1, 2700, 1400, 130, 0, 5, 100, 100, 100, 0, 0, 100, 0, 0, {
+    new Ability("Evasive Strike", 0, 0, false, {
+        TargetSelf(
+            Dodge(75, 67, 1, 1)
+        ),
+        TargetLowestHP(
+            Attack(1.)
+        )
+    }),
+    new Ability("Instant Distraction", 0, 1, true, {
+        TargetHighestDamage(
+            ReduceDamage(100, 1, 2)
         )
     })
 }, nullptr);
@@ -1258,7 +1365,7 @@ DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0, 15, 0, 50, 75
             Attack(1., BYPASS_ARMOR)
         )
     }),
-    new Ability("Protective Alert [2]", 0, 3, false, {
+    new ThreatenedAbility("Protective Alert [2]", 0, 3, false, {
         TargetSelf(
             Cleanse(NEGATIVE_EFFECTS)
         ),
@@ -1266,7 +1373,7 @@ DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0, 15, 0, 50, 75
             ImposeVulnerability(50, 2, 4),
             ReduceDamage(50, 2, 4)
         )
-    }, [](Dino &self) -> bool { return self.health <= 2 * self.max_health / 3; }, new Ability("Protective Alert [2]", 0, 3, false, {
+    }, [](Dino &self) -> bool { return self.health <= 2 * self.max_health / 3; }, 0, 3, false, {
         TargetSelf(
             Cleanse(NEGATIVE_EFFECTS),
             RallyHeal(1./3)
@@ -1274,7 +1381,7 @@ DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0, 15, 0, 50, 75
         TargetAllOpponents(
             ReduceDamage(50, 2, 4)
         )
-    })),
+    }),
     new Ability("Cunning Rampage", 1, 1, false, {
         TargetSelf(
             Cleanse(DAMAGE_OVER_TIME)
@@ -1286,17 +1393,17 @@ DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0, 15, 0, 50, 75
             Attack(2.)
         )
     }),
-    new Ability("Alert Peck", 0, 2, false, {
+    new ThreatenedAbility("Alert Peck", 0, 2, false, {
         TargetLowestHP(
             Remove(SHIELD|INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
             Rend(60, BYPASS_ARMOR)
         )
-    }, [](Dino &self) -> bool { return self.health <= self.max_health / 3; }, new Ability("Alert Peck", 1, 2, false, {
+    }, [](Dino &self) -> bool { return self.health <= self.max_health / 3; }, 1, 2, false, {
         TargetLowestHP(
             Remove(SHIELD|INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
             Rend(60, BYPASS_ARMOR)
         )
-    }))
+    })
 }, nullptr);
 
 DinoKind Andrewtherium("Andrewtherium", EPIC, 1, 3600, 1300, 119, 5, 25, 100, 0, 50, 0, 50, 50, 0, 50, {
@@ -1363,7 +1470,7 @@ DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15, 25, 0, 0, 0, 0
             Rend(60, BYPASS_ARMOR)
         )
     })
-}, new Ability("Exposing Counter", 0, 0, false, {
+}, new CounterAbility("Exposing Counter", {
     TargetAttacker(
         ImposeVulnerability(50, 1, 2)
     )
@@ -1394,18 +1501,18 @@ DinoKind Indotaurus("Indotaurus", UNIQUE, 1, 4650, 1600, 106, 0, 20, 0, 0, 0, 34
             Attack(2.)
         )
     }),
-    new Ability("Revenge Taunting Cloak", 0, 3, true, {
+    new RevengeAbility("Revenge Taunting Cloak", 0, 3, true, {
         TargetSelf(
             Cloak(2., 75, 67, 2),
             Taunt(1)
         )
-    }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Revenge Taunting Cloak", 0, 3, true, {
+    }, 0, 3, true, {
         TargetSelf(
             Cloak(2.5, 75, 67, 2),
             Taunt(1)
         )
-    }))
-}, new Ability("Greater Rending Counter-Attack", 0, 0, false, {
+    })
+}, new CounterAbility("Greater Rending Counter-Attack", {
     TargetAttacker(
         Remove(SHIELD),
         Rend(33, BYPASS_ARMOR)
@@ -1435,7 +1542,7 @@ DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100
 }, nullptr);
 
 DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 75, 0, 100, {
-    new Ability("Alert Fierce Strike", 0, 0, false, {
+    new ThreatenedAbility("Alert Fierce Strike", 0, 0, false, {
         TargetAllOpponents(
             Remove(SHIELD | TAUNT),
             Attack(1., BYPASS_ARMOR|GROUP)
@@ -1443,7 +1550,7 @@ DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 7
         TargetSelf(
             Cleanse(VULNERABILITY)
         )
-    }, [](Dino &self) { return self.health <= self.max_health * 0.5; }, new Ability("Alert Fierce Strike", 0, 0, false, {
+    }, [](Dino &self) { return self.health <= self.max_health * 0.5; }, 0, 0, false, {
         TargetLowestHP(
             Remove(SHIELD | TAUNT),
             Attack(1., BYPASS_ARMOR)
@@ -1451,8 +1558,8 @@ DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 7
         TargetSelf(
             Cleanse(VULNERABILITY)
         )
-    })),
-    new Ability("Defense Shattering Revenge", 0, 1, false, {
+    }),
+    new RevengeAbility("Defense Shattering Revenge", 0, 1, false, {
         TargetLowestHP(
             Remove(SHIELD | TAUNT),
             Attack(1.5, BYPASS_ARMOR)
@@ -1460,7 +1567,7 @@ DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 7
         TargetSelf(
             Cleanse(VULNERABILITY)
         )
-    }, [](Dino &self) { return self.revenge; }, new Ability("Defense Shattering Revenge", 0, 1, false, {
+    }, 0, 1, false, {
         TargetAllOpponents(
             Remove(SHIELD | TAUNT),
             Attack(1.5, BYPASS_ARMOR|GROUP)
@@ -1468,7 +1575,7 @@ DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0, 45, 0, 75, 0, 75, 100, 7
         TargetSelf(
             Cleanse(VULNERABILITY)
         )
-    })),
+    }),
     new Ability("Dominant Roar", 0, 2, true, {
         TargetTeam(
             IncreaseDamage(50, 2, 2)
@@ -1566,7 +1673,7 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0
             Attack(2., BYPASS_ARMOR|GROUP)
         )
     })
-}, new Ability("Defense Shattering Counter-Attack", 0, 0, false, {
+}, new CounterAbility("Defense Shattering Counter-Attack", {
     TargetAttacker(
         Remove(SHIELD),
         Attack(0.5, BYPASS_ARMOR)
@@ -1637,7 +1744,7 @@ DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0, 10, 0, 10
             ReduceDamage(25, 2, 2)
         )
     }),
-    new Ability("Revenge Cunning Rampage", 1, 1, false, {
+    new RevengeAbility("Revenge Cunning Rampage", 1, 1, false, {
         TargetSelf(
             Cleanse(DAMAGE_OVER_TIME)
         ),
@@ -1647,7 +1754,7 @@ DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0, 10, 0, 10
             ReduceCritChance(100, 1, 2),
             Attack(2.)
         )
-    }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Revenge Cunning Rampage", 0, 1, false, {
+    }, 0, 1, false, {
         TargetSelf(
             Cleanse(DAMAGE_OVER_TIME)
         ),
@@ -1657,8 +1764,8 @@ DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0, 10, 0, 10
             ReduceCritChance(100, 1, 2),
             Attack(2.)
         )
-    }))
-}, new Ability("Darting Counter", 0, 0, false, {
+    })
+}, new CounterAbility("Darting Counter", {
     TargetAttacker(
         Attack(1.)
     ),
@@ -1698,7 +1805,7 @@ DinoKind Poukandactylus("Poukandactylus", UNIQUE, 1, 4050, 1200, 127, 0, 15, 0, 
             ReduceDamage(100, 1, 2)
         )
     })
-}, new Ability("Defense Shattering Counter", 0, 0, false, {
+}, new CounterAbility("Defense Shattering Counter", {
     TargetAttacker(
         Remove(SHIELD),
         Attack(1., BYPASS_ARMOR)
@@ -1768,7 +1875,7 @@ DinoKind MarsupialLion("Marsupial Lion", RARE, 1, 4050, 1000, 117, 0, 40, 0, 0, 
             IncreaseCritChance(50, 3, 2)
         )
     })
-}, new Ability("Medium Counter-Attack", 0, 0, false, {
+}, new CounterAbility("Medium Counter-Attack", {
     TargetAttacker(
         Attack(0.5)
     )
@@ -1786,24 +1893,24 @@ DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0, 15, 0, 75, 
             Attack(1.)
         )
     }),
-    new Ability("Alert Instant Heal", 1, 2, true, {
+    new ThreatenedAbility("Alert Instant Heal", 1, 2, true, {
         TargetTeam(
             Cleanse(NEGATIVE_EFFECTS),
             Heal(1.5)
         )
-    }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, new Ability("Alert Instant Heal", 1, 2, true, {
+    }, [](Dino &self) -> bool { return self.total_health <= self.max_total_health * 0.5; }, 1, 2, true, {
         TargetTeam(
             Cleanse(NEGATIVE_EFFECTS),
             Heal(2.)
         )
-    })),
+    }),
     new Ability("Greater Group Heal", 0, 2, false, {
         TargetTeam(
             Cleanse(NEGATIVE_EFFECTS),
             Heal(2.)
         )
     }),
-    new Ability("Resilient Rampage Revenge", 1, 1, false, {
+    new RevengeAbility("Resilient Rampage Revenge", 1, 1, false, {
         TargetSelf(
             Cleanse(REDUCED_DAMAGE)
         ),
@@ -1812,7 +1919,7 @@ DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0, 15, 0, 75, 
             Attack(2.),
             ImposeVulnerability(50, 2, 2)
         )
-    }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Resilient Rampage Revenge", 1, 1, false, {
+    }, 1, 1, false, {
         TargetSelf(
             Cleanse(REDUCED_DAMAGE)
         ),
@@ -1821,8 +1928,8 @@ DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0, 15, 0, 75, 
             Attack(2.),
             ImposeVulnerability(50, 2, 1)
         )
-    }))
-}, new Ability("Counter Power Heal", 0, 0, false, {
+    })
+}, new CounterAbility("Counter Power Heal", {
     TargetSelf(
         FixedHeal(6)
     )
@@ -1856,18 +1963,94 @@ DinoKind Enteloceros("Enteloceros", LEGENDARY, 1, 4500, 1300, 126, 20, 10, 0, 0,
             Heal(1.)
         )
     }),
-    new Ability("Group Revenge Shattering Rampage", 1, 2, false, {
+    new RevengeAbility("Group Revenge Shattering Rampage", 1, 2, false, {
         TargetHighestHP(
             Remove(SHIELD),
             Attack(2., BYPASS_ARMOR)
         )
-    }, [](Dino &self) -> bool { return self.revenge; }, new Ability("Group Revenge Shattering Rampage", 1, 2, false, {
+    }, 1, 2, false, {
         TargetAllOpponents(
             Remove(SHIELD),
             Attack(2., BYPASS_ARMOR)
         )
-    }))
+    })
 }, nullptr);
+
+DinoKind Tuoramoloch("Tuoramoloch", UNIQUE, 1, 4200, 1500, 126, 0, 5, 0, 0, 50, 0, 100, 100, 0, 0, {
+    new Ability("Group Superiority", 0, 0, false, {
+        TargetTeam(
+            Cleanse(REDUCED_DAMAGE)
+        ),
+        TargetFastest(
+            ReduceSpeed(50, 1),
+            Attack(1., PRECISE)
+        )
+    }),
+    new Ability("Lesser Group Heal", 0, 2, false, {
+        TargetTeam(
+            Cleanse(NEGATIVE_EFFECTS),
+            Heal(1.)
+        )
+    }),
+    new Ability("Group Acceleration", 0, 1, true, {
+        TargetTeam(
+            Cleanse(REDUCED_SPEED),
+            IncreaseSpeed(50, 3)
+        ),
+        TargetLowestHP(
+            Attack(1.)
+        )
+    }),
+    new Ability("Greater Emergency Heal", 0, 2, true, {
+        TargetLowestHPTeammate(
+            Cleanse(NEGATIVE_EFFECTS),
+            Heal(2.)
+        )
+    })
+}, nullptr);
+
+DinoKind Troodoboa("Troodoboa", UNIQUE, 1, 3900, 1200, 117, 0, 10, 0, 100, 100, 0, 75, 75, 100, 0, {
+    new Ability("Instant Decelerating Precision", 0, 0, true, {
+        TargetSelf(
+            Shield(50, 1, 4)
+        ),
+        TargetFastest(
+            ReduceSpeed(50, 3),
+            Attack(1., PRECISE)
+        )
+    }),
+    new Ability("Group Cleansing Fatal Strike", 0, 3, false, {
+        TargetTeam(
+            Cleanse(NEGATIVE_EFFECTS),
+            IncreaseDamage(50, 3, 6)
+        ),
+        TargetLowestHP(
+            Attack(1.)
+        )
+    }),
+    new Ability("Precise Distracting Impact", 0, 1, false, {
+        TargetLowestHP(
+            Attack(1.5, PRECISE),
+            ReduceDamage(50, 1, 2)
+        )
+    }),
+    new Ability("Group Cunning Rampage", 2, 1, false, {
+        TargetSelf(
+            Cleanse(DAMAGE_OVER_TIME)
+        ),
+        TargetAllOpponents(
+            ReduceDamage(50, 1, 2),
+            ReduceCritChance(100, 1, 2),
+            Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE),
+            Attack(2.)
+        )
+    })
+}, new CounterAbility("Raking Counter-Attack", {
+    TargetAttacker(
+        Remove(CLOAK|DODGE),
+        Attack(1., BYPASS_ARMOR)
+    )
+}));
 
 std::map<std::string, std::vector<Dino>> BossDex = {
     make_pair<string, vector<Dino>>("Meiolania", {Dino(0, 0, 8, 0, 0, 0, &MeiolaniaBoss)}),
@@ -1879,6 +2062,7 @@ std::map<std::string, std::vector<Dino>> BossDex = {
     make_pair<string, vector<Dino>>("Parasauthops", {Dino(0, 0, 24, 8, 8, 8, &ParasauthopsBoss), Dino(0, 5, 23, 9, 4, 10, &MajungasaurusMinion), Dino(0, 6, 23, 12, 3, 8, &SuchomimusMinion)}),
     make_pair<string, vector<Dino>>("MortemRex", {Dino(0, 0, 30, 15, 15, 0, &MortemRexBoss), Dino(0, 5, 29, 10, 10, 9, &MajungasaurusMinion), Dino(0, 6, 29, 4, 10, 15, &VelociraptorMinion)}),
     make_pair<string, vector<Dino>>("Imperatosuchus", {Dino(0, 0, 30, 10, 13, 7, &ImperatosuchusBoss), Dino(0, 5, 29, 8, 5, 10, &MajungasaurusMinion), Dino(0, 6, 29, 8, 2, 10, &KoolasuchusMinion)}),
+    make_pair<string, vector<Dino>>("Alacranix", {Dino(0, 0, 30, 10, 14, 5, &AlacranixBoss), Dino(0, 5, 28, 5, 5, 18, &GallimimusMinion), Dino(0, 6, 28, 5, 13, 10, &SuchomimusMinion)}),
 };
 
 std::map<std::string, const DinoKind *> DinoDex = {
@@ -1897,4 +2081,6 @@ std::map<std::string, const DinoKind *> DinoDex = {
     make_pair("Thoradolosaur", &Thoradolosaur),
     make_pair("Thylaconyx", &Thylaconyx),
     make_pair("ThylosIntrepidus", &ThylosIntrepidus),
+    make_pair("Troodoboa", &Troodoboa),
+    make_pair("Tuoramoloch", &Tuoramoloch),
 };

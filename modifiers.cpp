@@ -125,6 +125,7 @@ void Revenge::Impose(Dino &target, Mod *) const
 void Revenge::Dispose(Dino &target, Mod *) const
 {
     --target.revenge;
+    target.revenge_ready = false;
 }
 
 void DevourHeal::Impose(Dino &target, Mod *mod) const

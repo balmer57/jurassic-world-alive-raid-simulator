@@ -9,45 +9,12 @@
 #include <functional>
 #include <set>
 #include <list>
+
+#include "ability.h"
 #include "strprintf.h"
 #include "modifiers.h"
 #include "actions.h"
 #include "utils.h"
-
-struct Dino;
-
-struct Ability
-{
-    std::string name;
-    int delay;
-    int cooldown;
-    bool priority;
-    std::list<std::unique_ptr<actions::Action>> actions;
-    std::function<bool(Dino&)> threat_checker;
-    std::unique_ptr<Ability> threatened_ability;
-
-    Ability(const std::string &_name, int _delay, int _cooldown, bool _priority, std::initializer_list<std::list<std::unique_ptr<actions::Action>>> _action_lists, std::function<bool(Dino&)> _threat_checker = [](Dino&) { return false; }, Ability *_threatened_ability = nullptr)
-        : name(_name)
-        , delay(_delay)
-        , cooldown(_cooldown)
-        , priority(_priority)
-        , actions()
-        , threat_checker(std::move(_threat_checker))
-        , threatened_ability(_threatened_ability)
-    {
-        for (auto list_it = _action_lists.begin(); list_it != _action_lists.end(); ++list_it) {
-            for (auto action_it = const_cast<std::list<std::unique_ptr<actions::Action>>*>(&*list_it)->begin(); action_it != const_cast<std::list<std::unique_ptr<actions::Action>>*>(&*list_it)->end(); ++action_it) {
-                actions.push_back(std::move(*action_it));
-            }
-        }
-    }
-    bool Threatened(Dino &dino) const
-    {
-        return threat_checker(dino);
-    }
-    bool Priority(Dino &dino) const;
-    void Do(Dino &self, Dino team[], int size) const;
-};
 
 static const int COMMON = 0;
 static const int RARE = 1;
@@ -75,7 +42,7 @@ struct DinoKind
     double taunt_resistance;
     double vulnerable_resistance;
     std::vector<std::vector<std::unique_ptr<Ability>>> ability;
-    std::unique_ptr<Ability> counter_attack;
+    std::unique_ptr<CounterAbility> counter_attack;
 
     DinoKind(const std::string &_name, int _rarity, int _flock, int _health, int _damage, int _speed, int _armor, int _crit,
             double _crit_reduction_resistance,
@@ -86,7 +53,7 @@ struct DinoKind
             double _stun_resistance,
             double _taunt_resistance,
             double _vulnerable_resistance,
-            std::initializer_list<std::initializer_list<Ability *>> _ability, Ability *_counter_attack)
+            std::initializer_list<std::initializer_list<Ability *>> _ability, CounterAbility *_counter_attack)
         : name(_name)
         , rarity(_rarity)
         , flock(_flock)
@@ -117,7 +84,7 @@ struct DinoKind
             double _stun_resistance,
             double _taunt_resistance,
             double _vulnerable_resistance,
-            std::initializer_list<Ability *> _ability, Ability *_counter_attack)
+            std::initializer_list<Ability *> _ability, CounterAbility *_counter_attack)
         : DinoKind(_name, _rarity, _flock, _health, _damage, _speed, _armor, _crit, _crit_reduction_resistance, _damage_over_time_resistance, _reduced_damage_resistance, _rend_resistance, _reduce_speed_resistance, _stun_resistance, _taunt_resistance, _vulnerable_resistance, {_ability}, _counter_attack)
     {}
 };
@@ -168,6 +135,7 @@ struct Dino
     int turn = 0;
     Dino *attacker = nullptr; // это норм
     int revenge = 0;
+    bool revenge_ready = false;
     int last_damage = 0;
     int devour_heal = 0;
     int damage_over_time = 0;
@@ -256,6 +224,7 @@ struct Dino
     {
         return kind->ability[round][i].get();
     }
+    void Revenge(Dino &source);
 };
 
 #endif // __JWA_CALC__DINO__H__
