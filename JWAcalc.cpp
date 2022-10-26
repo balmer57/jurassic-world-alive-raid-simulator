@@ -342,7 +342,9 @@ int List()
 int main(int argc, char *argv[])
 {
     srand((unsigned)time(NULL));
+#ifdef DEBUG
     setbuf(stdout, NULL);
+#endif
 
     while (true) {
         static struct option long_options[] = {
