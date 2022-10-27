@@ -1081,6 +1081,127 @@ DinoKind AlacranixBoss("Alacranix Boss", APEX, 1, 15000, 1550, 116, 40, 20, 50, 
     }
 }, nullptr);
 
+DinoKind AndrewtopsBoss("Andrewtops Boss", UNIQUE, 1, 11000, 1350, 122, 15, 20, 0, 80, 45, 85, 50, 95, 0, 40, {
+    { // Round 1
+        new Ability("Daring Group Strike", 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY | DAMAGE_OVER_TIME)
+            ),
+            TargetAllOpponents(
+                Attack(1., BYPASS_ARMOR),
+                ReduceDamage(50, 1, 2)
+            )
+        }),
+        new RevengeAbility("Revenge Distracting Rampage", 0, 0, false, {
+            TargetHighestDamage(
+                Attack(2.),
+                ReduceDamage(50, 2, 4)
+            )
+        }, 0, 0, false, {
+            TargetAllOpponents(
+                Attack(2.),
+                ReduceDamage(50, 2, 4)
+            )
+        }),
+        new Ability("Cleansing Random Impact", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetRandom(
+                Attack(1.5)
+            )
+        })
+    }, { // Round 2
+        new Ability("Targeted Cleansing Impact", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetAllOpponents(
+                Attack(1.5)
+            )
+        }),
+        new RevengeAbility("Slow Piercing Revenge", 0, 0, false, {
+            TargetHighestHP(
+                Remove(SHIELD),
+                Rend(40, BYPASS_ARMOR),
+                ReduceSpeed(50, 2)
+            )
+        }, 0, 0, false, {
+            TargetHighestHP(
+                Remove(SHIELD),
+                Rend(40, BYPASS_ARMOR),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new RevengeAbility("Daring Group Revenge", 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY|DAMAGE_OVER_TIME)
+            ),
+            TargetAllOpponents(
+                Remove(TAUNT),
+                Attack(1.5, BYPASS_ARMOR),
+                ReduceDamage(50, 1, 2)
+            )
+        }, 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY|DAMAGE_OVER_TIME)
+            ),
+            TargetAllOpponents(
+                Remove(TAUNT),
+                Attack(2, BYPASS_ARMOR),
+                ReduceDamage(50, 1, 2)
+            )
+        })
+    }, { // Round 3
+        new Ability("Targeted Cleansing Impact", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetAllOpponents(
+                Attack(1.5)
+            )
+        }),
+        new RevengeAbility("Slow Piercing Revenge", 0, 0, false, {
+            TargetHighestHP(
+                Remove(SHIELD),
+                Rend(40, BYPASS_ARMOR),
+                ReduceSpeed(50, 2)
+            )
+        }, 0, 0, false, {
+            TargetHighestHP(
+                Remove(SHIELD),
+                Rend(40, BYPASS_ARMOR),
+                ReduceSpeed(50, 2)
+            )
+        }),
+        new RevengeAbility("Revenge Distracting Rampage", 0, 0, false, {
+            TargetHighestDamage(
+                Attack(2.),
+                ReduceDamage(50, 2, 4)
+            )
+        }, 0, 0, false, {
+            TargetAllOpponents(
+                Attack(2.),
+                ReduceDamage(50, 2, 4)
+            )
+        }),
+        new Ability("Random Daring Rampage", 0, 0, false, {
+            TargetSelf(
+                Cleanse(VULNERABILITY|DAMAGE_OVER_TIME)
+            ),
+            TargetRandom(
+                Attack(2., BYPASS_ARMOR),
+                ReduceDamage(50, 1, 2)
+            )
+        })
+    }
+}, new CounterAbility("Counter Vulnerability", {
+    TargetAttacker(
+        Attack(1.),
+        ImposeVulnerability(50, 2, 1)
+    )
+}));
+
 //
 // minion dex
 //
@@ -1320,6 +1441,57 @@ DinoKind GallimimusMinion("Dodge Minion", COMMON, 1, 2700, 1400, 130, 0, 5, 100,
     new Ability("Instant Distraction", 0, 1, true, {
         TargetHighestDamage(
             ReduceDamage(100, 1, 2)
+        )
+    })
+}, nullptr);
+
+DinoKind ScolosaurusMinion("Shield Minion", COMMON, 1, 5500, 1000, 110, 25, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Taunting Shields", 0, 0, false, {
+        TargetLowestHP(
+            Attack(1.)
+        ),
+        TargetSelf(
+            Shield(50, 2, 4),
+            Taunt(1)
+        )
+    }),
+    new Ability("Group Taunting Shields", 0, 1, true, {
+        TargetTeam(
+            Shield(50, 2, 2)
+        ),
+        TargetSelf(
+            Taunt(1)
+        )
+    })
+}, nullptr);
+
+DinoKind DilophosaurusMinion("Distraction Minion", RARE, 1, 3600, 1250, 129, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Cunning Strike", 0, 0, false, {
+        TargetSelf(
+            Cleanse(DAMAGE_OVER_TIME)
+        ),
+        TargetLowestHP(
+            ReduceDamage(50, 1, 2),
+            ReduceCritChance(100, 1, 2),
+            Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE),
+            Attack(1.)
+        )
+    }),
+    new Ability("Distracting Impact", 0, 2, false, {
+        TargetHighestDamage(
+            ReduceDamage(50, 2, 4),
+            Attack(1.5)
+        )
+    }),
+    new Ability("Cunning Rampage", 1, 1, false, {
+        TargetSelf(
+            Cleanse(DAMAGE_OVER_TIME)
+        ),
+        TargetHighestDamage(
+            ReduceDamage(50, 1, 2),
+            ReduceCritChance(100, 1, 2),
+            Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE),
+            Attack(2.)
         )
     })
 }, nullptr);
@@ -2060,6 +2232,7 @@ std::map<std::string, std::vector<Dino>> BossDex = {
     make_pair<string, vector<Dino>>("Troodoboa", {Dino(0, 0, 25, 10, 10, 5, &TroodoboaBoss), Dino(0, 5, 24, 4, 10, 10, &GorgosaurusMinion), Dino(0, 6, 24, 10, 4, 10, &KoolasuchusMinion)}),
     make_pair<string, vector<Dino>>("Smilonemys", {Dino(0, 0, 22, 6, 9, 7, &SmilonemysBoss), Dino(0, 5, 17, 7, 6, 1, &MonolophosaurusMinion), Dino(0, 6, 17, 8, 3, 3, &CarnotaurusMinion)}),
     make_pair<string, vector<Dino>>("Parasauthops", {Dino(0, 0, 24, 8, 8, 8, &ParasauthopsBoss), Dino(0, 5, 23, 9, 4, 10, &MajungasaurusMinion), Dino(0, 6, 23, 12, 3, 8, &SuchomimusMinion)}),
+    make_pair<string, vector<Dino>>("Andrewtops", {Dino(0, 0, 24, 8, 12, 4, &AndrewtopsBoss), Dino(0, 5, 23, 12, 7, 4, &ScolosaurusMinion), Dino(0, 6, 23, 9, 9, 6, &DilophosaurusMinion)}),
     make_pair<string, vector<Dino>>("MortemRex", {Dino(0, 0, 30, 15, 15, 0, &MortemRexBoss), Dino(0, 5, 29, 10, 10, 9, &MajungasaurusMinion), Dino(0, 6, 29, 4, 10, 15, &VelociraptorMinion)}),
     make_pair<string, vector<Dino>>("Imperatosuchus", {Dino(0, 0, 30, 10, 13, 7, &ImperatosuchusBoss), Dino(0, 5, 29, 8, 5, 10, &MajungasaurusMinion), Dino(0, 6, 29, 8, 2, 10, &KoolasuchusMinion)}),
     make_pair<string, vector<Dino>>("Alacranix", {Dino(0, 0, 30, 10, 14, 5, &AlacranixBoss), Dino(0, 5, 28, 5, 5, 18, &GallimimusMinion), Dino(0, 6, 28, 5, 13, 10, &SuchomimusMinion)}),
