@@ -11,18 +11,17 @@ static const int CLOAK = 1 << 2;
 static const int INCREASED_SPEED = 1 << 3;
 static const int SHIELD = 1 << 4;
 static const int TAUNT = 1 << 5;
-static const int CRIT_CHANCE_REDUCTION = 1 << 6;
+static const int REDUCED_CRIT_CHANCE = 1 << 6;
 static const int VULNERABILITY = 1 << 7;
 static const int INCREASED_CRIT_CHANCE = 1 << 8;
 static const int INCREASED_DAMAGE = 1 << 9;
 static const int REDUCED_SPEED = 1 << 10;
 static const int DAMAGE_OVER_TIME = 1 << 11;
-static const int REDUCED_CRIT_CHANCE = 1 << 12;
-static const int REVENGE = 1 << 13;
-static const int DEVOUR_HEAL = 1 << 14;
-static const int STUN = 1 << 15;
+static const int REVENGE = 1 << 12;
+static const int DEVOUR_HEAL = 1 << 13;
+static const int STUN = 1 << 14;
 
-static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|CRIT_CHANCE_REDUCTION|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE;
+static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE;
 static const int POSITIVE_EFFECTS = DODGE|CLOAK|INCREASED_SPEED|SHIELD|TAUNT|INCREASED_CRIT_CHANCE|INCREASED_DAMAGE|DEVOUR_HEAL;
 static const int ALL_EFFECTS = NEGATIVE_EFFECTS|POSITIVE_EFFECTS|REVENGE|STUN;
 

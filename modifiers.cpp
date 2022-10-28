@@ -130,7 +130,7 @@ void Revenge::Dispose(Dino &target, Mod *) const
 
 void DevourHeal::Impose(Dino &target, Mod *mod) const
 {
-    mod->value = Round(target.last_damage * factor);
+    mod->value = Round(target.last_damage * factor / duration);
     target.devour_heal += mod->value;
     ++target.n_positive_effects;
 }

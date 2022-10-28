@@ -55,10 +55,6 @@ int Step(Dino team[], int team_size)
     Dino *dino[team_size];
     for (i = 0; i < team_size; ++i)
         dino[i] = &team[i];
-    for (i = 0; i < team_size; ++i) {
-        if (team[i].Alive())
-            team[i].DevourHeal();
-    }
     for (int j = 0; j < team_size; ++j) {
         for (i = team_size - 1; i - 1 >= j; --i) { // Oh, yeah, this is bubble sort :)
             if (SpeedCmp(*dino[i], *dino[i-1]))
@@ -95,6 +91,10 @@ int Step(Dino team[], int team_size)
         return -1;
     if (!boss->Alive())
         return 1;
+    for (i = 0; i < team_size; ++i) {
+        if (team[i].Alive())
+            team[i].DevourHeal();
+    }
     for (i = 0; i < team_size; ++i) {
         team[i].PassTurn();
     }

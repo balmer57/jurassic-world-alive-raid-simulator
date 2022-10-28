@@ -1202,6 +1202,196 @@ DinoKind AndrewtopsBoss("Andrewtops Boss", UNIQUE, 1, 11000, 1350, 122, 15, 20, 
     )
 }));
 
+DinoKind CeramagnusBoss("Ceramagnus Boss", APEX, 1, 11500, 1600, 114, 30, 20, 50, 80, 50, 80, 100, 100, 0, 0, {
+    { // Round 1
+        new Ability("Group Acceleration", 0, 1, true, {
+            TargetTeam(
+                Cleanse(REDUCED_SPEED),
+                IncreaseSpeed(50, 3)
+            ),
+            TargetLowestHP(
+                Attack(1.)
+            )
+        }),
+        new Ability("Random Piercing Rampage", 0, 0, false, {
+            TargetRandom(
+                Attack(2., BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Primal Instant Charge", 0, 0, true, {
+            TargetHighestDamage(
+                Attack(1., BYPASS_ARMOR),
+                Stun(75, 1)
+            )
+        }),
+        new Ability("Random Piercing Rampage", 0, 0, false, {
+            TargetRandom(
+                Attack(2., BYPASS_ARMOR)
+            )
+        })
+    }, { // Round 2
+        new Ability("Group Acceleration", 0, 1, true, {
+            TargetTeam(
+                Cleanse(REDUCED_SPEED),
+                IncreaseSpeed(50, 3)
+            ),
+            TargetLowestHP(
+                Attack(1.)
+            )
+        }),
+        new Ability("Stun, Pierce And Impact", 0, 0, false, {
+            TargetLowestHP(
+                Attack(1.5, BYPASS_ARMOR),
+                Stun(75, 1)
+            )
+        }),
+        new Ability("Cleansing Random Piercing Rampage", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetRandom(
+                Attack(2., BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Primal Instant Charge", 0, 0, true, {
+            TargetHighestDamage(
+                Attack(1., BYPASS_ARMOR),
+                Stun(75, 1)
+            )
+        })
+    }, { // Round 3
+        new Ability("Stun, Pierce And Impact", 0, 0, false, {
+            TargetLowestHP(
+                Attack(1.5, BYPASS_ARMOR),
+                Stun(75, 1)
+            )
+        }),
+        new Ability("Cleansing Random Piercing Rampage", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetRandom(
+                Attack(2., BYPASS_ARMOR)
+            )
+        }),
+        new Ability("Primal Instant Charge", 0, 0, true, {
+            TargetHighestDamage(
+                Attack(1., BYPASS_ARMOR),
+                Stun(75, 1)
+            )
+        })
+    }
+}, nullptr);
+
+DinoKind HydraBoaBoss("Hydra Boa Boss", APEX, 1, 14000, 1500, 118, 10, 25, 75, 80, 80, 85, 75, 95, 0, 35, {
+    { // Round 1
+        new Ability("Group Cunning Impact", 0, 0, false, {
+            TargetSelf(
+                Cleanse(DAMAGE_OVER_TIME)
+            ),
+            TargetAllOpponents(
+                ReduceDamage(50, 1, 2),
+                ReduceCritChance(100, 1, 2),
+                Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE),
+                Attack(1.5)
+            )
+        }),
+        new Ability("Squeeze And Strike", 0, 0, false, {
+            TargetAllOpponents(
+                Remove(POSITIVE_EFFECTS),
+                Attack(1.)
+            )
+        }),
+        new Ability("Cold-Blooded Rampage", 0, 0, false, {
+            TargetLowestHP(
+                Attack(2., PRECISE)
+            )
+        })
+    }, { // Round 2
+        new ThreatenedAbility("Alert Slither", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(50, 67, 3, 4),
+                IncreaseCritChance(50, 3, 3)
+            ),
+            TargetHighestDamage(
+                ReduceDamage(50, 3, 6)
+            )
+        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(75, 67, 3, 4),
+                IncreaseCritChance(50, 3, 3)
+            ),
+            TargetHighestDamage(
+                ReduceDamage(50, 3, 6)
+            )
+        }),
+        new Ability("Squeeze And Strike", 0, 0, false, {
+            TargetAllOpponents(
+                Remove(POSITIVE_EFFECTS),
+                Attack(1.)
+            )
+        }),
+        new Ability("Hard Swallow", 0, 0, false, {
+            TargetLowestHP(
+                Attack(2.)
+            ),
+            TargetSelf(
+                Heal(1.)
+            )
+        })
+    }, { // Round 3
+        new ThreatenedAbility("Alert Slither", 0, 0, false, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(50, 67, 3, 4),
+                IncreaseCritChance(50, 3, 3)
+            ),
+            TargetHighestDamage(
+                ReduceDamage(50, 3, 6)
+            )
+        }, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, 0, 0, true, {
+            TargetSelf(
+                Cleanse(NEGATIVE_EFFECTS),
+                Dodge(75, 67, 3, 4),
+                IncreaseCritChance(50, 3, 3)
+            ),
+            TargetHighestDamage(
+                ReduceDamage(50, 3, 6)
+            )
+        }),
+        new Ability("Squeeze And Strike", 0, 0, false, {
+            TargetAllOpponents(
+                Remove(POSITIVE_EFFECTS),
+                Attack(1.)
+            )
+        }),
+        new Ability("Venomous Bite", 0, 0, true, {
+            TargetHighestDamage(
+                Attack(1.5, PRECISE),
+                DamageOverTime(40, 2)
+            )
+        }),
+        new Ability("Total Cleanse And Strike", 0, 0, false, {
+            TargetTeam(
+                Cleanse(NEGATIVE_EFFECTS)
+            ),
+            TargetAllOpponents(
+                Attack(1.)
+            )
+        })
+    }
+}, new ThreatenedCounterAbility("Alert Coil", {
+    TargetSelf(
+        IncreaseDamage(5, 3, 3)
+    )
+}, [](Dino &self) { return self.total_health <= self.max_total_health * 0.5; }, {
+    TargetSelf(
+        IncreaseDamage(10, 3, 3)
+    )
+}));
+
 //
 // minion dex
 //
@@ -1215,7 +1405,7 @@ DinoKind EntelodonMinion("Group Shattering Minion", RARE, 1, 3600, 1000, 122, 0,
     }),
     new Ability("Group Ferocity", 0, 2, true, {
         TargetTeam(
-            Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION),
+            Cleanse(REDUCED_DAMAGE | REDUCED_CRIT_CHANCE),
             IncreaseDamage(50, 2, 2)
         )
     }),
@@ -1496,6 +1686,27 @@ DinoKind DilophosaurusMinion("Distraction Minion", RARE, 1, 3600, 1250, 129, 0, 
     })
 }, nullptr);
 
+DinoKind BaryonyxMinion("Damage Increase Minion", EPIC, 1, 4200, 1300, 126, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, {
+    new Ability("Defense Shattering Strike", 0, 0, false, {
+        TargetLowestHP(
+            Remove(SHIELD|TAUNT),
+            Attack(1., BYPASS_ARMOR)
+        )
+    }),
+    new Ability("Group Takedown", 1, 2, true, {
+        TargetTeam(
+            Cleanse(REDUCED_DAMAGE|REDUCED_CRIT_CHANCE),
+            IncreaseDamage(50, 2, 1)
+        )
+    }),
+    new Ability("Defense Shattering Rampage", 1, 1, false, {
+        TargetHighestHP(
+            Remove(SHIELD|TAUNT),
+            Attack(2., BYPASS_ARMOR)
+        )
+    })
+}, nullptr);
+
 //
 // dino dex
 //
@@ -1700,14 +1911,14 @@ DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0, 30, 0, 0, 0, 0, 100
     }),
     new Ability("Ready To Crush", 0, 2, false, {
         TargetTeam(
-            Cleanse(CRIT_CHANCE_REDUCTION | REDUCED_DAMAGE),
+            Cleanse(REDUCED_CRIT_CHANCE | REDUCED_DAMAGE),
             IncreaseCritChance(30, 4, 2),
             IncreaseDamage(50, 4, 2)
         )
     }),
     new Ability("Group Takedown", 1, 2, true, {
         TargetTeam(
-            Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION),
+            Cleanse(REDUCED_DAMAGE | REDUCED_CRIT_CHANCE),
             IncreaseDamage(50, 2, 1)
         )
     })
@@ -1823,7 +2034,7 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0, 25, 0, 25, 0
         ),
         TargetTeam(
             IncreaseDamage(50, 4, 2),
-            Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION)
+            Cleanse(REDUCED_DAMAGE | REDUCED_CRIT_CHANCE)
         )
     }),
     new Ability("Devouring Wound", 0, 1, false, {
@@ -2000,7 +2211,7 @@ DinoKind ThylosIntrepidus("Thylos Intrepidus", UNIQUE, 3, 3900, 1400, 120, 0, 40
         ),
         TargetTeam(
             IncreaseDamage(50, 4, 2),
-            Cleanse(REDUCED_DAMAGE | CRIT_CHANCE_REDUCTION)
+            Cleanse(REDUCED_DAMAGE | REDUCED_CRIT_CHANCE)
         )
     }),
     new Ability("Wounding Devouring Impact", 0, 2, false, {
@@ -2225,17 +2436,24 @@ DinoKind Troodoboa("Troodoboa", UNIQUE, 1, 3900, 1200, 117, 0, 10, 0, 100, 100, 
 }));
 
 std::map<std::string, std::vector<Dino>> BossDex = {
+// Rare
     make_pair<string, vector<Dino>>("Meiolania", {Dino(0, 0, 8, 0, 0, 0, &MeiolaniaBoss)}),
+// Epic
     make_pair<string, vector<Dino>>("Brachiosaurus", {Dino(0, 0, 14, 0, 0, 0, &BrachiosaurusBoss)}),
+// Legendary
     make_pair<string, vector<Dino>>("Fukuimimus", {Dino(0, 0, 19, 7, 7, 5, &FukuimimusBoss), Dino(0, 5, 18, 9, 5, 3, &EntelodonMinion), Dino(0, 6, 18, 7, 5, 6, &MiragaiaMinion)}),
     make_pair<string, vector<Dino>>("Glyptoceras", {Dino(0, 0, 19, 5, 3, 8, &GlyptocerasBoss), Dino(0, 5, 17, 7, 6, 1, &KoolasuchusMinion), Dino(0, 6, 17, 8, 3, 3, &WuerhosaurusMinion)}),
+// Unique
     make_pair<string, vector<Dino>>("Troodoboa", {Dino(0, 0, 25, 10, 10, 5, &TroodoboaBoss), Dino(0, 5, 24, 4, 10, 10, &GorgosaurusMinion), Dino(0, 6, 24, 10, 4, 10, &KoolasuchusMinion)}),
     make_pair<string, vector<Dino>>("Smilonemys", {Dino(0, 0, 22, 6, 9, 7, &SmilonemysBoss), Dino(0, 5, 17, 7, 6, 1, &MonolophosaurusMinion), Dino(0, 6, 17, 8, 3, 3, &CarnotaurusMinion)}),
     make_pair<string, vector<Dino>>("Parasauthops", {Dino(0, 0, 24, 8, 8, 8, &ParasauthopsBoss), Dino(0, 5, 23, 9, 4, 10, &MajungasaurusMinion), Dino(0, 6, 23, 12, 3, 8, &SuchomimusMinion)}),
     make_pair<string, vector<Dino>>("Andrewtops", {Dino(0, 0, 24, 8, 12, 4, &AndrewtopsBoss), Dino(0, 5, 23, 12, 7, 4, &ScolosaurusMinion), Dino(0, 6, 23, 9, 9, 6, &DilophosaurusMinion)}),
+// Apex
     make_pair<string, vector<Dino>>("MortemRex", {Dino(0, 0, 30, 15, 15, 0, &MortemRexBoss), Dino(0, 5, 29, 10, 10, 9, &MajungasaurusMinion), Dino(0, 6, 29, 4, 10, 15, &VelociraptorMinion)}),
     make_pair<string, vector<Dino>>("Imperatosuchus", {Dino(0, 0, 30, 10, 13, 7, &ImperatosuchusBoss), Dino(0, 5, 29, 8, 5, 10, &MajungasaurusMinion), Dino(0, 6, 29, 8, 2, 10, &KoolasuchusMinion)}),
     make_pair<string, vector<Dino>>("Alacranix", {Dino(0, 0, 30, 10, 14, 5, &AlacranixBoss), Dino(0, 5, 28, 5, 5, 18, &GallimimusMinion), Dino(0, 6, 28, 5, 13, 10, &SuchomimusMinion)}),
+    make_pair<string, vector<Dino>>("Ceramagnus", {Dino(0, 0, 30, 15, 15, 0, &CeramagnusBoss), Dino(0, 5, 29, 20, 8, 1, &KoolasuchusMinion), Dino(0, 6, 29, 9, 20, 0, &MiragaiaMinion)}),
+    make_pair<string, vector<Dino>>("HydraBoa", {Dino(0, 0, 30, 10, 15, 5, &HydraBoaBoss), Dino(0, 5, 29, 10, 15, 4, &BaryonyxMinion), Dino(0, 6, 29, 15, 9, 5, &MajungasaurusMinion)}),
 };
 
 std::map<std::string, const DinoKind *> DinoDex = {

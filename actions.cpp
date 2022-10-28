@@ -30,6 +30,7 @@ void PrepareAttack::Do(Dino &self, Dino &target) const
     self.prepared_damage_factor = self.DamageFactor();
     REMOVE_MODS(self, mod_it->OutgoingAttack(), DEBUG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str()));
     self.killer = false;
+    self.last_damage = 0;
 }
 
 void AttackAction::Do(Dino &self, Dino &target) const
@@ -67,7 +68,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
         absorbed = (int)damage - target.Absorb((int)damage);
         damage -= absorbed;
     }
-    self.last_damage = damage;
+    self.last_damage = max(self.last_damage, (int)damage); // ?
     if (!self.attacker)
         target.attacker = &self;
     target.Hit(damage);
