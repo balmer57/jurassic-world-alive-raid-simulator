@@ -39,6 +39,7 @@ struct DinoKind
     double rend_resistance;
     double reduce_speed_resistance;
     double stun_resistance;
+    double swap_prevention_resistance;
     double taunt_resistance;
     double vulnerable_resistance;
     std::vector<std::vector<const Ability *>> ability;
@@ -51,6 +52,7 @@ struct DinoKind
             double _rend_resistance,
             double _reduce_speed_resistance,
             double _stun_resistance,
+            double _swap_prevention_resistance,
             double _taunt_resistance,
             double _vulnerable_resistance,
             std::initializer_list<std::initializer_list<Ability *>> _ability, CounterAbility *_counter_attack)
@@ -68,6 +70,7 @@ struct DinoKind
         , rend_resistance(_rend_resistance / 100.)
         , reduce_speed_resistance(_reduce_speed_resistance / 100.)
         , stun_resistance(_stun_resistance / 100.)
+        , swap_prevention_resistance(_swap_prevention_resistance / 100.)
         , taunt_resistance(_taunt_resistance / 100.)
         , vulnerable_resistance(_vulnerable_resistance / 100.)
         , counter_attack(_counter_attack)
@@ -82,10 +85,11 @@ struct DinoKind
             double _rend_resistance,
             double _reduce_speed_resistance,
             double _stun_resistance,
+            double _swap_prevention_resistance,
             double _taunt_resistance,
             double _vulnerable_resistance,
             std::initializer_list<Ability *> _ability, CounterAbility *_counter_attack)
-        : DinoKind(_name, _rarity, _flock, _health, _damage, _speed, _armor, _crit, _crit_reduction_resistance, _damage_over_time_resistance, _reduced_damage_resistance, _rend_resistance, _reduce_speed_resistance, _stun_resistance, _taunt_resistance, _vulnerable_resistance, {_ability}, _counter_attack)
+        : DinoKind(_name, _rarity, _flock, _health, _damage, _speed, _armor, _crit, _crit_reduction_resistance, _damage_over_time_resistance, _reduced_damage_resistance, _rend_resistance, _reduce_speed_resistance, _stun_resistance, _swap_prevention_resistance, _taunt_resistance, _vulnerable_resistance, {_ability}, _counter_attack)
     {}
 };
 
