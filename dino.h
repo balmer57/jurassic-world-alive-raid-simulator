@@ -41,8 +41,8 @@ struct DinoKind
     double stun_resistance;
     double taunt_resistance;
     double vulnerable_resistance;
-    std::vector<std::vector<std::unique_ptr<Ability>>> ability;
-    std::unique_ptr<CounterAbility> counter_attack;
+    std::vector<std::vector<const Ability *>> ability;
+    const CounterAbility *counter_attack;
 
     DinoKind(const std::string &_name, int _rarity, int _flock, int _health, int _damage, int _speed, int _armor, int _crit,
             double _crit_reduction_resistance,
@@ -220,9 +220,9 @@ struct Dino
     void Heal(int heal);
     int Absorb(int damage);
     int HealAbsorb(int heal);
-    auto Ability(int i) const
+    const Ability *Ability(int i) const
     {
-        return kind->ability[round][i].get();
+        return kind->ability[round][i];
     }
     void Revenge(Dino &source);
 };
