@@ -7,4 +7,5 @@ g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o dino.o "dino.cpp"
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o dinodex.o "dinodex.cpp" 
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o strprintf.o "strprintf.cpp" 
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o modifiers.o "modifiers.cpp" 
-g++ -o JWAcalc.exe JWAcalc.o ability.o actions.o dino.o dinodex.o logger.o modifiers.o strprintf.o utils.o 
+g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o abilitydex.o "abilitydex.cpp" 
+g++ -o JWAcalc JWAcalc.o ability.o actions.o dino.o dinodex.o logger.o modifiers.o strprintf.o utils.o abilitydex.o 
