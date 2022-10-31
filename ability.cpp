@@ -17,14 +17,14 @@ void Ability::Prepare(Dino &self, int *cooldown, bool *priority) const
 
 function<bool(const Dino &,const Dino &)> TargetCmp[] = {
     [](const Dino &dino1, const Dino &dino2) -> bool { return false; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health > dino2.health; },
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.total_health < dino2.total_health; },
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.total_health > dino2.total_health; },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Damage() < dino2.Damage(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Damage() > dino2.Damage(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() < dino2.Speed(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() > dino2.Speed(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.n_positive_effects > dino2.n_positive_effects; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; },
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; }, // may be total_health?
 };
 
 function<bool(const Dino &, const Dino &)> CheckTarget[] = {
