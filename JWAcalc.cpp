@@ -15,7 +15,7 @@
 #include "actions.h"
 #include "modifiers.h"
 #include "logger.h"
-#include "dinodex.h"
+#include "dex.h"
 
 using namespace std;
 

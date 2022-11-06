@@ -1,5 +1,5 @@
-#ifndef __DINODEX__H__
-#define __DINODEX__H__
+#ifndef __DEX__H__
+#define __DEX__H__
 
 #include <map>
 #include <string>
@@ -8,4 +8,4 @@
 extern std::map<std::string, std::vector<Dino>> BossDex;
 extern std::map<std::string, const DinoKind *> DinoDex;
 
-#endif // __DINODEX__H__
+#endif // __DEX__H__

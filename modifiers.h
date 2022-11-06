@@ -122,7 +122,7 @@ struct Vulnerability: public Modifier
 
     Vulnerability(double _factor, int _duration, int _number)
         : Modifier("vulnerability", _duration, _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {
     }
     virtual void Impose(Dino &target, Mod *mod) const override;
@@ -163,7 +163,7 @@ struct IncreasedCritChance: public Modifier
     double factor;
     IncreasedCritChance(double _factor, int _duration, int _number)
         : Modifier("increased crit chance", _duration, _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -186,7 +186,7 @@ struct IncreasedDamage: public Modifier
     double factor;
     IncreasedDamage(double _factor, int _duration, int _number)
         : Modifier("increased damage", _duration, _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -209,7 +209,7 @@ struct ReducedSpeed: public Modifier
     double factor;
     ReducedSpeed(double _factor, int _duration)
         : Modifier("reduced speed", _duration)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -228,7 +228,7 @@ struct ReducedDamage: public Modifier
     double factor;
     ReducedDamage(double _factor, int _duration, int _number)
         : Modifier("reduced damage", _duration, _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -252,8 +252,8 @@ struct Dodge : public Modifier
     double factor;
     Dodge(double _chance, double _factor, int _duration, int _number)
         : Modifier("dodge", std::max(2, _duration * 2 + 1), _number)
-        , chance(_chance / 100.)
-        , factor(_factor / 100.)
+        , chance(_chance)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -280,7 +280,7 @@ struct IncreasedSpeed: public Modifier
     double factor;
     IncreasedSpeed(double _factor, int _duration)
         : Modifier("increased speed", _duration)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -299,7 +299,7 @@ struct ReducedCritChance: public Modifier
     double factor;
     ReducedCritChance(double _factor, int _duration, int _number)
         : Modifier("reduced crit chance", _duration, _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -322,7 +322,7 @@ struct Shield : public Modifier
     double factor;
     Shield(double _factor, int _duration, int _number)
         : Modifier("shield", std::max(2, _duration * 2 + 1), _number)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -370,7 +370,7 @@ struct DevourHeal : public Modifier
     double factor;
     DevourHeal(double _factor, int _duration)
         : Modifier("devour heal", _duration)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -389,7 +389,7 @@ struct DamageOverTime : public Modifier
     double factor;
     DamageOverTime(double _factor, int _duration)
         : Modifier("damage over time", _duration)
-        , factor(_factor / 100.)
+        , factor(_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;
@@ -428,8 +428,8 @@ struct Cloak : public Modifier
     Cloak(double _attack_factor, double _dodge_chance, double _dodge_factor, int _duration)
         : Modifier("cloak", std::max(2, _duration * 2 + 1))
         , attack_factor(_attack_factor)
-        , dodge_chance(_dodge_chance / 100.)
-        , dodge_factor(_dodge_factor / 100.)
+        , dodge_chance(_dodge_chance)
+        , dodge_factor(_dodge_factor)
     {}
     virtual void Impose(Dino &target, Mod *mod) const override;
     virtual void Dispose(Dino &target, Mod *mod) const override;

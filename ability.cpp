@@ -3,6 +3,7 @@
 #include "dino.h"
 #include <memory.h>
 #include "actions.h"
+#include <cassert>
 
 using namespace actions;
 using namespace std;
@@ -24,7 +25,7 @@ function<bool(const Dino &,const Dino &)> TargetCmp[] = {
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() < dino2.Speed(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.Speed() > dino2.Speed(); },
     [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.n_positive_effects > dino2.n_positive_effects; },
-    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; }, // may be total_health?
+    [](const Dino &dino1, const Dino &dino2) -> bool { return dino1.health < dino2.health; }, // health or total_health?
 };
 
 function<bool(const Dino &, const Dino &)> CheckTarget[] = {
@@ -41,32 +42,7 @@ function<bool(const Dino &, const Dino &)> CheckTarget[] = {
 
 void Ability::Do(Dino &self, Dino team[], int team_size) const
 {
-    int n_targets = (int)(sizeof(TargetCmp) / sizeof(*TargetCmp));
-    int dino_id[n_targets];
-    memset(dino_id, -1, sizeof(dino_id));
-    for (int target = 0; target < n_targets; ++target) {
-        int count = 0;
-        for (int i = 0; i < team_size; ++i) {
-            if (!team[i].Alive())
-                continue;
-            if (!CheckTarget[target](self, team[i]))
-                continue;
-            if (target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind->taunt_resistance) * 100) {
-                dino_id[target] = i;
-                break;
-            }
-            if (dino_id[target] == -1) {
-                dino_id[target] = i;
-                count = 1;
-            } else if (TargetCmp[target](team[dino_id[target]], team[i]))
-                continue;
-            else if (TargetCmp[target](team[i], team[dino_id[target]])) {
-                dino_id[target] = i;
-                count = 1;
-            } else if (rand() % ++count == 0)
-                dino_id[target] = i;
-        }
-    }
+    Dino *last = nullptr;
     for (const auto &action: actions) {
         switch(action->target) {
         case TARGET_ALL_OPPONENTS:
@@ -95,8 +71,35 @@ void Ability::Do(Dino &self, Dino team[], int team_size) const
                 continue;
             action->Do(self, *self.attacker);
             break;
+        case TARGET_LAST:
+            assert(last != nullptr);
+            if (!last->Alive())
+                continue;
+            action->Do(self, *last);
+            break;
         default:
-            action->Do(self, team[dino_id[action->target]]);
+            int count = 0;
+            for (int i = 0; i < team_size; ++i) {
+                if (!team[i].Alive())
+                    continue;
+                if (!CheckTarget[action->target](self, team[i]))
+                    continue;
+                if (action->target != TARGET_RANDOM && team[i].Taunt() && rand() % 100 < (1 - self.kind->taunt_resistance) * 100) {
+                    last = &team[i];
+                    break;
+                }
+                if (last == nullptr) {
+                    last = &team[i];
+                    count = 1;
+                } else if (TargetCmp[action->target](*last, team[i]))
+                    continue;
+                else if (TargetCmp[action->target](team[i], *last)) {
+                    last = &team[i];
+                    count = 1;
+                } else if (rand() % ++count == 0)
+                    last = &team[i];
+            }
+            action->Do(self, *last);
             break;
         }
     }
