@@ -197,7 +197,7 @@ struct Dino
     void DevourHeal();
     void DamageOverTime(Dino team[], int team_size);
     std::string Name() const;
-    void Revive();
+    void Revive(bool total);
     double Shield() const
     {
         return *shield.begin();

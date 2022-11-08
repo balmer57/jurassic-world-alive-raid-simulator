@@ -104,9 +104,7 @@ int Step(Dino team[], int team_size)
         for (i = 0; i < team_size; ++i) {
             if (team[i].team != 0)
                 continue;
-            team[i].Revive();
-            if (i != 0)
-                actions::Remove(ALL_EFFECTS).Do(team[i], team[i]);
+            team[i].Revive(i != 0);
         }
     } else {
         ++boss->turn;

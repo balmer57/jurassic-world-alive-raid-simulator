@@ -154,9 +154,13 @@ std::string Dino::Name() const
     return strprintf("%s (+%d,*%d,>%d)", kind->name.c_str(), health, Damage(), Speed());
 }
 
-void Dino::Revive()
+void Dino::Revive(bool total)
 {
-    health = max_health = kind->health * LevelFactor[level] * BoostFactor[health_boost];
+    if (total)
+        actions::Remove(ALL_EFFECTS).Do(*this, *this);
+    health = max_health;
+    if (total)
+        total_health = max_total_health;
     for (int i = 0; i < (int)kind->ability[round].size(); ++i) {
         cooldown[i] = Ability(i)->delay;
     }
@@ -202,7 +206,7 @@ int Dino::HealAbsorb(int heal)
 void Dino::Revenge(Dino &source)
 {
     static const modifiers::Revenge revenge;
-    if (revenge_ready) {
+    if (this->revenge) {
         Dispose(REVENGE, source);
         revenge_ready = false;
     }
