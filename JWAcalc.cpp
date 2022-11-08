@@ -196,7 +196,7 @@ std::string GetLine()
     std::string line;
     while(true) {
         int c = getchar();
-        if (c == '\n')
+        if (c == '\n' || c == -1)
             return line;
         line.push_back(c);
     }
