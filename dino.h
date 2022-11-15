@@ -162,8 +162,6 @@ struct Dino
     }
     int Speed() const
     {
-        if (stun)
-            return -1;
         if (speed_factor < 0)
             return 0;
         return Round(speed * speed_factor);
