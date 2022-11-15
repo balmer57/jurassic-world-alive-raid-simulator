@@ -1,15 +1,35 @@
 #include "logger.h"
+#include "strprintf.h"
+#include <utility>
 
 #include <cstdio>
+#include <cstdarg>
 
 int Logger::level = LOG_LEVEL_DEBUG;
+bool Logger::buffered = false;
+std::string Logger::buf;
 
 int Logger::Log(const char fmt[], ...)
 {
     va_list va;
     va_start(va, fmt);
-    auto r = vprintf(fmt, va);
+    int r = 0;
+    if (buffered)
+        buf += vstrprintf(fmt, va);
+    else
+        r = vprintf(fmt, va);
     va_end(va);
     return r;
 }
 
+void Logger::SetBuf()
+{
+    buffered = true;
+    buf.clear();
+}
+
+std::string Logger::TakeBuf()
+{
+    buffered = false;
+    return std::move(buf);
+}

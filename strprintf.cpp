@@ -1,6 +1,5 @@
 #include "strprintf.h"
 #include <cstdio>
-#include <cstdarg>
 #include <errno.h>
 #include <vector>
 #include <string>

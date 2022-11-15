@@ -1,7 +1,7 @@
 #ifndef __LOGGER__H__
 #define __LOGGER__H__
 
-#include <cstdarg>
+#include <string>
 
 enum {
     LOG_LEVEL_NONE = 0,
@@ -13,9 +13,13 @@ enum {
 
 class Logger
 {
+    static std::string buf;
+    static bool buffered;
 public:
     static int level;
     static int Log(const char fmt[], ...) __attribute__((format(printf, 1, 2)));
+    static void SetBuf();
+    static std::string TakeBuf();
 };
 
 #define LOG(...) (Logger::Log(__VA_ARGS__))

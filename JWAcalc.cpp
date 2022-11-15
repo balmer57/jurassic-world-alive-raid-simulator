@@ -167,6 +167,18 @@ int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns
     return 100 * result / n_checks;
 }
 
+std::string Explain(Dino team0[], int team_size, const vector<int> ability[], int n_turns, int n_checks = 1000)
+{
+    for (int i = 0; i < n_checks; ++i) {
+        Logger::SetBuf();
+        vector<Dino> team(team0, team0 + team_size);
+        if (!Check(team.data(), team_size, ability, n_turns))
+            return std::move(Logger::TakeBuf());
+        Logger::TakeBuf();
+    }
+    return "Always succeed\n";
+}
+
 //int FindAll(Dino boss[], int boss_size, Dino team[], int team_size, int max_turns)
 //{
 //    ;
@@ -294,9 +306,22 @@ int ChanceInput(int argc, char *argv[])
     return 0;
 }
 
+int ExplainInput(int argc, char *argv[])
+{
+    vector<vector<int>> ability;
+    vector<Dino> team;
+    if (int line = Input(argc, argv, team, ability)) {
+        LOG("Input error in line %d!\n", line);
+        return -1;
+    }
+    string result = Explain(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    LOG(result.c_str());
+    return 0;
+}
+
 int Help()
 {
-    if (optarg != nullptr && (strcmp(optarg, "check") == 0 || strcmp(optarg, "chance") == 0)) {
+    if (optarg != nullptr && (strcmp(optarg, "check") == 0 || strcmp(optarg, "chance") == 0 || strcmp(optarg, "explain") == 0)) {
         printf(R"--(Usage: JWAcalc --%s [file] --loglevel <loglevel>
 
 Options:
@@ -317,9 +342,10 @@ Check a strategy from input or <file> if specified. The strategy has the followi
 
 Options:
         -h, --help [command]    this help;
-        --check [file]          check a strategy from input or <file> if specified;
-        --chance [file]         calculate a chance of winning using a strategy from input or <file> if specified;
-        -l, --list              print a list of available bosses and dinos.
+        --check [file]          checks a strategy from input or <file> if specified;
+        --chance [file]         calculates a chance of winning using a strategy from input or <file> if specified;
+        --explain [file]        prints a log of a lost battle using a strategy from input or <file> if specified;
+        -l, --list              prints a list of available bosses and dinos.
         )--");
     }
     return 0;
@@ -348,6 +374,7 @@ int main(int argc, char *argv[])
         static struct option long_options[] = {
             {"check", optional_argument, nullptr, 'c'},
             {"chance", optional_argument, nullptr, 'p'},
+            {"explain", optional_argument, nullptr, 'e'},
             {"help", optional_argument, nullptr, 'h'},
             {"list", no_argument, nullptr, 'l'},
             {0, 0, 0, 0}
@@ -369,6 +396,12 @@ int main(int argc, char *argv[])
             if (optarg)
                 freopen(optarg, "r", stdin);
             return ChanceInput(argc, argv);
+        case 'e':
+            if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')
+                optarg = argv[optind++];
+            if (optarg)
+                freopen(optarg, "r", stdin);
+            return ExplainInput(argc, argv);
         case '?':
         case 'h':
             if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')
