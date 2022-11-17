@@ -17,6 +17,7 @@
 #include "logger.h"
 #include "dex.h"
 #include "input.h"
+#include "stats.h"
 
 using namespace std;
 
@@ -118,12 +119,13 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
     int round = 0;
     Dino *boss = team;
     int offset = 0;
+    Stats::ResetTurn();
     while (true) {
         if (round < boss->round + 1) {
             ++round;
-            ERROR("Round %d\n", round);
+            ERROR("\nRound %d\n", round);
         }
-        ERROR("Turn %d\n", boss->turn+1);
+        ERROR("\nTurn %d\n", boss->turn+1);
         auto ability = strategy.Next(team, team_size, offset);
         if (ability.size() == 0)
             break;
@@ -146,14 +148,22 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
         }
 
         int result = Step(team, team_size);
+        Stats::NextTurn();
         if (result == 0)
             continue;
         if (result == 1)
+        {
+        	Stats::RegisterResult(RESULT_WIN);
             ERROR("Win!\n");
+        }
         else
+        {
+        	Stats::RegisterResult(RESULT_DEFEAT);
             ERROR("Defeat!\n");
+        }
         return result == 1;
     }
+    Stats::RegisterResult(RESULT_OUT_OF_TURNS);
     ERROR("You are out of turns!\n");
     return false;
 }
@@ -170,6 +180,19 @@ int Chance(Dino team0[], int team_size, const Strategy &strategy, int n_checks =
     }
     Logger::level = log;
     return 100 * result / n_checks;
+}
+
+void Statistics(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
+{
+    int result = 0;
+    auto log = Logger::level;
+    Logger::level = 0;
+    for (int i = 0; i < n_checks; ++i) {
+        vector<Dino> team(team0, team0 + team_size);
+        if (Check(team.data(), team_size, strategy))
+            ++result;
+    }
+    Logger::level = log;
 }
 
 std::string Explain(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
@@ -258,6 +281,47 @@ int ChanceInput(int argc, char *argv[])
     }
     int chance = Chance(team.data(), (int)team.size(), strategy);
     LOG("Chance: %d%%\n", chance);
+    return 0;
+}
+
+int StatisticsInput(int argc, char *argv[])
+{
+    Strategy strategy;
+    vector<Dino> team;
+    ProcessCommonArgs(argc, argv);
+    if (int line = Input(team, strategy)) {
+        LOG("Input error in line %d!\n", line);
+        return -1;
+    }
+    Stats::Init(team.size(), strategy.instructions.size());
+    Statistics(team.data(), (int)team.size(), strategy);
+    LOG("Wins: %d, Loses: %d, Out of turns: %d\n", Stats::GetWinCount(), Stats::GetDefeatCount(), Stats::GetOutOfTurnsCount());
+    LOG("\nDeaths:\n");
+    for (unsigned int i = 0; i < team.size(); i++)
+    {
+    	std::vector<int> deaths = Stats::GetDeaths(i);
+    	std::string s = "";
+        for (unsigned int j = 0; j < strategy.instructions.size(); j++)
+        {
+        	std::string death_str = std::to_string(deaths[j]);
+        	death_str.insert(death_str.end(), 6 - death_str.size(), ' ');
+        	s += death_str;
+        }
+    	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
+    }
+    LOG("\nMinimal HP:\n");
+    for (unsigned int i = 0; i < team.size(); i++)
+    {
+    	std::vector<int> min_hp = Stats::GetMinHP(i);
+    	std::string s = "";
+        for (unsigned int j = 0; j < strategy.instructions.size(); j++)
+        {
+        	std::string hp_str = std::to_string(min_hp[j]);
+        	hp_str.insert(hp_str.end(), 6 - hp_str.size(), ' ');
+        	s += hp_str;
+        }
+    	LOG("%-25s: %4s\n", team[i].kind->name.c_str(), s.c_str());
+    }
     return 0;
 }
 
@@ -383,6 +447,7 @@ int main(int argc, char *argv[])
             {"check", optional_argument, nullptr, 'c'},
             {"chance", optional_argument, nullptr, 'p'},
             {"explain", optional_argument, nullptr, 'e'},
+			{"statistics", optional_argument, nullptr, 's'},
             {"help", optional_argument, nullptr, 'h'},
             {"list", no_argument, nullptr, 'l'},
             {0, 0, 0, 0}
@@ -410,6 +475,12 @@ int main(int argc, char *argv[])
             if (optarg)
                 freopen(optarg, "r", stdin);
             return ExplainInput(argc, argv);
+        case 's':
+            if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')
+                optarg = argv[optind++];
+            if (optarg)
+                freopen(optarg, "r", stdin);
+            return StatisticsInput(argc, argv);
         case '?':
         case 'h':
             if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')

@@ -4,6 +4,7 @@
 #include "logger.h"
 #include <memory>
 #include <memory.h>
+#include "stats.h"
 
 using namespace std;
 using namespace modifiers;
@@ -173,6 +174,7 @@ void Dino::Hit(int damage)
         damage = health;
     health -= damage;
     total_health -= damage;
+	Stats::RegisterHit(index, health);
 }
 
 void Dino::Heal(int heal)
