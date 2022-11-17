@@ -16,6 +16,7 @@
 #include "modifiers.h"
 #include "logger.h"
 #include "dex.h"
+#include "input.h"
 
 using namespace std;
 
@@ -112,23 +113,27 @@ int Step(Dino team[], int team_size)
     return 0;
 }
 
-bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
+bool Check(Dino team[], int team_size, const Strategy &strategy)
 {
     int round = 0;
     Dino *boss = team;
-    for (int t = 0; t < n_turns; ++t) {
+    int offset = 0;
+    while (true) {
         if (round < boss->round + 1) {
             ++round;
             ERROR("Round %d\n", round);
         }
         ERROR("Turn %d\n", boss->turn+1);
+        auto ability = strategy.Next(team, team_size, offset);
+        if (ability.size() == 0)
+            break;
         for (int i = 0; i < team_size; ++i) {
             if (!team[i].Alive())
                 continue;
             if (i == 0)
                 boss->Prepare(boss->turn % (int)boss->kind->ability[boss->round].size());
             else if (team[i].team == 1) { // Teammates
-                int ability_id = ability[i-1][t]-1;
+                int ability_id = ability[i-1]-1;
                 if (!team[i].Prepare(ability_id)) {
                     ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].Ability(ability_id)->name.c_str());
                     return false;
@@ -153,26 +158,26 @@ bool Check(Dino team[], int team_size, const vector<int> ability[], int n_turns)
     return false;
 }
 
-int Chance(Dino team0[], int team_size, const vector<int> ability[], int n_turns, int n_checks = 1000)
+int Chance(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
 {
     int result = 0;
     auto log = Logger::level;
     Logger::level = 0;
     for (int i = 0; i < n_checks; ++i) {
         vector<Dino> team(team0, team0 + team_size);
-        if (Check(team.data(), team_size, ability, n_turns))
+        if (Check(team.data(), team_size, strategy))
             ++result;
     }
     Logger::level = log;
     return 100 * result / n_checks;
 }
 
-std::string Explain(Dino team0[], int team_size, const vector<int> ability[], int n_turns, int n_checks = 1000)
+std::string Explain(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
 {
     for (int i = 0; i < n_checks; ++i) {
         Logger::SetBuf();
         vector<Dino> team(team0, team0 + team_size);
-        if (!Check(team.data(), team_size, ability, n_turns))
+        if (!Check(team.data(), team_size, strategy))
             return std::move(Logger::TakeBuf());
         Logger::TakeBuf();
     }
@@ -203,18 +208,7 @@ std::string Explain(Dino team0[], int team_size, const vector<int> ability[], in
 //    }
 //}
 
-std::string GetLine()
-{
-    std::string line;
-    while(true) {
-        int c = getchar();
-        if (c == '\n' || c == -1)
-            return line;
-        line.push_back(c);
-    }
-}
-
-int Input(int argc, char *argv[], vector<Dino> &team, vector<vector<int>> &ability)
+int ProcessCommonArgs(int argc, char *argv[])
 {
     while (true) {
         static struct option long_options[] = {
@@ -237,84 +231,46 @@ int Input(int argc, char *argv[], vector<Dino> &team, vector<vector<int>> &abili
         }
         break;
     }
-    int team_size, n_turns;
-    char end[2];
-    char boss[32];
-    team.clear();
-    ability.clear();
-    if (sscanf(GetLine().c_str(), "%s%1s", boss, end) != 1)
-        return 1;
-    auto boss_it = BossDex.find(boss);
-    if (boss_it == BossDex.end()) {
-        LOG("Unable to find %s boss\n", boss);
-        return 1;
-    }
-    team.push_back(boss_it->second[0]);
-    if (sscanf(GetLine().c_str(), "%d%d%1s", &team_size, &n_turns, end) != 2)
-        return 2;
-    for (int i = 0; i < team_size; ++i) {
-        char dino[32];
-        int level, health_boost, damage_boost, speed_boost;
-        if (sscanf(GetLine().c_str(), "%s%d%d%d%d%1s", dino, &level, &health_boost, &damage_boost, &speed_boost, end) != 5)
-            return 3+i;
-        auto dino_it = DinoDex.find(dino);
-        if (dino_it == DinoDex.end()) {
-            LOG("Unable to find %s\n", dino);
-            return 3+i;
-        }
-        team.push_back(Dino(1, i+1, level, health_boost, damage_boost, speed_boost, dino_it->second));
-    }
-    for (int i = 1; i < (int)boss_it->second.size(); ++i)
-        team.push_back(boss_it->second[i]);
-    for (int i = 0; i < team_size; ++i) {
-        ability.emplace_back(n_turns);
-        int offset = 0, n;
-        auto line = GetLine();
-        for (int j = 0; j < n_turns; ++j) {
-            if (sscanf(line.c_str() + offset, "%d%n", &ability[i][j], &n) != 1)
-                return 3+team_size+i;
-            offset += n;
-        }
-        if (sscanf(line.c_str() + offset, "%1s", end) == 1)
-            return 3+team_size+i;
-    }
     return 0;
 }
 
 int CheckInput(int argc, char *argv[])
 {
-    vector<vector<int>> ability;
+    Strategy strategy;
     vector<Dino> team;
-    if (int line = Input(argc, argv, team, ability)) {
+    ProcessCommonArgs(argc, argv);
+    if (int line = Input(team, strategy)) {
         LOG("Input error in line %d!\n", line);
         return -1;
     }
-    Check(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    Check(team.data(), (int)team.size(), strategy);
     return 0;
 }
 
 int ChanceInput(int argc, char *argv[])
 {
-    vector<vector<int>> ability;
+    Strategy strategy;
     vector<Dino> team;
-    if (int line = Input(argc, argv, team, ability)) {
+    ProcessCommonArgs(argc, argv);
+    if (int line = Input(team, strategy)) {
         LOG("Input error in line %d!\n", line);
         return -1;
     }
-    int chance = Chance(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    int chance = Chance(team.data(), (int)team.size(), strategy);
     LOG("Chance: %d%%\n", chance);
     return 0;
 }
 
 int ExplainInput(int argc, char *argv[])
 {
-    vector<vector<int>> ability;
+    Strategy strategy;
     vector<Dino> team;
-    if (int line = Input(argc, argv, team, ability)) {
+    ProcessCommonArgs(argc, argv);
+    if (int line = Input(team, strategy)) {
         LOG("Input error in line %d!\n", line);
         return -1;
     }
-    string result = Explain(team.data(), (int)team.size(), ability.data(), (int)ability[0].size());
+    string result = Explain(team.data(), (int)team.size(), strategy);
     LOG(result.c_str());
     return 0;
 }
@@ -327,7 +283,7 @@ int Help()
 Options:
         -l, --loglevel <loglevel>   Change the default log level to <loglevel>. It can be a number from 0 to 4.
 
-Check a strategy from input or <file> if specified. The strategy has the following format:
+Checks a strategy from input or <file> if specified. The strategy has the following format:
         <boss_name>
         <n_teammates> <n_turns>
         <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speep_boost>
@@ -336,6 +292,58 @@ Check a strategy from input or <file> if specified. The strategy has the followi
         <teammate_1_turn_1_move> ... <teammate_1_turn_M_move>
         ...
         <teammate_N_turn_1_move> ... <teammate_N_turn_M_move>
+
+Also there is alternarive format:
+        <boss_name>
+        <n_teammates> 0
+        <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speep_boost>
+        ...
+        <teammate_N_name> <teammate_N_level> <teammate_N_health_boost> <teammate_N_damage_boost> <teammate_N_speep_boost>
+        <block>
+
+<block> ::=
+        <line_1>
+        ...
+        <line_N>
+The indent of all lines in the block must be the same.
+
+<line> ::=
+        <teammate_1_turn_X_move> ... <teammate_N_turn_X_move>
+OR
+        ?<condition>
+        <indent><block>
+        [:?<other_condition>
+        <indent><block>
+        ...
+        [:
+        <indent><block>]...]
+
+<condition> ::= logical expression using operations ||, &&, <, <=, >, >=, ==, !=, +, -, *, /, !, + (unary), - (unary)
+        over numbers and integer variables in the form <property>[<index>], where <index> is:
+            0 - boss
+            1..4 - teammates
+            5..6 - minions (depends on the number of teammates you have)
+        Properties are:
+            health
+            damage
+            speed
+            damage_factor (in percents)
+            speed_factor (in percents)
+            shield (in percents)
+            dodge_chance (in percents)
+            dodge_factor (in percents)
+            alive
+            cloak_factor (in percents)
+            crit_chance (in percents)
+            taunt
+            max_health
+            total_health
+            max_total_health
+            vulnerability (in percents)
+            devour_heal
+            damage_over_time
+            stun
+All properties are calculated at the beginning of the turn.
         )--", optarg);
     } else {
         printf(R"--(Usage: JWAcalc <options>

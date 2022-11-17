@@ -160,11 +160,15 @@ struct Dino
     {
         return floor(damage * DamageFactor());
     }
-    int Speed() const
+    double SpeedFactor() const
     {
         if (speed_factor < 0)
             return 0;
-        return Round(speed * speed_factor);
+        return speed_factor;
+    }
+    int Speed() const
+    {
+        return Round(speed * SpeedFactor());
     }
     bool Prepare(int ability_id);
     void Attack(Dino team[], int team_size);
@@ -212,7 +216,7 @@ struct Dino
             return 1;
         return dodge.begin()->second;
     }
-    double CloakFactor()
+    double CloakFactor() const
     {
         if (cloak_factor.size() == 0)
             return 1;
