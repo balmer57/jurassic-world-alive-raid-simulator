@@ -123,6 +123,10 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
     while (true) {
         if (round < boss->round + 1) {
             ++round;
+            if (round != 1)
+            {
+            	Stats::NextRound();
+            }
             ERROR("\nRound %d\n", round);
         }
         ERROR("\nTurn %d\n", boss->turn+1);
@@ -293,7 +297,7 @@ int StatisticsInput(int argc, char *argv[])
         LOG("Input error in line %d!\n", line);
         return -1;
     }
-    Stats::Init(team.size(), strategy.instructions.size());
+    Stats::Init(team.size(), strategy.instructions.size(), team[0].rounds);
     Statistics(team.data(), (int)team.size(), strategy);
     LOG("Wins: %d, Loses: %d, Out of turns: %d\n", Stats::GetWinCount(), Stats::GetDefeatCount(), Stats::GetOutOfTurnsCount());
     LOG("\nDeaths:\n");
@@ -316,11 +320,33 @@ int StatisticsInput(int argc, char *argv[])
     	std::string s = "";
         for (unsigned int j = 0; j < strategy.instructions.size(); j++)
         {
-        	std::string hp_str = std::to_string(min_hp[j]);
+        	std::string hp_str;
+        	if (min_hp[j] != -1)
+        	{
+        		hp_str = std::to_string(min_hp[j]);
+        	}
+        	else
+        	{
+        		hp_str = "*";
+        	}
         	hp_str.insert(hp_str.end(), 6 - hp_str.size(), ' ');
         	s += hp_str;
         }
-    	LOG("%-25s: %4s\n", team[i].kind->name.c_str(), s.c_str());
+    	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
+    }
+    LOG("\nRounds length:\n");
+    std::vector<int> min_turns = Stats::GetMinTurnCount();
+    std::vector<int> max_turns = Stats::GetMaxTurnCount();
+    for (int i = 0; i < team[0].rounds; i++)
+    {
+    	if (min_turns[i] != max_turns[i])
+    	{
+    		LOG("%d: %d .. %d\n", i, min_turns[i], max_turns[i]);
+    	}
+    	else
+    	{
+    		LOG("%d: %d\n", i, min_turns[i]);
+    	}
     }
     return 0;
 }
