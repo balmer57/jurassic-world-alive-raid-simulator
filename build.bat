@@ -9,4 +9,5 @@ g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o modifiers.o "modifiers.cpp"
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o utils.o "utils.cpp" 
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o expression.o "expression.cpp" 
 g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o ability.o "ability.cpp" 
-g++ -o JWAcalc JWAcalc.o ability.o actions.o dex.o dino.o expression.o input.o logger.o modifiers.o strprintf.o utils.o 
+g++ -std=c++17 -O3 -Wall -c -fmessage-length=0 -o stats.o "stats.cpp" 
+g++ -o JWAcalc JWAcalc.o ability.o actions.o dex.o dino.o expression.o input.o logger.o modifiers.o stats.o strprintf.o utils.o 
