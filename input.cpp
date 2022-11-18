@@ -24,15 +24,36 @@ std::vector<int> Strategy::Next(const Dino team[], int team_size, int &offset) c
     return {};
 }
 
+static int CurrLine = 1;
+static int NewLine = 1;
+
+inline int GetChar()
+{
+    int ch = getchar();
+    CurrLine = NewLine;
+    if (ch == '\n')
+        ++NewLine;
+    return ch;
+}
+
+inline void UngetChar(int ch)
+{
+    if (ch == '\n')
+        CurrLine = --NewLine;
+    ungetc(ch, stdin);
+}
+
 std::string GetLine()
 {
     std::string line;
     while(true) {
-        int c = getchar();
+        int c = GetChar();
         if (c == '\n' || c == -1)
-            return line;
+            break;
         line.push_back(c);
     }
+    line.push_back('\n');
+    return line;
 }
 
 std::string GetIndent()
@@ -40,20 +61,20 @@ std::string GetIndent()
     std::string line;
     int c;
     while(true) {
-        c = getchar();
+        c = GetChar();
         if (!isspace(c) || c == '\n' || c == -1)
-            break;;
+            break;
         line.push_back(c);
     }
     if (c != -1)
-        ungetc(c, stdin);
+        UngetChar(c);
     return line;
 }
 
 void UngetLine(const std::string &str)
 {
     for (auto i = str.rbegin(); i != str.rend(); ++i)
-        ungetc(*i, stdin);
+        UngetChar(*i);
 }
 
 Instruction ParseInstruction(int team_size, const char *line, int offset)
@@ -100,9 +121,9 @@ vector<Instruction> ParseCondition(int team_size, const char *line, const string
         UngetLine(indent);
         return std::move(result);
     }
-    auto ch = getchar();
+    auto ch = GetChar();
     if (ch != ':') {
-        ungetc(ch, stdin);
+        UngetChar(ch);
         UngetLine(indent);
         return std::move(result);
     }
@@ -147,7 +168,7 @@ vector<Instruction> ParseLine(int team_size, const string &indent, int offset)
         vector<Instruction> result;
         result.push_back(std::move(ParseInstruction(team_size, line.c_str(), offset)));
         return std::move(result);
-    } else if (*line.c_str() == '\0' && indent == "") {
+    } else if (*line.c_str() == '\n' && indent == "") {
         return {};
     } else
         throw invalid_argument(strprintf("Invalid line format near \"%.10s...\"", line.c_str()));
@@ -179,60 +200,56 @@ int Input(std::vector<Dino> &team, Strategy &strategy)
     char end[2];
     char boss[32];
     team.clear();
-    if (sscanf(GetLine().c_str(), "%s%1s", boss, end) != 1)
-        return 1;
-    auto boss_it = BossDex.find(boss);
-    if (boss_it == BossDex.end()) {
-        LOG("Unable to find %s boss\n", boss);
-        return 1;
-    }
-    team.push_back(boss_it->second[0]);
-    if (sscanf(GetLine().c_str(), "%d%d%1s", &team_size, &n_turns, end) != 2)
-        return 2;
-    for (int i = 0; i < team_size; ++i) {
-        char dino[32];
-        int level, health_boost, damage_boost, speed_boost;
-        if (sscanf(GetLine().c_str(), "%s%d%d%d%d%1s", dino, &level, &health_boost, &damage_boost, &speed_boost, end) != 5)
-            return 3+i;
-        auto dino_it = DinoDex.find(dino);
-        if (dino_it == DinoDex.end()) {
-            LOG("Unable to find %s\n", dino);
-            return 3+i;
-        }
-        team.push_back(Dino(1, i+1, level, health_boost, damage_boost, speed_boost, dino_it->second));
-    }
-    for (int i = 1; i < (int)boss_it->second.size(); ++i)
-        team.push_back(boss_it->second[i]);
-    if (n_turns != 0) {
-        vector<vector<int>> ability;
+    try {
+        if (sscanf(GetLine().c_str(), "%s%1s", boss, end) != 1)
+            throw invalid_argument("Expected boss name");
+        auto boss_it = BossDex.find(boss);
+        if (boss_it == BossDex.end())
+            throw invalid_argument(strprintf("Unable to find %s boss", boss));
+        team.push_back(boss_it->second[0]);
+        if (sscanf(GetLine().c_str(), "%d%d%1s", &team_size, &n_turns, end) != 2)
+            throw invalid_argument("Expected team size and number of turns");
         for (int i = 0; i < team_size; ++i) {
-            ability.emplace_back(n_turns);
-            int offset = 0, n;
-            auto line = GetLine();
-            for (int j = 0; j < n_turns; ++j) {
-                if (sscanf(line.c_str() + offset, "%d%n", &ability[i][j], &n) != 1)
-                    return 3+team_size+i;
-                offset += n;
+            char dino[32];
+            int level, health_boost, damage_boost, speed_boost;
+            if (sscanf(GetLine().c_str(), "%s%d%d%d%d%1s", dino, &level, &health_boost, &damage_boost, &speed_boost, end) != 5)
+                throw invalid_argument("Expected dino description");
+            auto dino_it = DinoDex.find(dino);
+            if (dino_it == DinoDex.end())
+                throw invalid_argument(strprintf("Unable to find %s", dino));
+            team.push_back(Dino(1, i+1, level, health_boost, damage_boost, speed_boost, dino_it->second));
+        }
+        for (int i = 1; i < (int)boss_it->second.size(); ++i)
+            team.push_back(boss_it->second[i]);
+        if (n_turns != 0) {
+            vector<vector<int>> ability;
+            for (int i = 0; i < team_size; ++i) {
+                ability.emplace_back(n_turns);
+                int offset = 0, n;
+                auto line = GetLine();
+                for (int j = 0; j < n_turns; ++j) {
+                    if (sscanf(line.c_str() + offset, "%d%n", &ability[i][j], &n) != 1)
+                        throw invalid_argument("Expected a number");
+                    offset += n;
+                }
+                if (sscanf(line.c_str() + offset, "%1s", end) == 1)
+                    throw invalid_argument("Extra characters in line");
             }
-            if (sscanf(line.c_str() + offset, "%1s", end) == 1)
-                return 3+team_size+i;
-        }
-        strategy.instructions.clear();
-        for (int i = 0; i < n_turns; ++i) {
-            Instruction instruction;
-            for (int j = 0; j < team_size; ++j)
-                instruction.abilities.push_back(ability[j][i]);
-            instruction.failure = i + 1;
-            instruction.success = i + 1;
-            strategy.instructions.push_back(std::move(instruction));
-        }
-    } else {
-        try {
+            strategy.instructions.clear();
+            for (int i = 0; i < n_turns; ++i) {
+                Instruction instruction;
+                for (int j = 0; j < team_size; ++j)
+                    instruction.abilities.push_back(ability[j][i]);
+                instruction.failure = i + 1;
+                instruction.success = i + 1;
+                strategy.instructions.push_back(std::move(instruction));
+            }
+        } else {
             strategy = std::move(ParseStrategy(team_size));
-        } catch(std::exception &e) {
-            LOG("Error: %s\n", e.what());
-            return -1;
         }
+    } catch(std::exception &e) {
+        LOG("Error on line %d: %s\n", CurrLine, e.what());
+        return CurrLine;
     }
     return 0;
 }
