@@ -297,56 +297,80 @@ int StatisticsInput(int argc, char *argv[])
         LOG("Input error in line %d!\n", line);
         return -1;
     }
+    // Prepare
     Stats::Init(team.size(), strategy.instructions.size(), team[0].rounds);
+
+    // Run
     Statistics(team.data(), (int)team.size(), strategy);
+
+    // Write output
     LOG("Wins: %d, Loses: %d, Out of turns: %d\n", Stats::GetWinCount(), Stats::GetDefeatCount(), Stats::GetOutOfTurnsCount());
+
     LOG("\nDeaths:\n");
     for (unsigned int i = 0; i < team.size(); i++)
     {
-    	std::vector<int> deaths = Stats::GetDeaths(i);
+    	std::vector< std::vector<int> > deaths = Stats::GetDeaths(i);
     	std::string s = "";
-        for (unsigned int j = 0; j < strategy.instructions.size(); j++)
+        for (int j = 0; j < team[0].rounds; j++)
         {
-        	std::string death_str = std::to_string(deaths[j]);
-        	death_str.insert(death_str.end(), 6 - death_str.size(), ' ');
-        	s += death_str;
+            for (unsigned int k = 0; k < deaths[j].size(); k++)
+            {
+				std::string death_str = std::to_string(deaths[j][k]);
+				death_str.insert(death_str.end(), 6 - death_str.size(), ' ');
+				s += death_str;
+            }
+            if (j != team[0].rounds - 1)
+            {
+            	s += " | ";
+            }
         }
     	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
     }
+
     LOG("\nMinimal HP:\n");
     for (unsigned int i = 0; i < team.size(); i++)
     {
-    	std::vector<int> min_hp = Stats::GetMinHP(i);
+    	std::vector< std::vector<int> > min_hp = Stats::GetMinHP(i);
     	std::string s = "";
-        for (unsigned int j = 0; j < strategy.instructions.size(); j++)
+        for (int j = 0; j < team[0].rounds; j++)
         {
-        	std::string hp_str;
-        	if (min_hp[j] != -1)
-        	{
-        		hp_str = std::to_string(min_hp[j]);
-        	}
-        	else
-        	{
-        		hp_str = "*";
-        	}
-        	hp_str.insert(hp_str.end(), 6 - hp_str.size(), ' ');
-        	s += hp_str;
+            for (unsigned int k = 0; k < min_hp[j].size(); k++)
+            {
+				std::string hp_str;
+				if (min_hp[j][k] != -1)
+				{
+					hp_str = std::to_string(min_hp[j][k]);
+				}
+				else
+				{
+					hp_str = "*";
+				}
+				hp_str.insert(hp_str.end(), 6 - hp_str.size(), ' ');
+				s += hp_str;
+            }
+            if (j != team[0].rounds - 1)
+            {
+            	s += " | ";
+            }
         }
     	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
     }
+
     LOG("\nRounds length:\n");
-    std::vector<int> min_turns = Stats::GetMinTurnCount();
-    std::vector<int> max_turns = Stats::GetMaxTurnCount();
     for (int i = 0; i < team[0].rounds; i++)
     {
-    	if (min_turns[i] != max_turns[i])
-    	{
-    		LOG("%d: %d .. %d\n", i, min_turns[i], max_turns[i]);
-    	}
-    	else
-    	{
-    		LOG("%d: %d\n", i, min_turns[i]);
-    	}
+        std::vector<int> turns = Stats::GetTurnCount(i);
+    	std::string s = "";
+        for (unsigned int j = 0; j < turns.size(); j++)
+        {
+        	if (turns[j] != 0)
+        	{
+        		std::string round_str = std::to_string(j + 1) + " (" + std::to_string(turns[j]) + ")";
+        		round_str.insert(round_str.end(), 10 - round_str.size(), ' ');
+        		s += round_str;
+        	}
+        }
+        LOG("%d: %s\n", i + 1, s.c_str());
     }
     return 0;
 }
