@@ -170,7 +170,7 @@ struct Dino
     {
         return Round(speed * SpeedFactor());
     }
-    bool Prepare(int ability_id);
+    bool Prepare(int ability_id, bool force = false);
     void Attack(Dino team[], int team_size);
     void CounterAttack(Dino team[], int team_size);
     void Impose(const modifiers::Modifier *mod, Dino &author);
