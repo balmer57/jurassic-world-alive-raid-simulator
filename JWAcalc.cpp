@@ -286,9 +286,9 @@ Options:
 Checks a strategy from input or <file> if specified. The strategy has the following format:
         <boss_name>
         <n_teammates> <n_turns>
-        <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speep_boost>
+        <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speed_boost>
         ...
-        <teammate_N_name> <teammate_N_level> <teammate_N_health_boost> <teammate_N_damage_boost> <teammate_N_speep_boost>
+        <teammate_N_name> <teammate_N_level> <teammate_N_health_boost> <teammate_N_damage_boost> <teammate_N_speed_boost>
         <teammate_1_turn_1_move> ... <teammate_1_turn_M_move>
         ...
         <teammate_N_turn_1_move> ... <teammate_N_turn_M_move>
@@ -296,9 +296,9 @@ Checks a strategy from input or <file> if specified. The strategy has the follow
 Also there is alternarive format:
         <boss_name>
         <n_teammates> 0
-        <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speep_boost>
+        <teammate_1_name> <teammate_1_level> <teammate_1_health_boost> <teammate_1_damage_boost> <teammate_1_speed_boost>
         ...
-        <teammate_N_name> <teammate_N_level> <teammate_N_health_boost> <teammate_N_damage_boost> <teammate_N_speep_boost>
+        <teammate_N_name> <teammate_N_level> <teammate_N_health_boost> <teammate_N_damage_boost> <teammate_N_speed_boost>
         <block>
 
 <block> ::=
