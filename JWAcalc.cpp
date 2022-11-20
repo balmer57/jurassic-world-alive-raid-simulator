@@ -131,7 +131,7 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
             if (!team[i].Alive())
                 continue;
             if (i == 0)
-                boss->Prepare(boss->turn % (int)boss->kind->ability[boss->round].size());
+                boss->Prepare(boss->turn % (int)boss->kind->ability[boss->round].size(), true);
             else if (team[i].team == 1) { // Teammates
                 int ability_id = ability[i-1]-1;
                 if (!team[i].Prepare(ability_id)) {
