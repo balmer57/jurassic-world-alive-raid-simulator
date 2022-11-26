@@ -5,6 +5,7 @@
 #include <string>
 #include <cstring>
 #include "expression.h"
+#include <stdexcept>
 
 using namespace std;
 
