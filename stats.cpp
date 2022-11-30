@@ -1,132 +1,223 @@
 #include "stats.h"
 #include <vector>
+#include "logger.h"
 
-unsigned int Stats::current_turn = 0;
-unsigned int Stats::current_turn_in_round = 0;
-unsigned int Stats::current_round = 0;
+#undef SetTurn
+#undef RegisterHit
+#undef RegisterResult
+#undef PrintStats
 
-unsigned int Stats::win_count = 0;
-unsigned int Stats::defeat_count = 0;
-unsigned int Stats::out_of_turns_count = 0;
-std::vector<bool> Stats::was_killed_this_turn;
-std::vector< std::vector< std::vector<int> > > Stats::min_hp;
-std::vector< std::vector< std::vector<int> > > Stats::death_count;
-std::vector< std::vector<int> > Stats::turns_in_rounds;
-bool Stats::stats_inited = false;
+using namespace std;
 
-void Stats::RegisterResult(BattleResult result)
+bool BaseStats::on = false;
+Wrapper<&BaseStats::Init> Stats::Init;
+Wrapper<&BaseStats::NextTurn> Stats::NextTurn;
+Wrapper<&BaseStats::RegisterHit> Stats::RegisterHit;
+Wrapper<&BaseStats::RegisterResult> Stats::RegisterResult;
+Wrapper<&BaseStats::Print> Stats::Print;
+
+/*
+ * 1. разделение статистики на выигрышную и проигрышную
+ * 2. Кто по кому и сколько ударил в среднем по каждому раунду
+ * 3. Минимальное HP в каждом раунде
+ * 4. Вероятность смерти в каждом раунде
+ */
+
+
+void BaseStats::Init(int _team_size)
 {
-	if (stats_inited)
-	{
-		switch (result)
-		{
-			case RESULT_OUT_OF_TURNS:
-				out_of_turns_count++;
-				break;
-			case RESULT_DEFEAT:
-				defeat_count++;
-				break;
-			case RESULT_WIN:
-				win_count++;
-				break;
-		}
-		NextRound();
-	}
+    team_size = _team_size;
 }
 
-void Stats::RegisterHit(int target, int hp)
+void BaseStats::RegisterResult(bool result)
 {
-	if (stats_inited)
-	{
-		if (min_hp[target][current_round].size() <= current_turn_in_round)
-		{
-			for(unsigned int i = 0; i < min_hp.size(); i++)
-			{
-				min_hp[i][current_round].push_back(-1);
-				death_count[i][current_round].push_back(0);
-			}
-		}
+    if (result)
+        win_count++;
+    else
+        defeat_count++;
 
-		if ((min_hp[target][current_round][current_turn_in_round] > hp) ||
-			(min_hp[target][current_round][current_turn_in_round] == -1))
-		{
-			min_hp[target][current_round][current_turn_in_round] = hp;
-		}
-		if ((hp == 0) && !was_killed_this_turn[target])
-		{
-			was_killed_this_turn[target] = true;
-			death_count[target][current_round][current_turn_in_round]++;
-		}
-	}
+    for (auto &t: turns) {
+        int round, turn;
+        std::tie(round, turn) = t;
+        if ((int)round_turn_count[result].size() <= round)
+            round_turn_count[result].resize(round+1);
+        if ((int)round_turn_count[result][round].size() <= turn)
+            round_turn_count[result][round].resize(turn+1, 0);
+        ++round_turn_count[result][round][turn];
+    }
+
+    for (auto &hit: this->hit) {
+        int round, turn;
+        int attacker_index, target_index;
+        int target_health;
+        int dmg;
+        std::tie(round, turn, attacker_index, target_index, target_health, dmg) = hit;
+
+        if ((int)min_hp[result].size() <= round)
+            min_hp[result].resize(round+1);
+        if ((int)min_hp[result][round].size() <= turn)
+            min_hp[result][round].resize(turn+1, vector<int>(team_size, -1));
+        if (min_hp[result][round][turn][target_index] == -1 ||
+            min_hp[result][round][turn][target_index] > target_health)
+            min_hp[result][round][turn][target_index] = target_health;
+
+        if ((int)death_count[result].size() <= round)
+            death_count[result].resize(round+1);
+        if ((int)death_count[result][round].size() <= turn)
+            death_count[result][round].resize(turn+1, vector<int>(team_size, 0));
+        if (target_health == 0 && dmg > 0)
+            ++death_count[result][round][turn][target_index];
+
+        if ((int)damage[result].size() <= round)
+            damage[result].resize(round+1);
+        if ((int)damage[result][round].size() <= turn)
+            damage[result][round].resize(turn+1, vector<vector<int>>(team_size, vector<int>(team_size, 0)));
+        damage[result][round][turn][attacker_index][target_index] += dmg;
+    }
+
+    curr_round = 0;
+    curr_turn = 0;
+    hit.clear();
+    turns.clear();
 }
 
-void Stats::NextTurn()
+void BaseStats::RegisterHit(const Dino &attacker, const Dino &target, int damage)
 {
-	if (stats_inited)
-	{
-		current_turn++;
-		current_turn_in_round++;
-		for (unsigned int j = 0; j < was_killed_this_turn.size(); j++)
-		{
-			was_killed_this_turn[j] = false;
-		}
-	}
+    hit.emplace_back(curr_round, curr_turn, attacker.index, target.index, target.health, damage);
 }
 
-void Stats::NextRound()
+void BaseStats::NextTurn(int round, int turn)
 {
-	if (stats_inited)
-	{
-		if (turns_in_rounds[current_round].size() < current_turn_in_round)
-		{
-			turns_in_rounds[current_round].resize(current_turn_in_round);
-		}
-
-		// 'current_turn_in_round == 0' happens in out of turns case
-		if (current_turn_in_round != 0)
-		{
-			turns_in_rounds[current_round][current_turn_in_round - 1]++;
-		}
-		current_round++;
-		current_turn_in_round = 0;
-	}
+    curr_round = round;
+    curr_turn = turn;
+    turns.emplace_back(round, turn);
 }
 
-void Stats::ResetTurn()
+void BaseStats::Print(Dino team[], int team_size)
 {
-	if (stats_inited)
-	{
-		current_round = 0;
-		current_turn = 0;
-		current_turn_in_round = 0;
-		for (unsigned int j = 0; j < was_killed_this_turn.size(); j++)
-		{
-			was_killed_this_turn[j] = false;
-		}
-	}
-}
+    ERROR("Chance: %d%%\n", win_count * 100 / (win_count + defeat_count));
+//    WARNING("\n");
+//    WARNING("Wins: %d, Loses: %d\n", win_count, defeat_count);
+    for (int w = 1; w >= 0; --w) {
+        string s = strprintf("%-30s   ", w ? strprintf("Death (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
+                                           : strprintf("Death (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
+        INFO("\n");
+        for (int r = 0; r < (int)death_count[w].size(); ++r) {
+            if (r != 0)
+                s += "| ";
+            for (int t = 0; t < (int)death_count[w][r].size(); ++t)
+                s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
+        }
+        INFO("%s\n", s.c_str());
+        for (int i = 0; i < team_size; ++i) {
+            std::string s = strprintf("%30s ", team[i].name.c_str());
+            for (int r = 0; r < (int)death_count[w].size(); ++r) {
+                s += "| ";
+                for (int t = 0; t < (int)death_count[w][r].size(); ++t) {
+                    s += strprintf("%4d%% ", death_count[w][r][t][i] * 100 / round_turn_count[w][0][0]);
+                }
+            }
+            INFO("%s\n", s.c_str());
+        }
+    }
 
-void Stats::Init(int team_size, int turns_count, int round_count)
-{
-	stats_inited = true;
-	win_count = 0;
-	defeat_count = 0;
-	out_of_turns_count = 0;
-	current_turn = 0;
+    for (int w = 1; w >= 0; --w) {
+        string s = strprintf("%-30s   ", w ? strprintf("Minimal HP (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
+                                           : strprintf("Minimal HP (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
+        INFO("\n");
+        for (int r = 0; r < (int)min_hp[w].size(); ++r) {
+            if (r != 0)
+                s += "| ";
+            for (int t = 0; t < (int)min_hp[w][r].size(); ++t)
+                s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
+        }
+        INFO("%s\n", s.c_str());
+        for (int i = 0; i < team_size; ++i)
+        {
+            std::string s = strprintf("%30s ", team[i].name.c_str());
+            for (int r = 0; r < (int)min_hp[w].size(); ++r)
+            {
+                s += "| ";
+                for (int t = 0; t < (int)min_hp[w][r].size(); ++t)
+                    s += min_hp[w][r][t][i] != -1 ? strprintf("%5d ", min_hp[w][r][t][i]) : "    * ";
+            }
+            INFO("%s\n", s.c_str());
+        }
+    }
 
-	was_killed_this_turn.resize(team_size);
+    for (int w = 1; w >= 0; --w) {
+        string s = strprintf("%-30s   ", w ? strprintf("Rounds length (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
+                                           : strprintf("Rounds length (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
+        INFO("\n");
+        for (int t = 0; ; ++t) {
+            int r;
+            for (r = 0; r < (int)round_turn_count[w].size(); ++r) {
+                if (t < (int)round_turn_count[w][r].size())
+                    break;
+            }
+            if (r == (int)round_turn_count[w].size())
+                break;
+            s += strprintf("%5d ", t+1);
+        }
+        INFO("%s\n", s.c_str());
+        for (int r = 0; r < (int)round_turn_count[w].size(); ++r)
+        {
+            std::string s = strprintf("%30s | ", strprintf("Round %d", r+1).c_str());
+            for (int t = 0; t < (int)round_turn_count[w][r].size(); ++t)
+            {
+                int rt_count = round_turn_count[w][r][t] - (t+1 < (int)round_turn_count[w][r].size() ? round_turn_count[w][r][t+1] : 0);
+                s += strprintf("%4d%% ", rt_count * 100 / round_turn_count[w][0][0]);
+            }
+            INFO("%s\n", s.c_str());
+        }
+    }
 
-	min_hp.resize(team_size);
-	for (int i = 0; i < team_size; i++)
-	{
-		min_hp[i].resize(round_count);
-	}
-
-	death_count.resize(team_size);
-	for (int i = 0; i < team_size; i++)
-	{
-		death_count[i].resize(round_count);
-	}
-
-	turns_in_rounds.resize(round_count);
+    for (int i = 0; i < team_size; ++i) {
+        DEBUG("\n");
+        DEBUG("%s avg. damage/heal\n", team[i].name.c_str());
+        for (int w = 1; w >= 0; --w) {
+            string s = strprintf("%-30s   ", w ? strprintf("Dealt to (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
+                                               : strprintf("Dealt to (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
+            for (int r = 0; r < (int)damage[w].size(); ++r) {
+                if (r != 0)
+                    s += "| ";
+                for (int t = 0; t < (int)damage[w][r].size(); ++t)
+                    s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
+            }
+            DEBUG("%s\n", s.c_str());
+            for (int j = 0; j < team_size; ++j) {
+                string s = strprintf("%30s ", team[j].name.c_str());
+                for (int r = 0; r < (int)damage[w].size(); ++r) {
+                    s += "| ";
+                    for (int t = 0; t < (int)damage[w][r].size(); ++t) {
+                        s += strprintf("%5d ", damage[w][r][t][i][j] / round_turn_count[w][r][t]);
+                    }
+                }
+                DEBUG("%s\n", s.c_str());
+            }
+        }
+        for (int w = 1; w >= 0; --w) {
+            string s = strprintf("%-30s   ", w ? strprintf("Received from (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
+                                        : strprintf("Received from (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
+            for (int r = 0; r < (int)damage[w].size(); ++r) {
+                if (r != 0)
+                    s += "| ";
+                for (int t = 0; t < (int)damage[w][r].size(); ++t)
+                    s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
+            }
+            DEBUG("%s\n", s.c_str());
+            for (int j = 0; j < team_size; ++j) {
+                string s = strprintf("%30s ", team[j].name.c_str());
+                for (int r = 0; r < (int)damage[w].size(); ++r) {
+                    s += "| ";
+                    for (int t = 0; t < (int)damage[w][r].size(); ++t) {
+                        s += strprintf("%5d ", damage[w][r][t][j][i] / round_turn_count[w][r][t]);
+                    }
+                }
+                DEBUG("%s\n", s.c_str());
+            }
+        }
+    }
+    DEBUG("\n");
+    DEBUG("You can reduce log size using --loglevel command line argument.\n");
 }

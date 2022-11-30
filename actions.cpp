@@ -16,14 +16,14 @@ std::list<std::unique_ptr<Action>> actions::Attack(double _factor, int _flags)
     list.emplace_back(new PrepareAttack(_flags))->target = TARGET_SELF;
     list.emplace_back(new AttackAction(_factor, _flags))->target = TARGET_INHERIT;
     list.emplace_back(new Revenge())->target = TARGET_ALL_OPPONENTS;
-    return std::move(list);
+    return list;
 }
 
 std::list<std::unique_ptr<Action>> actions::DevouringAttack(double _attack_factor, double _devour_factor, int _duration, int _flags)
 {
     std::list<std::unique_ptr<Action>> list = std::move(actions::Attack(_attack_factor, _flags));
     list.emplace_back(new DevourHeal(_devour_factor, _duration))->target = TARGET_SELF;
-    return std::move(list);
+    return list;
 }
 
 std::list<std::unique_ptr<Action>> actions::Rend(double _factor, int _flags)
@@ -80,10 +80,11 @@ void AttackAction::Do(Dino &self, Dino &target) const
     self.last_damage = max(self.last_damage, (int)damage); // ?
     if (!self.attacker)
         target.attacker = &self;
-    target.Hit(damage);
+    target.Hit(self, damage);
     WARNING("%s attacks %s for %d%s%s%s%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, vulnerability ? " Vulnerability" : "", cloak ? " Cloak" : "", crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
     if (!target.Alive()) {
         ERROR("%s dies!\n", target.Name().c_str());
+        REMOVE_MODS(target, true, DEBUG("%s took %s to the grave\n", target.Name().c_str(), modifier->name.c_str()));
         self.killer = true;
     } else if (target.health == 0)
         INFO("%s is immune to HP changes.\n", target.Name().c_str());
@@ -100,14 +101,14 @@ std::list<std::unique_ptr<Action>> actions::Heal(double _factor, int _flags)
     std::list<std::unique_ptr<Action>> list;
     list.emplace_back(new PrepareAttack())->target = TARGET_SELF;
     list.emplace_back(new HealAction(_factor, _flags))->target = TARGET_INHERIT;
-    return std::move(list);
+    return list;
 }
 
 std::list<std::unique_ptr<Action>> actions::FixedHeal(double _factor, int _flags)
 {
     std::list<std::unique_ptr<Action>> list;
     list.emplace_back(new HealAction(_factor / 100., _flags|FIXED))->target = TARGET_INHERIT;
-    return std::move(list);
+    return list;
 }
 
 void HealAction::Do(Dino &self, Dino &target) const
@@ -125,7 +126,7 @@ void HealAction::Do(Dino &self, Dino &target) const
         return;
     }
     heal = target.HealAbsorb((int)heal);
-    target.Heal((int)heal);
+    target.Heal(self, (int)heal);
     WARNING("%s heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), (int)heal);
 }
 
@@ -134,7 +135,7 @@ void Sacrifice::Do(Dino &self, Dino &target) const
     int damage = floor(target.max_health * factor);
     if (damage >= target.health)
         damage = target.health - 1;
-    target.Hit(damage);
+    target.Hit(self, damage);
     WARNING("%s sacrifices %s for %d\n", self.Name().c_str(), target.Name().c_str(), damage);
 }
 
@@ -145,7 +146,7 @@ void RallyHeal::Do(Dino &self, Dino &target) const
         INFO("%s is immune to HP changes\n", target.Name().c_str());
         return;
     }
-    target.Heal(heal);
+    target.Heal(self, heal);
     WARNING("%s rally heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), heal);
 }
 
@@ -169,7 +170,7 @@ std::list<std::unique_ptr<Action>> actions::Taunt(int _duration)
     std::list<std::unique_ptr<Action>> list;
     list.emplace_back(new Remove(TAUNT))->target = TARGET_TEAM;
     list.emplace_back(new TauntAction(_duration))->target = TARGET_SELF;
-    return std::move(list);
+    return list;
 }
 
 void TauntAction::Do(Dino &self, Dino &target) const

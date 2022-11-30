@@ -62,6 +62,7 @@ Dino::Dino(int _team, int _index, int _level, int _health_boost, int _damage_boo
     , armor(_kind->armor)
     , total_health(rounds * (int)(kind->health * LevelFactor[level] * BoostFactor[health_boost]))
     , max_total_health(total_health)
+    , name(team != 0 ? strprintf("%s#%d", kind->name.c_str(), _index) : kind->name)
 {
     for (int i = 0; i < (int)kind->ability[round].size(); ++i) {
         cooldown[i] = Ability(i)->delay;
@@ -127,7 +128,7 @@ void Dino::DevourHeal()
     if (health == 0 || devour_heal == 0)
         return;
     devour_heal = HealAbsorb(devour_heal);
-    Heal(devour_heal);
+    Heal(*this, devour_heal);
     WARNING("%s is [devour] healed by %d\n", Name().c_str(), devour_heal);
 }
 
@@ -135,10 +136,11 @@ void Dino::DamageOverTime(Dino team[], int team_size)
 {
     if (health == 0 || damage_over_time == 0)
         return;
-    Hit(damage_over_time);
+    Hit(*this, damage_over_time);
     WARNING("%s is damaged [over time] by %d\n", Name().c_str(), damage_over_time);
     if (!Alive()) {
         ERROR("%s dies!\n", Name().c_str());
+        REMOVE_MODS(*this, true, DEBUG("%s took %s to the grave\n", Name().c_str(), modifier->name.c_str()));
         for (int i = 0; i < team_size; ++i) {
             if (team[i].team != this->team)
                 continue;
@@ -150,9 +152,7 @@ void Dino::DamageOverTime(Dino team[], int team_size)
 
 std::string Dino::Name() const
 {
-    if (team != 0)
-        return strprintf("%s#%d (+%d,*%d,>%d)", kind->name.c_str(), index, health, Damage(), Speed());
-    return strprintf("%s (+%d,*%d,>%d)", kind->name.c_str(), health, Damage(), Speed());
+    return strprintf("%s (+%d,*%d,>%d)", name.c_str(), health, Damage(), Speed());
 }
 
 void Dino::Revive(bool total)
@@ -168,21 +168,22 @@ void Dino::Revive(bool total)
     INFO("%s is revived!\n", Name().c_str());
 }
 
-void Dino::Hit(int damage)
+void Dino::Hit(const Dino &attacker, int damage)
 {
     if (damage > health)
         damage = health;
     health -= damage;
     total_health -= damage;
-	Stats::RegisterHit(index, health);
+	Stats::RegisterHit(attacker, *this, damage);
 }
 
-void Dino::Heal(int heal)
+void Dino::Heal(const Dino &healer, int heal)
 {
     if (heal > max_health - health)
         heal = max_health - health;
     health += heal;
     total_health += heal;
+    Stats::RegisterHit(healer, *this, -heal);
 }
 
 int Dino::Absorb(int damage)

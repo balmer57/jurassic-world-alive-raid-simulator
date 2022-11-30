@@ -91,7 +91,7 @@ public:
         for (auto it = actions.rbegin(); it != actions.rend(); ++it) {
             list.push_front(std::move(*it));
         }
-        return std::move(list);
+        return list;
     }
 };
 
@@ -108,7 +108,7 @@ public:
         }
         std::list<std::unique_ptr<Action>> list(std::move(ActionGroupFunction(target, std::forward<Args>(args)...)));
         list.push_front(std::move(std::unique_ptr<A>(new A(std::forward<A&&>(action)))));
-        return std::move(list);
+        return list;
     }
 };
 
@@ -125,7 +125,7 @@ public:
 template<typename ...Args>
 std::list<std::unique_ptr<Action>> ActionGroupFunction(int target, Args &&...args)
 {
-    return std::move(ActionGroupClass<Args...>::Make(target, std::forward<Args>(args)...));
+    return ActionGroupClass<Args...>::Make(target, std::forward<Args>(args)...);
 }
 
 static const int GROUP = 1 << 0;

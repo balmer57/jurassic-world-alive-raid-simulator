@@ -93,7 +93,7 @@ Instruction ParseInstruction(int team_size, const char *line, int offset)
         throw invalid_argument(strprintf("Invalid line format near \"%.10s...\"", line));
     instruction.success = offset+1;
     instruction.failure = offset+1;
-    return std::move(instruction);
+    return instruction;
 }
 
 vector<Instruction> ParseBlock(int team_size, const string &indent, int offset);
@@ -120,13 +120,13 @@ vector<Instruction> ParseCondition(int team_size, const char *line, const string
     curr_indent = GetIndent();
     if (curr_indent != indent) {
         UngetLine(indent);
-        return std::move(result);
+        return result;
     }
     auto ch = GetChar();
     if (ch != ':') {
         UngetChar(ch);
         UngetLine(indent);
-        return std::move(result);
+        return result;
     }
 
     auto curr_line = GetLine();
@@ -151,7 +151,7 @@ vector<Instruction> ParseCondition(int team_size, const char *line, const string
         for (auto it = failure_block.begin(); it != failure_block.end(); ++it)
             result.push_back(std::move(*it));
     }
-    return std::move(result);
+    return result;
 }
 
 vector<Instruction> ParseLine(int team_size, const string &indent, int offset)
@@ -168,7 +168,7 @@ vector<Instruction> ParseLine(int team_size, const string &indent, int offset)
     } else if (isdigit(*line.c_str())) {
         vector<Instruction> result;
         result.push_back(std::move(ParseInstruction(team_size, line.c_str(), offset)));
-        return std::move(result);
+        return result;
     } else if (*line.c_str() == '\n' && indent == "") {
         return {};
     } else
@@ -181,7 +181,7 @@ vector<Instruction> ParseBlock(int team_size, const string &indent, int offset)
     while (true) {
         auto line = ParseLine(team_size, indent, offset);
         if (line.size() == 0)
-            return std::move(result);
+            return result;
         offset += line.size();
         for (auto line_it = line.begin(); line_it != line.end(); ++line_it)
             result.push_back(std::move(*line_it));
@@ -192,7 +192,7 @@ Strategy ParseStrategy(int team_size)
 {
     Strategy strategy;
     strategy.instructions = std::move(ParseBlock(team_size, "", 0));
-    return std::move(strategy);
+    return strategy;
 }
 
 int Input(std::vector<Dino> &team, Strategy &strategy)

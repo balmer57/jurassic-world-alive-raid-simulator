@@ -54,9 +54,11 @@ int Step(Dino team[], int team_size)
 {
     int i;
     Dino *boss = team;
-    Dino *dino[team_size];
-    for (i = 0; i < team_size; ++i)
+    Dino *dino[team_size], *counter_team[team_size];
+    for (i = 0; i < team_size; ++i) {
         dino[i] = &team[i];
+        counter_team[i] = &team[i];
+    }
     for (int j = 0; j < team_size; ++j) {
         for (i = team_size - 1; i - 1 >= j; --i) { // Oh, yeah, this is bubble sort :)
             if (SpeedCmp(*dino[i], *dino[i-1]))
@@ -65,8 +67,12 @@ int Step(Dino team[], int team_size)
         if (!dino[j]->Alive())
             continue;
         dino[j]->Attack(team, team_size);
-        for (i = 0; i < team_size; ++i) {
-            team[i].CounterAttack(team, team_size);
+        for (int k = 0; k < team_size; ++k) {
+            for (i = team_size - 1; i - 1 >= k; --i) { // Oh, yeah, this is bubble sort again
+                if (SpeedCmp(*counter_team[i], *counter_team[i-1]))
+                    swap(counter_team[i-1], counter_team[i]);
+            }
+            counter_team[k]->CounterAttack(team, team_size);
         }
         for (i = 0; i < team_size; ++i) {
             if (team[i].team == 0)
@@ -119,17 +125,13 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
     int round = 0;
     Dino *boss = team;
     int offset = 0;
-    Stats::ResetTurn();
     while (true) {
         if (round < boss->round + 1) {
             ++round;
-            if (round != 1)
-            {
-            	Stats::NextRound();
-            }
-            ERROR("\nRound %d\n", round);
+            ERROR("Round %d\n", round);
         }
-        ERROR("\nTurn %d\n", boss->turn+1);
+        ERROR("Turn %d\n", boss->turn+1);
+        Stats::NextTurn(boss->round, boss->turn);
         auto ability = strategy.Next(team, team_size, offset);
         if (ability.size() == 0)
             break;
@@ -152,22 +154,14 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
         }
 
         int result = Step(team, team_size);
-        Stats::NextTurn();
         if (result == 0)
             continue;
         if (result == 1)
-        {
-        	Stats::RegisterResult(RESULT_WIN);
             ERROR("Win!\n");
-        }
         else
-        {
-        	Stats::RegisterResult(RESULT_DEFEAT);
             ERROR("Defeat!\n");
-        }
         return result == 1;
     }
-    Stats::RegisterResult(RESULT_OUT_OF_TURNS);
     ERROR("You are out of turns!\n");
     return false;
 }
@@ -177,26 +171,18 @@ int Chance(Dino team0[], int team_size, const Strategy &strategy, int n_checks =
     int result = 0;
     auto log = Logger::level;
     Logger::level = 0;
+    Stats::on = true;
+    Stats::Init(team_size);
     for (int i = 0; i < n_checks; ++i) {
         vector<Dino> team(team0, team0 + team_size);
-        if (Check(team.data(), team_size, strategy))
+        bool win = Check(team.data(), team_size, strategy);
+        Stats::RegisterResult(win);
+        if (win)
             ++result;
     }
     Logger::level = log;
+    Stats::Print(team0, team_size);
     return 100 * result / n_checks;
-}
-
-void Statistics(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
-{
-    int result = 0;
-    auto log = Logger::level;
-    Logger::level = 0;
-    for (int i = 0; i < n_checks; ++i) {
-        vector<Dino> team(team0, team0 + team_size);
-        if (Check(team.data(), team_size, strategy))
-            ++result;
-    }
-    Logger::level = log;
 }
 
 std::string Explain(Dino team0[], int team_size, const Strategy &strategy, int n_checks = 1000)
@@ -283,95 +269,7 @@ int ChanceInput(int argc, char *argv[])
         LOG("Input error in line %d!\n", line);
         return -1;
     }
-    int chance = Chance(team.data(), (int)team.size(), strategy);
-    LOG("Chance: %d%%\n", chance);
-    return 0;
-}
-
-int StatisticsInput(int argc, char *argv[])
-{
-    Strategy strategy;
-    vector<Dino> team;
-    ProcessCommonArgs(argc, argv);
-    if (int line = Input(team, strategy)) {
-        LOG("Input error in line %d!\n", line);
-        return -1;
-    }
-    // Prepare
-    Stats::Init(team.size(), strategy.instructions.size(), team[0].rounds);
-
-    // Run
-    Statistics(team.data(), (int)team.size(), strategy);
-
-    // Write output
-    LOG("Wins: %d, Loses: %d, Out of turns: %d\n", Stats::GetWinCount(), Stats::GetDefeatCount(), Stats::GetOutOfTurnsCount());
-
-    LOG("\nDeaths:\n");
-    for (unsigned int i = 0; i < team.size(); i++)
-    {
-    	std::vector< std::vector<int> > deaths = Stats::GetDeaths(i);
-    	std::string s = "";
-        for (int j = 0; j < team[0].rounds; j++)
-        {
-            for (unsigned int k = 0; k < deaths[j].size(); k++)
-            {
-				std::string death_str = std::to_string(deaths[j][k]);
-				death_str.insert(death_str.end(), 6 - death_str.size(), ' ');
-				s += death_str;
-            }
-            if (j != team[0].rounds - 1)
-            {
-            	s += " | ";
-            }
-        }
-    	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
-    }
-
-    LOG("\nMinimal HP:\n");
-    for (unsigned int i = 0; i < team.size(); i++)
-    {
-    	std::vector< std::vector<int> > min_hp = Stats::GetMinHP(i);
-    	std::string s = "";
-        for (int j = 0; j < team[0].rounds; j++)
-        {
-            for (unsigned int k = 0; k < min_hp[j].size(); k++)
-            {
-				std::string hp_str;
-				if (min_hp[j][k] != -1)
-				{
-					hp_str = std::to_string(min_hp[j][k]);
-				}
-				else
-				{
-					hp_str = "*";
-				}
-				hp_str.insert(hp_str.end(), 6 - hp_str.size(), ' ');
-				s += hp_str;
-            }
-            if (j != team[0].rounds - 1)
-            {
-            	s += " | ";
-            }
-        }
-    	LOG("%-25s: %s\n", team[i].kind->name.c_str(), s.c_str());
-    }
-
-    LOG("\nRounds length:\n");
-    for (int i = 0; i < team[0].rounds; i++)
-    {
-        std::vector<int> turns = Stats::GetTurnCount(i);
-    	std::string s = "";
-        for (unsigned int j = 0; j < turns.size(); j++)
-        {
-        	if (turns[j] != 0)
-        	{
-        		std::string round_str = std::to_string(j + 1) + " (" + std::to_string(turns[j]) + ")";
-        		round_str.insert(round_str.end(), 10 - round_str.size(), ' ');
-        		s += round_str;
-        	}
-        }
-        LOG("%d: %s\n", i + 1, s.c_str());
-    }
+    Chance(team.data(), (int)team.size(), strategy);
     return 0;
 }
 
@@ -497,7 +395,6 @@ int main(int argc, char *argv[])
             {"check", optional_argument, nullptr, 'c'},
             {"chance", optional_argument, nullptr, 'p'},
             {"explain", optional_argument, nullptr, 'e'},
-			{"statistics", optional_argument, nullptr, 's'},
             {"help", optional_argument, nullptr, 'h'},
             {"list", no_argument, nullptr, 'l'},
             {0, 0, 0, 0}
@@ -525,12 +422,6 @@ int main(int argc, char *argv[])
             if (optarg)
                 freopen(optarg, "r", stdin);
             return ExplainInput(argc, argv);
-        case 's':
-            if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')
-                optarg = argv[optind++];
-            if (optarg)
-                freopen(optarg, "r", stdin);
-            return StatisticsInput(argc, argv);
         case '?':
         case 'h':
             if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')

@@ -93,7 +93,7 @@ struct DinoKind
     {}
 };
 
-struct dodge_cmp : public std::binary_function<std::pair<double, double>, std::pair<double, double>, bool>
+struct dodge_cmp
 {
     constexpr bool operator()(const std::pair<double, double> &lhs, const std::pair<double, double> &rhs ) const
     {
@@ -153,6 +153,7 @@ struct Dino
     int n_positive_effects = 0;
     int stun = 0;
     std::set<double, std::greater<double>> cloak_factor;
+    std::string name;
 
     Dino(int _team, int _index, int _level, int _health_boost, int _damage_boost, int _speed_boost, const DinoKind *_kind);
 
@@ -222,8 +223,8 @@ struct Dino
             return 1;
         return *cloak_factor.begin();
     }
-    void Hit(int damage);
-    void Heal(int heal);
+    void Hit(const Dino &attacker, int damage);
+    void Heal(const Dino &healer, int heal);
     int Absorb(int damage);
     int HealAbsorb(int heal);
     const Ability *Ability(int i) const
