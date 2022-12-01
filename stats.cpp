@@ -95,19 +95,19 @@ void BaseStats::NextTurn(int round, int turn)
 
 void BaseStats::Print(Dino team[], int team_size)
 {
-    ERROR("Chance: %d%%\n", win_count * 100 / (win_count + defeat_count));
+    ERROR("Chance: %d%%", win_count * 100 / (win_count + defeat_count));
 
     for (int w = 1; w >= 0; --w) {
         string s = strprintf("%-30s   ", w ? strprintf("Death (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
                                            : strprintf("Death (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
-        WARNING("\n");
+        WARNING("");
         for (int r = 0; r < (int)death_count[w].size(); ++r) {
             if (r != 0)
                 s += "| ";
             for (int t = 0; t < (int)death_count[w][r].size(); ++t)
                 s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
         }
-        WARNING("%s\n", s.c_str());
+        WARNING("%s", s.c_str());
         for (int i = 0; i < team_size; ++i) {
             std::string s = strprintf("%30s ", team[i].name.c_str());
             for (int r = 0; r < (int)death_count[w].size(); ++r) {
@@ -116,21 +116,21 @@ void BaseStats::Print(Dino team[], int team_size)
                     s += strprintf("%4d%% ", death_count[w][r][t][i] * 100 / round_turn_count[w][0][0]);
                 }
             }
-            WARNING("%s\n", s.c_str());
+            WARNING("%s", s.c_str());
         }
     }
 
     for (int w = 1; w >= 0; --w) {
         string s = strprintf("%-30s   ", w ? strprintf("Minimal HP (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
                                            : strprintf("Minimal HP (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
-        INFO("\n");
+        INFO("");
         for (int r = 0; r < (int)min_hp[w].size(); ++r) {
             if (r != 0)
                 s += "| ";
             for (int t = 0; t < (int)min_hp[w][r].size(); ++t)
                 s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
         }
-        INFO("%s\n", s.c_str());
+        INFO("%s", s.c_str());
         for (int i = 0; i < team_size; ++i)
         {
             std::string s = strprintf("%30s ", team[i].name.c_str());
@@ -140,14 +140,14 @@ void BaseStats::Print(Dino team[], int team_size)
                 for (int t = 0; t < (int)min_hp[w][r].size(); ++t)
                     s += min_hp[w][r][t][i] != -1 ? strprintf("%5d ", min_hp[w][r][t][i]) : "    * ";
             }
-            INFO("%s\n", s.c_str());
+            INFO("%s", s.c_str());
         }
     }
 
     for (int w = 1; w >= 0; --w) {
         string s = strprintf("%-30s   ", w ? strprintf("Rounds length (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
                                            : strprintf("Rounds length (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
-        WARNING("\n");
+        WARNING("");
         for (int t = 0; ; ++t) {
             int r;
             for (r = 0; r < (int)round_turn_count[w].size(); ++r) {
@@ -158,7 +158,7 @@ void BaseStats::Print(Dino team[], int team_size)
                 break;
             s += strprintf("%5d ", t+1);
         }
-        WARNING("%s\n", s.c_str());
+        WARNING("%s", s.c_str());
         for (int r = 0; r < (int)round_turn_count[w].size(); ++r)
         {
             std::string s = strprintf("%30s | ", strprintf("Round %d", r+1).c_str());
@@ -167,13 +167,13 @@ void BaseStats::Print(Dino team[], int team_size)
                 int rt_count = round_turn_count[w][r][t] - (t+1 < (int)round_turn_count[w][r].size() ? round_turn_count[w][r][t+1] : 0);
                 s += strprintf("%4d%% ", rt_count * 100 / round_turn_count[w][0][0]);
             }
-            WARNING("%s\n", s.c_str());
+            WARNING("%s", s.c_str());
         }
     }
 
     for (int i = 0; i < team_size; ++i) {
-        DEBUG("\n");
-        DEBUG("%s avg. damage/heal\n", team[i].name.c_str());
+        DEBUG("");
+        DEBUG("%s avg. damage/heal", team[i].name.c_str());
         for (int w = 1; w >= 0; --w) {
             string s = strprintf("%-30s   ", w ? strprintf("Dealt to (win: %d%%)", win_count * 100 / (win_count + defeat_count)).c_str()
                                                : strprintf("Dealt to (defeat: %d%%)", defeat_count * 100 / (win_count + defeat_count)).c_str());
@@ -183,7 +183,7 @@ void BaseStats::Print(Dino team[], int team_size)
                 for (int t = 0; t < (int)damage[w][r].size(); ++t)
                     s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
             }
-            DEBUG("%s\n", s.c_str());
+            DEBUG("%s", s.c_str());
             for (int j = 0; j < team_size; ++j) {
                 string s = strprintf("%30s ", team[j].name.c_str());
                 for (int r = 0; r < (int)damage[w].size(); ++r) {
@@ -192,7 +192,7 @@ void BaseStats::Print(Dino team[], int team_size)
                         s += strprintf("%5d ", damage[w][r][t][i][j] / round_turn_count[w][r][t]);
                     }
                 }
-                DEBUG("%s\n", s.c_str());
+                DEBUG("%s", s.c_str());
             }
         }
         for (int w = 1; w >= 0; --w) {
@@ -204,7 +204,7 @@ void BaseStats::Print(Dino team[], int team_size)
                 for (int t = 0; t < (int)damage[w][r].size(); ++t)
                     s += strprintf("%5s ", strprintf("r%dt%d", r+1, t+1).c_str());
             }
-            DEBUG("%s\n", s.c_str());
+            DEBUG("%s", s.c_str());
             for (int j = 0; j < team_size; ++j) {
                 string s = strprintf("%30s ", team[j].name.c_str());
                 for (int r = 0; r < (int)damage[w].size(); ++r) {
@@ -213,10 +213,10 @@ void BaseStats::Print(Dino team[], int team_size)
                         s += strprintf("%5d ", damage[w][r][t][j][i] / round_turn_count[w][r][t]);
                     }
                 }
-                DEBUG("%s\n", s.c_str());
+                DEBUG("%s", s.c_str());
             }
         }
     }
-    DEBUG("\n");
-    DEBUG("You can reduce log size using --loglevel command line argument.\n");
+    DEBUG("");
+    DEBUG("You can reduce log size using --loglevel command line argument.");
 }

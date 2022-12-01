@@ -128,9 +128,9 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
     while (true) {
         if (round < boss->round + 1) {
             ++round;
-            ERROR("Round %d\n", round);
+            ERROR("Round %d", round);
         }
-        ERROR("Turn %d\n", boss->turn+1);
+        ERROR("Turn %d", boss->turn+1);
         Stats::NextTurn(boss->round, boss->turn);
         auto ability = strategy.Next(team, team_size, offset);
         if (ability.size() == 0)
@@ -143,26 +143,26 @@ bool Check(Dino team[], int team_size, const Strategy &strategy)
             else if (team[i].team == 1) { // Teammates
                 int ability_id = ability[i-1]-1;
                 if (!team[i].Prepare(ability_id)) {
-                    ERROR("%s Can't use %s because of cooldown\n", team[i].Name().c_str(), team[i].Ability(ability_id)->name.c_str());
+                    ERROR("%s Can't use %s because of cooldown", team[i].Name().c_str(), team[i].Ability(ability_id)->name.c_str());
                     return false;
                 }
             } else { // Minions
                 while (!team[i].Prepare(rand() % team[i].kind->ability[team[i].round].size()))
                     ;
             }
-            WARNING("%s chose %s\n", team[i].Name().c_str(), team[i].Ability(team[i].ability_id)->name.c_str());
+            WARNING("%s chose %s", team[i].Name().c_str(), team[i].Ability(team[i].ability_id)->name.c_str());
         }
 
         int result = Step(team, team_size);
         if (result == 0)
             continue;
         if (result == 1)
-            ERROR("Win!\n");
+            ERROR("Win!");
         else
-            ERROR("Defeat!\n");
+            ERROR("Defeat!");
         return result == 1;
     }
-    ERROR("You are out of turns!\n");
+    ERROR("You are out of turns!");
     return false;
 }
 
@@ -194,7 +194,7 @@ std::string Explain(Dino team0[], int team_size, const Strategy &strategy, int n
             return std::move(Logger::TakeBuf());
         Logger::TakeBuf();
     }
-    return "Always succeed\n";
+    return "Always succeed";
 }
 
 //int FindAll(Dino boss[], int boss_size, Dino team[], int team_size, int max_turns)
@@ -235,7 +235,7 @@ int ProcessCommonArgs(int argc, char *argv[])
             break;
         case 'l':
             if (sscanf(optarg, "%d", &Logger::level) != 1) {
-                printf("--loglevel takes a number from 0 to 4\n");
+                LOG("--loglevel takes a number from 0 to 4");
                 return -1;
             }
             continue;
@@ -253,7 +253,7 @@ int CheckInput(int argc, char *argv[])
     vector<Dino> team;
     ProcessCommonArgs(argc, argv);
     if (int line = Input(team, strategy)) {
-        LOG("Input error in line %d!\n", line);
+        LOG("Input error in line %d!", line);
         return -1;
     }
     Check(team.data(), (int)team.size(), strategy);
@@ -266,7 +266,7 @@ int ChanceInput(int argc, char *argv[])
     vector<Dino> team;
     ProcessCommonArgs(argc, argv);
     if (int line = Input(team, strategy)) {
-        LOG("Input error in line %d!\n", line);
+        LOG("Input error in line %d!", line);
         return -1;
     }
     Chance(team.data(), (int)team.size(), strategy);
@@ -279,7 +279,7 @@ int ExplainInput(int argc, char *argv[])
     vector<Dino> team;
     ProcessCommonArgs(argc, argv);
     if (int line = Input(team, strategy)) {
-        LOG("Input error in line %d!\n", line);
+        LOG("Input error in line %d!", line);
         return -1;
     }
     string result = Explain(team.data(), (int)team.size(), strategy);
@@ -373,13 +373,13 @@ Options:
 
 int List()
 {
-    printf("Bossdex:\n");
+    LOG("Bossdex:");
     for (auto it = BossDex.begin(); it != BossDex.end(); ++it)
-        printf("  %s\n", it->first.c_str());
-    printf("\n");
-    printf("Dinodex:\n");
+        LOG("  %s", it->first.c_str());
+    LOG("");
+    LOG("Dinodex:");
     for (auto it = DinoDex.begin(); it != DinoDex.end(); ++it)
-        printf("  %s\n", it->first.c_str());
+        LOG("  %s", it->first.c_str());
     return 0;
 }
 

@@ -249,7 +249,7 @@ int Input(std::vector<Dino> &team, Strategy &strategy)
             strategy = std::move(ParseStrategy(team_size));
         }
     } catch(std::exception &e) {
-        LOG("Error on line %d: %s\n", CurrLine, e.what());
+        LOG("Error on line %d: %s", CurrLine, e.what());
         return CurrLine;
     }
     return 0;

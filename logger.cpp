@@ -14,10 +14,13 @@ int Logger::Log(const char fmt[], ...)
     va_list va;
     va_start(va, fmt);
     int r = 0;
-    if (buffered)
+    if (buffered) {
         buf += vstrprintf(fmt, va);
-    else
+        buf += '\n';
+    } else {
         r = vprintf(fmt, va);
+        putchar('\n');
+    }
     va_end(va);
     return r;
 }

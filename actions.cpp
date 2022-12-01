@@ -35,7 +35,7 @@ void PrepareAttack::Do(Dino &self, Dino &target) const
 {
     self.crit = (flags & ALWAYS_CRITS) || rand() % 100 < self.CritChanceFactor() * 100;
     self.prepared_damage_factor = self.DamageFactor();
-    REMOVE_MODS(self, mod_it->OutgoingAttack(), DEBUG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str()));
+    REMOVE_MODS(self, mod_it->OutgoingAttack(), DEBUG("%s used out %s", self.Name().c_str(), modifier->name.c_str()));
     self.killer = false;
     self.last_damage = 0;
 }
@@ -59,7 +59,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
     if (cloak) {
         damage *= self.CloakFactor();
         if (!self.attacker)
-            REMOVE_MODS(self, mod_it->Type() == CLOAK, DEBUG("%s used out %s\n", self.Name().c_str(), modifier->name.c_str()));
+            REMOVE_MODS(self, mod_it->Type() == CLOAK, DEBUG("%s used out %s", self.Name().c_str(), modifier->name.c_str()));
     }
     bool shield = target.Shield();
     if (shield)
@@ -71,7 +71,7 @@ void AttackAction::Do(Dino &self, Dino &target) const
     if (armor)
         damage *= 1 - target.armor;
     damage = floor(damage);
-    REMOVE_MODS(target, mod_it->IncomingAttack(), DEBUG("%s used out %s\n", target.Name().c_str(), modifier->name.c_str()));
+    REMOVE_MODS(target, mod_it->IncomingAttack(), DEBUG("%s used out %s", target.Name().c_str(), modifier->name.c_str()));
     int absorbed = 0;
     if ((~flags & GROUP) && this->target != TARGET_ALL_OPPONENTS) {
         absorbed = (int)damage - target.Absorb((int)damage);
@@ -81,13 +81,13 @@ void AttackAction::Do(Dino &self, Dino &target) const
     if (!self.attacker)
         target.attacker = &self;
     target.Hit(self, damage);
-    WARNING("%s attacks %s for %d%s%s%s%s%s%s%s\n", self.Name().c_str(), target.Name().c_str(), (int)damage, vulnerability ? " Vulnerability" : "", cloak ? " Cloak" : "", crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
+    WARNING("%s attacks %s for %d%s%s%s%s%s%s%s", self.Name().c_str(), target.Name().c_str(), (int)damage, vulnerability ? " Vulnerability" : "", cloak ? " Cloak" : "", crit ? " Crit" : "", shield ? " Shield" : "", dodge ? " Dodge" : "", armor ? " Armor" : "", absorbed ? " Absorbed" : "");
     if (!target.Alive()) {
-        ERROR("%s dies!\n", target.Name().c_str());
-        REMOVE_MODS(target, true, DEBUG("%s took %s to the grave\n", target.Name().c_str(), modifier->name.c_str()));
+        ERROR("%s dies!", target.Name().c_str());
+        REMOVE_MODS(target, true, DEBUG("%s took %s to the grave", target.Name().c_str(), modifier->name.c_str()));
         self.killer = true;
     } else if (target.health == 0)
-        INFO("%s is immune to HP changes.\n", target.Name().c_str());
+        INFO("%s is immune to HP changes.", target.Name().c_str());
 }
 
 void Revenge::Do(Dino &self, Dino &target) const
@@ -122,12 +122,12 @@ void HealAction::Do(Dino &self, Dino &target) const
     heal *= factor;
     heal = floor(heal);
     if (target.health == 0) {
-        INFO("%s is immune to HP changes\n", target.Name().c_str());
+        INFO("%s is immune to HP changes", target.Name().c_str());
         return;
     }
     heal = target.HealAbsorb((int)heal);
     target.Heal(self, (int)heal);
-    WARNING("%s heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), (int)heal);
+    WARNING("%s heals %s for %d", self.Name().c_str(), target.Name().c_str(), (int)heal);
 }
 
 void Sacrifice::Do(Dino &self, Dino &target) const
@@ -136,18 +136,18 @@ void Sacrifice::Do(Dino &self, Dino &target) const
     if (damage >= target.health)
         damage = target.health - 1;
     target.Hit(self, damage);
-    WARNING("%s sacrifices %s for %d\n", self.Name().c_str(), target.Name().c_str(), damage);
+    WARNING("%s sacrifices %s for %d", self.Name().c_str(), target.Name().c_str(), damage);
 }
 
 void RallyHeal::Do(Dino &self, Dino &target) const
 {
     int heal = floor(target.max_health * factor);
     if (target.health == 0) {
-        INFO("%s is immune to HP changes\n", target.Name().c_str());
+        INFO("%s is immune to HP changes", target.Name().c_str());
         return;
     }
     target.Heal(self, heal);
-    WARNING("%s rally heals %s for %d\n", self.Name().c_str(), target.Name().c_str(), heal);
+    WARNING("%s rally heals %s for %d", self.Name().c_str(), target.Name().c_str(), heal);
 }
 
 void ImposeVulnerability::Do(Dino &self, Dino &target) const
