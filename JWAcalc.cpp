@@ -10,7 +10,7 @@
 #include <cstring>
 #include <getopt.h>
 #include <cctype>
-
+#include <regex>
 #include "dino.h"
 #include "actions.h"
 #include "modifiers.h"
@@ -365,21 +365,29 @@ Options:
         --check [file]          checks a strategy from input or <file> if specified;
         --chance [file]         calculates a chance of winning using a strategy from input or <file> if specified;
         --explain [file]        prints a log of a lost battle using a strategy from input or <file> if specified;
-        -l, --list              prints a list of available bosses and dinos.
+        -l, --list [regexp]     prints a list of available bosses and dinos which meets a match criteria.
         )--");
     }
     return 0;
 }
 
-int List()
+int List(const char *regexp)
 {
+    std::regex r(regexp ? regexp : "", regex_constants::icase);
+    std::smatch sm;
     LOG("Bossdex:");
-    for (auto it = BossDex.begin(); it != BossDex.end(); ++it)
+    for (auto it = BossDex.begin(); it != BossDex.end(); ++it) {
+        if (!regex_search(it->first, sm, r))
+            continue;
         LOG("  %s", it->first.c_str());
+    }
     LOG("");
     LOG("Dinodex:");
-    for (auto it = DinoDex.begin(); it != DinoDex.end(); ++it)
+    for (auto it = DinoDex.begin(); it != DinoDex.end(); ++it) {
+        if (!regex_search(it->first, sm, r))
+            continue;
         LOG("  %s", it->first.c_str());
+    }
     return 0;
 }
 
@@ -428,7 +436,9 @@ int main(int argc, char *argv[])
                 optarg = argv[optind++];
             return Help();
         case 'l':
-            return List();
+            if(optarg == nullptr && argv[optind] != nullptr && argv[optind][0] != '-')
+                optarg = argv[optind++];
+            return List(optarg);
         }
     }
     return 0;
