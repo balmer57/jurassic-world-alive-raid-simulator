@@ -22,6 +22,8 @@ public:
     static std::string TakeBuf();
 };
 
+#pragma GCC diagnostic ignored "-Wformat-zero-length"
+
 #define LOG(...) (Logger::Log(__VA_ARGS__))
 #define ERROR(...) (Logger::level >= LOG_LEVEL_ERROR ? Logger::Log(__VA_ARGS__) : 0)
 #define WARNING(...) (Logger::level >= LOG_LEVEL_WARNING ? Logger::Log(__VA_ARGS__) : 0)

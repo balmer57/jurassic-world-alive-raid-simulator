@@ -2,42 +2,68 @@
 #define JWA_SIMULATOR_STATS_H_
 
 #include <vector>
+#include "dino.h"
 
 typedef enum {
-	RESULT_OUT_OF_TURNS = -2,
-	RESULT_DEFEAT = -1,
+	RESULT_DEFEAT = 0,
 	RESULT_WIN = 1
 } BattleResult;
 
-class Stats
+class BaseStats
 {
-	static unsigned int win_count;
-	static unsigned int defeat_count;
-	static unsigned int out_of_turns_count;
-	static std::vector< std::vector< std::vector<int> > > death_count;
-	static std::vector< std::vector< std::vector<int> > > min_hp;
-	static std::vector< std::vector<int> > turns_in_rounds;
-	static unsigned int current_turn;
-	static unsigned int current_turn_in_round;
-	static unsigned int current_round;
-	static std::vector<bool> was_killed_this_turn;
-	static bool stats_inited;
+	int win_count = 0;
+	int defeat_count = 0;
+
+	std::vector<std::vector<std::vector<int>>> death_count[2];
+	std::vector<std::vector<std::vector<int>>> min_hp[2];
+	std::vector<std::vector<int>> round_turn_count[2];
+	std::vector<std::vector<std::vector<std::vector<int>>>> damage[2];
+	std::vector<std::tuple<int, int, int, int, int, int>> hit;
+	std::vector<std::tuple<int, int>> turns;
+	int curr_turn = 0;
+	int curr_round = 0;
+	int team_size;
 
 public:
-	static void Init(int team_size, int turns_count, int round_count);
-	static int GetWinCount() {return win_count;}
-	static int GetDefeatCount() {return defeat_count;}
-	static int GetOutOfTurnsCount() {return out_of_turns_count;}
-	static std::vector< std::vector<int> > GetMinHP(int i) {return min_hp[i];}
-	static std::vector< std::vector<int> > GetDeaths(int i) {return death_count[i];}
-	static std::vector<int> GetTurnCount(int i) {return turns_in_rounds[i];}
+    static bool on;
+    static BaseStats &Get()
+    {
+        static BaseStats stats;
+        return stats;
+    }
 
-	static void ResetTurn();
-	static void NextTurn();
-	static void NextRound();
-	static void RegisterHit(int target, int hp);
-	static void RegisterResult(BattleResult result);
+    void Init(int _team_size);
+	void NextTurn(int round, int turn);
+	void RegisterHit(const Dino &attacker, const Dino &target, int damage);
+	void RegisterResult(bool win);
+	void Print(Dino team[], int team_size);
 };
 
+template<auto F>
+class Wrapper;
+
+template<typename Klass, typename ...Args, void (Klass::*F)(Args...)>
+class Wrapper<F>
+{
+public:
+    void operator()(Args ...args)
+    {
+        if (!Klass::on)
+            return;
+        Klass &stats = Klass::Get();
+        (stats.*F)(std::forward<Args>(args)...);
+    }
+};
+
+class Stats : private BaseStats
+{
+public:
+    using BaseStats::on;
+    static Wrapper<&BaseStats::Init> Init;
+    static Wrapper<&BaseStats::NextTurn> NextTurn;
+    static Wrapper<&BaseStats::RegisterHit> RegisterHit;
+    static Wrapper<&BaseStats::RegisterResult> RegisterResult;
+    static Wrapper<&BaseStats::Print> Print;
+};
 
 #endif /* JWA_SIMULATOR_STATS_H_ */

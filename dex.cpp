@@ -2369,7 +2369,7 @@ RevengeAbility WaningRevenge0554("Waning Revenge", 0, 0, false, {
 });
 
 
-DinoKind AlacranixBoss("Alacranix Boss", APEX, 1, 15000, 1550, 116, 40.0, 20.0, 50.0, 100.0, 50.0, 89.99999, 20.0, 100.0, 0.0, 100.0, 15.0, {
+DinoKind AlacranixBoss("Alacranix Boss", APEX, 1, 15000, 1550, 116, 40.0, 20.0, 50.0, 100.0, 50.0, 89.99999, 20.0, 100.0, 0.0, 100.0, 15.0, 0.0, {
     {
         &EvasiveFierceStrike29E7,
         &GroupFierceDeceleratingStrike1DAD,
@@ -2389,7 +2389,7 @@ DinoKind AlacranixBoss("Alacranix Boss", APEX, 1, 15000, 1550, 116, 40.0, 20.0, 
     }
 }, nullptr);
 
-DinoKind AlbertospinosBoss("Albertospinos Boss", UNIQUE, 1, 14500, 1600, 125, 0.0, 10.0, 100.0, 94.99999, 55.0, 75.0, 100.0, 100.0, 0.0, 0.0, 25.0, {
+DinoKind AlbertospinosBoss("Albertospinos Boss", UNIQUE, 1, 14500, 1600, 125, 0.0, 10.0, 100.0, 94.99999, 55.0, 75.0, 100.0, 100.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &FierceCleansingImpact026E,
         &DragonsBite8539,
@@ -2409,7 +2409,7 @@ DinoKind AlbertospinosBoss("Albertospinos Boss", UNIQUE, 1, 14500, 1600, 125, 0.
     }
 }, &MinimalCriticalCounterECF3);
 
-DinoKind AndrewtopsBoss("Andrewtops Boss", UNIQUE, 1, 11000, 1350, 122, 15.0, 20.0, 0.0, 80.0, 44.99998, 85.0, 50.0, 94.99999, 0.0, 0.0, 40.0, {
+DinoKind AndrewtopsBoss("Andrewtops Boss", UNIQUE, 1, 11000, 1350, 122, 15.0, 20.0, 0.0, 80.0, 44.99998, 85.0, 50.0, 94.99999, 0.0, 0.0, 40.0, 0.0, {
     {
         &DaringGroupStrike7E0C,
         &RevengeDistractingRampage0014,
@@ -2428,7 +2428,7 @@ DinoKind AndrewtopsBoss("Andrewtops Boss", UNIQUE, 1, 11000, 1350, 122, 15.0, 20
     }
 }, &CounterVulnerabilityC8BA);
 
-DinoKind ArctodusBoss("Arctodus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, {
+DinoKind ArctodusBoss("Arctodus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, 0.0, {
     {
         &BellowDDD8,
         &GroupSuperiorVulnerability5DD7,
@@ -2441,7 +2441,7 @@ DinoKind ArctodusBoss("Arctodus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.0, 50.0,
     }
 }, &PowerHeal0329);
 
-DinoKind BajadasaurusBoss("Bajadasaurus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, {
+DinoKind BajadasaurusBoss("Bajadasaurus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, 0.0, {
     {
         &BellowDDD8,
         &GroupSuperiorVulnerability5DD7,
@@ -2454,7 +2454,7 @@ DinoKind BajadasaurusBoss("Bajadasaurus Boss", RARE, 1, 10500, 800, 110, 0.0, 5.
     }
 }, &PowerHeal0329);
 
-DinoKind BlueBoss("Blue Boss", EPIC, 1, 12400, 1350, 135, 0.0, 10.0, 50.0, 89.99999, 75.0, 89.99999, 75.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind BlueBoss("Blue Boss", EPIC, 1, 12400, 1350, 135, 0.0, 10.0, 50.0, 89.99999, 75.0, 89.99999, 75.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &PrecisePounceA125,
         &GroupCunningStrikeB5B4,
@@ -2468,7 +2468,7 @@ DinoKind BlueBoss("Blue Boss", EPIC, 1, 12400, 1350, 135, 0.0, 10.0, 50.0, 89.99
     }
 }, nullptr);
 
-DinoKind BrachiosaurusBoss("Brachiosaurus Boss", EPIC, 1, 24000, 1350, 109, 0.0, 15.0, 50.0, 85.0, 100.0, 80.0, 100.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind BrachiosaurusBoss("Brachiosaurus Boss", EPIC, 1, 24000, 1350, 109, 0.0, 15.0, 50.0, 85.0, 100.0, 80.0, 100.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &GroupShieldStrike43E5,
         &GroupResilientStrike7958,
@@ -2486,7 +2486,7 @@ DinoKind BrachiosaurusBoss("Brachiosaurus Boss", EPIC, 1, 24000, 1350, 109, 0.0,
     }
 }, nullptr);
 
-DinoKind CarnotaurusBoss("Carnotaurus Boss", RARE, 1, 8500, 655, 105, 0.0, 5.0, 0.0, 80.0, 50.0, 80.0, 50.0, 89.99999, 0.0, 0.0, 50.0, {
+DinoKind CarnotaurusBoss("Carnotaurus Boss", RARE, 1, 8500, 655, 105, 0.0, 5.0, 0.0, 80.0, 50.0, 80.0, 50.0, 89.99999, 0.0, 0.0, 50.0, 0.0, {
     {
         &DefensiveGroupTaunt64E9,
         &VulnerabilityImpact2DAA,
@@ -2499,7 +2499,7 @@ DinoKind CarnotaurusBoss("Carnotaurus Boss", RARE, 1, 8500, 655, 105, 0.0, 5.0, 
     }
 }, &SharpCounterACA0);
 
-DinoKind CeramagnusBoss("Ceramagnus Boss", APEX, 1, 11500, 1600, 114, 30.0, 20.0, 50.0, 80.0, 50.0, 80.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind CeramagnusBoss("Ceramagnus Boss", APEX, 1, 11500, 1600, 114, 30.0, 20.0, 50.0, 80.0, 50.0, 80.0, 100.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
     {
         &GroupAcceleration6211,
         &RandomPiercingRampage4581,
@@ -2519,7 +2519,7 @@ DinoKind CeramagnusBoss("Ceramagnus Boss", APEX, 1, 11500, 1600, 114, 30.0, 20.0
     }
 }, nullptr);
 
-DinoKind DreadnoughtusBoss("Dreadnoughtus Boss", RARE, 1, 11500, 850, 121, 10.0, 5.0, 0.0, 89.99999, 50.0, 75.0, 100.0, 89.99999, 0.0, 50.0, 10.0, {
+DinoKind DreadnoughtusBoss("Dreadnoughtus Boss", RARE, 1, 11500, 850, 121, 10.0, 5.0, 0.0, 89.99999, 50.0, 75.0, 100.0, 89.99999, 0.0, 50.0, 10.0, 50.0, {
     {
         &DispersedSuperiorVulnerability8D77,
         &GroupInvincibility36D9,
@@ -2532,7 +2532,7 @@ DinoKind DreadnoughtusBoss("Dreadnoughtus Boss", RARE, 1, 11500, 850, 121, 10.0,
     }
 }, nullptr);
 
-DinoKind ErlikogammaBoss("Erlikogamma Boss", EPIC, 1, 15500, 1600, 131, 0.0, 10.0, 100.0, 80.0, 100.0, 80.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind ErlikogammaBoss("Erlikogamma Boss", EPIC, 1, 15500, 1600, 131, 0.0, 10.0, 100.0, 80.0, 100.0, 80.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &AcceleratedStrike19B5,
         &GroupDistractingImpact2458,
@@ -2546,7 +2546,7 @@ DinoKind ErlikogammaBoss("Erlikogamma Boss", EPIC, 1, 15500, 1600, 131, 0.0, 10.
     }
 }, nullptr);
 
-DinoKind FukuimimusBoss("Fukuimimus Boss", LEGENDARY, 1, 15000, 1500, 123, 0.0, 25.0, 100.0, 89.99999, 50.0, 85.0, 75.0, 94.99999, 0.0, 0.0, 15.0, {
+DinoKind FukuimimusBoss("Fukuimimus Boss", LEGENDARY, 1, 15000, 1500, 123, 0.0, 25.0, 100.0, 89.99999, 50.0, 85.0, 75.0, 94.99999, 0.0, 0.0, 15.0, 0.0, {
     {
         &AlertMimic58E4,
         &ProtectiveStrike7615,
@@ -2565,7 +2565,20 @@ DinoKind FukuimimusBoss("Fukuimimus Boss", LEGENDARY, 1, 15000, 1500, 123, 0.0, 
     }
 }, &FerociousFeathers2BA7);
 
-DinoKind GlyptocerasBoss("Glyptoceras Boss", LEGENDARY, 1, 13000, 1350, 110, 15.0, 15.0, 25.0, 80.0, 75.0, 69.99999, 50.0, 94.99999, 0.0, 0.0, 25.0, {
+DinoKind GiganotosaurusBoss("Giganotosaurus Boss", EPIC, 1, 25000, 2000, 108, 0.0, 40.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
+    {
+        &PrimalTailWhip7185,
+        &DefenseShatteringRampage5E24,
+        &CleansingRandomShatteringStrikeD4F0
+    },
+    {
+        &CleansingPrimalTailWhip0DFD,
+        &DefenseShatteringRampage5E24,
+        &DefenseShatteringImpact85C0
+    }
+}, nullptr);
+
+DinoKind GlyptocerasBoss("Glyptoceras Boss", LEGENDARY, 1, 13000, 1350, 110, 15.0, 15.0, 25.0, 80.0, 75.0, 69.99999, 50.0, 94.99999, 0.0, 0.0, 25.0, 50.0, {
     {
         &PrimalInstantChargeDA5D,
         &ResilientGroupImpactBD7D,
@@ -2585,7 +2598,7 @@ DinoKind GlyptocerasBoss("Glyptoceras Boss", LEGENDARY, 1, 13000, 1350, 110, 15.
     }
 }, nullptr);
 
-DinoKind GorgotrebaxBoss("Gorgotrebax Boss", APEX, 1, 13000, 1550, 113, 0.0, 20.0, 50.0, 80.0, 75.0, 80.0, 50.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind GorgotrebaxBoss("Gorgotrebax Boss", APEX, 1, 13000, 1550, 113, 0.0, 20.0, 50.0, 80.0, 75.0, 80.0, 50.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &InstantGroupAccelerationStrikeBF5A,
         &RevengeRandomDistractingImpact4DD2,
@@ -2608,7 +2621,7 @@ DinoKind GorgotrebaxBoss("Gorgotrebax Boss", APEX, 1, 13000, 1550, 113, 0.0, 20.
     }
 }, nullptr);
 
-DinoKind GrypolythBoss("Grypolyth Boss", UNIQUE, 1, 14000, 1500, 106, 20.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind GrypolythBoss("Grypolyth Boss", UNIQUE, 1, 14000, 1500, 106, 20.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, 50.0, {
     {
         &PrimalTailWhip7185,
         &GreaterEmergencyHeal456B,
@@ -2626,7 +2639,7 @@ DinoKind GrypolythBoss("Grypolyth Boss", UNIQUE, 1, 14000, 1500, 106, 20.0, 5.0,
     }
 }, &RendingCounterattack24B1);
 
-DinoKind HaastMaximusBoss("Haast Maximus Boss", APEX, 1, 11000, 1500, 129, 0.0, 34.99999, 50.0, 80.0, 50.0, 80.0, 25.0, 80.0, 0.0, 0.0, 30.0, {
+DinoKind HaastMaximusBoss("Haast Maximus Boss", APEX, 1, 11000, 1500, 129, 0.0, 34.99999, 50.0, 80.0, 50.0, 80.0, 25.0, 80.0, 0.0, 0.0, 30.0, 0.0, {
     {
         &FearlessFlap6CE3,
         &GroupCunningImpact356E,
@@ -2646,7 +2659,7 @@ DinoKind HaastMaximusBoss("Haast Maximus Boss", APEX, 1, 11000, 1500, 129, 0.0, 
     }
 }, &RocketAlert60C3);
 
-DinoKind HadrosLuxBoss("Hadros Lux Boss", APEX, 1, 15000, 1000, 106, 20.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind HadrosLuxBoss("Hadros Lux Boss", APEX, 1, 15000, 1000, 106, 20.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, 50.0, {
     {
         &GroupTauntingShieldsEB4C,
         &GreaterEmergencyHeal456B,
@@ -2669,7 +2682,7 @@ DinoKind HadrosLuxBoss("Hadros Lux Boss", APEX, 1, 15000, 1000, 106, 20.0, 5.0, 
     }
 }, &MediumResilientCounterattack3EB5);
 
-DinoKind HydraBoaBoss("Hydra Boa Boss", APEX, 1, 14000, 1500, 118, 10.0, 25.0, 75.0, 80.0, 80.0, 85.0, 75.0, 94.99999, 0.0, 0.0, 34.99999, {
+DinoKind HydraBoaBoss("Hydra Boa Boss", APEX, 1, 14000, 1500, 118, 10.0, 25.0, 75.0, 80.0, 80.0, 85.0, 75.0, 94.99999, 0.0, 0.0, 34.99999, 50.0, {
     {
         &GroupCunningImpact356E,
         &SqueezeAndStrike84FE,
@@ -2688,7 +2701,7 @@ DinoKind HydraBoaBoss("Hydra Boa Boss", APEX, 1, 14000, 1500, 118, 10.0, 25.0, 7
     }
 }, &AlertCoil5A3C);
 
-DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15.0, 5.0, 75.0, 89.99999, 75.0, 85.0, 80.0, 100.0, 0.0, 0.0, 60.0, {
+DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15.0, 5.0, 75.0, 89.99999, 75.0, 85.0, 80.0, 100.0, 0.0, 0.0, 60.0, 50.0, {
     {
         &AlertAssistBA90,
         &GroupFierceDeceleratingStrike1DAD,
@@ -2708,7 +2721,7 @@ DinoKind ImperatosuchusBoss("Imperatosuchus Boss", APEX, 1, 16000, 1450, 115, 15
     }
 }, &CounterSpike7A97);
 
-DinoKind IndominusRexBoss("Indominus Rex Boss", LEGENDARY, 1, 16000, 1550, 112, 0.0, 40.0, 0.0, 80.0, 50.0, 89.99999, 0.0, 100.0, 0.0, 0.0, 75.0, {
+DinoKind IndominusRexBoss("Indominus Rex Boss", LEGENDARY, 1, 16000, 1550, 112, 0.0, 40.0, 0.0, 80.0, 50.0, 89.99999, 0.0, 100.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &GroupDefiniteStrike8D8F,
         &InstantMutualFury23AC,
@@ -2728,7 +2741,7 @@ DinoKind IndominusRexBoss("Indominus Rex Boss", LEGENDARY, 1, 16000, 1550, 112, 
     }
 }, nullptr);
 
-DinoKind IndoraptorBoss("Indoraptor Boss", UNIQUE, 1, 15000, 1550, 112, 0.0, 30.0, 0.0, 80.0, 50.0, 89.99999, 0.0, 100.0, 0.0, 0.0, 75.0, {
+DinoKind IndoraptorBoss("Indoraptor Boss", UNIQUE, 1, 15000, 1550, 112, 0.0, 30.0, 0.0, 80.0, 50.0, 89.99999, 0.0, 100.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &AcceleratingEvasiveStance2AAF,
         &CautiousGroupStrike9753,
@@ -2747,7 +2760,7 @@ DinoKind IndoraptorBoss("Indoraptor Boss", UNIQUE, 1, 15000, 1550, 112, 0.0, 30.
     }
 }, nullptr);
 
-DinoKind MammotheriumBoss("Mammotherium Boss", LEGENDARY, 1, 22500, 1200, 115, 30.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 70.01, 0.0, 0.0, 0.0, {
+DinoKind MammotheriumBoss("Mammotherium Boss", LEGENDARY, 1, 22500, 1200, 115, 30.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 70.01, 0.0, 0.0, 0.0, 50.0, {
     {
         &GroupPowerStrikeD95F,
         &BellowDDD8,
@@ -2762,7 +2775,7 @@ DinoKind MammotheriumBoss("Mammotherium Boss", LEGENDARY, 1, 22500, 1200, 115, 3
     }
 }, nullptr);
 
-DinoKind MegalonyxBoss("Megalonyx Boss", RARE, 1, 9250, 950, 101, 0.0, 10.0, 0.0, 89.99999, 50.0, 85.0, 100.0, 89.99999, 0.0, 50.0, 0.0, {
+DinoKind MegalonyxBoss("Megalonyx Boss", RARE, 1, 9250, 950, 101, 0.0, 10.0, 0.0, 89.99999, 50.0, 85.0, 100.0, 89.99999, 0.0, 50.0, 0.0, 0.0, {
     {
         &BodingDistraction71C6,
         &GroupCunningStrikeB5B4,
@@ -2777,7 +2790,7 @@ DinoKind MegalonyxBoss("Megalonyx Boss", RARE, 1, 9250, 950, 101, 0.0, 10.0, 0.0
     }
 }, &MaximalCounterattack5683);
 
-DinoKind MegalosuchusBoss("Megalosuchus Boss", LEGENDARY, 1, 13333, 1500, 109, 0.0, 5.0, 0.0, 80.0, 50.0, 80.0, 100.0, 89.99999, 0.0, 0.0, 50.0, {
+DinoKind MegalosuchusBoss("Megalosuchus Boss", LEGENDARY, 1, 13333, 1500, 109, 0.0, 5.0, 0.0, 80.0, 50.0, 80.0, 100.0, 89.99999, 0.0, 0.0, 50.0, 0.0, {
     {
         &GroupFerocityStrike7A2D,
         &GreaterEmergencyHeal456B,
@@ -2794,7 +2807,7 @@ DinoKind MegalosuchusBoss("Megalosuchus Boss", LEGENDARY, 1, 13333, 1500, 109, 0
     }
 }, &PrecisePiercingStrike5679);
 
-DinoKind MegalotopsBoss("Megalotops Boss", EPIC, 1, 12000, 1250, 105, 25.0, 15.0, 0.0, 80.0, 50.0, 80.0, 55.0, 94.99999, 0.0, 0.0, 50.0, {
+DinoKind MegalotopsBoss("Megalotops Boss", EPIC, 1, 12000, 1250, 105, 25.0, 15.0, 0.0, 80.0, 50.0, 80.0, 55.0, 94.99999, 0.0, 0.0, 50.0, 50.0, {
     {
         &PrimalInstantChargeDA5D,
         &DeterminedGroupStrikeCDD7,
@@ -2815,7 +2828,7 @@ DinoKind MegalotopsBoss("Megalotops Boss", EPIC, 1, 12000, 1250, 105, 25.0, 15.0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind MeiolaniaBoss("Meiolania Boss", RARE, 1, 9500, 825, 105, 50.0, 5.0, 0.0, 69.99999, 50.0, 69.99999, 80.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind MeiolaniaBoss("Meiolania Boss", RARE, 1, 9500, 825, 105, 50.0, 5.0, 0.0, 69.99999, 50.0, 69.99999, 80.0, 100.0, 0.0, 0.0, 50.0, 85.0, {
     {
         &SteadyGroupVulnerabilityStrike28DF,
         &ResilientImpact7BB4,
@@ -2828,7 +2841,7 @@ DinoKind MeiolaniaBoss("Meiolania Boss", RARE, 1, 9500, 825, 105, 50.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind MortemRexBoss("Mortem Rex Boss", APEX, 1, 25000, 2000, 108, 0.0, 40.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind MortemRexBoss("Mortem Rex Boss", APEX, 1, 25000, 2000, 108, 0.0, 40.0, 0.0, 80.0, 50.0, 80.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &PrimalTailWhip7185,
         &DefenseShatteringRampage5E24,
@@ -2841,7 +2854,7 @@ DinoKind MortemRexBoss("Mortem Rex Boss", APEX, 1, 25000, 2000, 108, 0.0, 40.0, 
     }
 }, nullptr);
 
-DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0.0, 20.0, 0.0, 69.99999, 75.0, 80.0, 50.0, 100.0, 0.0, 0.0, 34.99999, {
+DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0.0, 20.0, 0.0, 69.99999, 75.0, 80.0, 50.0, 100.0, 0.0, 0.0, 34.99999, 0.0, {
     {
         &RandomCunningImpactD332,
         &ResilientImpactRevengeEA75,
@@ -2862,7 +2875,7 @@ DinoKind ParasauthopsBoss("Parasauthops Boss", UNIQUE, 1, 14500, 1500, 112, 0.0,
     }
 }, &PowerHeal0329);
 
-DinoKind PhorurexBoss("Phorurex Boss", UNIQUE, 1, 11500, 1750, 124, 5.0, 15.0, 75.0, 80.0, 50.0, 89.99999, 25.0, 100.0, 0.0, 0.0, 25.0, {
+DinoKind PhorurexBoss("Phorurex Boss", UNIQUE, 1, 11500, 1750, 124, 5.0, 15.0, 75.0, 80.0, 50.0, 89.99999, 25.0, 100.0, 0.0, 0.0, 25.0, 50.0, {
     {
         &RendingStun659E,
         &CriticalShake0032,
@@ -2882,7 +2895,7 @@ DinoKind PhorurexBoss("Phorurex Boss", UNIQUE, 1, 11500, 1750, 124, 5.0, 15.0, 7
     }
 }, nullptr);
 
-DinoKind PostimetrodonBoss("Postimetrodon Boss", EPIC, 1, 15000, 1250, 125, 5.0, 5.0, 0.0, 80.0, 34.99999, 85.0, 100.0, 100.0, 0.0, 0.0, 64.99999, {
+DinoKind PostimetrodonBoss("Postimetrodon Boss", EPIC, 1, 15000, 1250, 125, 5.0, 5.0, 0.0, 80.0, 34.99999, 85.0, 100.0, 100.0, 0.0, 0.0, 64.99999, 50.0, {
     {
         &RandomFierceStrike9BC6,
         &FierceCleansingRampage705C,
@@ -2897,7 +2910,7 @@ DinoKind PostimetrodonBoss("Postimetrodon Boss", EPIC, 1, 15000, 1250, 125, 5.0,
     }
 }, nullptr);
 
-DinoKind PteranokyrieBoss("Pteranokyrie Boss", APEX, 1, 18333, 1400, 125, 0.0, 10.0, 50.0, 89.99999, 50.0, 85.0, 100.0, 89.99999, 0.0, 0.0, 20.0, {
+DinoKind PteranokyrieBoss("Pteranokyrie Boss", APEX, 1, 18333, 1400, 125, 0.0, 10.0, 50.0, 89.99999, 50.0, 85.0, 100.0, 89.99999, 0.0, 0.0, 20.0, 0.0, {
     {
         &IntimidatingEchelonE447,
         &ShatteringDevourImpactC35B,
@@ -2918,7 +2931,7 @@ DinoKind PteranokyrieBoss("Pteranokyrie Boss", APEX, 1, 18333, 1400, 125, 0.0, 1
     }
 }, nullptr);
 
-DinoKind PyrritatorBoss("Pyrritator Boss", LEGENDARY, 1, 17500, 1300, 129, 0.0, 20.0, 0.0, 80.0, 67.0, 67.0, 0.0, 69.99999, 0.0, 0.0, 0.0, {
+DinoKind PyrritatorBoss("Pyrritator Boss", LEGENDARY, 1, 17500, 1300, 129, 0.0, 20.0, 0.0, 80.0, 67.0, 67.0, 0.0, 69.99999, 0.0, 0.0, 0.0, 0.0, {
     {
         &HighPounceD062,
         &GroupCunningStrikeB5B4,
@@ -2932,7 +2945,7 @@ DinoKind PyrritatorBoss("Pyrritator Boss", LEGENDARY, 1, 17500, 1300, 129, 0.0, 
     }
 }, nullptr);
 
-DinoKind RefrenantemBoss("Refrenantem Boss", APEX, 1, 15000, 1400, 125, 0.0, 10.0, 75.0, 85.0, 89.99999, 80.0, 50.0, 89.99999, 0.0, 0.0, 34.99999, {
+DinoKind RefrenantemBoss("Refrenantem Boss", APEX, 1, 15000, 1400, 125, 0.0, 10.0, 75.0, 85.0, 89.99999, 80.0, 50.0, 89.99999, 0.0, 0.0, 34.99999, 0.0, {
     {
         &GroupDistractionStrike6170,
         &CunningImpactEE79,
@@ -2950,7 +2963,7 @@ DinoKind RefrenantemBoss("Refrenantem Boss", APEX, 1, 15000, 1400, 125, 0.0, 10.
     }
 }, &AlertCounterDistraction2BF3);
 
-DinoKind RinchicyonBoss("Rinchicyon Boss", LEGENDARY, 1, 14500, 1450, 128, 0.0, 20.0, 75.0, 80.0, 50.0, 80.0, 80.0, 94.99999, 0.0, 0.0, 50.0, {
+DinoKind RinchicyonBoss("Rinchicyon Boss", LEGENDARY, 1, 14500, 1450, 128, 0.0, 20.0, 75.0, 80.0, 50.0, 80.0, 80.0, 94.99999, 0.0, 0.0, 50.0, 0.0, {
     {
         &DeviousGroupStrike5A92,
         &DaringEvasionCDAC,
@@ -2964,7 +2977,7 @@ DinoKind RinchicyonBoss("Rinchicyon Boss", LEGENDARY, 1, 14500, 1450, 128, 0.0, 
     }
 }, nullptr);
 
-DinoKind ScorpiosRexBoss("Scorpios Rex Boss", LEGENDARY, 1, 12500, 1650, 112, 0.0, 20.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, {
+DinoKind ScorpiosRexBoss("Scorpios Rex Boss", LEGENDARY, 1, 12500, 1650, 112, 0.0, 20.0, 50.0, 80.0, 44.99998, 80.0, 60.0, 75.0, 0.0, 0.0, 44.99998, 0.0, {
     {
         &DeadlyDistraction5F14,
         &EvasiveDrainDA22,
@@ -2985,7 +2998,7 @@ DinoKind ScorpiosRexBoss("Scorpios Rex Boss", LEGENDARY, 1, 12500, 1650, 112, 0.
     }
 }, nullptr);
 
-DinoKind SinoceratopsBoss("Sinoceratops Boss", EPIC, 1, 17500, 1200, 111, 25.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 0.0, {
+DinoKind SinoceratopsBoss("Sinoceratops Boss", EPIC, 1, 17500, 1200, 111, 25.0, 5.0, 0.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 0.0, 50.0, {
     {
         &GroupDecelerationStrike3B22,
         &PrimalInstantChargeDA5D,
@@ -2999,7 +3012,7 @@ DinoKind SinoceratopsBoss("Sinoceratops Boss", EPIC, 1, 17500, 1200, 111, 25.0, 
     }
 }, nullptr);
 
-DinoKind SmilonemysBoss("Smilonemys Boss", UNIQUE, 1, 20000, 1500, 127, 50.0, 5.0, 0.0, 80.0, 50.0, 80.0, 50.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind SmilonemysBoss("Smilonemys Boss", UNIQUE, 1, 20000, 1500, 127, 50.0, 5.0, 0.0, 80.0, 50.0, 80.0, 50.0, 100.0, 0.0, 0.0, 50.0, 80.0, {
     {
         &ShieldedGroupStrike424D,
         &PrimalProwlC087,
@@ -3012,7 +3025,7 @@ DinoKind SmilonemysBoss("Smilonemys Boss", UNIQUE, 1, 20000, 1500, 127, 50.0, 5.
     }
 }, nullptr);
 
-DinoKind StygidaryxBoss("Stygidaryx Boss", UNIQUE, 1, 12000, 1300, 128, 0.0, 5.0, 0.0, 100.0, 50.0, 80.0, 100.0, 80.0, 0.0, 0.0, 0.0, {
+DinoKind StygidaryxBoss("Stygidaryx Boss", UNIQUE, 1, 12000, 1300, 128, 0.0, 5.0, 0.0, 100.0, 50.0, 80.0, 100.0, 80.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupResilientScratchingStrikeB447,
         &InstantScratchingGroupInvincibility4AAF,
@@ -3030,7 +3043,7 @@ DinoKind StygidaryxBoss("Stygidaryx Boss", UNIQUE, 1, 12000, 1300, 128, 0.0, 5.0
     }
 }, &CounterScratch7FAF);
 
-DinoKind TherizinosaurusBoss("Therizinosaurus Boss", RARE, 1, 17000, 800, 130, 0.0, 5.0, 50.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 15.0, {
+DinoKind TherizinosaurusBoss("Therizinosaurus Boss", RARE, 1, 17000, 800, 130, 0.0, 5.0, 50.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 15.0, 0.0, {
     {
         &TargetedCunningStrikeF441,
         &AcceleratingGroupStrike581B,
@@ -3043,7 +3056,7 @@ DinoKind TherizinosaurusBoss("Therizinosaurus Boss", RARE, 1, 17000, 800, 130, 0
     }
 }, &GradualCounterAccelerationAD4F);
 
-DinoKind TroodoboaBoss("Troodoboa Boss", UNIQUE, 1, 16666, 1300, 120, 0.0, 10.0, 0.0, 89.99999, 60.0, 80.0, 75.0, 100.0, 0.0, 100.0, 15.0, {
+DinoKind TroodoboaBoss("Troodoboa Boss", UNIQUE, 1, 16666, 1300, 120, 0.0, 10.0, 0.0, 89.99999, 60.0, 80.0, 75.0, 100.0, 0.0, 100.0, 15.0, 0.0, {
     {
         &InstantShieldedDeceleratingStrike6C3D,
         &TargetedCleansingStrike1B35,
@@ -3063,7 +3076,7 @@ DinoKind TroodoboaBoss("Troodoboa Boss", UNIQUE, 1, 16666, 1300, 120, 0.0, 10.0,
     }
 }, nullptr);
 
-DinoKind TyrannosaurusRexBoss("Tyrannosaurus Rex Boss", EPIC, 1, 20000, 1900, 102, 0.0, 30.0, 0.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 0.0, {
+DinoKind TyrannosaurusRexBoss("Tyrannosaurus Rex Boss", EPIC, 1, 20000, 1900, 102, 0.0, 30.0, 0.0, 80.0, 50.0, 80.0, 0.0, 89.99999, 0.0, 0.0, 0.0, 0.0, {
     {
         &PrimalTailWhip7185,
         &DefenseShatteringImpact85C0
@@ -3075,7 +3088,7 @@ DinoKind TyrannosaurusRexBoss("Tyrannosaurus Rex Boss", EPIC, 1, 20000, 1900, 10
     }
 }, nullptr);
 
-DinoKind WoollyMammothBoss("Woolly Mammoth Boss", EPIC, 1, 15000, 1200, 115, 10.0, 5.0, 0.0, 80.0, 50.0, 80.0, 100.0, 69.99999, 0.0, 0.0, 50.0, {
+DinoKind WoollyMammothBoss("Woolly Mammoth Boss", EPIC, 1, 15000, 1200, 115, 10.0, 5.0, 0.0, 80.0, 50.0, 80.0, 100.0, 69.99999, 0.0, 0.0, 50.0, 50.0, {
     {
         &GroupPowerStrikeD95F,
         &GroupDeceleratingRampageE77E,
@@ -3137,7 +3150,8 @@ ThreatenedAbility AlertArcticBlast801B("Alert Arctic Blast", 0, 1, false, {
         Attack(1.5),
         Stun(66.71, 1),
         ReduceSpeed(50.0, 1),
-        ImposeVulnerability(50.0, 2, 1)
+        ImposeVulnerability(50.0, 2, 1),
+        ReduceArmor(30.0, 2, 4)
     )
 });
 
@@ -3478,6 +3492,19 @@ Ability Bellow866E("Bellow", 0, 2, true, {
     )
 });
 
+Ability BellowingImpact7163("Bellowing Impact", 0, 1, false, {
+    TargetSelf(
+        Shield(50.0, 0, 4),
+        Taunt(1)
+    ),
+    TargetFastest(
+        ReduceSpeed(50.0, 2)
+    ),
+    TargetFastest(
+        Attack(1.5)
+    )
+});
+
 ThreatenedAbility BerserkAlertDecoy8557("Berserk Alert Decoy", 1, 3, false, {
     TargetLowestHP(
         Attack(2.0, ALWAYS_CRITS)
@@ -3487,6 +3514,50 @@ ThreatenedAbility BerserkAlertDecoy8557("Berserk Alert Decoy", 1, 3, false, {
         Swap()
     )
 }, [](Dino &self) { return self.total_health <= self.max_total_health * 1./3.; }, 0, 0, false, {
+});
+
+RevengeAbility BerserkBitingRevenge5D5E("Berserk Biting Revenge", 0, 2, false, {
+    TargetHighestHP(
+        Remove(SHIELD),
+        Attack(2.5, BYPASS_ARMOR)
+    ),
+    TargetSelf(
+        UnableToSwap(1),
+        Sacrifice(33.33333)
+    )
+}, 0, 2, true, {
+    TargetLowestHP(
+        Remove(SHIELD),
+        Attack(2.5, BYPASS_ARMOR)
+    )
+});
+
+RevengeAbility BerserkClawedRevenge111B("Berserk Clawed Revenge", 0, 2, false, {
+    TargetAllOpponents(
+        Attack(2.5, PRECISE)
+    ),
+    TargetSelf(
+        UnableToSwap(1),
+        Sacrifice(33.33333)
+    )
+}, 0, 2, true, {
+    TargetAllOpponents(
+        Attack(2.5, PRECISE)
+    )
+});
+
+Ability BerserkDecimatingWound9D0A("Berserk Decimating Wound", 0, 2, true, {
+    TargetSelf(
+        Sacrifice(33.33333)
+    ),
+    TargetHighestHP(
+        DamageOverTime(25.0, 2),
+        Remove(SHIELD),
+        Attack(2.5, BYPASS_ARMOR)
+    ),
+    TargetSelf(
+        UnableToSwap(1)
+    )
 });
 
 Ability BerserkDecimation51AD("Berserk Decimation", 1, 2, false, {
@@ -3536,6 +3607,26 @@ Ability BindingImpactA742("Binding Impact", 0, 1, false, {
     )
 });
 
+Ability BraceB9A2("Brace", 0, 2, true, {
+    TargetSelf(
+        Cleanse(NEGATIVE_EFFECTS),
+        IncreaseArmor(89.99999, 1, 1),
+        Heal(1.0)
+    )
+});
+
+Ability BristlingStun38A2("Bristling Stun", 0, 2, true, {
+    TargetHighestDamage(
+        Remove(INCREASED_DAMAGE|INCREASED_CRIT_CHANCE),
+        ReduceDamage(75.0, 2, 4),
+        ReduceSpeed(75.0, 2),
+        Stun(100.0, 1)
+    ),
+    TargetHighestDamage(
+        Stun(100.0, 1)
+    )
+});
+
 Ability Camouflage03BB("Camouflage", 0, 0, true, {
     TargetSelf(
         IncreaseSpeed(30.0, 2),
@@ -3565,6 +3656,20 @@ Ability CautiousCunningRampage8C7B("Cautious Cunning Rampage", 0, 2, true, {
         ReduceCritChance(100.0, 1, 2),
         Remove(INCREASED_CRIT_CHANCE|INCREASED_DAMAGE),
         Attack(2.0)
+    )
+});
+
+Ability CautiousDisarmingStrikeBCD2("Cautious Disarming Strike", 0, 0, false, {
+    TargetSelf(
+        IncreaseSpeed(10.0, 1),
+        Dodge(75.0, 67.0, 1, 1)
+    ),
+    TargetHighestDamage(
+        ReduceDamage(50.0, 1, 1),
+        Attack(1.0, PRECISE)
+    ),
+    TargetMostPositiveEffects(
+        ReduceArmor(30.0, 2, 4)
     )
 });
 
@@ -3707,6 +3812,29 @@ RevengeAbility Cloak2513("Cloak", 0, 3, true, {
 }, 0, 1, true, {
     TargetSelf(
         Cloak(3.0, 75.0, 66.66659, 2)
+    )
+});
+
+Ability CloakOfRage7990("Cloak Of Rage", 0, 3, false, {
+    TargetTeam(
+        Cleanse(NEGATIVE_EFFECTS),
+        IncreaseDamage(50.0, 3, 2),
+        IncreaseSpeed(10.0, 2)
+    ),
+    TargetAllOpponents(
+        IncreaseDamage(50.0, 2, 1)
+    ),
+    TargetTeam(
+        Cloak(2.0, 75.0, 66.66659, 2)
+    ),
+    TargetAllOpponents(
+        ReduceArmor(100.0, 2, 4)
+    )
+});
+
+CounterAbility CounterFerocity85EF("Counter Ferocity", {
+    TargetSelf(
+        IncreaseDamage(20.0, 2, 4)
     )
 });
 
@@ -4197,6 +4325,12 @@ Ability DeviousStrike53F7("Devious Strike", 0, 0, false, {
     )
 });
 
+Ability DevouringImpact0320("Devouring Impact", 0, 2, false, {
+    TargetHighestHP(
+        DevouringAttack(1.5, 50.0, 2)
+    )
+});
+
 Ability DevouringStinger965B("Devouring Stinger", 0, 0, false, {
     TargetMostPositiveEffects(
         Remove(SHIELD),
@@ -4233,6 +4367,57 @@ Ability DigInTaunt1BB1("Dig In Taunt", 0, 2, true, {
         Shield(50.0, 0, 8),
         Heal(1.0),
         Taunt(1)
+    )
+});
+
+CounterAbility DisarmingCounterStrike8AAD("Disarming Counter Strike", {
+    TargetAttacker(
+        Attack(1.0, BYPASS_ARMOR),
+        ReduceArmor(25.0, 2, 2)
+    )
+});
+
+Ability DisarmingDecimateAndRunB62E("Disarming Decimate And Run", 2, 1, true, {
+    TargetHighestDamage(
+        Attack(2.5)
+    ),
+    TargetHighestHP(
+        ReduceArmor(100.0, 2, 4)
+    ),
+    TargetSelf(
+        Swap()
+    )
+});
+
+Ability DisarmingImpactAndRunC0BA("Disarming Impact And Run", 1, 1, false, {
+    TargetHighestHP(
+        Attack(1.5)
+    ),
+    TargetHighestHP(
+        ReduceArmor(30.0, 2, 4)
+    ),
+    TargetSelf(
+        Swap()
+    )
+});
+
+Ability DisarmingStrike7427("Disarming Strike", 0, 0, false, {
+    TargetLowestHP(
+        Attack(1.0)
+    ),
+    TargetLowestHP(
+        ReduceArmor(50.0, 1, 2)
+    )
+});
+
+Ability DispersedCautiousStrikeDD1C("Dispersed Cautious Strike", 0, 0, false, {
+    TargetSelf(
+        IncreaseSpeed(10.0, 1),
+        Dodge(75.0, 67.0, 1, 4)
+    ),
+    TargetAllOpponents(
+        ReduceDamage(50.0, 1, 2),
+        Attack(1.0, PRECISE)
     )
 });
 
@@ -4468,6 +4653,24 @@ Ability EvasiveCunningImpact4070("Evasive Cunning Impact", 0, 1, true, {
     )
 });
 
+Ability EvasiveFerociousRampageFFBB("Evasive Ferocious Rampage", 1, 2, false, {
+    TargetHighestHP(
+        Attack(2.0)
+    ),
+    TargetSelf(
+        IncreaseDamage(50.0, 2, 4),
+        Dodge(100.0, 67.0, 2, 4)
+    )
+});
+
+Ability EvasiveHunt089A("Evasive Hunt", 0, 2, true, {
+    TargetSelf(
+        IncreaseSpeed(25.0, 1),
+        IncreaseDamage(50.0, 2, 4),
+        Dodge(100.0, 100.0, 1, 2)
+    )
+});
+
 Ability EvasiveImpact7999("Evasive Impact", 0, 2, false, {
     TargetSelf(
         Dodge(75.0, 67.0, 2, 4)
@@ -4608,6 +4811,15 @@ Ability FerociousCleansingStrike120F("Ferocious Cleansing Strike", 0, 0, false, 
     TargetSelf(
         IncreaseDamage(20.0, 2, 4),
         Cleanse(NEGATIVE_EFFECTS)
+    )
+});
+
+CounterAbility FerociousCounterStunE8A6("Ferocious Counter Stun", {
+    TargetSelf(
+        IncreaseDamage(25.0, 1, 1)
+    ),
+    TargetAttacker(
+        Stun(66.0, 1)
     )
 });
 
@@ -4818,6 +5030,13 @@ Ability GreaterGroupHeal566D("Greater Group Heal", 0, 2, false, {
     )
 });
 
+Ability GreaterNullification593D("Greater Nullification", 0, 1, false, {
+    TargetMostPositiveEffects(
+        Remove(POSITIVE_EFFECTS),
+        ReduceDamage(50.0, 2, 4)
+    )
+});
+
 CounterAbility GreaterRendingCounterattackD5C2("Greater Rending Counter-Attack", {
     TargetAttacker(
         Remove(SHIELD),
@@ -5006,6 +5225,15 @@ Ability GroupDevouringImpactC9D9("Group Devouring Impact", 0, 2, false, {
     )
 });
 
+Ability GroupDisarmingRampage7FC1("Group Disarming Rampage", 0, 2, false, {
+    TargetAllOpponents(
+        Attack(2.0),
+        ReduceArmor(15.0, 1, 2),
+        ReduceDamage(33.0, 2, 4),
+        ReduceSpeed(33.0, 2)
+    )
+});
+
 Ability GroupDistractionFB00("Group Distraction", 0, 2, true, {
     TargetAllOpponents(
         ReduceDamage(50.0, 2, 3)
@@ -5191,6 +5419,18 @@ Ability GroupWarningSqueal0E5A("Group Warning Squeal", 0, 3, true, {
     )
 });
 
+Ability Harden1485("Harden", 0, 2, false, {
+    TargetAllOpponents(
+        Attack(1.5)
+    ),
+    TargetTeam(
+        IncreaseArmor(50.0, 2, 4)
+    ),
+    TargetSelf(
+        Cleanse(NEGATIVE_EFFECTS)
+    )
+});
+
 Ability HealA906("Heal", 0, 3, true, {
     TargetSelf(
         Cleanse(NEGATIVE_EFFECTS),
@@ -5244,6 +5484,13 @@ Ability HostileGlow1021("Hostile Glow", 0, 2, false, {
     ),
     TargetSelf(
         Taunt(2)
+    )
+});
+
+Ability HowlEBEA("Howl", 0, 3, true, {
+    TargetTeam(
+        IncreaseDamage(30.0, 3, 6),
+        IncreaseSpeed(20.0, 3)
     )
 });
 
@@ -5332,9 +5579,18 @@ Ability InstantDeceleratingPrecision323A("Instant Decelerating Precision", 0, 0,
     )
 });
 
+Ability InstantDefenseShatteringStrikeB62F("Instant Defense Shattering Strike", 0, 0, true, {
+    TargetHighestHP(
+        Remove(SHIELD)
+    ),
+    TargetHighestHP(
+        Attack(1.0)
+    )
+});
+
 Ability InstantDistractingStrikeF18F("Instant Distracting Strike", 0, 0, true, {
     TargetHighestDamage(
-        ReduceDamage(33.0, 1, 1),
+        ReduceDamage(33.0, 1, 2),
         Attack(1.0)
     )
 });
@@ -5381,9 +5637,22 @@ Ability InstantNullifyingStrike1708("Instant Nullifying Strike", 0, 0, true, {
     )
 });
 
+Ability InstantPreciseImpact5A71("Instant Precise Impact", 0, 1, true, {
+    TargetFastest(
+        Attack(1.5, BYPASS_ARMOR|PRECISE)
+    )
+});
+
 Ability InstantRampageC258("Instant Rampage", 0, 2, true, {
     TargetLowestHP(
         Attack(2.0)
+    )
+});
+
+Ability InstantRend0585("Instant Rend", 1, 1, true, {
+    TargetMostPositiveEffects(
+        Remove(SHIELD),
+        Rend(60.0, BYPASS_ARMOR)
     )
 });
 
@@ -5787,6 +6056,15 @@ Ability PreciseDoubleStrike2357("Precise Double Strike", 0, 1, false, {
     )
 });
 
+CounterAbility PreciseGroupCounter7420("Precise Group Counter", {
+    TargetAllOpponents(
+        Attack(1.0, PRECISE)
+    ),
+    TargetSelf(
+        IncreaseArmor(10.0, 2, 4)
+    )
+});
+
 Ability PreciseImpact9D87("Precise Impact", 0, 1, false, {
     TargetLowestHP(
         Attack(1.5, PRECISE)
@@ -6097,6 +6375,13 @@ Ability RestrictedGroupDistraction08AC("Restricted Group Distraction", 0, 1, fal
     )
 });
 
+Ability Retreat5950("Retreat", 0, 0, true, {
+    TargetSelf(
+        Cleanse(NEGATIVE_EFFECTS),
+        Swap()
+    )
+});
+
 RevengeAbility RevengeCunningRampage422C("Revenge Cunning Rampage", 1, 1, false, {
     TargetSelf(
         Cleanse(DAMAGE_OVER_TIME)
@@ -6311,6 +6596,17 @@ Ability Shelter12ED("Shelter", 0, 2, false, {
     )
 });
 
+Ability ShelteringImpact6881("Sheltering Impact", 0, 2, true, {
+    TargetSelf(
+        Cleanse(NEGATIVE_EFFECTS),
+        Heal(2.0),
+        IncreaseSpeed(10.0, 2)
+    ),
+    TargetHighestDamage(
+        Attack(1.5)
+    )
+});
+
 Ability ShieldAdvantage90B9("Shield Advantage", 0, 1, false, {
     TargetSelf(
         Shield(50.0, 1, 4)
@@ -6397,6 +6693,28 @@ Ability ShieldedTauntingStrike73D4("Shielded Taunting Strike", 0, 0, false, {
     )
 });
 
+ThreatenedAbility ShieldingAlertRampage3625("Shielding Alert Rampage", 0, 2, false, {
+    TargetAllOpponents(
+        Remove(CLOAK|DODGE|SHIELD)
+    ),
+    TargetSelf(
+        Shield(50.0, 1, 4)
+    ),
+    TargetAllOpponents(
+        Attack(2.0, BYPASS_ARMOR)
+    )
+}, [](Dino &self) { return self.total_health <= self.max_total_health * 1./2.; }, 0, 2, true, {
+    TargetAllOpponents(
+        Remove(CLOAK|DODGE|SHIELD)
+    ),
+    TargetTeam(
+        Shield(100.0, 1, 8)
+    ),
+    TargetAllOpponents(
+        Attack(2.0, BYPASS_ARMOR)
+    )
+});
+
 Ability ShieldingStrikeEDCA("Shielding Strike", 0, 0, false, {
     TargetLowestHP(
         Attack(1.0)
@@ -6474,6 +6792,18 @@ Ability SlowingImpact145F("Slowing Impact", 0, 1, false, {
     TargetFastest(
         ReduceSpeed(50.0, 3),
         Attack(1.5)
+    )
+});
+
+Ability SlowingResilientStrikeB132("Slowing Resilient Strike", 0, 0, false, {
+    TargetSelf(
+        Cleanse(REDUCED_DAMAGE)
+    ),
+    TargetFastest(
+        Remove(DODGE|CLOAK|INCREASED_SPEED),
+        Attack(1.0),
+        ImposeVulnerability(50.0, 2, 1),
+        ReduceSpeed(50.0, 1)
     )
 });
 
@@ -6619,6 +6949,14 @@ Ability TauntingBellow3BBD("Taunting Bellow", 0, 2, true, {
     ),
     TargetFastest(
         ReduceSpeed(50.0, 2)
+    )
+});
+
+Ability TauntingDefense72E3("Taunting Defense", 0, 2, true, {
+    TargetSelf(
+        Shield(50.0, 2, 4),
+        Taunt(1),
+        IncreaseArmor(50.0, 2, 4)
     )
 });
 
@@ -6801,7 +7139,7 @@ Ability WoundingDevouringImpactE5D8("Wounding Devouring Impact", 0, 2, false, {
 });
 
 
-DinoKind AlanqaMinion("Alanqa Minion", EPIC, 1, 5000, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind AlanqaMinion("Alanqa Minion", EPIC, 1, 5000, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RampageB9EA,
@@ -6809,14 +7147,14 @@ DinoKind AlanqaMinion("Alanqa Minion", EPIC, 1, 5000, 1000, 115, 0.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind AllosaurusMinion("Allosaurus Minion", COMMON, 1, 4620, 1750, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind AllosaurusMinion("Allosaurus Minion", COMMON, 1, 4620, 1750, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &DefenseShatteringRampageC9FF
     }
 }, nullptr);
 
-DinoKind ArambourgianiaMinion("Arambourgiania Minion", RARE, 1, 4500, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind ArambourgianiaMinion("Arambourgiania Minion", RARE, 1, 4500, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupTauntingShieldsEB4C,
@@ -6824,14 +7162,14 @@ DinoKind ArambourgianiaMinion("Arambourgiania Minion", RARE, 1, 4500, 1000, 115,
     }
 }, nullptr);
 
-DinoKind ArchaeotheriumMinion("Archaeotherium Minion", COMMON, 1, 3000, 1000, 121, 15.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, {
+DinoKind ArchaeotheriumMinion("Archaeotherium Minion", COMMON, 1, 3000, 1000, 121, 15.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupDefenseShatteringStrikeAE98,
         &GroupShatteringImpact7EAE
     }
 }, nullptr);
 
-DinoKind BaryonyxMinion("Baryonyx Minion", EPIC, 1, 4200, 1300, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, 1e-05, {
+DinoKind BaryonyxMinion("Baryonyx Minion", EPIC, 1, 4200, 1300, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, 1e-05, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &GroupTakedown066E,
@@ -6839,7 +7177,7 @@ DinoKind BaryonyxMinion("Baryonyx Minion", EPIC, 1, 4200, 1300, 126, 0.0, 30.0, 
     }
 }, nullptr);
 
-DinoKind CarnotaurusMinion("Carnotaurus Minion", RARE, 1, 4500, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind CarnotaurusMinion("Carnotaurus Minion", RARE, 1, 4500, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupTauntingShieldsEB4C,
@@ -6847,7 +7185,7 @@ DinoKind CarnotaurusMinion("Carnotaurus Minion", RARE, 1, 4500, 1000, 104, 0.0, 
     }
 }, &GreaterRendingCounterattackD5C2);
 
-DinoKind CharlieMinion("Charlie Minion", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind CharlieMinion("Charlie Minion", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HighPounceD062,
@@ -6855,7 +7193,7 @@ DinoKind CharlieMinion("Charlie Minion", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind DilophosaurusMinion("Dilophosaurus Minion", RARE, 1, 3600, 1250, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind DilophosaurusMinion("Dilophosaurus Minion", RARE, 1, 3600, 1250, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -6863,7 +7201,7 @@ DinoKind DilophosaurusMinion("Dilophosaurus Minion", RARE, 1, 3600, 1250, 129, 0
     }
 }, nullptr);
 
-DinoKind DoedicurusMinion("Doedicurus Minion", RARE, 1, 4200, 1200, 111, 50.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind DoedicurusMinion("Doedicurus Minion", RARE, 1, 4200, 1200, 111, 50.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DeceleratingRampageD0C5,
@@ -6871,7 +7209,7 @@ DinoKind DoedicurusMinion("Doedicurus Minion", RARE, 1, 4200, 1200, 111, 50.0, 5
     }
 }, nullptr);
 
-DinoKind EchoMinion("Echo Minion", RARE, 1, 2500, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind EchoMinion("Echo Minion", RARE, 1, 2500, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupStrikeC21E,
         &HighPounceD062,
@@ -6879,7 +7217,7 @@ DinoKind EchoMinion("Echo Minion", RARE, 1, 2500, 1500, 129, 0.0, 5.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind EntelodonMinion("Entelodon Minion", RARE, 1, 3600, 1000, 122, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind EntelodonMinion("Entelodon Minion", RARE, 1, 3600, 1000, 122, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupDefenseShatteringStrikeAE98,
         &GroupFerocityC6F7,
@@ -6887,14 +7225,14 @@ DinoKind EntelodonMinion("Entelodon Minion", RARE, 1, 3600, 1000, 122, 0.0, 30.0
     }
 }, nullptr);
 
-DinoKind GallimimusMinion("Gallimimus Minion", COMMON, 1, 2700, 1400, 130, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind GallimimusMinion("Gallimimus Minion", COMMON, 1, 2700, 1400, 130, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &InstantDistractionF5AC
     }
 }, nullptr);
 
-DinoKind GorgosaurusMinion("Gorgosaurus Minion", RARE, 1, 4500, 1750, 103, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind GorgosaurusMinion("Gorgosaurus Minion", RARE, 1, 4500, 1750, 103, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &DefenseShatteringImpact25E3,
@@ -6902,7 +7240,7 @@ DinoKind GorgosaurusMinion("Gorgosaurus Minion", RARE, 1, 4500, 1750, 103, 0.0, 
     }
 }, nullptr);
 
-DinoKind IrritatorMinion("Irritator Minion", RARE, 1, 4500, 1100, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, 1e-05, {
+DinoKind IrritatorMinion("Irritator Minion", RARE, 1, 4500, 1100, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 1e-05, 0.0, 0.0, 0.0, 1e-05, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ReadyToCrush43AE,
@@ -6910,7 +7248,7 @@ DinoKind IrritatorMinion("Irritator Minion", RARE, 1, 4500, 1100, 126, 0.0, 30.0
     }
 }, nullptr);
 
-DinoKind KoolasuchusGen2Minion("Koolasuchus Gen 2 Minion", RARE, 1, 4500, 1100, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind KoolasuchusGen2Minion("Koolasuchus Gen 2 Minion", RARE, 1, 4500, 1100, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &NullifyingStrike38B2,
         &NullifyingImpact65A2,
@@ -6918,28 +7256,28 @@ DinoKind KoolasuchusGen2Minion("Koolasuchus Gen 2 Minion", RARE, 1, 4500, 1100, 
     }
 }, nullptr);
 
-DinoKind MajungasaurusMinion("Majungasaurus Minion", COMMON, 1, 3450, 1300, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind MajungasaurusMinion("Majungasaurus Minion", COMMON, 1, 3450, 1300, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupMockBlockAndSockD0AE
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind MiragaiaMinion("Miragaia Minion", COMMON, 1, 4050, 1000, 112, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind MiragaiaMinion("Miragaia Minion", COMMON, 1, 4050, 1000, 112, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &GroupDeceleratingStrikeBAC6
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind MonolophosaurusGen2Minion("Monolophosaurus Gen 2 Minion", COMMON, 1, 3000, 1350, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind MonolophosaurusGen2Minion("Monolophosaurus Gen 2 Minion", COMMON, 1, 3000, 1350, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &CunningImpactEE79
     }
 }, nullptr);
 
-DinoKind NodosaurusMinion("Nodosaurus Minion", RARE, 1, 6000, 1000, 116, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind NodosaurusMinion("Nodosaurus Minion", RARE, 1, 6000, 1000, 116, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &TauntingShieldsB07B,
         &GroupTauntingShieldsEB4C,
@@ -6947,7 +7285,7 @@ DinoKind NodosaurusMinion("Nodosaurus Minion", RARE, 1, 6000, 1000, 116, 30.0, 5
     }
 }, nullptr);
 
-DinoKind PteranodonMinion("Pteranodon Minion", EPIC, 1, 3500, 1200, 120, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind PteranodonMinion("Pteranodon Minion", EPIC, 1, 3500, 1200, 120, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &FerociousStrike71CC,
@@ -6955,21 +7293,21 @@ DinoKind PteranodonMinion("Pteranodon Minion", EPIC, 1, 3500, 1200, 120, 0.0, 5.
     }
 }, nullptr);
 
-DinoKind ScolosaurusMinion("Scolosaurus Minion", COMMON, 1, 5500, 1000, 110, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind ScolosaurusMinion("Scolosaurus Minion", COMMON, 1, 5500, 1000, 110, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &TauntingShieldsB07B,
         &GroupTauntingShieldsEB4C
     }
 }, nullptr);
 
-DinoKind SuchomimusMinion("Suchomimus Minion", COMMON, 1, 3900, 900, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind SuchomimusMinion("Suchomimus Minion", COMMON, 1, 3900, 900, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrikeAA4B,
         &LethalWound98A0
     }
 }, nullptr);
 
-DinoKind TenontosaurusMinion("Tenontosaurus Minion", RARE, 1, 4500, 1100, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind TenontosaurusMinion("Tenontosaurus Minion", RARE, 1, 4500, 1100, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike4EEA,
         &LesserGroupHeal5491,
@@ -6977,14 +7315,14 @@ DinoKind TenontosaurusMinion("Tenontosaurus Minion", RARE, 1, 4500, 1100, 110, 0
     }
 }, nullptr);
 
-DinoKind VelociraptorMinion("Velociraptor Minion", COMMON, 1, 2500, 1500, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind VelociraptorMinion("Velociraptor Minion", COMMON, 1, 2500, 1500, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupStrikeC21E,
         &HighPounceD062
     }
 }, nullptr);
 
-DinoKind WuerhosaurusMinion("Wuerhosaurus Minion", RARE, 1, 4800, 1000, 115, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind WuerhosaurusMinion("Wuerhosaurus Minion", RARE, 1, 4800, 1000, 115, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
@@ -6993,7 +7331,7 @@ DinoKind WuerhosaurusMinion("Wuerhosaurus Minion", RARE, 1, 4800, 1000, 115, 25.
 }, nullptr);
 
 
-DinoKind Acrocanthops("Acrocanthops", LEGENDARY, 1, 4500, 1800, 112, 0.0, 20.0, 0.0, 50.0, 0.0, 0.0, 0.0, 34.0, 0.0, 100.0, 0.0, {
+DinoKind Acrocanthops("Acrocanthops", LEGENDARY, 1, 4500, 1800, 112, 0.0, 20.0, 0.0, 50.0, 0.0, 0.0, 0.0, 34.0, 0.0, 100.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &FierceImpactB3BE,
@@ -7002,7 +7340,7 @@ DinoKind Acrocanthops("Acrocanthops", LEGENDARY, 1, 4500, 1800, 112, 0.0, 20.0, 
     }
 }, nullptr);
 
-DinoKind Acrocanthosaurus("Acrocanthosaurus", EPIC, 1, 4800, 1700, 103, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Acrocanthosaurus("Acrocanthosaurus", EPIC, 1, 4800, 1700, 103, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &FierceImpactB3BE,
@@ -7010,7 +7348,16 @@ DinoKind Acrocanthosaurus("Acrocanthosaurus", EPIC, 1, 4800, 1700, 103, 0.0, 30.
     }
 }, nullptr);
 
-DinoKind Ailurarctos("Ailurarctos", EPIC, 1, 3900, 1350, 106, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 75.0, {
+DinoKind Aenocyonyx("Aenocyonyx", UNIQUE, 1, 4800, 1500, 128, 0.0, 25.0, 100.0, 50.0, 0.0, 75.0, 100.0, 50.0, 100.0, 0.0, 100.0, 0.0, {
+    {
+        &InstantDefenseShatteringStrikeB62F,
+        &CrushingProwl3FF5,
+        &DevouringWound32A1,
+        &DisarmingDecimateAndRunB62E
+    }
+}, &DefenseShatteringCounterattackD663);
+
+DinoKind Ailurarctos("Ailurarctos", EPIC, 1, 3900, 1350, 106, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &FerociousShieldedHeal2912,
         &AlertDeceleratingImpact5396,
@@ -7018,7 +7365,7 @@ DinoKind Ailurarctos("Ailurarctos", EPIC, 1, 3900, 1350, 106, 10.0, 5.0, 0.0, 0.
     }
 }, &CounterPowerHeal4DD2);
 
-DinoKind Alacranix("Alacranix", APEX, 1, 4050, 1600, 109, 40.0, 15.0, 0.0, 100.0, 0.0, 75.0, 100.0, 75.0, 0.0, 100.0, 50.0, {
+DinoKind Alacranix("Alacranix", APEX, 1, 4050, 1600, 109, 40.0, 15.0, 0.0, 100.0, 0.0, 75.0, 100.0, 75.0, 0.0, 100.0, 50.0, 0.0, {
     {
         &MinorRendingLockdown18B8,
         &NecroticImpactBA62,
@@ -7027,7 +7374,7 @@ DinoKind Alacranix("Alacranix", APEX, 1, 4050, 1600, 109, 40.0, 15.0, 0.0, 100.0
     }
 }, nullptr);
 
-DinoKind Alankyloceratops("Alankyloceratops", UNIQUE, 1, 5400, 1200, 113, 40.0, 5.0, 0.0, 50.0, 50.0, 25.0, 100.0, 50.0, 0.0, 0.0, 25.0, {
+DinoKind Alankyloceratops("Alankyloceratops", UNIQUE, 1, 5400, 1200, 113, 40.0, 5.0, 0.0, 50.0, 50.0, 25.0, 100.0, 50.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &GroupResilientStrike74A6,
         &StunningRampageBD06,
@@ -7036,7 +7383,7 @@ DinoKind Alankyloceratops("Alankyloceratops", UNIQUE, 1, 5400, 1200, 113, 40.0, 
     }
 }, nullptr);
 
-DinoKind Alankylosaurus("Alankylosaurus", LEGENDARY, 1, 4800, 1000, 114, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Alankylosaurus("Alankylosaurus", LEGENDARY, 1, 4800, 1000, 114, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &ResilientRampageB23D,
@@ -7045,7 +7392,7 @@ DinoKind Alankylosaurus("Alankylosaurus", LEGENDARY, 1, 4800, 1000, 114, 30.0, 5
     }
 }, nullptr);
 
-DinoKind Alanqa("Alanqa", EPIC, 1, 4050, 1200, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Alanqa("Alanqa", EPIC, 1, 4050, 1200, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RampageB9EA,
@@ -7053,7 +7400,7 @@ DinoKind Alanqa("Alanqa", EPIC, 1, 4050, 1200, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Albertocevia("Albertocevia", UNIQUE, 1, 4650, 1600, 121, 0.0, 10.0, 100.0, 50.0, 0.0, 50.0, 100.0, 75.0, 0.0, 0.0, 75.0, {
+DinoKind Albertocevia("Albertocevia", UNIQUE, 1, 4650, 1600, 121, 0.0, 10.0, 100.0, 50.0, 0.0, 50.0, 100.0, 75.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &DefenseShatteringAlert459B,
         &DistractingRevengeBlow7BE8,
@@ -7062,7 +7409,7 @@ DinoKind Albertocevia("Albertocevia", UNIQUE, 1, 4650, 1600, 121, 0.0, 10.0, 100
     }
 }, &FierceCounter4FB7);
 
-DinoKind Albertosaurus("Albertosaurus", RARE, 1, 4350, 1750, 106, 0.0, 30.0, 100.0, 50.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 25.0, {
+DinoKind Albertosaurus("Albertosaurus", RARE, 1, 4350, 1750, 106, 0.0, 30.0, 100.0, 50.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 25.0, 0.0, {
     {
         &FierceStrike106A,
         &KillerInstinct3E33,
@@ -7070,7 +7417,7 @@ DinoKind Albertosaurus("Albertosaurus", RARE, 1, 4350, 1750, 106, 0.0, 30.0, 100
     }
 }, nullptr);
 
-DinoKind Albertospinos("Albertospinos", UNIQUE, 1, 4200, 1550, 125, 0.0, 15.0, 100.0, 75.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 75.0, {
+DinoKind Albertospinos("Albertospinos", UNIQUE, 1, 4200, 1550, 125, 0.0, 15.0, 100.0, 75.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 75.0, 0.0, {
     {
         &DefenseShatteringWound1735,
         &MercilessAlert571C,
@@ -7079,7 +7426,7 @@ DinoKind Albertospinos("Albertospinos", UNIQUE, 1, 4200, 1550, 125, 0.0, 15.0, 1
     }
 }, &MinorCriticalCounter4FD1);
 
-DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0.0, 15.0, 0.0, 50.0, 75.0, 66.0, 100.0, 67.0, 100.0, 0.0, 0.0, {
+DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0.0, 15.0, 0.0, 50.0, 75.0, 66.0, 100.0, 67.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &ProtectiveAlert2FA4,
@@ -7088,23 +7435,23 @@ DinoKind Allodrigues("Allodrigues", UNIQUE, 3, 3300, 1750, 130, 0.0, 15.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Alloraptor("Alloraptor", LEGENDARY, 1, 3000, 1700, 126, 0.0, 30.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 100.0, 0.0, 50.0, {
+DinoKind Alloraptor("Alloraptor", LEGENDARY, 1, 3300, 1700, 130, 0.0, 40.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 100.0, 0.0, 50.0, 0.0, {
     {
-        &CunningStrike75A8,
+        &CunningFerociousStrike6867,
         &DistractingRampageBD0D,
         &RendingTakedown1CED,
-        &RampageB9EA
+        &CleansingRampageC8DB
     }
 }, nullptr);
 
-DinoKind Allosaurus("Allosaurus", COMMON, 1, 4650, 1750, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Allosaurus("Allosaurus", COMMON, 1, 4650, 1750, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &FierceImpactB3BE
     }
 }, nullptr);
 
-DinoKind AllosaurusGen2("Allosaurus Gen2", EPIC, 1, 4500, 1800, 105, 0.0, 40.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 50.0, {
+DinoKind AllosaurusGen2("Allosaurus Gen2", EPIC, 1, 4500, 1800, 105, 0.0, 40.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &CleansingShatteringStrikeA6B1,
         &FierceImpactB3BE,
@@ -7112,7 +7459,7 @@ DinoKind AllosaurusGen2("Allosaurus Gen2", EPIC, 1, 4500, 1800, 105, 0.0, 40.0, 
     }
 }, nullptr);
 
-DinoKind Allosinosaurus("Allosinosaurus", LEGENDARY, 1, 4500, 1800, 106, 15.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Allosinosaurus("Allosinosaurus", LEGENDARY, 1, 4500, 1800, 106, 15.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &ArmorPiercingImpactB10F,
@@ -7121,7 +7468,7 @@ DinoKind Allosinosaurus("Allosinosaurus", LEGENDARY, 1, 4500, 1800, 106, 15.0, 2
     }
 }, nullptr);
 
-DinoKind Amargasaurus("Amargasaurus", RARE, 1, 5250, 1000, 103, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Amargasaurus("Amargasaurus", RARE, 1, 5250, 1000, 103, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingImpact9451,
@@ -7129,7 +7476,7 @@ DinoKind Amargasaurus("Amargasaurus", RARE, 1, 5250, 1000, 103, 0.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Amargocephalus("Amargocephalus", EPIC, 1, 3600, 900, 104, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, {
+DinoKind Amargocephalus("Amargocephalus", EPIC, 1, 3600, 900, 104, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupDeceleratingImpact9451,
@@ -7138,14 +7485,14 @@ DinoKind Amargocephalus("Amargocephalus", EPIC, 1, 3600, 900, 104, 40.0, 5.0, 0.
     }
 }, &MediumCounterattackE4A7);
 
-DinoKind Amphicyon("Amphicyon", COMMON, 1, 3150, 1300, 122, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Amphicyon("Amphicyon", COMMON, 1, 3150, 1300, 122, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &FierceImpactB3BE
     }
 }, nullptr);
 
-DinoKind Andrewsarchus("Andrewsarchus", RARE, 1, 3300, 1400, 125, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Andrewsarchus("Andrewsarchus", RARE, 1, 3300, 1400, 125, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CleansingStrike541F,
         &FierceImpactB3BE,
@@ -7153,7 +7500,7 @@ DinoKind Andrewsarchus("Andrewsarchus", RARE, 1, 3300, 1400, 125, 0.0, 40.0, 0.0
     }
 }, nullptr);
 
-DinoKind Andrewtherium("Andrewtherium", EPIC, 1, 3600, 1300, 119, 5.0, 25.0, 100.0, 0.0, 50.0, 0.0, 50.0, 50.0, 100.0, 0.0, 50.0, {
+DinoKind Andrewtherium("Andrewtherium", EPIC, 1, 3600, 1300, 119, 5.0, 25.0, 100.0, 0.0, 50.0, 0.0, 50.0, 50.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &FerociousStrike71CC,
@@ -7162,7 +7509,7 @@ DinoKind Andrewtherium("Andrewtherium", EPIC, 1, 3600, 1300, 119, 5.0, 25.0, 100
     }
 }, nullptr);
 
-DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 0.0, 0.0, 0.0, {
+DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &ArmorPiercingImpactB10F,
@@ -7171,7 +7518,7 @@ DinoKind Andrewtodon("Andrewtodon", EPIC, 1, 3450, 1300, 112, 15.0, 25.0, 0.0, 0
     }
 }, &ExposingCounterA5BA);
 
-DinoKind Andrewtops("Andrewtops", UNIQUE, 1, 3900, 1600, 126, 10.0, 20.0, 100.0, 0.0, 100.0, 0.0, 75.0, 75.0, 0.0, 0.0, 0.0, {
+DinoKind Andrewtops("Andrewtops", UNIQUE, 1, 3900, 1600, 126, 10.0, 20.0, 100.0, 0.0, 100.0, 0.0, 75.0, 75.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DaringStrikeE486,
         &DelayedRevengeDistractingRampage99EB,
@@ -7180,7 +7527,7 @@ DinoKind Andrewtops("Andrewtops", UNIQUE, 1, 3900, 1600, 126, 10.0, 20.0, 100.0,
     }
 }, &CounterVulnerabilityC8BA);
 
-DinoKind Ankylocodon("Ankylocodon", RARE, 1, 4500, 1000, 107, 25.0, 20.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Ankylocodon("Ankylocodon", RARE, 1, 4500, 1000, 107, 25.0, 20.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingImpact9451,
@@ -7189,7 +7536,7 @@ DinoKind Ankylocodon("Ankylocodon", RARE, 1, 4500, 1000, 107, 25.0, 20.0, 0.0, 1
     }
 }, nullptr);
 
-DinoKind Ankylodactylus("Ankylodactylus", LEGENDARY, 3, 3150, 1200, 126, 15.0, 5.0, 0.0, 0.0, 100.0, 33.0, 75.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind Ankylodactylus("Ankylodactylus", LEGENDARY, 3, 3150, 1200, 126, 15.0, 5.0, 0.0, 0.0, 100.0, 33.0, 75.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &Sideflap66AF,
         &ShieldedEvasiveStrike4571,
@@ -7198,7 +7545,7 @@ DinoKind Ankylodactylus("Ankylodactylus", LEGENDARY, 3, 3150, 1200, 126, 15.0, 5
     }
 }, nullptr);
 
-DinoKind Ankylodicurus("Ankylodicurus", EPIC, 1, 4200, 1150, 108, 34.99999, 15.0, 0.0, 50.0, 50.0, 0.0, 50.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Ankylodicurus("Ankylodicurus", EPIC, 1, 4200, 1150, 108, 34.99999, 15.0, 0.0, 50.0, 50.0, 0.0, 50.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupTauntingShieldsEB4C,
@@ -7207,7 +7554,7 @@ DinoKind Ankylodicurus("Ankylodicurus", EPIC, 1, 4200, 1150, 108, 34.99999, 15.0
     }
 }, nullptr);
 
-DinoKind Ankylomoloch("Ankylomoloch", LEGENDARY, 1, 4050, 1150, 118, 20.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 0.0, 0.0, 50.0, {
+DinoKind Ankylomoloch("Ankylomoloch", LEGENDARY, 1, 4050, 1150, 118, 20.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &TauntingResilientGroupImpact240C,
@@ -7216,7 +7563,7 @@ DinoKind Ankylomoloch("Ankylomoloch", LEGENDARY, 1, 4050, 1150, 118, 20.0, 10.0,
     }
 }, nullptr);
 
-DinoKind AnkylosLux("Ankylos Lux", APEX, 1, 4200, 1100, 110, 34.99999, 5.0, 0.0, 0.0, 100.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, {
+DinoKind AnkylosLux("Ankylos Lux", APEX, 1, 4200, 1100, 110, 34.99999, 5.0, 0.0, 0.0, 100.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &HostileGlow1021,
@@ -7225,7 +7572,7 @@ DinoKind AnkylosLux("Ankylos Lux", APEX, 1, 4200, 1100, 110, 34.99999, 5.0, 0.0,
     }
 }, &RakingCounterattackC77B);
 
-DinoKind Ankylosaurus("Ankylosaurus", EPIC, 1, 4650, 1000, 116, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Ankylosaurus("Ankylosaurus", EPIC, 1, 4650, 1000, 116, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupTauntingShieldsEB4C,
@@ -7233,14 +7580,14 @@ DinoKind Ankylosaurus("Ankylosaurus", EPIC, 1, 4650, 1000, 116, 30.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind AnkylosaurusGen2("Ankylosaurus Gen 2", COMMON, 1, 4200, 1000, 111, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind AnkylosaurusGen2("Ankylosaurus Gen 2", COMMON, 1, 4200, 1000, 111, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupTauntingShieldsEB4C
     }
 }, nullptr);
 
-DinoKind Ankyntrosaurus("Ankyntrosaurus", LEGENDARY, 1, 3900, 900, 109, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, {
+DinoKind Ankyntrosaurus("Ankyntrosaurus", LEGENDARY, 1, 3900, 900, 109, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupTauntingShieldsStrikeDA58,
@@ -7249,7 +7596,7 @@ DinoKind Ankyntrosaurus("Ankyntrosaurus", LEGENDARY, 1, 3900, 900, 109, 40.0, 5.
     }
 }, &MediumResilientCounterattack3EB5);
 
-DinoKind Antarctopelta("Antarctopelta", EPIC, 1, 3750, 1000, 111, 30.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Antarctopelta("Antarctopelta", EPIC, 1, 3750, 1000, 111, 30.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &TauntingResilientGroupImpact240C,
@@ -7257,7 +7604,7 @@ DinoKind Antarctopelta("Antarctopelta", EPIC, 1, 3750, 1000, 111, 30.0, 10.0, 0.
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Antarctovenator("Antarctovenator", UNIQUE, 1, 4200, 1200, 110, 20.0, 10.0, 0.0, 0.0, 100.0, 0.0, 50.0, 75.0, 100.0, 0.0, 100.0, {
+DinoKind Antarctovenator("Antarctovenator", UNIQUE, 1, 4200, 1200, 110, 20.0, 10.0, 0.0, 0.0, 100.0, 0.0, 50.0, 75.0, 100.0, 0.0, 100.0, 0.0, {
     {
         &CunningStrike75A8,
         &RevengeInstantFerocity9F5A,
@@ -7266,7 +7613,7 @@ DinoKind Antarctovenator("Antarctovenator", UNIQUE, 1, 4200, 1200, 110, 20.0, 10
     }
 }, &MediumNullifyingCounter4816);
 
-DinoKind Anurognathus("Anurognathus", EPIC, 3, 2550, 1150, 131, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 100.0, 100.0, 0.0, {
+DinoKind Anurognathus("Anurognathus", EPIC, 3, 2550, 1150, 131, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &LimitedEvasiveStrike6F07,
@@ -7274,14 +7621,14 @@ DinoKind Anurognathus("Anurognathus", EPIC, 3, 2550, 1150, 131, 0.0, 10.0, 0.0, 
     }
 }, &MinimalCriticalCounterECF3);
 
-DinoKind Apatosaurus("Apatosaurus", COMMON, 1, 6000, 1100, 101, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Apatosaurus("Apatosaurus", COMMON, 1, 6000, 1100, 101, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingImpact9451
     }
 }, nullptr);
 
-DinoKind Aquilamimus("Aquilamimus", EPIC, 1, 2850, 1150, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Aquilamimus("Aquilamimus", EPIC, 1, 2850, 1150, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &DistractingImpactD4D6,
@@ -7290,7 +7637,7 @@ DinoKind Aquilamimus("Aquilamimus", EPIC, 1, 2850, 1150, 130, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Arambourgiania("Arambourgiania", RARE, 1, 4350, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Arambourgiania("Arambourgiania", RARE, 1, 4350, 1000, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupTauntingShieldsStrikeDA58,
@@ -7298,7 +7645,7 @@ DinoKind Arambourgiania("Arambourgiania", RARE, 1, 4350, 1000, 115, 0.0, 5.0, 0.
     }
 }, nullptr);
 
-DinoKind Archaeopteryx("Archaeopteryx", RARE, 3, 3300, 1250, 127, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, {
+DinoKind Archaeopteryx("Archaeopteryx", RARE, 3, 3300, 1250, 127, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &AlertBuffAndStrike79FE,
         &EvasiveImpact7999,
@@ -7306,14 +7653,14 @@ DinoKind Archaeopteryx("Archaeopteryx", RARE, 3, 3300, 1250, 127, 0.0, 10.0, 0.0
     }
 }, nullptr);
 
-DinoKind Archaeotherium("Archaeotherium", COMMON, 1, 4650, 1000, 123, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Archaeotherium("Archaeotherium", COMMON, 1, 4650, 1000, 123, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &GroupDefenseShatteringStrikeF98B,
         &MutualFury2752
     }
 }, nullptr);
 
-DinoKind Arctalces("Arctalces", LEGENDARY, 1, 3750, 1150, 113, 15.0, 5.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 33.0, 0.0, 50.0, {
+DinoKind Arctalces("Arctalces", LEGENDARY, 1, 3750, 1150, 113, 15.0, 5.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 33.0, 0.0, 50.0, 0.0, {
     {
         &ShieldedHeavyStrike02CB,
         &AlertDeceleratingImpact5396,
@@ -7322,7 +7669,7 @@ DinoKind Arctalces("Arctalces", LEGENDARY, 1, 3750, 1150, 113, 15.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Arctodus("Arctodus", RARE, 1, 4200, 1250, 107, 10.0, 5.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Arctodus("Arctodus", RARE, 1, 4200, 1250, 107, 10.0, 5.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &HeavyStrike5748,
         &AlertDeceleratingImpact5396,
@@ -7330,7 +7677,7 @@ DinoKind Arctodus("Arctodus", RARE, 1, 4200, 1250, 107, 10.0, 5.0, 0.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Arctops("Arctops", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Arctops("Arctops", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &RevengeDistractingStrike50E9,
@@ -7338,7 +7685,7 @@ DinoKind Arctops("Arctops", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 100.0, 0.0, 100.
     }
 }, nullptr);
 
-DinoKind Arctovasilas("Arctovasilas", APEX, 1, 4500, 1350, 117, 25.0, 5.0, 0.0, 0.0, 50.0, 0.0, 75.0, 67.0, 33.0, 0.0, 100.0, {
+DinoKind Arctovasilas("Arctovasilas", APEX, 1, 4800, 1400, 117, 34.99999, 5.0, 0.0, 25.0, 50.0, 0.0, 75.0, 67.0, 33.0, 0.0, 100.0, 0.0, {
     {
         &CenozoicSmack8DC9,
         &AlertArcticBlast801B,
@@ -7347,16 +7694,16 @@ DinoKind Arctovasilas("Arctovasilas", APEX, 1, 4500, 1350, 117, 25.0, 5.0, 0.0, 
     }
 }, &CounterPowerHealA54F);
 
-DinoKind Ardentismaxima("Ardentismaxima", UNIQUE, 1, 6000, 1300, 109, 10.0, 30.0, 100.0, 25.0, 0.0, 0.0, 100.0, 100.0, 100.0, 100.0, 100.0, {
+DinoKind Ardentismaxima("Ardentismaxima", UNIQUE, 1, 6000, 1300, 109, 0.0, 30.0, 100.0, 25.0, 0.0, 0.0, 100.0, 100.0, 100.0, 100.0, 100.0, 0.0, {
     {
-        &GroupResilientStrike74A6,
+        &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
         &TauntShatteringRampageDE3B,
         &InstantInvincibilityTaunt6C65
     }
 }, nullptr);
 
-DinoKind Ardontognathus("Ardontognathus", UNIQUE, 3, 3300, 1300, 123, 0.0, 25.0, 100.0, 0.0, 75.0, 33.0, 0.0, 75.0, 67.0, 0.0, 50.0, {
+DinoKind Ardontognathus("Ardontognathus", UNIQUE, 3, 3300, 1300, 123, 0.0, 25.0, 100.0, 0.0, 75.0, 33.0, 0.0, 75.0, 67.0, 0.0, 50.0, 0.0, {
     {
         &CunningFierceStrike9D6C,
         &DeceleratingSideflap5BCD,
@@ -7365,7 +7712,7 @@ DinoKind Ardontognathus("Ardontognathus", UNIQUE, 3, 3300, 1300, 123, 0.0, 25.0,
     }
 }, &MinimalCriticalCounterECF3);
 
-DinoKind Ardontosaurus("Ardontosaurus", LEGENDARY, 1, 4500, 1500, 108, 0.0, 20.0, 100.0, 10.0, 50.0, 0.0, 100.0, 100.0, 75.0, 75.0, 50.0, {
+DinoKind Ardontosaurus("Ardontosaurus", LEGENDARY, 1, 4500, 1500, 108, 0.0, 20.0, 100.0, 10.0, 50.0, 0.0, 100.0, 100.0, 75.0, 75.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupDeceleratingImpact9451,
@@ -7374,7 +7721,7 @@ DinoKind Ardontosaurus("Ardontosaurus", LEGENDARY, 1, 4500, 1500, 108, 0.0, 20.0
     }
 }, nullptr);
 
-DinoKind Argentavis("Argentavis", RARE, 1, 4050, 1050, 128, 0.0, 10.0, 100.0, 0.0, 0.0, 50.0, 50.0, 50.0, 100.0, 0.0, 0.0, {
+DinoKind Argentavis("Argentavis", RARE, 1, 4050, 1050, 128, 0.0, 10.0, 100.0, 0.0, 0.0, 50.0, 50.0, 50.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &FearlessFlap6CE3,
@@ -7382,7 +7729,7 @@ DinoKind Argentavis("Argentavis", RARE, 1, 4050, 1050, 128, 0.0, 10.0, 100.0, 0.
     }
 }, nullptr);
 
-DinoKind Argenteryx("Argenteryx", EPIC, 3, 3750, 1150, 127, 0.0, 10.0, 100.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, {
+DinoKind Argenteryx("Argenteryx", EPIC, 3, 3750, 1150, 127, 0.0, 10.0, 100.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &AlertBuffAndStrike79FE,
         &EvasiveRampage40C8,
@@ -7391,7 +7738,7 @@ DinoKind Argenteryx("Argenteryx", EPIC, 3, 3750, 1150, 127, 0.0, 10.0, 100.0, 0.
     }
 }, nullptr);
 
-DinoKind Argentinosaurus("Argentinosaurus", RARE, 1, 5400, 1100, 102, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Argentinosaurus("Argentinosaurus", RARE, 1, 5400, 1100, 102, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6,
@@ -7399,7 +7746,16 @@ DinoKind Argentinosaurus("Argentinosaurus", RARE, 1, 5400, 1100, 102, 0.0, 20.0,
     }
 }, nullptr);
 
-DinoKind Bajadasaurus("Bajadasaurus", RARE, 1, 4350, 900, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Atrocodistis("Atrocodistis", UNIQUE, 1, 4200, 1300, 125, 25.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
+    {
+        &ToughGroupCunningStrike30D1,
+        &AcceleratingShieldedDistraction80B6,
+        &ShelteringImpact6881,
+        &BerserkResilientRampageD249
+    }
+}, &PreciseCounterDFAC);
+
+DinoKind Bajadasaurus("Bajadasaurus", RARE, 1, 4350, 900, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &TauntingBellow3BBD,
@@ -7407,7 +7763,7 @@ DinoKind Bajadasaurus("Bajadasaurus", RARE, 1, 4350, 900, 108, 0.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Bajatonodon("Bajatonodon", LEGENDARY, 1, 4500, 1500, 106, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Bajatonodon("Bajatonodon", LEGENDARY, 1, 4500, 1500, 106, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &LesserGroupHeal5491,
@@ -7416,7 +7772,7 @@ DinoKind Bajatonodon("Bajatonodon", LEGENDARY, 1, 4500, 1500, 106, 0.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind Baryonyx("Baryonyx", EPIC, 1, 4200, 1400, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 75.0, {
+DinoKind Baryonyx("Baryonyx", EPIC, 1, 4200, 1400, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &GroupTakedown066E,
@@ -7424,7 +7780,7 @@ DinoKind Baryonyx("Baryonyx", EPIC, 1, 4200, 1400, 126, 0.0, 30.0, 0.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind BaryonyxGen2("Baryonyx Gen 2", RARE, 1, 4350, 1000, 123, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind BaryonyxGen2("Baryonyx Gen 2", RARE, 1, 4350, 1000, 123, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ReadyToCrush43AE,
@@ -7432,7 +7788,7 @@ DinoKind BaryonyxGen2("Baryonyx Gen 2", RARE, 1, 4350, 1000, 123, 0.0, 20.0, 0.0
     }
 }, nullptr);
 
-DinoKind Beta("Beta", EPIC, 1, 2400, 1200, 133, 0.0, 5.0, 0.0, 0.0, 25.0, 0.0, 100.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Beta("Beta", EPIC, 1, 2400, 1200, 133, 0.0, 5.0, 0.0, 0.0, 25.0, 0.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &ImpactAndRun738D,
@@ -7440,7 +7796,7 @@ DinoKind Beta("Beta", EPIC, 1, 2400, 1200, 133, 0.0, 5.0, 0.0, 0.0, 25.0, 0.0, 1
     }
 }, nullptr);
 
-DinoKind Blue("Blue", EPIC, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Blue("Blue", EPIC, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &PrecisePounceF675,
@@ -7448,7 +7804,7 @@ DinoKind Blue("Blue", EPIC, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Brachiosaurus("Brachiosaurus", EPIC, 1, 6000, 1000, 111, 10.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 67.0, 67.0, 0.0, 0.0, {
+DinoKind Brachiosaurus("Brachiosaurus", EPIC, 1, 6000, 1000, 111, 10.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 67.0, 67.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupTauntingShieldsStrikeDA58,
@@ -7456,7 +7812,7 @@ DinoKind Brachiosaurus("Brachiosaurus", EPIC, 1, 6000, 1000, 111, 10.0, 30.0, 0.
     }
 }, nullptr);
 
-DinoKind Brontolasmus("Brontolasmus", EPIC, 1, 3900, 1300, 108, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Brontolasmus("Brontolasmus", EPIC, 1, 3900, 1300, 108, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedTauntingStrike73D4,
         &ResilientImpact7BB4,
@@ -7465,14 +7821,14 @@ DinoKind Brontolasmus("Brontolasmus", EPIC, 1, 3900, 1300, 108, 30.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Brontotherium("Brontotherium", COMMON, 1, 4200, 1200, 108, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Brontotherium("Brontotherium", COMMON, 1, 4200, 1200, 108, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedTauntingStrike73D4,
         &ResilientImpact7BB4
     }
 }, nullptr);
 
-DinoKind Bumpy("Bumpy", EPIC, 1, 4200, 1050, 113, 25.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Bumpy("Bumpy", EPIC, 1, 4200, 1050, 113, 25.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &InstantInvincibilityTaunt6C65,
@@ -7480,7 +7836,7 @@ DinoKind Bumpy("Bumpy", EPIC, 1, 4200, 1050, 113, 25.0, 10.0, 0.0, 0.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Carbonemys("Carbonemys", EPIC, 1, 3300, 900, 103, 60.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 75.0, 0.0, 0.0, 50.0, {
+DinoKind Carbonemys("Carbonemys", EPIC, 1, 3300, 900, 103, 60.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 75.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &DigInTaunt1BB1,
@@ -7488,7 +7844,7 @@ DinoKind Carbonemys("Carbonemys", EPIC, 1, 3300, 900, 103, 60.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Carbotoceratops("Carbotoceratops", LEGENDARY, 1, 4350, 1000, 104, 50.0, 5.0, 0.0, 50.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Carbotoceratops("Carbotoceratops", LEGENDARY, 1, 4350, 1000, 104, 50.0, 5.0, 0.0, 50.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &Distraction2717,
         &DigInTaunt1BB1,
@@ -7497,7 +7853,7 @@ DinoKind Carbotoceratops("Carbotoceratops", LEGENDARY, 1, 4350, 1000, 104, 50.0,
     }
 }, nullptr);
 
-DinoKind Carnotarkus("Carnotarkus", LEGENDARY, 1, 3600, 1000, 110, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Carnotarkus("Carnotarkus", LEGENDARY, 1, 3600, 1000, 110, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &GroupDeceleratingRampageE77E,
@@ -7506,7 +7862,7 @@ DinoKind Carnotarkus("Carnotarkus", LEGENDARY, 1, 3600, 1000, 110, 20.0, 5.0, 0.
     }
 }, &GreaterRendingCounterattackD5C2);
 
-DinoKind Carnotaurus("Carnotaurus", RARE, 1, 3600, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Carnotaurus("Carnotaurus", RARE, 1, 3600, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &VulnerabilityStrike1E04,
         &TauntingShields1CF6,
@@ -7514,7 +7870,7 @@ DinoKind Carnotaurus("Carnotaurus", RARE, 1, 3600, 1000, 104, 0.0, 5.0, 0.0, 0.0
     }
 }, &GreaterRendingCounterattackD5C2);
 
-DinoKind Ceramagnus("Ceramagnus", APEX, 1, 4500, 1300, 113, 25.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Ceramagnus("Ceramagnus", APEX, 1, 4500, 1300, 113, 25.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupAcceleration6211,
@@ -7523,7 +7879,7 @@ DinoKind Ceramagnus("Ceramagnus", APEX, 1, 4500, 1300, 113, 25.0, 10.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Cervalces("Cervalces", RARE, 1, 3150, 1250, 128, 5.0, 10.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 33.0, 100.0, 50.0, {
+DinoKind Cervalces("Cervalces", RARE, 1, 3150, 1250, 128, 5.0, 10.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 33.0, 100.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DigIn6DFE,
@@ -7531,7 +7887,7 @@ DinoKind Cervalces("Cervalces", RARE, 1, 3150, 1250, 128, 5.0, 10.0, 0.0, 0.0, 1
     }
 }, nullptr);
 
-DinoKind Charlie("Charlie", RARE, 1, 2100, 1450, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Charlie("Charlie", RARE, 1, 2100, 1450, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &HighPounceD062,
@@ -7539,7 +7895,7 @@ DinoKind Charlie("Charlie", RARE, 1, 2100, 1450, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Coelhaast("Coelhaast", LEGENDARY, 3, 3150, 1250, 130, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Coelhaast("Coelhaast", LEGENDARY, 3, 3150, 1250, 130, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &PrecisePiercingStrike93AA,
         &FearlessAlertCC50,
@@ -7548,14 +7904,14 @@ DinoKind Coelhaast("Coelhaast", LEGENDARY, 3, 3150, 1250, 130, 0.0, 10.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Coelurosauravus("Coelurosauravus", COMMON, 3, 3450, 1050, 126, 0.0, 15.0, 0.0, 0.0, 0.0, 33.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Coelurosauravus("Coelurosauravus", COMMON, 3, 3450, 1050, 126, 0.0, 15.0, 0.0, 0.0, 0.0, 33.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &ImpactAndRun738D
     }
 }, nullptr);
 
-DinoKind Compsocaulus("Compsocaulus", UNIQUE, 3, 3750, 1350, 127, 0.0, 10.0, 0.0, 0.0, 33.0, 33.0, 100.0, 50.0, 0.0, 0.0, 0.0, {
+DinoKind Compsocaulus("Compsocaulus", UNIQUE, 3, 3750, 1350, 127, 0.0, 10.0, 0.0, 0.0, 33.0, 33.0, 100.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HopAndMockD6D1,
@@ -7564,7 +7920,7 @@ DinoKind Compsocaulus("Compsocaulus", UNIQUE, 3, 3750, 1350, 127, 0.0, 10.0, 0.0
     }
 }, nullptr);
 
-DinoKind Compsognathus("Compsognathus", EPIC, 3, 3600, 1200, 128, 0.0, 5.0, 0.0, 0.0, 66.0, 33.0, 0.0, 100.0, 50.0, 0.0, 0.0, {
+DinoKind Compsognathus("Compsognathus", EPIC, 3, 3600, 1200, 128, 0.0, 5.0, 0.0, 0.0, 66.0, 33.0, 0.0, 100.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HopAndMockD6D1,
@@ -7572,7 +7928,7 @@ DinoKind Compsognathus("Compsognathus", EPIC, 3, 3600, 1200, 128, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind CompsognathusGen2("Compsognathus Gen 2", RARE, 3, 3750, 1100, 127, 0.0, 10.0, 0.0, 0.0, 66.0, 33.0, 0.0, 100.0, 25.0, 0.0, 0.0, {
+DinoKind CompsognathusGen2("Compsognathus Gen 2", RARE, 3, 3750, 1100, 127, 0.0, 10.0, 0.0, 0.0, 66.0, 33.0, 0.0, 100.0, 25.0, 0.0, 0.0, 0.0, {
     {
         &AlertSurge82DA,
         &HopAndMockD6D1,
@@ -7580,7 +7936,7 @@ DinoKind CompsognathusGen2("Compsognathus Gen 2", RARE, 3, 3750, 1100, 127, 0.0,
     }
 }, nullptr);
 
-DinoKind Compsoraptor("Compsoraptor", UNIQUE, 3, 3450, 1450, 131, 0.0, 30.0, 0.0, 0.0, 100.0, 33.0, 100.0, 0.0, 0.0, 100.0, 50.0, {
+DinoKind Compsoraptor("Compsoraptor", UNIQUE, 3, 3450, 1450, 131, 0.0, 30.0, 0.0, 0.0, 100.0, 33.0, 100.0, 0.0, 0.0, 100.0, 50.0, 0.0, {
     {
         &AlertSurge82DA,
         &AlertShatteringImpact9D9B,
@@ -7589,7 +7945,7 @@ DinoKind Compsoraptor("Compsoraptor", UNIQUE, 3, 3450, 1450, 131, 0.0, 30.0, 0.0
     }
 }, nullptr);
 
-DinoKind Concavenator("Concavenator", EPIC, 1, 3750, 1150, 106, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, {
+DinoKind Concavenator("Concavenator", EPIC, 1, 3750, 1150, 106, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6,
@@ -7597,7 +7953,7 @@ DinoKind Concavenator("Concavenator", EPIC, 1, 3750, 1150, 106, 0.0, 10.0, 0.0, 
     }
 }, &DefenseShatteringCounterCA13);
 
-DinoKind Dakotanops("Dakotanops", LEGENDARY, 1, 3300, 1200, 131, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Dakotanops("Dakotanops", LEGENDARY, 1, 3300, 1200, 131, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &PreciseImpact9D87,
@@ -7606,7 +7962,7 @@ DinoKind Dakotanops("Dakotanops", LEGENDARY, 1, 3300, 1200, 131, 0.0, 10.0, 100.
     }
 }, nullptr);
 
-DinoKind Dakotaraptor("Dakotaraptor", EPIC, 1, 3150, 1200, 129, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Dakotaraptor("Dakotaraptor", EPIC, 1, 3150, 1200, 129, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Sidestep5439,
         &PrecisePounceF675,
@@ -7614,7 +7970,7 @@ DinoKind Dakotaraptor("Dakotaraptor", EPIC, 1, 3150, 1200, 129, 0.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Darwezopteryx("Darwezopteryx", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Darwezopteryx("Darwezopteryx", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &MinorSwoop6A00,
@@ -7623,7 +7979,7 @@ DinoKind Darwezopteryx("Darwezopteryx", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0,
     }
 }, nullptr);
 
-DinoKind Darwinopterus("Darwinopterus", EPIC, 1, 2700, 1000, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Darwinopterus("Darwinopterus", EPIC, 1, 2700, 1000, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &PinningStrike3832,
         &MinorSwoop6A00,
@@ -7631,21 +7987,21 @@ DinoKind Darwinopterus("Darwinopterus", EPIC, 1, 2700, 1000, 129, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Deinocheirus("Deinocheirus", COMMON, 1, 2700, 1350, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Deinocheirus("Deinocheirus", COMMON, 1, 2700, 1350, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &RevengeRampageACBE
     }
 }, nullptr);
 
-DinoKind Deinonychus("Deinonychus", COMMON, 1, 2100, 1200, 132, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Deinonychus("Deinonychus", COMMON, 1, 2100, 1200, 132, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &HighPounceD062
     }
 }, nullptr);
 
-DinoKind Deinotherium("Deinotherium", RARE, 1, 3900, 1050, 115, 5.0, 10.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Deinotherium("Deinotherium", RARE, 1, 3900, 1050, 115, 5.0, 10.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &FerociousImpactA5CC,
@@ -7653,7 +8009,7 @@ DinoKind Deinotherium("Deinotherium", RARE, 1, 3900, 1050, 115, 5.0, 10.0, 100.0
     }
 }, nullptr);
 
-DinoKind Delta("Delta", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Delta("Delta", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &HighPounceD062,
@@ -7661,7 +8017,7 @@ DinoKind Delta("Delta", RARE, 1, 2400, 1300, 131, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Dilophoboa("Dilophoboa", LEGENDARY, 1, 3600, 1100, 124, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 50.0, 67.0, 75.0, 100.0, 0.0, {
+DinoKind Dilophoboa("Dilophoboa", LEGENDARY, 1, 3600, 1100, 124, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 50.0, 67.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &PreciseRampageA036,
@@ -7670,7 +8026,7 @@ DinoKind Dilophoboa("Dilophoboa", LEGENDARY, 1, 3600, 1100, 124, 0.0, 10.0, 100.
     }
 }, &VenomousCounter56D1);
 
-DinoKind Dilophosaurus("Dilophosaurus", RARE, 1, 3600, 1300, 124, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Dilophosaurus("Dilophosaurus", RARE, 1, 3600, 1300, 124, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -7678,14 +8034,14 @@ DinoKind Dilophosaurus("Dilophosaurus", RARE, 1, 3600, 1300, 124, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind DilophosaurusGen2("Dilophosaurus Gen 2", COMMON, 1, 2550, 1850, 121, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind DilophosaurusGen2("Dilophosaurus Gen 2", COMMON, 1, 2550, 1850, 121, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &ImpactA82F
     }
 }, nullptr);
 
-DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0.0, 10.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0.0, 10.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ToughGroupCunningStrike30D1,
         &AcceleratingTeamHealEAF5,
@@ -7694,7 +8050,7 @@ DinoKind Diloracheirus("Diloracheirus", UNIQUE, 1, 4470, 1650, 128, 0.0, 10.0, 0
     }
 }, &DartingCounter6039);
 
-DinoKind Diloranosaurus("Diloranosaurus", LEGENDARY, 1, 4200, 1500, 116, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 0.0, 0.0, 0.0, {
+DinoKind Diloranosaurus("Diloranosaurus", LEGENDARY, 1, 4200, 1500, 116, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &CunningImpactEE79,
@@ -7703,7 +8059,7 @@ DinoKind Diloranosaurus("Diloranosaurus", LEGENDARY, 1, 4200, 1500, 116, 0.0, 5.
     }
 }, nullptr);
 
-DinoKind Dimetrodon("Dimetrodon", RARE, 1, 4200, 1400, 113, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Dimetrodon("Dimetrodon", RARE, 1, 4200, 1400, 113, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &DefenseShatteringImpact25E3,
@@ -7711,30 +8067,30 @@ DinoKind Dimetrodon("Dimetrodon", RARE, 1, 4200, 1400, 113, 0.0, 5.0, 0.0, 100.0
     }
 }, nullptr);
 
-DinoKind DimetrodonGen2("Dimetrodon Gen 2", COMMON, 1, 4500, 1200, 112, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind DimetrodonGen2("Dimetrodon Gen 2", COMMON, 1, 4500, 1200, 112, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ArmorPiercingRampage4328
     }
 }, nullptr);
 
-DinoKind Dimodactylus("Dimodactylus", EPIC, 1, 3450, 1100, 127, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Dimodactylus("Dimodactylus", EPIC, 1, 3750, 1150, 127, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
-        &FierceStrike106A,
+        &DisarmingStrike7427,
         &CleansingSwoopB410,
         &ShortDefense7ED4,
-        &ImpactAndRun738D
+        &DisarmingImpactAndRunC0BA
     }
-}, &ArmorPiercingCounterAEB5);
+}, &DisarmingCounterStrike8AAD);
 
-DinoKind Dimorphodon("Dimorphodon", COMMON, 1, 2700, 500, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 50.0, {
+DinoKind Dimorphodon("Dimorphodon", COMMON, 1, 2700, 500, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &StrikeBE64,
         &GashingWound4BC2
     }
 }, nullptr);
 
-DinoKind Diorajasaur("Diorajasaur", UNIQUE, 1, 4500, 1200, 108, 30.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Diorajasaur("Diorajasaur", UNIQUE, 1, 4500, 1200, 108, 30.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &ResilientRampageB23D,
@@ -7743,14 +8099,14 @@ DinoKind Diorajasaur("Diorajasaur", UNIQUE, 1, 4500, 1200, 108, 30.0, 30.0, 0.0,
     }
 }, &RakingCounterattackC77B);
 
-DinoKind Diplocaulus("Diplocaulus", COMMON, 1, 2850, 1600, 125, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Diplocaulus("Diplocaulus", COMMON, 1, 2850, 1600, 125, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &NullifyingImpact65A2
     }
 }, nullptr);
 
-DinoKind DiplocaulusGen2("Diplocaulus Gen 2", RARE, 1, 4050, 1000, 125, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind DiplocaulusGen2("Diplocaulus Gen 2", RARE, 1, 4050, 1000, 125, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -7758,7 +8114,7 @@ DinoKind DiplocaulusGen2("Diplocaulus Gen 2", RARE, 1, 4050, 1000, 125, 0.0, 5.0
     }
 }, nullptr);
 
-DinoKind Diplodocus("Diplodocus", EPIC, 1, 6000, 1500, 104, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Diplodocus("Diplodocus", EPIC, 1, 6000, 1500, 104, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
@@ -7766,7 +8122,7 @@ DinoKind Diplodocus("Diplodocus", EPIC, 1, 6000, 1500, 104, 0.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Diplotator("Diplotator", RARE, 1, 3000, 1400, 127, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Diplotator("Diplotator", RARE, 1, 3000, 1400, 127, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &FerociousStrike71CC,
@@ -7775,7 +8131,7 @@ DinoKind Diplotator("Diplotator", RARE, 1, 3000, 1400, 127, 0.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Diplovenator("Diplovenator", LEGENDARY, 1, 4050, 1000, 110, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Diplovenator("Diplovenator", LEGENDARY, 1, 4050, 1000, 110, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefiniteStrike51A6,
         &InstantDistractionF5AC,
@@ -7784,7 +8140,15 @@ DinoKind Diplovenator("Diplovenator", LEGENDARY, 1, 4050, 1000, 110, 0.0, 5.0, 0
     }
 }, &PreciseShatteringCounter4D03);
 
-DinoKind Dodo("Dodo", EPIC, 3, 3900, 1200, 123, 0.0, 5.0, 100.0, 0.0, 0.0, 33.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind DireWolf("Dire Wolf", RARE, 1, 3600, 1450, 127, 0.0, 20.0, 100.0, 50.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+    {
+        &DisarmingStrike7427,
+        &HowlEBEA,
+        &DevouringImpact0320
+    }
+}, nullptr);
+
+DinoKind Dodo("Dodo", EPIC, 3, 3900, 1200, 123, 0.0, 5.0, 100.0, 0.0, 0.0, 33.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FlightlessStrikeCC17,
         &ProtectiveAlert2FA4,
@@ -7792,7 +8156,7 @@ DinoKind Dodo("Dodo", EPIC, 3, 3900, 1200, 123, 0.0, 5.0, 100.0, 0.0, 0.0, 33.0,
     }
 }, nullptr);
 
-DinoKind Dodocevia("Dodocevia", LEGENDARY, 3, 4050, 1400, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 0.0, 0.0, 0.0, {
+DinoKind Dodocevia("Dodocevia", LEGENDARY, 3, 4050, 1400, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FlightlessStrikeCC17,
         &ProtectiveAlert2FA4,
@@ -7801,7 +8165,7 @@ DinoKind Dodocevia("Dodocevia", LEGENDARY, 3, 4050, 1400, 126, 0.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Doedicurus("Doedicurus", RARE, 1, 4200, 1200, 111, 50.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Doedicurus("Doedicurus", RARE, 1, 4200, 1200, 111, 50.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DeceleratingRampageD0C5,
@@ -7809,7 +8173,7 @@ DinoKind Doedicurus("Doedicurus", RARE, 1, 4200, 1200, 111, 50.0, 5.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Dracoceratops("Dracoceratops", LEGENDARY, 1, 4200, 1500, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Dracoceratops("Dracoceratops", LEGENDARY, 1, 4200, 1500, 115, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &FierceImpactB3BE,
@@ -7818,16 +8182,16 @@ DinoKind Dracoceratops("Dracoceratops", LEGENDARY, 1, 4200, 1500, 115, 0.0, 5.0,
     }
 }, nullptr);
 
-DinoKind Dracoceratosaurus("Dracoceratosaurus", UNIQUE, 1, 3900, 1600, 119, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Dracoceratosaurus("Dracoceratosaurus", UNIQUE, 1, 4500, 1600, 120, 20.0, 5.0, 100.0, 25.0, 75.0, 0.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
-        &CunningStrike75A8,
+        &DebilitatingStrike1814,
         &CleansingImpact351E,
-        &AcuteStun1F1E,
+        &BristlingStun38A2,
         &CunningRampage8AEB
     }
 }, nullptr);
 
-DinoKind Dracorex("Dracorex", RARE, 1, 4800, 1100, 124, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Dracorex("Dracorex", RARE, 1, 4800, 1100, 124, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &ResilientImpact7BB4,
@@ -7835,14 +8199,14 @@ DinoKind Dracorex("Dracorex", RARE, 1, 4800, 1100, 124, 0.0, 5.0, 0.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind DracorexGen2("Dracorex Gen 2", COMMON, 1, 3600, 1500, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind DracorexGen2("Dracorex Gen 2", COMMON, 1, 3600, 1500, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ArmorPiercingStrike69E0,
         &FierceImpactB3BE
     }
 }, nullptr);
 
-DinoKind Dreadactylus("Dreadactylus", LEGENDARY, 3, 4200, 1000, 112, 5.0, 5.0, 0.0, 0.0, 0.0, 33.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Dreadactylus("Dreadactylus", LEGENDARY, 3, 4200, 1000, 112, 5.0, 5.0, 0.0, 0.0, 0.0, 33.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupDeceleratingStrikeBAC6,
@@ -7851,7 +8215,7 @@ DinoKind Dreadactylus("Dreadactylus", LEGENDARY, 3, 4200, 1000, 112, 5.0, 5.0, 0
     }
 }, &CounterVulnerability02E9);
 
-DinoKind Dreadnoughtus("Dreadnoughtus", RARE, 1, 6000, 1000, 107, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Dreadnoughtus("Dreadnoughtus", RARE, 1, 6000, 1000, 107, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &GroupDeceleratingImpact9451,
@@ -7859,7 +8223,7 @@ DinoKind Dreadnoughtus("Dreadnoughtus", RARE, 1, 6000, 1000, 107, 10.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind Dsungaia("Dsungaia", LEGENDARY, 1, 4200, 1050, 117, 20.0, 5.0, 0.0, 25.0, 100.0, 25.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Dsungaia("Dsungaia", LEGENDARY, 1, 4200, 1050, 117, 20.0, 5.0, 0.0, 25.0, 100.0, 25.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &GroupDeceleratingImpact9451,
@@ -7868,7 +8232,7 @@ DinoKind Dsungaia("Dsungaia", LEGENDARY, 1, 4200, 1050, 117, 20.0, 5.0, 0.0, 25.
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Dsungaripterus("Dsungaripterus", RARE, 1, 3450, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Dsungaripterus("Dsungaripterus", RARE, 1, 3450, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &FerociousStrike71CC,
@@ -7876,7 +8240,7 @@ DinoKind Dsungaripterus("Dsungaripterus", RARE, 1, 3450, 1000, 125, 0.0, 5.0, 0.
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Dsungascorpios("Dsungascorpios", UNIQUE, 3, 3300, 1100, 116, 30.0, 15.0, 100.0, 100.0, 0.0, 33.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind Dsungascorpios("Dsungascorpios", UNIQUE, 3, 3300, 1100, 116, 30.0, 15.0, 100.0, 100.0, 0.0, 33.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &DevouringStinger965B,
         &ShieldedLockdown6EE2,
@@ -7885,7 +8249,7 @@ DinoKind Dsungascorpios("Dsungascorpios", UNIQUE, 3, 3300, 1100, 116, 30.0, 15.0
     }
 }, &ShatteringAntidoteF861);
 
-DinoKind Echo("Echo", RARE, 1, 2100, 1350, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Echo("Echo", RARE, 1, 2100, 1350, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &PrecisePounceF675,
@@ -7893,7 +8257,7 @@ DinoKind Echo("Echo", RARE, 1, 2100, 1350, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Edaphocevia("Edaphocevia", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0, 100.0, 75.0, 50.0, 50.0, 50.0, 75.0, 75.0, 0.0, 50.0, {
+DinoKind Edaphocevia("Edaphocevia", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0, 100.0, 75.0, 50.0, 50.0, 50.0, 75.0, 75.0, 0.0, 50.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &PreciseRampageA036,
@@ -7902,7 +8266,7 @@ DinoKind Edaphocevia("Edaphocevia", LEGENDARY, 1, 4200, 1000, 127, 0.0, 5.0, 100
     }
 }, nullptr);
 
-DinoKind Edaphosaurus("Edaphosaurus", EPIC, 1, 4500, 1000, 115, 0.0, 20.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, {
+DinoKind Edaphosaurus("Edaphosaurus", EPIC, 1, 4500, 1000, 115, 0.0, 20.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &FierceImpactB3BE,
@@ -7910,7 +8274,7 @@ DinoKind Edaphosaurus("Edaphosaurus", EPIC, 1, 4500, 1000, 115, 0.0, 20.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Edmontoguanodon("Edmontoguanodon", EPIC, 1, 4500, 1200, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Edmontoguanodon("Edmontoguanodon", EPIC, 1, 4500, 1200, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -7919,7 +8283,7 @@ DinoKind Edmontoguanodon("Edmontoguanodon", EPIC, 1, 4500, 1200, 110, 0.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Edmontosaurus("Edmontosaurus", RARE, 1, 4800, 1000, 113, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Edmontosaurus("Edmontosaurus", RARE, 1, 4800, 1000, 113, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -7927,7 +8291,7 @@ DinoKind Edmontosaurus("Edmontosaurus", RARE, 1, 4800, 1000, 113, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Einiasuchus("Einiasuchus", RARE, 1, 3600, 1000, 111, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Einiasuchus("Einiasuchus", RARE, 1, 3600, 1000, 111, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DigIn6DFE,
@@ -7936,14 +8300,14 @@ DinoKind Einiasuchus("Einiasuchus", RARE, 1, 3600, 1000, 111, 20.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Einiosaurus("Einiosaurus", COMMON, 1, 3600, 1000, 110, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Einiosaurus("Einiosaurus", COMMON, 1, 3600, 1000, 110, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &HealA906
     }
 }, nullptr);
 
-DinoKind Elasmotherium("Elasmotherium", RARE, 1, 4500, 1250, 108, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Elasmotherium("Elasmotherium", RARE, 1, 4500, 1250, 108, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedTauntingStrike73D4,
         &ResilientImpact7BB4,
@@ -7951,7 +8315,7 @@ DinoKind Elasmotherium("Elasmotherium", RARE, 1, 4500, 1250, 108, 30.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind Enteloceros("Enteloceros", LEGENDARY, 1, 4500, 1300, 126, 20.0, 10.0, 0.0, 0.0, 0.0, 50.0, 50.0, 100.0, 67.0, 0.0, 100.0, {
+DinoKind Enteloceros("Enteloceros", LEGENDARY, 1, 4500, 1300, 126, 20.0, 10.0, 0.0, 0.0, 0.0, 50.0, 50.0, 100.0, 67.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &MutualFury2752,
@@ -7960,7 +8324,7 @@ DinoKind Enteloceros("Enteloceros", LEGENDARY, 1, 4500, 1300, 126, 20.0, 10.0, 0
     }
 }, nullptr);
 
-DinoKind Entelochops("Entelochops", EPIC, 1, 4200, 1100, 126, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 25.0, {
+DinoKind Entelochops("Entelochops", EPIC, 1, 4200, 1100, 126, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &RevengeDeceleratingImpact6A2C,
@@ -7969,7 +8333,7 @@ DinoKind Entelochops("Entelochops", EPIC, 1, 4200, 1100, 126, 20.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Entelodon("Entelodon", RARE, 1, 3600, 1200, 122, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind Entelodon("Entelodon", RARE, 1, 3600, 1200, 122, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &MutualFury2752,
@@ -7977,7 +8341,7 @@ DinoKind Entelodon("Entelodon", RARE, 1, 3600, 1200, 122, 0.0, 30.0, 0.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Entelolania("Entelolania", UNIQUE, 1, 4200, 1400, 107, 55.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Entelolania("Entelolania", UNIQUE, 1, 4200, 1400, 107, 55.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &DigIn6DFE,
@@ -7986,7 +8350,7 @@ DinoKind Entelolania("Entelolania", UNIQUE, 1, 4200, 1400, 107, 55.0, 5.0, 0.0, 
     }
 }, &MinorDeceleratingCounter076E);
 
-DinoKind Entelomoth("Entelomoth", LEGENDARY, 1, 4200, 1000, 120, 20.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind Entelomoth("Entelomoth", LEGENDARY, 1, 4200, 1000, 120, 20.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &MutualFury2752,
@@ -7995,7 +8359,7 @@ DinoKind Entelomoth("Entelomoth", LEGENDARY, 1, 4200, 1000, 120, 20.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Eremoceros("Eremoceros", LEGENDARY, 1, 3900, 1300, 126, 10.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Eremoceros("Eremoceros", LEGENDARY, 1, 3900, 1300, 126, 10.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &Camouflage03BB,
@@ -8004,14 +8368,14 @@ DinoKind Eremoceros("Eremoceros", LEGENDARY, 1, 3900, 1300, 126, 10.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Eremotherium("Eremotherium", COMMON, 1, 3150, 1050, 102, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Eremotherium("Eremotherium", COMMON, 1, 3150, 1050, 102, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Camouflage03BB,
         &CunningRampage8AEB
     }
 }, &MaximalCounterattack5683);
 
-DinoKind Erlidominus("Erlidominus", UNIQUE, 1, 3600, 1600, 131, 0.0, 50.0, 100.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 0.0, 25.0, {
+DinoKind Erlidominus("Erlidominus", UNIQUE, 1, 3600, 1600, 131, 0.0, 50.0, 100.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 0.0, 25.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &DistractingRampageBD0D,
@@ -8020,7 +8384,7 @@ DinoKind Erlidominus("Erlidominus", UNIQUE, 1, 3600, 1600, 131, 0.0, 50.0, 100.0
     }
 }, nullptr);
 
-DinoKind Erlikogamma("Erlikogamma", EPIC, 1, 3000, 1450, 130, 0.0, 5.0, 100.0, 50.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Erlikogamma("Erlikogamma", EPIC, 1, 3000, 1450, 130, 0.0, 5.0, 100.0, 50.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &PrecisePounceF675,
@@ -8029,7 +8393,7 @@ DinoKind Erlikogamma("Erlikogamma", EPIC, 1, 3000, 1450, 130, 0.0, 5.0, 100.0, 5
     }
 }, nullptr);
 
-DinoKind Erlikosaurus("Erlikosaurus", EPIC, 1, 3000, 1400, 129, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Erlikosaurus("Erlikosaurus", EPIC, 1, 3000, 1400, 129, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &PreciseRampageA036,
@@ -8037,7 +8401,7 @@ DinoKind Erlikosaurus("Erlikosaurus", EPIC, 1, 3000, 1400, 129, 0.0, 5.0, 0.0, 5
     }
 }, nullptr);
 
-DinoKind ErlikosaurusGen2("Erlikosaurus Gen 2", RARE, 1, 3000, 1350, 129, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind ErlikosaurusGen2("Erlikosaurus Gen 2", RARE, 1, 3000, 1350, 129, 0.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &PreciseRampageA036,
@@ -8045,7 +8409,7 @@ DinoKind ErlikosaurusGen2("Erlikosaurus Gen 2", RARE, 1, 3000, 1350, 129, 0.0, 5
     }
 }, nullptr);
 
-DinoKind Erlikospyx("Erlikospyx", UNIQUE, 1, 4650, 1650, 128, 0.0, 20.0, 100.0, 100.0, 100.0, 0.0, 75.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Erlikospyx("Erlikospyx", UNIQUE, 1, 4650, 1650, 128, 0.0, 20.0, 100.0, 100.0, 100.0, 0.0, 75.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &InstantDeceleratingDistraction2B7F,
@@ -8054,7 +8418,7 @@ DinoKind Erlikospyx("Erlikospyx", UNIQUE, 1, 4650, 1650, 128, 0.0, 20.0, 100.0, 
     }
 }, nullptr);
 
-DinoKind Eucladoceros("Eucladoceros", EPIC, 1, 3300, 1000, 128, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 100.0, 0.0, 75.0, {
+DinoKind Eucladoceros("Eucladoceros", EPIC, 1, 3300, 1000, 128, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 100.0, 0.0, 75.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &SuperiorityImpact5FE3,
@@ -8062,14 +8426,14 @@ DinoKind Eucladoceros("Eucladoceros", EPIC, 1, 3300, 1000, 128, 10.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Euoplocephalus("Euoplocephalus", COMMON, 1, 3600, 900, 112, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Euoplocephalus("Euoplocephalus", COMMON, 1, 3600, 900, 112, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &RampageB9EA
     }
 }, nullptr);
 
-DinoKind Fukuimimus("Fukuimimus", LEGENDARY, 1, 4800, 1250, 121, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 50.0, 50.0, 75.0, 0.0, 0.0, {
+DinoKind Fukuimimus("Fukuimimus", LEGENDARY, 1, 4800, 1250, 121, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 50.0, 50.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &Shelter12ED,
@@ -8078,7 +8442,7 @@ DinoKind Fukuimimus("Fukuimimus", LEGENDARY, 1, 4800, 1250, 121, 0.0, 15.0, 100.
     }
 }, &PersistentCounter25A1);
 
-DinoKind Fukuisaurus("Fukuisaurus", RARE, 1, 4650, 1050, 115, 0.0, 5.0, 100.0, 0.0, 50.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Fukuisaurus("Fukuisaurus", RARE, 1, 4650, 1050, 115, 0.0, 5.0, 100.0, 0.0, 50.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &Shelter12ED,
@@ -8086,14 +8450,23 @@ DinoKind Fukuisaurus("Fukuisaurus", RARE, 1, 4650, 1050, 115, 0.0, 5.0, 100.0, 0
     }
 }, &PersistentCounter25A1);
 
-DinoKind Gallimimus("Gallimimus", COMMON, 1, 2700, 1300, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Gallimimus("Gallimimus", COMMON, 1, 2700, 1300, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &ImpactAndRun738D
     }
 }, nullptr);
 
-DinoKind Geminititan("Geminititan", UNIQUE, 1, 5600, 1300, 110, 0.0, 5.0, 100.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, 67.0, 50.0, {
+DinoKind Geminideus("Geminideus", APEX, 1, 6600, 1200, 110, 30.0, 5.0, 100.0, 25.0, 50.0, 0.0, 0.0, 100.0, 0.0, 100.0, 75.0, 75.0, {
+    {
+        &SlowingResilientStrikeB132,
+        &GroupDisarmingRampage7FC1,
+        &ShieldingAlertRampage3625,
+        &Harden1485
+    }
+}, &PreciseGroupCounter7420);
+
+DinoKind Geminititan("Geminititan", UNIQUE, 1, 5600, 1300, 110, 0.0, 5.0, 100.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, 67.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
@@ -8102,7 +8475,7 @@ DinoKind Geminititan("Geminititan", UNIQUE, 1, 5600, 1300, 110, 0.0, 5.0, 100.0,
     }
 }, &DistractingCounterA897);
 
-DinoKind Ghost("Ghost", EPIC, 1, 3000, 1350, 130, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Ghost("Ghost", EPIC, 1, 3000, 1350, 130, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &CautiousStrike3CE4,
         &FierceImpactB3BE,
@@ -8110,7 +8483,7 @@ DinoKind Ghost("Ghost", EPIC, 1, 3000, 1350, 130, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Giganotosaurus("Giganotosaurus", EPIC, 1, 5400, 1700, 102, 0.0, 30.0, 0.0, 50.0, 0.0, 50.0, 100.0, 0.0, 50.0, 0.0, 50.0, {
+DinoKind Giganotosaurus("Giganotosaurus", EPIC, 1, 5400, 1700, 102, 0.0, 30.0, 0.0, 50.0, 0.0, 50.0, 100.0, 0.0, 50.0, 0.0, 50.0, 0.0, {
     {
         &FierceDevouringCleanse4BB9,
         &GroupDefenseShatteringImpact0C66,
@@ -8118,7 +8491,7 @@ DinoKind Giganotosaurus("Giganotosaurus", EPIC, 1, 5400, 1700, 102, 0.0, 30.0, 0
     }
 }, nullptr);
 
-DinoKind Giganyx("Giganyx", UNIQUE, 1, 5100, 1650, 125, 0.0, 25.0, 0.0, 50.0, 50.0, 50.0, 100.0, 75.0, 50.0, 0.0, 50.0, {
+DinoKind Giganyx("Giganyx", UNIQUE, 1, 5100, 1650, 125, 0.0, 25.0, 0.0, 50.0, 50.0, 50.0, 100.0, 75.0, 50.0, 0.0, 50.0, 0.0, {
     {
         &FierceDevouringCleanse4BB9,
         &ObstructingFierceImpact9462,
@@ -8127,7 +8500,7 @@ DinoKind Giganyx("Giganyx", UNIQUE, 1, 5100, 1650, 125, 0.0, 25.0, 0.0, 50.0, 50
     }
 }, nullptr);
 
-DinoKind Gigaspikasaur("Gigaspikasaur", LEGENDARY, 1, 4650, 1200, 108, 40.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Gigaspikasaur("Gigaspikasaur", LEGENDARY, 1, 4650, 1200, 108, 40.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6,
@@ -8136,7 +8509,7 @@ DinoKind Gigaspikasaur("Gigaspikasaur", LEGENDARY, 1, 4650, 1200, 108, 40.0, 5.0
     }
 }, &PreciseCounterDFAC);
 
-DinoKind Giraffatitan("Giraffatitan", RARE, 1, 5700, 1000, 107, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 75.0, 0.0, 0.0, {
+DinoKind Giraffatitan("Giraffatitan", RARE, 1, 5700, 1000, 107, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingBellow3BBD,
@@ -8144,7 +8517,7 @@ DinoKind Giraffatitan("Giraffatitan", RARE, 1, 5700, 1000, 107, 10.0, 20.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Glyptoceras("Glyptoceras", LEGENDARY, 1, 3750, 1300, 113, 25.0, 10.0, 100.0, 0.0, 75.0, 0.0, 50.0, 0.0, 0.0, 0.0, 25.0, {
+DinoKind Glyptoceras("Glyptoceras", LEGENDARY, 1, 3750, 1300, 113, 25.0, 10.0, 100.0, 0.0, 75.0, 0.0, 50.0, 0.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &CunningStrike75A8,
         &InstantCharge0917,
@@ -8153,14 +8526,14 @@ DinoKind Glyptoceras("Glyptoceras", LEGENDARY, 1, 3750, 1300, 113, 25.0, 10.0, 1
     }
 }, nullptr);
 
-DinoKind Glyptodon("Glyptodon", COMMON, 1, 3900, 1000, 103, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Glyptodon("Glyptodon", COMMON, 1, 3900, 1000, 103, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &ResilientRampageB23D
     }
 }, nullptr);
 
-DinoKind Gorgonops("Gorgonops", RARE, 1, 3150, 1100, 132, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Gorgonops("Gorgonops", RARE, 1, 3150, 1100, 132, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &CunningImpactEE79,
@@ -8168,7 +8541,7 @@ DinoKind Gorgonops("Gorgonops", RARE, 1, 3150, 1100, 132, 0.0, 10.0, 100.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Gorgosaurus("Gorgosaurus", RARE, 1, 4200, 1700, 102, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Gorgosaurus("Gorgosaurus", RARE, 1, 4200, 1700, 102, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &DefenseShatteringImpact25E3,
@@ -8176,7 +8549,7 @@ DinoKind Gorgosaurus("Gorgosaurus", RARE, 1, 4200, 1700, 102, 0.0, 20.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Gorgosuchus("Gorgosuchus", EPIC, 1, 4500, 1000, 120, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Gorgosuchus("Gorgosuchus", EPIC, 1, 4500, 1000, 120, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupFerocityStrike7A2D,
@@ -8185,7 +8558,7 @@ DinoKind Gorgosuchus("Gorgosuchus", EPIC, 1, 4500, 1000, 120, 0.0, 30.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Gorgotrebax("Gorgotrebax", APEX, 1, 4500, 1600, 113, 0.0, 20.0, 100.0, 75.0, 100.0, 75.0, 0.0, 100.0, 75.0, 0.0, 0.0, {
+DinoKind Gorgotrebax("Gorgotrebax", APEX, 1, 4500, 1600, 113, 0.0, 20.0, 100.0, 75.0, 100.0, 75.0, 0.0, 100.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &GroupAccelerateCunningStrikeF6AA,
         &CautiousImpact0569,
@@ -8194,7 +8567,7 @@ DinoKind Gorgotrebax("Gorgotrebax", APEX, 1, 4500, 1600, 113, 0.0, 20.0, 100.0, 
     }
 }, nullptr);
 
-DinoKind Grylenken("Grylenken", LEGENDARY, 1, 3600, 1500, 129, 10.0, 10.0, 0.0, 100.0, 50.0, 0.0, 50.0, 0.0, 67.0, 0.0, 0.0, {
+DinoKind Grylenken("Grylenken", LEGENDARY, 1, 3600, 1500, 129, 10.0, 10.0, 0.0, 100.0, 50.0, 0.0, 50.0, 0.0, 67.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &RakingClawsF16C,
@@ -8203,7 +8576,7 @@ DinoKind Grylenken("Grylenken", LEGENDARY, 1, 3600, 1500, 129, 10.0, 10.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Grypolyth("Grypolyth", UNIQUE, 1, 4200, 1250, 106, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 67.0, 0.0, 0.0, {
+DinoKind Grypolyth("Grypolyth", UNIQUE, 1, 4200, 1250, 106, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 67.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &ImmobilizeEA4E,
@@ -8212,7 +8585,7 @@ DinoKind Grypolyth("Grypolyth", UNIQUE, 1, 4200, 1250, 106, 20.0, 5.0, 0.0, 0.0,
     }
 }, &RendingCounterattack24B1);
 
-DinoKind Gryposuchus("Gryposuchus", EPIC, 1, 4200, 1200, 116, 20.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Gryposuchus("Gryposuchus", EPIC, 1, 4200, 1200, 116, 20.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ImmobilizeEA4E,
@@ -8220,7 +8593,7 @@ DinoKind Gryposuchus("Gryposuchus", EPIC, 1, 4200, 1200, 116, 20.0, 20.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind HaastEagle("Haast Eagle", EPIC, 1, 2700, 1150, 132, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind HaastEagle("Haast Eagle", EPIC, 1, 2700, 1150, 132, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &FearlessFlap6CE3,
@@ -8228,7 +8601,7 @@ DinoKind HaastEagle("Haast Eagle", EPIC, 1, 2700, 1150, 132, 0.0, 5.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind HaastEagleGen2("Haast Eagle Gen 2", RARE, 1, 3000, 1000, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind HaastEagleGen2("Haast Eagle Gen 2", RARE, 1, 3000, 1000, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &FearlessFlap6CE3,
@@ -8236,7 +8609,7 @@ DinoKind HaastEagleGen2("Haast Eagle Gen 2", RARE, 1, 3000, 1000, 130, 0.0, 5.0,
     }
 }, nullptr);
 
-DinoKind HaastMaximus("Haast Maximus", APEX, 1, 4350, 1550, 128, 0.0, 25.0, 100.0, 50.0, 75.0, 50.0, 0.0, 75.0, 0.0, 0.0, 0.0, {
+DinoKind HaastMaximus("Haast Maximus", APEX, 1, 4350, 1550, 128, 0.0, 25.0, 100.0, 50.0, 75.0, 50.0, 0.0, 75.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &PredatoryPeck7590,
         &FearlessFlap6CE3,
@@ -8245,7 +8618,7 @@ DinoKind HaastMaximus("Haast Maximus", APEX, 1, 4350, 1550, 128, 0.0, 25.0, 100.
     }
 }, nullptr);
 
-DinoKind HadrosLux("Hadros Lux", APEX, 1, 5100, 1350, 108, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 0.0, 0.0, 50.0, {
+DinoKind HadrosLux("Hadros Lux", APEX, 1, 5100, 1350, 108, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RampageB9EA,
@@ -8254,14 +8627,14 @@ DinoKind HadrosLux("Hadros Lux", APEX, 1, 5100, 1350, 108, 0.0, 5.0, 0.0, 0.0, 5
     }
 }, &MediumResilientCounterattack3EB5);
 
-DinoKind Hatzegopteryx("Hatzegopteryx", COMMON, 1, 4500, 1150, 114, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Hatzegopteryx("Hatzegopteryx", COMMON, 1, 4500, 1150, 114, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &ImpactAndRun738D
     }
 }, nullptr);
 
-DinoKind HydraBoa("Hydra Boa", APEX, 1, 4200, 1350, 122, 15.0, 30.0, 0.0, 50.0, 100.0, 50.0, 50.0, 75.0, 75.0, 0.0, 0.0, {
+DinoKind HydraBoa("Hydra Boa", APEX, 1, 4200, 1350, 122, 15.0, 30.0, 0.0, 50.0, 100.0, 50.0, 50.0, 75.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &InstantNullifyingStrike1708,
         &SlipperyAlertB2DD,
@@ -8270,14 +8643,14 @@ DinoKind HydraBoa("Hydra Boa", APEX, 1, 4200, 1350, 122, 15.0, 30.0, 0.0, 50.0, 
     }
 }, &AlertDeception0644);
 
-DinoKind Iguanodon("Iguanodon", COMMON, 1, 4350, 1150, 112, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Iguanodon("Iguanodon", COMMON, 1, 4350, 1150, 112, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &EmergencyHeal679C
     }
 }, nullptr);
 
-DinoKind Imperatosuchus("Imperatosuchus", APEX, 1, 4650, 1350, 112, 25.0, 15.0, 0.0, 67.0, 0.0, 33.0, 100.0, 100.0, 67.0, 50.0, 100.0, {
+DinoKind Imperatosuchus("Imperatosuchus", APEX, 1, 4650, 1350, 112, 25.0, 15.0, 0.0, 67.0, 0.0, 33.0, 100.0, 100.0, 67.0, 50.0, 100.0, 0.0, {
     {
         &FierceDeceleratingStrike401B,
         &DeathRollD52C,
@@ -8286,7 +8659,16 @@ DinoKind Imperatosuchus("Imperatosuchus", APEX, 1, 4650, 1350, 112, 25.0, 15.0, 
     }
 }, &DefenseShatteringCounterattackD663);
 
-DinoKind IndominusRex("Indominus Rex", LEGENDARY, 1, 4500, 1500, 107, 0.0, 30.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 100.0, 0.0, 50.0, {
+DinoKind Indolycan("Indolycan", APEX, 1, 4500, 1700, 130, 0.0, 30.0, 100.0, 0.0, 50.0, 50.0, 100.0, 75.0, 100.0, 0.0, 100.0, 0.0, {
+    {
+        &CautiousDisarmingStrikeBCD2,
+        &DistractingDevourImpactF535,
+        &EvasiveFerociousRampageFFBB,
+        &CloakOfRage7990
+    }
+}, &MinorPreciseCounterA27F);
+
+DinoKind IndominusRex("Indominus Rex", LEGENDARY, 1, 4500, 1500, 107, 0.0, 30.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &ArmorPiercingImpactB10F,
@@ -8295,7 +8677,7 @@ DinoKind IndominusRex("Indominus Rex", LEGENDARY, 1, 4500, 1500, 107, 0.0, 30.0,
     }
 }, nullptr);
 
-DinoKind IndominusRexGen2("Indominus Rex Gen 2", EPIC, 1, 4200, 1400, 108, 0.0, 20.0, 0.0, 100.0, 50.0, 34.0, 100.0, 100.0, 100.0, 0.0, 100.0, {
+DinoKind IndominusRexGen2("Indominus Rex Gen 2", EPIC, 1, 4200, 1400, 108, 0.0, 20.0, 0.0, 100.0, 50.0, 34.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
     {
         &DefiniteStrike51A6,
         &MutualFury2752,
@@ -8304,7 +8686,7 @@ DinoKind IndominusRexGen2("Indominus Rex Gen 2", EPIC, 1, 4200, 1400, 108, 0.0, 
     }
 }, nullptr);
 
-DinoKind Indonemys("Indonemys", APEX, 1, 4500, 1550, 119, 30.0, 20.0, 0.0, 50.0, 25.0, 25.0, 75.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Indonemys("Indonemys", APEX, 1, 4500, 1550, 119, 30.0, 20.0, 0.0, 50.0, 25.0, 25.0, 75.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &LesserFierceDeceleratingStrike2F7B,
         &FierceDevouringImpactB728,
@@ -8313,7 +8695,7 @@ DinoKind Indonemys("Indonemys", APEX, 1, 4500, 1550, 119, 30.0, 20.0, 0.0, 50.0,
     }
 }, &BaitAD47);
 
-DinoKind Indoraptor("Indoraptor", UNIQUE, 1, 4200, 1400, 128, 0.0, 20.0, 100.0, 0.0, 75.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Indoraptor("Indoraptor", UNIQUE, 1, 4200, 1400, 128, 0.0, 20.0, 100.0, 0.0, 75.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &CleansingImpact351E,
@@ -8322,7 +8704,7 @@ DinoKind Indoraptor("Indoraptor", UNIQUE, 1, 4200, 1400, 128, 0.0, 20.0, 100.0, 
     }
 }, &BaitAD47);
 
-DinoKind IndoraptorGen2("Indoraptor Gen 2", LEGENDARY, 1, 3900, 1450, 128, 0.0, 20.0, 100.0, 0.0, 75.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, {
+DinoKind IndoraptorGen2("Indoraptor Gen 2", LEGENDARY, 1, 3900, 1450, 128, 0.0, 20.0, 100.0, 0.0, 75.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CautiousStrike3CE4,
         &MutualFury2752,
@@ -8331,7 +8713,7 @@ DinoKind IndoraptorGen2("Indoraptor Gen 2", LEGENDARY, 1, 3900, 1450, 128, 0.0, 
     }
 }, nullptr);
 
-DinoKind Indotaurus("Indotaurus", UNIQUE, 1, 4650, 1600, 106, 0.0, 20.0, 0.0, 0.0, 0.0, 34.0, 75.0, 50.0, 67.0, 0.0, 50.0, {
+DinoKind Indotaurus("Indotaurus", UNIQUE, 1, 4650, 1600, 106, 0.0, 20.0, 0.0, 0.0, 0.0, 34.0, 75.0, 50.0, 67.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &IntimidatingImpact50F9,
@@ -8340,7 +8722,7 @@ DinoKind Indotaurus("Indotaurus", UNIQUE, 1, 4650, 1600, 106, 0.0, 20.0, 0.0, 0.
     }
 }, &GreaterRendingCounterattackD5C2);
 
-DinoKind Inostherium("Inostherium", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Inostherium("Inostherium", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &MutualFury2752,
@@ -8349,14 +8731,14 @@ DinoKind Inostherium("Inostherium", RARE, 1, 3000, 1400, 131, 0.0, 5.0, 0.0, 50.
     }
 }, nullptr);
 
-DinoKind Inostrancevia("Inostrancevia", COMMON, 1, 3900, 1200, 130, 0.0, 5.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Inostrancevia("Inostrancevia", COMMON, 1, 3900, 1200, 130, 0.0, 5.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &RevengeImpact0707
     }
 }, nullptr);
 
-DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ReadyToCrush43AE,
@@ -8364,14 +8746,14 @@ DinoKind Irritator("Irritator", RARE, 1, 4500, 1000, 126, 0.0, 30.0, 0.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind IrritatorGen2("Irritator Gen 2", COMMON, 1, 3300, 1000, 124, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind IrritatorGen2("Irritator Gen 2", COMMON, 1, 3300, 1000, 124, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &FerociousStrike71CC
     }
 }, nullptr);
 
-DinoKind Kaprosuchus("Kaprosuchus", RARE, 1, 3900, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Kaprosuchus("Kaprosuchus", RARE, 1, 3900, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupFerocityStrike7A2D,
@@ -8379,7 +8761,7 @@ DinoKind Kaprosuchus("Kaprosuchus", RARE, 1, 3900, 1000, 125, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Kelenken("Kelenken", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Kelenken("Kelenken", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Sidestep5439,
         &RakingClawsF16C,
@@ -8387,7 +8769,7 @@ DinoKind Kelenken("Kelenken", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 100.0, 0.
     }
 }, nullptr);
 
-DinoKind Kentrosaurus("Kentrosaurus", EPIC, 1, 3600, 1000, 112, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Kentrosaurus("Kentrosaurus", EPIC, 1, 3600, 1000, 112, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6,
@@ -8395,7 +8777,7 @@ DinoKind Kentrosaurus("Kentrosaurus", EPIC, 1, 3600, 1000, 112, 0.0, 5.0, 0.0, 0
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Keratoporcus("Keratoporcus", LEGENDARY, 1, 4500, 1200, 110, 20.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Keratoporcus("Keratoporcus", LEGENDARY, 1, 4500, 1200, 110, 20.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupDefenseShatteringStrikeF98B,
         &MutualFury2752,
@@ -8404,7 +8786,7 @@ DinoKind Keratoporcus("Keratoporcus", LEGENDARY, 1, 4500, 1200, 110, 20.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Koolabourgiana("Koolabourgiana", LEGENDARY, 1, 4950, 1000, 117, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Koolabourgiana("Koolabourgiana", LEGENDARY, 1, 4950, 1000, 117, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupTauntingShieldsStrikeDA58,
@@ -8413,7 +8795,7 @@ DinoKind Koolabourgiana("Koolabourgiana", LEGENDARY, 1, 4950, 1000, 117, 0.0, 5.
     }
 }, nullptr);
 
-DinoKind Koolasuchus("Koolasuchus", EPIC, 1, 3900, 1000, 127, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Koolasuchus("Koolasuchus", EPIC, 1, 3900, 1000, 127, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -8421,7 +8803,7 @@ DinoKind Koolasuchus("Koolasuchus", EPIC, 1, 3900, 1000, 127, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind KoolasuchusGen2("Koolasuchus Gen 2", RARE, 1, 4500, 1500, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind KoolasuchusGen2("Koolasuchus Gen 2", RARE, 1, 4500, 1500, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingStrikeD81E,
@@ -8429,7 +8811,7 @@ DinoKind KoolasuchusGen2("Koolasuchus Gen 2", RARE, 1, 4500, 1500, 126, 0.0, 5.0
     }
 }, nullptr);
 
-DinoKind Lystrosaurus("Lystrosaurus", EPIC, 3, 3600, 1150, 125, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 50.0, 0.0, 0.0, {
+DinoKind Lystrosaurus("Lystrosaurus", EPIC, 3, 3600, 1150, 125, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &EvasiveRestore11D0,
@@ -8437,7 +8819,7 @@ DinoKind Lystrosaurus("Lystrosaurus", EPIC, 3, 3600, 1150, 125, 0.0, 10.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Lystrosavis("Lystrosavis", UNIQUE, 3, 3750, 1350, 131, 0.0, 20.0, 0.0, 33.0, 50.0, 33.0, 0.0, 75.0, 50.0, 0.0, 0.0, {
+DinoKind Lystrosavis("Lystrosavis", UNIQUE, 3, 3750, 1350, 131, 0.0, 20.0, 0.0, 33.0, 50.0, 33.0, 0.0, 75.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &DebilitatingStrike1814,
         &EvasiveRestore11D0,
@@ -8446,7 +8828,7 @@ DinoKind Lystrosavis("Lystrosavis", UNIQUE, 3, 3750, 1350, 131, 0.0, 20.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Lystrosuchus("Lystrosuchus", LEGENDARY, 3, 3900, 1150, 123, 10.0, 10.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 50.0, 0.0, 0.0, {
+DinoKind Lystrosuchus("Lystrosuchus", LEGENDARY, 3, 3900, 1150, 123, 10.0, 10.0, 0.0, 0.0, 0.0, 33.0, 50.0, 50.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &EvasiveRestore11D0,
@@ -8455,14 +8837,14 @@ DinoKind Lystrosuchus("Lystrosuchus", LEGENDARY, 3, 3900, 1150, 123, 10.0, 10.0,
     }
 }, nullptr);
 
-DinoKind Lythronax("Lythronax", COMMON, 1, 4200, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Lythronax("Lythronax", COMMON, 1, 4200, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedTauntingStrike73D4,
         &GroupShield54BA
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Magnapyritor("Magnapyritor", UNIQUE, 1, 3900, 1450, 128, 0.0, 20.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, {
+DinoKind Magnapyritor("Magnapyritor", UNIQUE, 1, 3900, 1450, 128, 0.0, 20.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &NullifyingImpact65A2,
@@ -8471,7 +8853,7 @@ DinoKind Magnapyritor("Magnapyritor", UNIQUE, 1, 3900, 1450, 128, 0.0, 20.0, 100
     }
 }, nullptr);
 
-DinoKind Maiasaura("Maiasaura", EPIC, 1, 3000, 1300, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Maiasaura("Maiasaura", EPIC, 1, 3000, 1300, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -8479,7 +8861,7 @@ DinoKind Maiasaura("Maiasaura", EPIC, 1, 3000, 1300, 126, 0.0, 5.0, 0.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Majundaboa("Majundaboa", EPIC, 1, 3600, 1000, 110, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 50.0, 100.0, 75.0, 100.0, 0.0, {
+DinoKind Majundaboa("Majundaboa", EPIC, 1, 3600, 1000, 110, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 50.0, 100.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &CleansingImpact351E,
@@ -8488,32 +8870,32 @@ DinoKind Majundaboa("Majundaboa", EPIC, 1, 3600, 1000, 110, 0.0, 5.0, 0.0, 0.0, 
     }
 }, &RakingCounterattackC77B);
 
-DinoKind Majundasuchus("Majundasuchus", RARE, 1, 3450, 1000, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Majundasuchus("Majundasuchus", RARE, 1, 3750, 1100, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
-        &TauntingShields1CF6,
+        &TauntingDefense72E3,
         &FerociousStrike71CC,
         &CleansingImpact351E
     }
-}, &ArmorPiercingCounterAEB5);
+}, &DisarmingCounterStrike8AAD);
 
-DinoKind Majungasaurus("Majungasaurus", COMMON, 1, 3450, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, {
+DinoKind Majungasaurus("Majungasaurus", COMMON, 1, 3450, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Mammolania("Mammolania", UNIQUE, 1, 5100, 1000, 115, 50.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, {
+DinoKind Mammolania("Mammolania", UNIQUE, 1, 5100, 1000, 115, 50.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
     {
-        &PersistentFerociousStrikeAF52,
+        &SuperiorVulnerability7C25,
         &ResilientRampageB23D,
         &DigInTaunt1BB1,
-        &TauntingBellow3BBD
+        &BellowingImpact7163
     }
-}, nullptr);
+}, &CounterFerocity85EF);
 
-DinoKind Mammotherium("Mammotherium", LEGENDARY, 1, 3600, 1500, 115, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Mammotherium("Mammotherium", LEGENDARY, 1, 3600, 1500, 115, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &ResilientImpact7BB4,
@@ -8522,7 +8904,7 @@ DinoKind Mammotherium("Mammotherium", LEGENDARY, 1, 3600, 1500, 115, 30.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind MarsupialLion("Marsupial Lion", RARE, 1, 4050, 1000, 117, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind MarsupialLion("Marsupial Lion", RARE, 1, 4050, 1000, 117, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &MinorRendingAttackEE1F,
         &RendingTakedown1CED,
@@ -8530,7 +8912,7 @@ DinoKind MarsupialLion("Marsupial Lion", RARE, 1, 4050, 1000, 117, 0.0, 40.0, 0.
     }
 }, &MediumCounterattackE4A7);
 
-DinoKind Megaloceros("Megaloceros", RARE, 1, 3300, 1000, 127, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 50.0, {
+DinoKind Megaloceros("Megaloceros", RARE, 1, 3300, 1000, 127, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &DeceleratingImpact5016,
@@ -8538,7 +8920,7 @@ DinoKind Megaloceros("Megaloceros", RARE, 1, 3300, 1000, 127, 10.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Megalogaia("Megalogaia", EPIC, 1, 3750, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 75.0, {
+DinoKind Megalogaia("Megalogaia", EPIC, 1, 3750, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &Bellow866E,
@@ -8547,7 +8929,7 @@ DinoKind Megalogaia("Megalogaia", EPIC, 1, 3750, 1000, 122, 0.0, 5.0, 0.0, 0.0, 
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Megalonyx("Megalonyx", RARE, 1, 3450, 1200, 103, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Megalonyx("Megalonyx", RARE, 1, 3450, 1200, 103, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &Camouflage8414,
@@ -8555,7 +8937,7 @@ DinoKind Megalonyx("Megalonyx", RARE, 1, 3450, 1200, 103, 0.0, 10.0, 0.0, 0.0, 0
     }
 }, &MaximalCounterattack5683);
 
-DinoKind Megalosaurus("Megalosaurus", RARE, 1, 3900, 1000, 105, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, {
+DinoKind Megalosaurus("Megalosaurus", RARE, 1, 3900, 1000, 105, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6,
@@ -8563,7 +8945,7 @@ DinoKind Megalosaurus("Megalosaurus", RARE, 1, 3900, 1000, 105, 0.0, 5.0, 0.0, 0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Megalosuchus("Megalosuchus", LEGENDARY, 1, 3600, 1000, 109, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Megalosuchus("Megalosuchus", LEGENDARY, 1, 3600, 1000, 109, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &GroupFerocityStrike7A2D,
@@ -8572,7 +8954,7 @@ DinoKind Megalosuchus("Megalosuchus", LEGENDARY, 1, 3600, 1000, 109, 0.0, 5.0, 0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Megalotops("Megalotops", EPIC, 1, 3750, 1150, 108, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 33.0, 0.0, 0.0, {
+DinoKind Megalotops("Megalotops", EPIC, 1, 3750, 1150, 108, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 33.0, 0.0, 0.0, 0.0, {
     {
         &DeterminedStrike3D79,
         &DistractingImpactD4D6,
@@ -8581,7 +8963,7 @@ DinoKind Megalotops("Megalotops", EPIC, 1, 3750, 1150, 108, 10.0, 10.0, 0.0, 0.0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Megistocurus("Megistocurus", LEGENDARY, 1, 3750, 1400, 115, 15.0, 30.0, 0.0, 0.0, 50.0, 0.0, 75.0, 50.0, 0.0, 100.0, 75.0, {
+DinoKind Megistocurus("Megistocurus", LEGENDARY, 1, 3750, 1400, 115, 15.0, 30.0, 0.0, 0.0, 50.0, 0.0, 75.0, 50.0, 0.0, 100.0, 75.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupShield54BA,
@@ -8590,7 +8972,7 @@ DinoKind Megistocurus("Megistocurus", LEGENDARY, 1, 3750, 1400, 115, 15.0, 30.0,
     }
 }, nullptr);
 
-DinoKind Megistotherium("Megistotherium", EPIC, 1, 3600, 1350, 120, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Megistotherium("Megistotherium", EPIC, 1, 3600, 1350, 120, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &ArmorPiercingImpactB10F,
@@ -8598,7 +8980,7 @@ DinoKind Megistotherium("Megistotherium", EPIC, 1, 3600, 1350, 120, 0.0, 40.0, 0
     }
 }, nullptr);
 
-DinoKind Meiolania("Meiolania", RARE, 1, 3300, 1000, 105, 50.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Meiolania("Meiolania", RARE, 1, 3300, 1000, 105, 50.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &LesserEmergencyHealE329,
@@ -8606,7 +8988,7 @@ DinoKind Meiolania("Meiolania", RARE, 1, 3300, 1000, 105, 50.0, 5.0, 0.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Microraptor("Microraptor", EPIC, 3, 1650, 1100, 136, 0.0, 15.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, {
+DinoKind Microraptor("Microraptor", EPIC, 3, 1650, 1100, 136, 0.0, 15.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &PreciseDoubleStrike2357,
@@ -8614,14 +8996,14 @@ DinoKind Microraptor("Microraptor", EPIC, 3, 1650, 1100, 136, 0.0, 15.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Miragaia("Miragaia", COMMON, 1, 3000, 1000, 109, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Miragaia("Miragaia", COMMON, 1, 3000, 1000, 109, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &EmergencyHeal679C
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Monolometrodon("Monolometrodon", LEGENDARY, 1, 4200, 1400, 125, 0.0, 5.0, 0.0, 100.0, 25.0, 75.0, 75.0, 100.0, 75.0, 0.0, 100.0, {
+DinoKind Monolometrodon("Monolometrodon", LEGENDARY, 1, 4200, 1400, 125, 0.0, 5.0, 0.0, 100.0, 25.0, 75.0, 75.0, 100.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &NullifyingStrike38B2,
@@ -8630,7 +9012,7 @@ DinoKind Monolometrodon("Monolometrodon", LEGENDARY, 1, 4200, 1400, 125, 0.0, 5.
     }
 }, nullptr);
 
-DinoKind Monolophosaurus("Monolophosaurus", EPIC, 1, 3000, 1300, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Monolophosaurus("Monolophosaurus", EPIC, 1, 3000, 1300, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingRampageBD0D,
@@ -8638,14 +9020,14 @@ DinoKind Monolophosaurus("Monolophosaurus", EPIC, 1, 3000, 1300, 127, 0.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind MonolophosaurusGen2("Monolophosaurus Gen 2", COMMON, 1, 2700, 1350, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind MonolophosaurusGen2("Monolophosaurus Gen 2", COMMON, 1, 2700, 1350, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6
     }
 }, nullptr);
 
-DinoKind Monolorhino("Monolorhino", UNIQUE, 1, 4500, 1250, 116, 30.0, 5.0, 100.0, 100.0, 50.0, 50.0, 75.0, 100.0, 100.0, 0.0, 100.0, {
+DinoKind Monolorhino("Monolorhino", UNIQUE, 1, 4500, 1250, 116, 30.0, 5.0, 100.0, 100.0, 50.0, 50.0, 75.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
     {
         &CunningStrike75A8,
         &DefiniteImpactE2FE,
@@ -8654,7 +9036,7 @@ DinoKind Monolorhino("Monolorhino", UNIQUE, 1, 4500, 1250, 116, 30.0, 5.0, 100.0
     }
 }, nullptr);
 
-DinoKind Monomimus("Monomimus", LEGENDARY, 1, 3750, 1350, 131, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, {
+DinoKind Monomimus("Monomimus", LEGENDARY, 1, 3750, 1350, 131, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingRampageBD0D,
@@ -8663,7 +9045,7 @@ DinoKind Monomimus("Monomimus", LEGENDARY, 1, 3750, 1350, 131, 0.0, 5.0, 100.0, 
     }
 }, nullptr);
 
-DinoKind Monostegotops("Monostegotops", LEGENDARY, 1, 3750, 1000, 116, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Monostegotops("Monostegotops", LEGENDARY, 1, 3750, 1000, 116, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &DigIn6DFE,
@@ -8672,7 +9054,7 @@ DinoKind Monostegotops("Monostegotops", LEGENDARY, 1, 3750, 1000, 116, 25.0, 5.0
     }
 }, nullptr);
 
-DinoKind MorosIntrepidus("Moros Intrepidus", EPIC, 3, 3300, 1100, 115, 0.0, 20.0, 0.0, 50.0, 0.0, 33.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
+DinoKind MorosIntrepidus("Moros Intrepidus", EPIC, 3, 3300, 1100, 115, 0.0, 20.0, 0.0, 50.0, 0.0, 33.0, 100.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
     {
         &PinningStrike3832,
         &FierceDevouringImpactB728,
@@ -8680,7 +9062,7 @@ DinoKind MorosIntrepidus("Moros Intrepidus", EPIC, 3, 3300, 1100, 115, 0.0, 20.0
     }
 }, nullptr);
 
-DinoKind MortemRex("Mortem Rex", APEX, 1, 4800, 2000, 108, 0.0, 40.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, 75.0, 0.0, 100.0, {
+DinoKind MortemRex("Mortem Rex", APEX, 1, 4800, 2000, 108, 0.0, 40.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &AlertFatalStrikeE0D9,
         &FierceImpactB3BE,
@@ -8689,7 +9071,7 @@ DinoKind MortemRex("Mortem Rex", APEX, 1, 4800, 2000, 108, 0.0, 40.0, 0.0, 50.0,
     }
 }, nullptr);
 
-DinoKind Moschops("Moschops", RARE, 1, 4500, 1000, 113, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Moschops("Moschops", RARE, 1, 4500, 1000, 113, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RevengeDeceleratingImpact6A2C,
@@ -8697,7 +9079,7 @@ DinoKind Moschops("Moschops", RARE, 1, 4500, 1000, 113, 25.0, 5.0, 0.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Nasutoceratops("Nasutoceratops", RARE, 1, 4800, 1000, 109, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Nasutoceratops("Nasutoceratops", RARE, 1, 4800, 1000, 109, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &LongDeceleratingStrike7953,
         &Distraction8FE1,
@@ -8705,7 +9087,7 @@ DinoKind Nasutoceratops("Nasutoceratops", RARE, 1, 4800, 1000, 109, 20.0, 5.0, 0
     }
 }, nullptr);
 
-DinoKind Nodopatosaurus("Nodopatosaurus", EPIC, 1, 4800, 1000, 106, 30.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Nodopatosaurus("Nodopatosaurus", EPIC, 1, 4800, 1000, 106, 30.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6,
@@ -8714,7 +9096,7 @@ DinoKind Nodopatosaurus("Nodopatosaurus", EPIC, 1, 4800, 1000, 106, 30.0, 5.0, 0
     }
 }, nullptr);
 
-DinoKind Nodopatotitan("Nodopatotitan", LEGENDARY, 1, 6150, 1100, 108, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 75.0, 0.0, 0.0, {
+DinoKind Nodopatotitan("Nodopatotitan", LEGENDARY, 1, 6150, 1100, 108, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingHealBellow5344,
@@ -8723,7 +9105,7 @@ DinoKind Nodopatotitan("Nodopatotitan", LEGENDARY, 1, 6150, 1100, 108, 40.0, 5.0
     }
 }, &MinorPreciseCounterA27F);
 
-DinoKind Nodosaurus("Nodosaurus", RARE, 1, 4350, 950, 115, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Nodosaurus("Nodosaurus", RARE, 1, 4350, 950, 115, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &DeceleratingImpact5016,
@@ -8731,21 +9113,21 @@ DinoKind Nodosaurus("Nodosaurus", RARE, 1, 4350, 950, 115, 30.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Nundasuchus("Nundasuchus", COMMON, 1, 3000, 1500, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Nundasuchus("Nundasuchus", COMMON, 1, 3000, 1500, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ArmorPiercingStrike69E0,
         &FerociousStrike71CC
     }
 }, nullptr);
 
-DinoKind Ophiacodon("Ophiacodon", COMMON, 1, 4350, 1400, 108, 0.0, 40.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Ophiacodon("Ophiacodon", COMMON, 1, 4350, 1400, 108, 0.0, 40.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ArmorPiercingRampage4328
     }
 }, nullptr);
 
-DinoKind Ornithomimus("Ornithomimus", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Ornithomimus("Ornithomimus", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &RampageAndRunB223,
@@ -8753,7 +9135,7 @@ DinoKind Ornithomimus("Ornithomimus", RARE, 1, 3000, 1600, 131, 0.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Ouranosaurus("Ouranosaurus", EPIC, 1, 3600, 1500, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Ouranosaurus("Ouranosaurus", EPIC, 1, 3600, 1500, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -8761,7 +9143,7 @@ DinoKind Ouranosaurus("Ouranosaurus", EPIC, 1, 3600, 1500, 104, 0.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Ovilophomoloch("Ovilophomoloch", LEGENDARY, 1, 3150, 1250, 129, 0.0, 10.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Ovilophomoloch("Ovilophomoloch", LEGENDARY, 1, 3150, 1250, 129, 0.0, 10.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DeviousStrike53F7,
         &AlertDistractingImpact85F8,
@@ -8770,7 +9152,7 @@ DinoKind Ovilophomoloch("Ovilophomoloch", LEGENDARY, 1, 3150, 1250, 129, 0.0, 10
     }
 }, nullptr);
 
-DinoKind Ovilophosaurus("Ovilophosaurus", EPIC, 1, 2850, 1200, 127, 0.0, 10.0, 100.0, 0.0, 100.0, 75.0, 100.0, 50.0, 0.0, 0.0, 0.0, {
+DinoKind Ovilophosaurus("Ovilophosaurus", EPIC, 1, 2850, 1200, 127, 0.0, 10.0, 100.0, 0.0, 100.0, 75.0, 100.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DeviousStrike53F7,
         &GroupCunningImpact436E,
@@ -8779,7 +9161,7 @@ DinoKind Ovilophosaurus("Ovilophosaurus", EPIC, 1, 2850, 1200, 127, 0.0, 10.0, 1
     }
 }, nullptr);
 
-DinoKind Oviraptor("Oviraptor", RARE, 1, 2700, 1300, 129, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Oviraptor("Oviraptor", RARE, 1, 2700, 1300, 129, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DeviousStrike53F7,
         &SidestepB6BC,
@@ -8787,7 +9169,7 @@ DinoKind Oviraptor("Oviraptor", RARE, 1, 2700, 1300, 129, 0.0, 15.0, 100.0, 0.0,
     }
 }, nullptr);
 
-DinoKind OviraptorGen2("Oviraptor Gen 2", EPIC, 1, 2400, 1300, 131, 0.0, 15.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind OviraptorGen2("Oviraptor Gen 2", EPIC, 1, 2400, 1300, 131, 0.0, 15.0, 100.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CriticalStrike8706,
         &GroupCriticalAlertF371,
@@ -8795,7 +9177,7 @@ DinoKind OviraptorGen2("Oviraptor Gen 2", EPIC, 1, 2400, 1300, 131, 0.0, 15.0, 1
     }
 }, &DartingCounter6039);
 
-DinoKind Pachycephalosaurus("Pachycephalosaurus", EPIC, 1, 3900, 1200, 121, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Pachycephalosaurus("Pachycephalosaurus", EPIC, 1, 3900, 1200, 121, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldingStrikeEDCA,
         &DeceleratingImpact5016,
@@ -8803,7 +9185,24 @@ DinoKind Pachycephalosaurus("Pachycephalosaurus", EPIC, 1, 3900, 1200, 121, 0.0,
     }
 }, nullptr);
 
-DinoKind Paramoloch("Paramoloch", LEGENDARY, 1, 4350, 1500, 126, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Panthera("Panthera", EPIC, 1, 3250, 1300, 126, 5.0, 10.0, 0.0, 0.0, 50.0, 0.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+    {
+        &Retreat5950,
+        &BerserkClawedRevenge111B,
+        &BerserkBitingRevenge5D5E
+    }
+}, nullptr);
+
+DinoKind PantheraBlytheae("Panthera Blytheae", LEGENDARY, 1, 3900, 1550, 126, 0.0, 20.0, 100.0, 0.0, 100.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+    {
+        &DebilitatingStrike1814,
+        &EvasiveHunt089A,
+        &CunningRampage8AEB,
+        &PreciseDoubleStrike2357
+    }
+}, &MediumNullifyingCounter4816);
+
+DinoKind Paramoloch("Paramoloch", LEGENDARY, 1, 4350, 1500, 126, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -8812,14 +9211,14 @@ DinoKind Paramoloch("Paramoloch", LEGENDARY, 1, 4350, 1500, 126, 0.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Parasaurolophus("Parasaurolophus", COMMON, 1, 4500, 1200, 106, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Parasaurolophus("Parasaurolophus", COMMON, 1, 4500, 1200, 106, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491
     }
 }, nullptr);
 
-DinoKind ParasaurolophusLux("Parasaurolophus Lux", LEGENDARY, 1, 4950, 1250, 106, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind ParasaurolophusLux("Parasaurolophus Lux", LEGENDARY, 1, 4950, 1250, 106, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -8828,7 +9227,7 @@ DinoKind ParasaurolophusLux("Parasaurolophus Lux", LEGENDARY, 1, 4950, 1250, 106
     }
 }, &CounterPowerHeal4DD2);
 
-DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0.0, 15.0, 0.0, 75.0, 50.0, 0.0, 0.0, 33.0, 0.0, 100.0, 0.0, {
+DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0.0, 15.0, 0.0, 75.0, 50.0, 0.0, 0.0, 33.0, 0.0, 100.0, 0.0, 0.0, {
     {
         &ToughGroupCunningStrike30D1,
         &AlertInstantHeal6BB9,
@@ -8837,7 +9236,7 @@ DinoKind Parasauthops("Parasauthops", UNIQUE, 1, 4650, 1550, 109, 0.0, 15.0, 0.0
     }
 }, &CounterPowerHeal4DD2);
 
-DinoKind Phorurex("Phorurex", UNIQUE, 1, 3900, 1500, 128, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 75.0, 50.0, 0.0, 0.0, {
+DinoKind Phorurex("Phorurex", UNIQUE, 1, 3900, 1500, 128, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 75.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &DaringStrikeE486,
         &CriticalSidestep78B0,
@@ -8846,7 +9245,7 @@ DinoKind Phorurex("Phorurex", UNIQUE, 1, 3900, 1500, 128, 0.0, 10.0, 0.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Phorusaura("Phorusaura", LEGENDARY, 1, 3600, 1400, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 100.0, 0.0, 0.0, {
+DinoKind Phorusaura("Phorusaura", LEGENDARY, 1, 3600, 1400, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &InstantRampageC258,
@@ -8855,14 +9254,14 @@ DinoKind Phorusaura("Phorusaura", LEGENDARY, 1, 3600, 1400, 130, 0.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Phorusrhacos("Phorusrhacos", COMMON, 1, 3000, 1500, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Phorusrhacos("Phorusrhacos", COMMON, 1, 3000, 1500, 130, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Sidestep5439,
         &RakingClawsF16C
     }
 }, nullptr);
 
-DinoKind Postimetrodon("Postimetrodon", EPIC, 1, 4500, 1200, 124, 0.0, 5.0, 0.0, 50.0, 50.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, {
+DinoKind Postimetrodon("Postimetrodon", EPIC, 1, 4500, 1200, 124, 0.0, 5.0, 0.0, 50.0, 50.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupFerocityStrike7A2D,
@@ -8871,7 +9270,7 @@ DinoKind Postimetrodon("Postimetrodon", EPIC, 1, 4500, 1200, 124, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Postosuchus("Postosuchus", RARE, 1, 3000, 1200, 126, 0.0, 20.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Postosuchus("Postosuchus", RARE, 1, 3000, 1200, 126, 0.0, 20.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &GroupFerocityStrike7A2D,
@@ -8879,7 +9278,7 @@ DinoKind Postosuchus("Postosuchus", RARE, 1, 3000, 1200, 126, 0.0, 20.0, 0.0, 50
     }
 }, nullptr);
 
-DinoKind Poukaidei("Poukaidei", LEGENDARY, 1, 4050, 1500, 131, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Poukaidei("Poukaidei", LEGENDARY, 1, 4050, 1500, 131, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &FearlessFlap6CE3,
@@ -8888,7 +9287,7 @@ DinoKind Poukaidei("Poukaidei", LEGENDARY, 1, 4050, 1500, 131, 0.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Poukandactylus("Poukandactylus", UNIQUE, 1, 4050, 1200, 127, 0.0, 15.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 75.0, 0.0, 50.0, {
+DinoKind Poukandactylus("Poukandactylus", UNIQUE, 1, 4050, 1200, 127, 0.0, 15.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 75.0, 0.0, 50.0, 0.0, {
     {
         &Sideflap66AF,
         &DistractingImpactD4D6,
@@ -8897,7 +9296,7 @@ DinoKind Poukandactylus("Poukandactylus", UNIQUE, 1, 4050, 1200, 127, 0.0, 15.0,
     }
 }, &DefenseShatteringCounterCA13);
 
-DinoKind Preondactylus("Preondactylus", RARE, 3, 2250, 1350, 133, 0.0, 5.0, 0.0, 0.0, 0.0, 33.0, 100.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Preondactylus("Preondactylus", RARE, 3, 2250, 1350, 133, 0.0, 5.0, 0.0, 0.0, 0.0, 33.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Sideflap66AF,
         &EvasiveImpact7999,
@@ -8905,7 +9304,7 @@ DinoKind Preondactylus("Preondactylus", RARE, 3, 2250, 1350, 133, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Procerathomimus("Procerathomimus", EPIC, 1, 3000, 1600, 127, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 75.0, 75.0, 0.0, 0.0, {
+DinoKind Procerathomimus("Procerathomimus", EPIC, 1, 3000, 1600, 127, 0.0, 5.0, 100.0, 100.0, 100.0, 0.0, 0.0, 75.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingRampageBD0D,
@@ -8914,7 +9313,7 @@ DinoKind Procerathomimus("Procerathomimus", EPIC, 1, 3000, 1600, 127, 0.0, 5.0, 
     }
 }, &NullifyingCounter3724);
 
-DinoKind Proceratosaurus("Proceratosaurus", RARE, 1, 3000, 1300, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Proceratosaurus("Proceratosaurus", RARE, 1, 3000, 1300, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -8922,7 +9321,7 @@ DinoKind Proceratosaurus("Proceratosaurus", RARE, 1, 3000, 1300, 126, 0.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Pteranodon("Pteranodon", EPIC, 1, 3300, 900, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Pteranodon("Pteranodon", EPIC, 1, 3300, 900, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &FierceImpactB3BE,
@@ -8930,7 +9329,7 @@ DinoKind Pteranodon("Pteranodon", EPIC, 1, 3300, 900, 127, 0.0, 5.0, 0.0, 0.0, 0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Pteranokyrie("Pteranokyrie", APEX, 1, 5100, 1550, 128, 25.0, 10.0, 0.0, 100.0, 75.0, 0.0, 100.0, 75.0, 100.0, 0.0, 0.0, {
+DinoKind Pteranokyrie("Pteranokyrie", APEX, 1, 5100, 1550, 128, 25.0, 10.0, 0.0, 100.0, 75.0, 0.0, 100.0, 75.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &DefiniteStrike51A6,
         &DispersedRakingImpact1D47,
@@ -8939,7 +9338,7 @@ DinoKind Pteranokyrie("Pteranokyrie", APEX, 1, 5100, 1550, 128, 25.0, 10.0, 0.0,
     }
 }, &RobbingWing33B1);
 
-DinoKind Pteraquetzal("Pteraquetzal", LEGENDARY, 1, 4500, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Pteraquetzal("Pteraquetzal", LEGENDARY, 1, 4500, 1000, 125, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &LongDefenseStrike1237,
@@ -8948,7 +9347,7 @@ DinoKind Pteraquetzal("Pteraquetzal", LEGENDARY, 1, 4500, 1000, 125, 0.0, 5.0, 0
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Pterovexus("Pterovexus", UNIQUE, 1, 4050, 1300, 130, 0.0, 15.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 100.0, 0.0, 100.0, {
+DinoKind Pterovexus("Pterovexus", UNIQUE, 1, 4050, 1300, 130, 0.0, 15.0, 100.0, 100.0, 50.0, 50.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
     {
         &PinningStrike3832,
         &MinorSwoop6A00,
@@ -8957,7 +9356,7 @@ DinoKind Pterovexus("Pterovexus", UNIQUE, 1, 4050, 1300, 130, 0.0, 15.0, 100.0, 
     }
 }, &VenomousCounter56D1);
 
-DinoKind Pulmonoscorpius("Pulmonoscorpius", EPIC, 3, 2400, 1050, 116, 34.99999, 15.0, 100.0, 100.0, 0.0, 33.0, 0.0, 50.0, 0.0, 0.0, 0.0, {
+DinoKind Pulmonoscorpius("Pulmonoscorpius", EPIC, 3, 2400, 1050, 116, 34.99999, 15.0, 100.0, 100.0, 0.0, 33.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &EnfeeblingStinger5E49,
         &ObstructingFierceImpact9462,
@@ -8965,7 +9364,7 @@ DinoKind Pulmonoscorpius("Pulmonoscorpius", EPIC, 3, 2400, 1050, 116, 34.99999, 
     }
 }, &PoisonCounterFC4D);
 
-DinoKind Purrolyth("Purrolyth", RARE, 1, 3600, 1000, 105, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Purrolyth("Purrolyth", RARE, 1, 3600, 1000, 105, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &FerociousStrike71CC,
@@ -8974,7 +9373,7 @@ DinoKind Purrolyth("Purrolyth", RARE, 1, 3600, 1000, 105, 10.0, 5.0, 0.0, 0.0, 0
     }
 }, &RendingCounterattack24B1);
 
-DinoKind Purussaurus("Purussaurus", RARE, 1, 4500, 1000, 111, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Purussaurus("Purussaurus", RARE, 1, 4500, 1000, 111, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &VulnerabilityStrike1E04,
         &BindingImpactA742,
@@ -8982,14 +9381,14 @@ DinoKind Purussaurus("Purussaurus", RARE, 1, 4500, 1000, 111, 15.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind PurussaurusGen2("Purussaurus Gen 2", COMMON, 1, 4200, 1250, 111, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind PurussaurusGen2("Purussaurus Gen 2", COMMON, 1, 4200, 1250, 111, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &VulnerabilityStrike1E04,
         &BindingImpactA742
     }
 }, nullptr);
 
-DinoKind Purutaurus("Purutaurus", EPIC, 1, 4200, 1000, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Purutaurus("Purutaurus", EPIC, 1, 4200, 1000, 110, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CleansingStrike541F,
         &ShortDefense7ED4,
@@ -8998,7 +9397,7 @@ DinoKind Purutaurus("Purutaurus", EPIC, 1, 4200, 1000, 110, 0.0, 5.0, 0.0, 0.0, 
     }
 }, &RendingCounterattack24B1);
 
-DinoKind Pyroraptor("Pyroraptor", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Pyroraptor("Pyroraptor", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HighPounceD062,
@@ -9006,7 +9405,7 @@ DinoKind Pyroraptor("Pyroraptor", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind PyroraptorGen2("Pyroraptor Gen 2", RARE, 1, 3150, 1200, 129, 0.0, 10.0, 25.0, 0.0, 15.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind PyroraptorGen2("Pyroraptor Gen 2", RARE, 1, 3150, 1200, 129, 0.0, 10.0, 25.0, 0.0, 15.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &NullifyingImpact65A2,
@@ -9014,7 +9413,16 @@ DinoKind PyroraptorGen2("Pyroraptor Gen 2", RARE, 1, 3150, 1200, 129, 0.0, 10.0,
     }
 }, &DistractingCounterA897);
 
-DinoKind Pyrosuchus("Pyrosuchus", LEGENDARY, 1, 3750, 1350, 126, 15.0, 5.0, 100.0, 0.0, 25.0, 0.0, 50.0, 0.0, 0.0, 0.0, 75.0, {
+DinoKind Pyrorixis("Pyrorixis", UNIQUE, 1, 4500, 1500, 129, 10.0, 10.0, 100.0, 0.0, 50.0, 25.0, 100.0, 25.0, 0.0, 0.0, 75.0, 0.0, {
+    {
+        &DispersedCautiousStrikeDD1C,
+        &GreaterNullification593D,
+        &InstantPreciseImpact5A71,
+        &BerserkDecimatingWound9D0A
+    }
+}, &FerociousCounterStunE8A6);
+
+DinoKind Pyrosuchus("Pyrosuchus", LEGENDARY, 1, 3750, 1350, 126, 15.0, 5.0, 100.0, 0.0, 25.0, 0.0, 50.0, 0.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &InstantDistractingStrikeF18F,
         &ShieldedLockdown6EE2,
@@ -9023,7 +9431,7 @@ DinoKind Pyrosuchus("Pyrosuchus", LEGENDARY, 1, 3750, 1350, 126, 15.0, 5.0, 100.
     }
 }, &NullifyingCounter3724);
 
-DinoKind Pyrritator("Pyrritator", LEGENDARY, 1, 2550, 1400, 129, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Pyrritator("Pyrritator", LEGENDARY, 1, 2550, 1400, 129, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HighPounceD062,
@@ -9032,7 +9440,7 @@ DinoKind Pyrritator("Pyrritator", LEGENDARY, 1, 2550, 1400, 129, 0.0, 20.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Quetzalcoatlus("Quetzalcoatlus", RARE, 1, 5100, 1000, 117, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Quetzalcoatlus("Quetzalcoatlus", RARE, 1, 5100, 1000, 117, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6,
@@ -9040,7 +9448,7 @@ DinoKind Quetzalcoatlus("Quetzalcoatlus", RARE, 1, 5100, 1000, 117, 0.0, 5.0, 0.
     }
 }, nullptr);
 
-DinoKind QuetzalcoatlusGen2("Quetzalcoatlus Gen 2", EPIC, 1, 3600, 1080, 121, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 25.0, 33.0, 0.0, 0.0, {
+DinoKind QuetzalcoatlusGen2("Quetzalcoatlus Gen 2", EPIC, 1, 3600, 1080, 121, 10.0, 10.0, 0.0, 0.0, 0.0, 0.0, 50.0, 25.0, 33.0, 0.0, 0.0, 0.0, {
     {
         &FierceDevouringCleanse4BB9,
         &FerociousShieldedHeal2912,
@@ -9048,7 +9456,7 @@ DinoKind QuetzalcoatlusGen2("Quetzalcoatlus Gen 2", EPIC, 1, 3600, 1080, 121, 10
     }
 }, nullptr);
 
-DinoKind Quetzorion("Quetzorion", UNIQUE, 1, 4350, 1600, 130, 0.0, 20.0, 0.0, 100.0, 100.0, 50.0, 0.0, 0.0, 67.0, 0.0, 0.0, {
+DinoKind Quetzorion("Quetzorion", UNIQUE, 1, 4350, 1600, 130, 0.0, 20.0, 0.0, 100.0, 100.0, 50.0, 0.0, 0.0, 67.0, 0.0, 0.0, 0.0, {
     {
         &CraftyStrike1DFE,
         &LongInvincibilityBB2D,
@@ -9057,7 +9465,7 @@ DinoKind Quetzorion("Quetzorion", UNIQUE, 1, 4350, 1600, 130, 0.0, 20.0, 0.0, 10
     }
 }, &NullifyingCounter3724);
 
-DinoKind Rajakylosaurus("Rajakylosaurus", LEGENDARY, 1, 4350, 1000, 104, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Rajakylosaurus("Rajakylosaurus", LEGENDARY, 1, 4350, 1000, 104, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6,
@@ -9066,7 +9474,7 @@ DinoKind Rajakylosaurus("Rajakylosaurus", LEGENDARY, 1, 4350, 1000, 104, 30.0, 5
     }
 }, &PrecisePiercingStrike5679);
 
-DinoKind Rajasaurus("Rajasaurus", EPIC, 1, 4200, 1000, 104, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Rajasaurus("Rajasaurus", EPIC, 1, 4200, 1000, 104, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingShields1CF6,
@@ -9074,7 +9482,7 @@ DinoKind Rajasaurus("Rajasaurus", EPIC, 1, 4200, 1000, 104, 0.0, 30.0, 0.0, 0.0,
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Red("Red", EPIC, 1, 3450, 1250, 123, 15.0, 5.0, 0.0, 25.0, 33.0, 0.0, 25.0, 100.0, 0.0, 0.0, 25.0, {
+DinoKind Red("Red", EPIC, 1, 3450, 1250, 123, 15.0, 5.0, 0.0, 25.0, 33.0, 0.0, 25.0, 100.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &AcceleratingShieldedDistraction80B6,
@@ -9082,7 +9490,7 @@ DinoKind Red("Red", EPIC, 1, 3450, 1250, 123, 15.0, 5.0, 0.0, 25.0, 33.0, 0.0, 2
     }
 }, nullptr);
 
-DinoKind Refrenantem("Refrenantem", APEX, 1, 4800, 1600, 126, 0.0, 20.0, 100.0, 50.0, 100.0, 75.0, 0.0, 75.0, 0.0, 100.0, 25.0, {
+DinoKind Refrenantem("Refrenantem", APEX, 1, 4800, 1600, 126, 0.0, 20.0, 100.0, 50.0, 100.0, 75.0, 0.0, 75.0, 0.0, 100.0, 25.0, 0.0, {
     {
         &CunningStrike75A8,
         &AlertNullification3D09,
@@ -9091,7 +9499,7 @@ DinoKind Refrenantem("Refrenantem", APEX, 1, 4800, 1600, 126, 0.0, 20.0, 100.0, 
     }
 }, &AlertCounterDistractionBE9B);
 
-DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0.0, 44.99998, 0.0, 75.0, 0.0, 75.0, 100.0, 75.0, 0.0, 0.0, 100.0, {
+DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0.0, 44.99998, 0.0, 75.0, 0.0, 75.0, 100.0, 75.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &AlertFierceStrikeF86F,
         &DefenseShatteringRevengeFFF1,
@@ -9100,7 +9508,7 @@ DinoKind Rexy("Rexy", LEGENDARY, 1, 4950, 1850, 106, 0.0, 44.99998, 0.0, 75.0, 0
     }
 }, nullptr);
 
-DinoKind Rinchenia("Rinchenia", EPIC, 1, 2700, 1450, 129, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Rinchenia("Rinchenia", EPIC, 1, 2700, 1450, 129, 0.0, 10.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DeviousStrike53F7,
         &Sidestep5439,
@@ -9108,7 +9516,7 @@ DinoKind Rinchenia("Rinchenia", EPIC, 1, 2700, 1450, 129, 0.0, 10.0, 100.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Rinchicyon("Rinchicyon", LEGENDARY, 1, 3450, 1400, 129, 0.0, 25.0, 100.0, 0.0, 50.0, 0.0, 75.0, 0.0, 67.0, 0.0, 0.0, {
+DinoKind Rinchicyon("Rinchicyon", LEGENDARY, 1, 3450, 1400, 129, 0.0, 25.0, 100.0, 0.0, 50.0, 0.0, 75.0, 0.0, 67.0, 0.0, 0.0, 0.0, {
     {
         &DeviousStrike53F7,
         &InstantBuff41DC,
@@ -9117,7 +9525,7 @@ DinoKind Rinchicyon("Rinchicyon", LEGENDARY, 1, 3450, 1400, 129, 0.0, 25.0, 100.
     }
 }, nullptr);
 
-DinoKind RodriguesSolitaire("Rodrigues Solitaire", RARE, 3, 2850, 1300, 128, 0.0, 5.0, 0.0, 50.0, 50.0, 33.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind RodriguesSolitaire("Rodrigues Solitaire", RARE, 3, 2850, 1300, 128, 0.0, 5.0, 0.0, 50.0, 50.0, 33.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &FlightlessStrikeCC17,
         &ProtectiveAlert2FA4,
@@ -9125,7 +9533,7 @@ DinoKind RodriguesSolitaire("Rodrigues Solitaire", RARE, 3, 2850, 1300, 128, 0.0
     }
 }, nullptr);
 
-DinoKind Sarcorixis("Sarcorixis", EPIC, 1, 4500, 1100, 113, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Sarcorixis("Sarcorixis", EPIC, 1, 4500, 1100, 113, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GreaterStunningStrikeBAEF,
@@ -9134,14 +9542,14 @@ DinoKind Sarcorixis("Sarcorixis", EPIC, 1, 4500, 1100, 113, 25.0, 5.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Sarcosuchus("Sarcosuchus", COMMON, 1, 3600, 1000, 108, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Sarcosuchus("Sarcosuchus", COMMON, 1, 3600, 1000, 108, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &StrikeBE64,
         &LethalWound98A0
     }
 }, nullptr);
 
-DinoKind Scaphognathus("Scaphognathus", RARE, 1, 2700, 1000, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Scaphognathus("Scaphognathus", RARE, 1, 2700, 1000, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &MinorSwoop6A00,
@@ -9149,7 +9557,7 @@ DinoKind Scaphognathus("Scaphognathus", RARE, 1, 2700, 1000, 128, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Scaphotator("Scaphotator", EPIC, 1, 3000, 1000, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Scaphotator("Scaphotator", EPIC, 1, 3000, 1000, 127, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &DistractingImpactD4D6,
@@ -9158,14 +9566,14 @@ DinoKind Scaphotator("Scaphotator", EPIC, 1, 3000, 1000, 127, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind Scolosaurus("Scolosaurus", COMMON, 1, 4050, 1000, 107, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Scolosaurus("Scolosaurus", COMMON, 1, 4050, 1000, 107, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &TauntingRampage3362
     }
 }, nullptr);
 
-DinoKind ScorpiosRex("Scorpios Rex", LEGENDARY, 1, 3750, 1300, 117, 0.0, 15.0, 0.0, 0.0, 25.0, 0.0, 100.0, 75.0, 75.0, 0.0, 25.0, {
+DinoKind ScorpiosRex("Scorpios Rex", LEGENDARY, 1, 3750, 1300, 117, 0.0, 15.0, 0.0, 0.0, 25.0, 0.0, 100.0, 75.0, 75.0, 0.0, 25.0, 0.0, {
     {
         &FierceStrike106A,
         &CunningImpactEE79,
@@ -9174,7 +9582,7 @@ DinoKind ScorpiosRex("Scorpios Rex", LEGENDARY, 1, 3750, 1300, 117, 0.0, 15.0, 0
     }
 }, nullptr);
 
-DinoKind ScorpiosRexGen2("Scorpios Rex Gen 2", EPIC, 1, 3600, 1250, 118, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 75.0, 50.0, 100.0, 0.0, 25.0, {
+DinoKind ScorpiosRexGen2("Scorpios Rex Gen 2", EPIC, 1, 3600, 1250, 118, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 75.0, 50.0, 100.0, 0.0, 25.0, 0.0, {
     {
         &CunningStrike75A8,
         &StrikeAndRun11DF,
@@ -9183,7 +9591,7 @@ DinoKind ScorpiosRexGen2("Scorpios Rex Gen 2", EPIC, 1, 3600, 1250, 118, 0.0, 10
     }
 }, nullptr);
 
-DinoKind ScorpiosRexGen3("Scorpios Rex Gen 3", UNIQUE, 1, 4050, 1350, 119, 0.0, 25.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 50.0, 0.0, 50.0, {
+DinoKind ScorpiosRexGen3("Scorpios Rex Gen 3", UNIQUE, 1, 4050, 1350, 119, 0.0, 25.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 50.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &InstantAmbushD57D,
@@ -9192,7 +9600,7 @@ DinoKind ScorpiosRexGen3("Scorpios Rex Gen 3", UNIQUE, 1, 4050, 1350, 119, 0.0, 
     }
 }, nullptr);
 
-DinoKind Scutophicyon("Scutophicyon", LEGENDARY, 1, 3600, 1350, 118, 10.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 75.0, {
+DinoKind Scutophicyon("Scutophicyon", LEGENDARY, 1, 3600, 1350, 118, 10.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 75.0, 0.0, {
     {
         &CleansingStrike541F,
         &RevengeFierceImpact9788,
@@ -9201,7 +9609,7 @@ DinoKind Scutophicyon("Scutophicyon", LEGENDARY, 1, 3600, 1350, 118, 10.0, 25.0,
     }
 }, nullptr);
 
-DinoKind Scutosaurus("Scutosaurus", EPIC, 1, 4800, 1200, 116, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Scutosaurus("Scutosaurus", EPIC, 1, 4800, 1200, 116, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RevengeDeceleratingImpact6A2C,
@@ -9209,7 +9617,7 @@ DinoKind Scutosaurus("Scutosaurus", EPIC, 1, 4800, 1200, 116, 25.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Secodontosaurus("Secodontosaurus", EPIC, 1, 3900, 1500, 114, 0.0, 5.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, {
+DinoKind Secodontosaurus("Secodontosaurus", EPIC, 1, 3900, 1500, 114, 0.0, 5.0, 0.0, 100.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &FierceStrike106A,
         &FierceRampageDC31,
@@ -9217,7 +9625,7 @@ DinoKind Secodontosaurus("Secodontosaurus", EPIC, 1, 3900, 1500, 114, 0.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Segnoraptor("Segnoraptor", LEGENDARY, 1, 3300, 1250, 134, 0.0, 5.0, 0.0, 50.0, 100.0, 0.0, 0.0, 75.0, 75.0, 50.0, 0.0, {
+DinoKind Segnoraptor("Segnoraptor", LEGENDARY, 1, 3300, 1250, 134, 0.0, 5.0, 0.0, 50.0, 100.0, 0.0, 0.0, 75.0, 75.0, 50.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &CunningFerociousStrike6867,
@@ -9226,7 +9634,7 @@ DinoKind Segnoraptor("Segnoraptor", LEGENDARY, 1, 3300, 1250, 134, 0.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind Sinoceratops("Sinoceratops", EPIC, 1, 3300, 1000, 107, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Sinoceratops("Sinoceratops", EPIC, 1, 3300, 1000, 107, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DigIn6DFE,
@@ -9234,7 +9642,7 @@ DinoKind Sinoceratops("Sinoceratops", EPIC, 1, 3300, 1000, 107, 25.0, 5.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Sinokotaraptor("Sinokotaraptor", LEGENDARY, 3, 3300, 1200, 128, 0.0, 10.0, 100.0, 0.0, 100.0, 33.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Sinokotaraptor("Sinokotaraptor", LEGENDARY, 3, 3300, 1200, 128, 0.0, 10.0, 100.0, 0.0, 100.0, 33.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &Sidestep5439,
@@ -9243,14 +9651,14 @@ DinoKind Sinokotaraptor("Sinokotaraptor", LEGENDARY, 3, 3300, 1200, 128, 0.0, 10
     }
 }, nullptr);
 
-DinoKind Sinosauropteryx("Sinosauropteryx", COMMON, 3, 2700, 1000, 128, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Sinosauropteryx("Sinosauropteryx", COMMON, 3, 2700, 1000, 128, 0.0, 10.0, 0.0, 0.0, 0.0, 33.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &HighPounceD062
     }
 }, nullptr);
 
-DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 1, 4500, 1000, 124, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, 50.0, {
+DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 1, 4500, 1000, 124, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TipTheScales61DD,
@@ -9259,7 +9667,7 @@ DinoKind Skoolasaurus("Skoolasaurus", LEGENDARY, 1, 4500, 1000, 124, 30.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Skoonasaurus("Skoonasaurus", UNIQUE, 1, 5850, 1150, 108, 30.0, 20.0, 0.0, 0.0, 50.0, 0.0, 75.0, 100.0, 67.0, 100.0, 50.0, {
+DinoKind Skoonasaurus("Skoonasaurus", UNIQUE, 1, 5850, 1150, 108, 30.0, 20.0, 0.0, 0.0, 50.0, 0.0, 75.0, 100.0, 67.0, 100.0, 50.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
@@ -9268,7 +9676,7 @@ DinoKind Skoonasaurus("Skoonasaurus", UNIQUE, 1, 5850, 1150, 108, 30.0, 20.0, 0.
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Smilocephalosaurus("Smilocephalosaurus", LEGENDARY, 1, 3750, 1400, 127, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
+DinoKind Smilocephalosaurus("Smilocephalosaurus", LEGENDARY, 1, 3750, 1400, 127, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &DeliberateProwlDF39,
@@ -9277,7 +9685,7 @@ DinoKind Smilocephalosaurus("Smilocephalosaurus", LEGENDARY, 1, 3750, 1400, 127,
     }
 }, nullptr);
 
-DinoKind Smilodon("Smilodon", EPIC, 1, 3000, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Smilodon("Smilodon", EPIC, 1, 3000, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &PrecisePounceF675,
@@ -9285,7 +9693,7 @@ DinoKind Smilodon("Smilodon", EPIC, 1, 3000, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Smilonemys("Smilonemys", UNIQUE, 1, 4200, 1200, 127, 40.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 60.0, 0.0, 0.0, {
+DinoKind Smilonemys("Smilonemys", UNIQUE, 1, 4200, 1200, 127, 40.0, 5.0, 0.0, 0.0, 50.0, 0.0, 50.0, 100.0, 60.0, 0.0, 0.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &DeliberateProwlDF39,
@@ -9294,7 +9702,7 @@ DinoKind Smilonemys("Smilonemys", UNIQUE, 1, 4200, 1200, 127, 40.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Sonorasaurus("Sonorasaurus", EPIC, 1, 5250, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, {
+DinoKind Sonorasaurus("Sonorasaurus", EPIC, 1, 5250, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &TauntingVulnerability1DF7,
@@ -9302,7 +9710,16 @@ DinoKind Sonorasaurus("Sonorasaurus", EPIC, 1, 5250, 1000, 105, 0.0, 5.0, 0.0, 0
     }
 }, &MediumResilientCounterattack3EB5);
 
-DinoKind Spinoconstrictor("Spinoconstrictor", UNIQUE, 1, 4200, 1300, 126, 0.0, 10.0, 0.0, 0.0, 100.0, 0.0, 75.0, 75.0, 100.0, 0.0, 0.0, {
+DinoKind Spinoceratops("Spinoceratops", LEGENDARY, 1, 5100, 1150, 118, 30.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 100.0, 0.0, 100.0, 0.0, {
+    {
+        &HeavyStrike5748,
+        &BraceB9A2,
+        &LethalWound98A0,
+        &InstantRend0585
+    }
+}, nullptr);
+
+DinoKind Spinoconstrictor("Spinoconstrictor", UNIQUE, 1, 4200, 1300, 126, 0.0, 10.0, 0.0, 0.0, 100.0, 0.0, 75.0, 75.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &Distraction2717,
         &PreciseRampageA036,
@@ -9311,7 +9728,7 @@ DinoKind Spinoconstrictor("Spinoconstrictor", UNIQUE, 1, 4200, 1300, 126, 0.0, 1
     }
 }, &WoundingCounterA785);
 
-DinoKind Spinonyx("Spinonyx", LEGENDARY, 1, 4200, 1000, 124, 0.0, 5.0, 0.0, 75.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Spinonyx("Spinonyx", LEGENDARY, 1, 4200, 1000, 124, 0.0, 5.0, 0.0, 75.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &MinorRendingAttackEE1F,
         &LethalWound98A0,
@@ -9320,7 +9737,7 @@ DinoKind Spinonyx("Spinonyx", LEGENDARY, 1, 4200, 1000, 124, 0.0, 5.0, 0.0, 75.0
     }
 }, nullptr);
 
-DinoKind Spinosaurus("Spinosaurus", RARE, 1, 3600, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Spinosaurus("Spinosaurus", RARE, 1, 3600, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &LethalWound98A0,
@@ -9328,7 +9745,7 @@ DinoKind Spinosaurus("Spinosaurus", RARE, 1, 3600, 1000, 122, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind SpinosaurusGen2("Spinosaurus Gen 2", EPIC, 1, 3900, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind SpinosaurusGen2("Spinosaurus Gen 2", EPIC, 1, 3900, 1000, 122, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CleansingStrike541F,
         &LethalWound98A0,
@@ -9336,7 +9753,7 @@ DinoKind SpinosaurusGen2("Spinosaurus Gen 2", EPIC, 1, 3900, 1000, 122, 0.0, 5.0
     }
 }, nullptr);
 
-DinoKind Spinotahraptor("Spinotahraptor", EPIC, 1, 2850, 1400, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Spinotahraptor("Spinotahraptor", EPIC, 1, 2850, 1400, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &GashingWound4BC2,
@@ -9345,7 +9762,7 @@ DinoKind Spinotahraptor("Spinotahraptor", EPIC, 1, 2850, 1400, 126, 0.0, 5.0, 0.
     }
 }, nullptr);
 
-DinoKind Spinotasuchus("Spinotasuchus", LEGENDARY, 1, 3750, 1000, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Spinotasuchus("Spinotasuchus", LEGENDARY, 1, 3750, 1000, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &LethalWound98A0,
@@ -9354,7 +9771,7 @@ DinoKind Spinotasuchus("Spinotasuchus", LEGENDARY, 1, 3750, 1000, 129, 0.0, 5.0,
     }
 }, nullptr);
 
-DinoKind Stegoceras("Stegoceras", EPIC, 1, 3600, 1250, 115, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Stegoceras("Stegoceras", EPIC, 1, 3600, 1250, 115, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &InstantCharge0917,
@@ -9362,7 +9779,7 @@ DinoKind Stegoceras("Stegoceras", EPIC, 1, 3600, 1250, 115, 0.0, 15.0, 100.0, 0.
     }
 }, nullptr);
 
-DinoKind Stegoceratops("Stegoceratops", EPIC, 1, 3600, 1000, 107, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Stegoceratops("Stegoceratops", EPIC, 1, 3600, 1000, 107, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DigIn6DFE,
@@ -9371,7 +9788,7 @@ DinoKind Stegoceratops("Stegoceratops", EPIC, 1, 3600, 1000, 107, 25.0, 5.0, 0.0
     }
 }, nullptr);
 
-DinoKind Stegodeus("Stegodeus", LEGENDARY, 1, 5100, 1100, 107, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Stegodeus("Stegodeus", LEGENDARY, 1, 5100, 1100, 107, 30.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingImpact9451,
@@ -9380,14 +9797,14 @@ DinoKind Stegodeus("Stegodeus", LEGENDARY, 1, 5100, 1100, 107, 30.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Stegosaurus("Stegosaurus", COMMON, 1, 3900, 1000, 116, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Stegosaurus("Stegosaurus", COMMON, 1, 3900, 1000, 116, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6
     }
 }, nullptr);
 
-DinoKind Struthiomimus("Struthiomimus", EPIC, 1, 3300, 1300, 126, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, {
+DinoKind Struthiomimus("Struthiomimus", EPIC, 1, 3300, 1300, 126, 0.0, 15.0, 100.0, 0.0, 100.0, 0.0, 0.0, 100.0, 75.0, 0.0, 0.0, 0.0, {
     {
         &EvasiveStrikeA8EB,
         &GroupDistractionFB00,
@@ -9395,7 +9812,7 @@ DinoKind Struthiomimus("Struthiomimus", EPIC, 1, 3300, 1300, 126, 0.0, 15.0, 100
     }
 }, nullptr);
 
-DinoKind Stygidaryx("Stygidaryx", UNIQUE, 1, 4050, 1150, 128, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, {
+DinoKind Stygidaryx("Stygidaryx", UNIQUE, 1, 4050, 1150, 128, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &MercilessAlert571C,
@@ -9404,7 +9821,7 @@ DinoKind Stygidaryx("Stygidaryx", UNIQUE, 1, 4050, 1150, 128, 0.0, 5.0, 0.0, 100
     }
 }, &RakingCounterattackC77B);
 
-DinoKind Stygimoloch("Stygimoloch", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Stygimoloch("Stygimoloch", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldingStrikeEDCA,
         &ImpactAndRun738D,
@@ -9412,21 +9829,21 @@ DinoKind Stygimoloch("Stygimoloch", EPIC, 1, 3150, 1500, 129, 0.0, 5.0, 0.0, 0.0
     }
 }, nullptr);
 
-DinoKind StygimolochGen2("Stygimoloch Gen 2", COMMON, 1, 3000, 1300, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind StygimolochGen2("Stygimoloch Gen 2", COMMON, 1, 3000, 1300, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ShieldingStrikeEDCA,
         &ImpactAndRun738D
     }
 }, nullptr);
 
-DinoKind Suchomimus("Suchomimus", COMMON, 1, 3900, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Suchomimus("Suchomimus", COMMON, 1, 3900, 1000, 104, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &LethalWound98A0
     }
 }, nullptr);
 
-DinoKind Suchotator("Suchotator", RARE, 1, 4500, 1300, 116, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Suchotator("Suchotator", RARE, 1, 4500, 1300, 116, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &LethalWound98A0,
@@ -9435,14 +9852,14 @@ DinoKind Suchotator("Suchotator", RARE, 1, 4500, 1300, 116, 0.0, 20.0, 0.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Tanycolagreus("Tanycolagreus", COMMON, 1, 2850, 1560, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Tanycolagreus("Tanycolagreus", COMMON, 1, 2850, 1560, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &DefiniteStrike51A6,
         &NullifyingImpact65A2
     }
 }, nullptr);
 
-DinoKind Tarbognathus("Tarbognathus", LEGENDARY, 3, 3000, 1450, 123, 0.0, 30.0, 0.0, 0.0, 0.0, 33.0, 50.0, 75.0, 0.0, 100.0, 50.0, {
+DinoKind Tarbognathus("Tarbognathus", LEGENDARY, 3, 3000, 1450, 123, 0.0, 30.0, 0.0, 0.0, 0.0, 33.0, 50.0, 75.0, 0.0, 100.0, 50.0, 0.0, {
     {
         &AlertSurge82DA,
         &HopAndMockD6D1,
@@ -9451,14 +9868,14 @@ DinoKind Tarbognathus("Tarbognathus", LEGENDARY, 3, 3000, 1450, 123, 0.0, 30.0, 
     }
 }, nullptr);
 
-DinoKind Tarbosaurus("Tarbosaurus", COMMON, 1, 4500, 1700, 104, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Tarbosaurus("Tarbosaurus", COMMON, 1, 4500, 1700, 104, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &ArmorPiercingImpactB10F
     }
 }, nullptr);
 
-DinoKind Tenontorex("Tenontorex", UNIQUE, 1, 4500, 1900, 109, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 67.0, 0.0, 100.0, {
+DinoKind Tenontorex("Tenontorex", UNIQUE, 1, 4500, 1900, 109, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 67.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &LesserGroupHeal5491,
@@ -9467,7 +9884,7 @@ DinoKind Tenontorex("Tenontorex", UNIQUE, 1, 4500, 1900, 109, 0.0, 20.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind Tenontosaurus("Tenontosaurus", RARE, 1, 4500, 1000, 114, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Tenontosaurus("Tenontosaurus", RARE, 1, 4500, 1000, 114, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &LesserGroupHeal5491,
@@ -9475,7 +9892,7 @@ DinoKind Tenontosaurus("Tenontosaurus", RARE, 1, 4500, 1000, 114, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Testacornibus("Testacornibus", UNIQUE, 1, 4200, 1100, 128, 44.99998, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 66.69998, 33.0, 0.0, 100.0, {
+DinoKind Testacornibus("Testacornibus", UNIQUE, 1, 4200, 1100, 128, 44.99998, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 66.69998, 33.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorVulnerability7C25,
         &DigInTaunt1BB1,
@@ -9484,7 +9901,7 @@ DinoKind Testacornibus("Testacornibus", UNIQUE, 1, 4200, 1100, 128, 44.99998, 5.
     }
 }, &CounterPowerHealA54F);
 
-DinoKind Therizinosaurus("Therizinosaurus", RARE, 1, 3300, 1300, 130, 0.0, 5.0, 0.0, 50.0, 50.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, {
+DinoKind Therizinosaurus("Therizinosaurus", RARE, 1, 3300, 1300, 130, 0.0, 5.0, 0.0, 50.0, 50.0, 0.0, 0.0, 75.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &MinimalSpeedupStrike44A5,
         &CunningFerociousStrike6867,
@@ -9492,7 +9909,7 @@ DinoKind Therizinosaurus("Therizinosaurus", RARE, 1, 3300, 1300, 130, 0.0, 5.0, 
     }
 }, nullptr);
 
-DinoKind Thoradolosaur("Thoradolosaur", UNIQUE, 1, 4500, 1750, 105, 0.0, 30.0, 0.0, 75.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 50.0, {
+DinoKind Thoradolosaur("Thoradolosaur", UNIQUE, 1, 4500, 1750, 105, 0.0, 30.0, 0.0, 75.0, 0.0, 0.0, 0.0, 50.0, 100.0, 0.0, 50.0, 0.0, {
     {
         &FierceStrike106A,
         &CleansingGroupDestroyer66E8,
@@ -9501,7 +9918,7 @@ DinoKind Thoradolosaur("Thoradolosaur", UNIQUE, 1, 4500, 1750, 105, 0.0, 30.0, 0
     }
 }, nullptr);
 
-DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0.0, 25.0, 0.0, 25.0, 0.0, 75.0, 100.0, 100.0, 0.0, 0.0, 100.0, {
+DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0.0, 25.0, 0.0, 25.0, 0.0, 75.0, 100.0, 100.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &CrushingProwl3FF5,
@@ -9510,7 +9927,7 @@ DinoKind Thylaconyx("Thylaconyx", LEGENDARY, 1, 4800, 1250, 122, 0.0, 25.0, 0.0,
     }
 }, &DefenseShatteringCounterattackD663);
 
-DinoKind Thylacotator("Thylacotator", EPIC, 1, 4500, 1000, 117, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Thylacotator("Thylacotator", EPIC, 1, 4500, 1000, 117, 0.0, 40.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &SuperiorityStrike2549,
         &DeliberateProwlDF39,
@@ -9519,7 +9936,7 @@ DinoKind Thylacotator("Thylacotator", EPIC, 1, 4500, 1000, 117, 0.0, 40.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind ThylosIntrepidus("Thylos Intrepidus", UNIQUE, 3, 3900, 1400, 120, 0.0, 40.0, 0.0, 50.0, 0.0, 33.0, 100.0, 0.0, 100.0, 100.0, 0.0, {
+DinoKind ThylosIntrepidus("Thylos Intrepidus", UNIQUE, 3, 3900, 1400, 120, 0.0, 40.0, 0.0, 50.0, 0.0, 33.0, 100.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
     {
         &MinorRendingLockdown18B8,
         &CrushingProwl3FF5,
@@ -9528,7 +9945,7 @@ DinoKind ThylosIntrepidus("Thylos Intrepidus", UNIQUE, 3, 3900, 1400, 120, 0.0, 
     }
 }, nullptr);
 
-DinoKind Tiger("Tiger", EPIC, 1, 3600, 1350, 119, 15.0, 5.0, 0.0, 50.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, {
+DinoKind Tiger("Tiger", EPIC, 1, 3600, 1350, 119, 15.0, 5.0, 0.0, 50.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DeceleratingImpact5016,
@@ -9536,7 +9953,7 @@ DinoKind Tiger("Tiger", EPIC, 1, 3600, 1350, 119, 15.0, 5.0, 0.0, 50.0, 50.0, 0.
     }
 }, &DefenseShatteringCounterattackD663);
 
-DinoKind Titanoboa("Titanoboa", EPIC, 1, 4500, 1300, 115, 0.0, 20.0, 0.0, 0.0, 100.0, 0.0, 50.0, 67.0, 75.0, 100.0, 0.0, {
+DinoKind Titanoboa("Titanoboa", EPIC, 1, 4500, 1300, 115, 0.0, 20.0, 0.0, 0.0, 100.0, 0.0, 50.0, 67.0, 75.0, 100.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &PreciseRampageA036,
@@ -9544,7 +9961,7 @@ DinoKind Titanoboa("Titanoboa", EPIC, 1, 4500, 1300, 115, 0.0, 20.0, 0.0, 0.0, 1
     }
 }, nullptr);
 
-DinoKind TitanoboaGen2("Titanoboa Gen 2", RARE, 1, 4350, 1000, 115, 0.0, 20.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 100.0, 0.0, {
+DinoKind TitanoboaGen2("Titanoboa Gen 2", RARE, 1, 4350, 1000, 115, 0.0, 20.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 100.0, 100.0, 0.0, 0.0, {
     {
         &ShieldedDeceleratingStrike627F,
         &PreciseRampageA036,
@@ -9552,7 +9969,7 @@ DinoKind TitanoboaGen2("Titanoboa Gen 2", RARE, 1, 4350, 1000, 115, 0.0, 20.0, 0
     }
 }, nullptr);
 
-DinoKind Tragodistis("Tragodistis", LEGENDARY, 1, 4500, 1000, 105, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, {
+DinoKind Tragodistis("Tragodistis", LEGENDARY, 1, 4500, 1000, 105, 40.0, 5.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, 0.0, 100.0, 100.0, 0.0, {
     {
         &DispersedSuperiorVulnerability5AC2,
         &GroupDeceleratingImpact9451,
@@ -9561,7 +9978,7 @@ DinoKind Tragodistis("Tragodistis", LEGENDARY, 1, 4500, 1000, 105, 40.0, 5.0, 0.
     }
 }, &MediumCounterattackE4A7);
 
-DinoKind Triceratops("Triceratops", RARE, 1, 3300, 1000, 111, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Triceratops("Triceratops", RARE, 1, 3300, 1000, 111, 20.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &DigIn6DFE,
@@ -9569,14 +9986,14 @@ DinoKind Triceratops("Triceratops", RARE, 1, 3300, 1000, 111, 20.0, 5.0, 0.0, 0.
     }
 }, nullptr);
 
-DinoKind TriceratopsGen2("Triceratops Gen 2", COMMON, 1, 3750, 1000, 110, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind TriceratopsGen2("Triceratops Gen 2", COMMON, 1, 3750, 1000, 110, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &RampageB9EA
     }
 }, nullptr);
 
-DinoKind Troodoboa("Troodoboa", UNIQUE, 1, 3900, 1200, 117, 0.0, 10.0, 0.0, 100.0, 100.0, 0.0, 75.0, 75.0, 0.0, 100.0, 0.0, {
+DinoKind Troodoboa("Troodoboa", UNIQUE, 1, 3900, 1200, 117, 0.0, 10.0, 0.0, 100.0, 100.0, 0.0, 75.0, 75.0, 0.0, 100.0, 0.0, 0.0, {
     {
         &InstantDeceleratingPrecision323A,
         &GroupCleansingFatalStrike3DBD,
@@ -9585,7 +10002,7 @@ DinoKind Troodoboa("Troodoboa", UNIQUE, 1, 3900, 1200, 117, 0.0, 10.0, 0.0, 100.
     }
 }, &RakingCounterattackC77B);
 
-DinoKind Troodon("Troodon", EPIC, 1, 3000, 1200, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Troodon("Troodon", EPIC, 1, 3000, 1200, 130, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &HighPounceD062,
@@ -9593,7 +10010,7 @@ DinoKind Troodon("Troodon", EPIC, 1, 3000, 1200, 130, 0.0, 5.0, 0.0, 0.0, 100.0,
     }
 }, nullptr);
 
-DinoKind Trykosaurus("Trykosaurus", UNIQUE, 1, 4350, 1600, 108, 34.99999, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind Trykosaurus("Trykosaurus", UNIQUE, 1, 4350, 1600, 108, 34.99999, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &FierceDevouringCleanse4BB9,
         &ResilientImpact7BB4,
@@ -9602,7 +10019,7 @@ DinoKind Trykosaurus("Trykosaurus", UNIQUE, 1, 4350, 1600, 108, 34.99999, 20.0, 
     }
 }, &MediumCounterattackE4A7);
 
-DinoKind Tryostronix("Tryostronix", LEGENDARY, 1, 4200, 1400, 125, 0.0, 20.0, 0.0, 50.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 50.0, {
+DinoKind Tryostronix("Tryostronix", LEGENDARY, 1, 4200, 1400, 125, 0.0, 20.0, 0.0, 50.0, 50.0, 50.0, 100.0, 100.0, 75.0, 0.0, 50.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ReadyToCrush43AE,
@@ -9611,7 +10028,7 @@ DinoKind Tryostronix("Tryostronix", LEGENDARY, 1, 4200, 1400, 125, 0.0, 20.0, 0.
     }
 }, nullptr);
 
-DinoKind Tsintamoth("Tsintamoth", LEGENDARY, 1, 4950, 1250, 113, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 75.0, 0.0, 100.0, {
+DinoKind Tsintamoth("Tsintamoth", LEGENDARY, 1, 4950, 1250, 113, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 75.0, 75.0, 0.0, 100.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &GroupCleansingImpactC857,
@@ -9620,7 +10037,7 @@ DinoKind Tsintamoth("Tsintamoth", LEGENDARY, 1, 4950, 1250, 113, 10.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Tsintaosaurus("Tsintaosaurus", EPIC, 1, 4350, 1250, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 67.0, 0.0, 100.0, {
+DinoKind Tsintaosaurus("Tsintaosaurus", EPIC, 1, 4350, 1250, 108, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.0, 67.0, 0.0, 100.0, 0.0, {
     {
         &GroupCleansingStrike8B0C,
         &GroupFerocityStrike7A2D,
@@ -9628,7 +10045,7 @@ DinoKind Tsintaosaurus("Tsintaosaurus", EPIC, 1, 4350, 1250, 108, 0.0, 5.0, 0.0,
     }
 }, nullptr);
 
-DinoKind Tuojiangosaurus("Tuojiangosaurus", RARE, 1, 3600, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Tuojiangosaurus("Tuojiangosaurus", RARE, 1, 3600, 1000, 105, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingStrikeBAC6,
@@ -9636,7 +10053,7 @@ DinoKind Tuojiangosaurus("Tuojiangosaurus", RARE, 1, 3600, 1000, 105, 0.0, 5.0, 
     }
 }, &DeceleratingCounterD9D3);
 
-DinoKind Tuoramoloch("Tuoramoloch", UNIQUE, 1, 4200, 1500, 126, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 50.0, 0.0, 0.0, {
+DinoKind Tuoramoloch("Tuoramoloch", UNIQUE, 1, 4200, 1500, 126, 0.0, 5.0, 0.0, 0.0, 50.0, 0.0, 100.0, 100.0, 50.0, 0.0, 0.0, 0.0, {
     {
         &GroupSuperiority16E2,
         &LesserGroupHeal5491,
@@ -9645,7 +10062,7 @@ DinoKind Tuoramoloch("Tuoramoloch", UNIQUE, 1, 4200, 1500, 126, 0.0, 5.0, 0.0, 0
     }
 }, nullptr);
 
-DinoKind Tupandactylus("Tupandactylus", RARE, 1, 3000, 950, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, {
+DinoKind Tupandactylus("Tupandactylus", RARE, 1, 3000, 950, 126, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 25.0, 0.0, {
     {
         &DefenseShatteringStrike1CA6,
         &ShortDefense7ED4,
@@ -9653,7 +10070,7 @@ DinoKind Tupandactylus("Tupandactylus", RARE, 1, 3000, 950, 126, 0.0, 5.0, 0.0, 
     }
 }, &ArmorPiercingCounterAEB5);
 
-DinoKind Tyrannolophosaur("Tyrannolophosaur", LEGENDARY, 1, 4200, 1650, 108, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Tyrannolophosaur("Tyrannolophosaur", LEGENDARY, 1, 4200, 1650, 108, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -9662,7 +10079,7 @@ DinoKind Tyrannolophosaur("Tyrannolophosaur", LEGENDARY, 1, 4200, 1650, 108, 0.0
     }
 }, nullptr);
 
-DinoKind Tyrannometrodon("Tyrannometrodon", UNIQUE, 1, 4950, 1900, 110, 0.0, 34.99999, 100.0, 25.0, 15.0, 50.0, 100.0, 75.0, 50.0, 0.0, 100.0, {
+DinoKind Tyrannometrodon("Tyrannometrodon", UNIQUE, 1, 4950, 1900, 110, 0.0, 34.99999, 100.0, 25.0, 15.0, 50.0, 100.0, 75.0, 50.0, 0.0, 75.0, 0.0, {
     {
         &FerociousCleansingStrike120F,
         &GroupDevouringImpactC9D9,
@@ -9671,7 +10088,7 @@ DinoKind Tyrannometrodon("Tyrannometrodon", UNIQUE, 1, 4950, 1900, 110, 0.0, 34.
     }
 }, nullptr);
 
-DinoKind TyrannosaurusRex("Tyrannosaurus Rex", EPIC, 1, 4500, 1900, 102, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind TyrannosaurusRex("Tyrannosaurus Rex", EPIC, 1, 4500, 1900, 102, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &FierceImpactB3BE,
@@ -9679,7 +10096,7 @@ DinoKind TyrannosaurusRex("Tyrannosaurus Rex", EPIC, 1, 4500, 1900, 102, 0.0, 30
     }
 }, nullptr);
 
-DinoKind TyrannosaurusRexGen2("Tyrannosaurus Rex Gen 2", RARE, 1, 4350, 1800, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind TyrannosaurusRexGen2("Tyrannosaurus Rex Gen 2", RARE, 1, 4350, 1800, 104, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &FierceStrike106A,
         &DefenseShatteringImpact25E3,
@@ -9687,7 +10104,7 @@ DinoKind TyrannosaurusRexGen2("Tyrannosaurus Rex Gen 2", RARE, 1, 4350, 1800, 10
     }
 }, nullptr);
 
-DinoKind Utahraptor("Utahraptor", RARE, 1, 2250, 1400, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Utahraptor("Utahraptor", RARE, 1, 2250, 1400, 128, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &HighPounceD062,
@@ -9695,7 +10112,7 @@ DinoKind Utahraptor("Utahraptor", RARE, 1, 2250, 1400, 128, 0.0, 5.0, 0.0, 0.0, 
     }
 }, nullptr);
 
-DinoKind Utarinex("Utarinex", UNIQUE, 1, 3600, 1650, 128, 10.0, 25.0, 0.0, 50.0, 75.0, 0.0, 0.0, 75.0, 34.0, 0.0, 0.0, {
+DinoKind Utarinex("Utarinex", UNIQUE, 1, 3600, 1650, 128, 10.0, 25.0, 0.0, 50.0, 75.0, 0.0, 0.0, 75.0, 34.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactAndRunBB70,
@@ -9704,7 +10121,7 @@ DinoKind Utarinex("Utarinex", UNIQUE, 1, 3600, 1650, 128, 10.0, 25.0, 0.0, 50.0,
     }
 }, nullptr);
 
-DinoKind Utasinoraptor("Utasinoraptor", LEGENDARY, 1, 3000, 1400, 127, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Utasinoraptor("Utasinoraptor", LEGENDARY, 1, 3000, 1400, 127, 15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &CunningStrike75A8,
         &DistractingImpactD4D6,
@@ -9713,14 +10130,14 @@ DinoKind Utasinoraptor("Utasinoraptor", LEGENDARY, 1, 3000, 1400, 127, 15.0, 5.0
     }
 }, nullptr);
 
-DinoKind Velociraptor("Velociraptor", COMMON, 1, 1650, 1550, 132, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Velociraptor("Velociraptor", COMMON, 1, 1650, 1550, 132, 0.0, 5.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &StrikeBE64,
         &HighPounceD062
     }
 }, nullptr);
 
-DinoKind Velosrhacos("Velosrhacos", EPIC, 1, 3000, 1400, 130, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, {
+DinoKind Velosrhacos("Velosrhacos", EPIC, 1, 3000, 1400, 130, 0.0, 5.0, 0.0, 100.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.0, 0.0, 0.0, {
     {
         &CautiousStrike3CE4,
         &HighPounceD062,
@@ -9729,7 +10146,7 @@ DinoKind Velosrhacos("Velosrhacos", EPIC, 1, 3000, 1400, 130, 0.0, 5.0, 0.0, 100
     }
 }, nullptr);
 
-DinoKind WoollyMammoth("Woolly Mammoth", EPIC, 1, 4200, 1000, 115, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind WoollyMammoth("Woolly Mammoth", EPIC, 1, 4200, 1000, 115, 10.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &PersistentFerociousStrikeAF52,
         &GroupDeceleratingImpact9451,
@@ -9737,7 +10154,7 @@ DinoKind WoollyMammoth("Woolly Mammoth", EPIC, 1, 4200, 1000, 115, 10.0, 5.0, 0.
     }
 }, nullptr);
 
-DinoKind WoollyRhino("Woolly Rhino", EPIC, 1, 4500, 1500, 108, 10.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, {
+DinoKind WoollyRhino("Woolly Rhino", EPIC, 1, 4500, 1500, 108, 10.0, 5.0, 0.0, 50.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 50.0, 0.0, {
     {
         &ShieldedTauntingStrike73D4,
         &ResilientImpact7BB4,
@@ -9745,7 +10162,7 @@ DinoKind WoollyRhino("Woolly Rhino", EPIC, 1, 4500, 1500, 108, 10.0, 5.0, 0.0, 5
     }
 }, nullptr);
 
-DinoKind Wuerhosaurus("Wuerhosaurus", RARE, 1, 4500, 1000, 115, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
+DinoKind Wuerhosaurus("Wuerhosaurus", RARE, 1, 4500, 1000, 115, 25.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, {
     {
         &ResilientStrikeFEDE,
         &GroupDeceleratingRampageE77E,
@@ -9770,6 +10187,7 @@ map<string, vector<Dino>> BossDex = {
     make_pair<string, vector<Dino>>("Dreadnoughtus", {Dino(0, 0, 9, 0, 0, 0, &DreadnoughtusBoss)}),
     make_pair<string, vector<Dino>>("Erlikogamma", {Dino(0, 0, 14, 0, 0, 0, &ErlikogammaBoss)}),
     make_pair<string, vector<Dino>>("Fukuimimus", {Dino(0, 0, 19, 7, 7, 5, &FukuimimusBoss), Dino(0, 5, 18, 9, 5, 3, &EntelodonMinion), Dino(0, 6, 18, 7, 5, 6, &MiragaiaMinion)}),
+    make_pair<string, vector<Dino>>("Giganotosaurus", {Dino(0, 0, 30, 15, 15, 0, &GiganotosaurusBoss), Dino(0, 5, 29, 10, 10, 9, &MajungasaurusMinion), Dino(0, 6, 29, 4, 10, 15, &VelociraptorMinion)}),
     make_pair<string, vector<Dino>>("Glyptoceras", {Dino(0, 0, 19, 5, 3, 8, &GlyptocerasBoss), Dino(0, 5, 17, 7, 6, 1, &KoolasuchusGen2Minion), Dino(0, 6, 17, 8, 3, 3, &WuerhosaurusMinion)}),
     make_pair<string, vector<Dino>>("Gorgotrebax", {Dino(0, 0, 30, 10, 15, 5, &GorgotrebaxBoss), Dino(0, 5, 29, 13, 6, 10, &EntelodonMinion), Dino(0, 6, 29, 15, 9, 5, &DoedicurusMinion)}),
     make_pair<string, vector<Dino>>("Grypolyth", {Dino(0, 0, 24, 12, 12, 0, &GrypolythBoss), Dino(0, 5, 23, 8, 5, 10, &EchoMinion), Dino(0, 6, 23, 20, 3, 0, &ScolosaurusMinion)}),
@@ -9805,6 +10223,7 @@ map<string, vector<Dino>> BossDex = {
 map<string, const DinoKind *> DinoDex = {
     make_pair("Acrocanthops", &Acrocanthops),
     make_pair("Acrocanthosaurus", &Acrocanthosaurus),
+    make_pair("Aenocyonyx", &Aenocyonyx),
     make_pair("Ailurarctos", &Ailurarctos),
     make_pair("Alacranix", &Alacranix),
     make_pair("Alankyloceratops", &Alankyloceratops),
@@ -9851,6 +10270,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Argentavis", &Argentavis),
     make_pair("Argenteryx", &Argenteryx),
     make_pair("Argentinosaurus", &Argentinosaurus),
+    make_pair("Atrocodistis", &Atrocodistis),
     make_pair("Bajadasaurus", &Bajadasaurus),
     make_pair("Bajatonodon", &Bajatonodon),
     make_pair("Baryonyx", &Baryonyx),
@@ -9898,6 +10318,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Diplodocus", &Diplodocus),
     make_pair("Diplotator", &Diplotator),
     make_pair("Diplovenator", &Diplovenator),
+    make_pair("DireWolf", &DireWolf),
     make_pair("Dodo", &Dodo),
     make_pair("Dodocevia", &Dodocevia),
     make_pair("Doedicurus", &Doedicurus),
@@ -9935,6 +10356,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Fukuimimus", &Fukuimimus),
     make_pair("Fukuisaurus", &Fukuisaurus),
     make_pair("Gallimimus", &Gallimimus),
+    make_pair("Geminideus", &Geminideus),
     make_pair("Geminititan", &Geminititan),
     make_pair("Ghost", &Ghost),
     make_pair("Giganotosaurus", &Giganotosaurus),
@@ -9958,6 +10380,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("HydraBoa", &HydraBoa),
     make_pair("Iguanodon", &Iguanodon),
     make_pair("Imperatosuchus", &Imperatosuchus),
+    make_pair("Indolycan", &Indolycan),
     make_pair("IndominusRex", &IndominusRex),
     make_pair("IndominusRexGen2", &IndominusRexGen2),
     make_pair("Indonemys", &Indonemys),
@@ -10020,6 +10443,8 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Oviraptor", &Oviraptor),
     make_pair("OviraptorGen2", &OviraptorGen2),
     make_pair("Pachycephalosaurus", &Pachycephalosaurus),
+    make_pair("Panthera", &Panthera),
+    make_pair("PantheraBlytheae", &PantheraBlytheae),
     make_pair("Paramoloch", &Paramoloch),
     make_pair("Parasaurolophus", &Parasaurolophus),
     make_pair("ParasaurolophusLux", &ParasaurolophusLux),
@@ -10045,6 +10470,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Purutaurus", &Purutaurus),
     make_pair("Pyroraptor", &Pyroraptor),
     make_pair("PyroraptorGen2", &PyroraptorGen2),
+    make_pair("Pyrorixis", &Pyrorixis),
     make_pair("Pyrosuchus", &Pyrosuchus),
     make_pair("Pyrritator", &Pyrritator),
     make_pair("Quetzalcoatlus", &Quetzalcoatlus),
@@ -10079,6 +10505,7 @@ map<string, const DinoKind *> DinoDex = {
     make_pair("Smilodon", &Smilodon),
     make_pair("Smilonemys", &Smilonemys),
     make_pair("Sonorasaurus", &Sonorasaurus),
+    make_pair("Spinoceratops", &Spinoceratops),
     make_pair("Spinoconstrictor", &Spinoconstrictor),
     make_pair("Spinonyx", &Spinonyx),
     make_pair("Spinosaurus", &Spinosaurus),

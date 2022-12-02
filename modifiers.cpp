@@ -53,22 +53,22 @@ void IncreasedDamage::Dispose(Dino &target, Mod *) const
 
 void ReducedSpeed::Impose(Dino &target, Mod *) const
 {
-    target.speed_factor -= factor * (1 - target.kind->reduce_speed_resistance);
+    target.speed_factor -= factor * (1 - target.kind->speed_reduction_resistance);
 }
 
 void ReducedSpeed::Dispose(Dino &target, Mod *) const
 {
-    target.speed_factor += factor * (1 - target.kind->reduce_speed_resistance);
+    target.speed_factor += factor * (1 - target.kind->speed_reduction_resistance);
 }
 
 void ReducedDamage::Impose(Dino &target, Mod *) const
 {
-    target.damage_factor -= factor * (1 - target.kind->reduced_damage_resistance);
+    target.damage_factor -= factor * (1 - target.kind->damage_reduction_resistance);
 }
 
 void ReducedDamage::Dispose(Dino &target, Mod *) const
 {
-    target.damage_factor += factor * (1 - target.kind->reduced_damage_resistance);
+    target.damage_factor += factor * (1 - target.kind->damage_reduction_resistance);
 }
 
 void Dodge::Impose(Dino &target, Mod *) const
@@ -173,4 +173,26 @@ void Cloak::Dispose(Dino &target, Mod *mod) const
     target.dodge.erase(target.dodge.find(make_pair(dodge_chance, dodge_factor)));
     target.cloak_factor.erase(target.cloak_factor.find(attack_factor));
     --target.n_positive_effects;
+}
+
+void IncreasedArmor::Impose(Dino &target, Mod *) const
+{
+    target.armor += factor;
+    ++target.n_positive_effects;
+}
+
+void IncreasedArmor::Dispose(Dino &target, Mod *) const
+{
+    target.armor -= factor;
+    --target.n_positive_effects;
+}
+
+void ReducedArmor::Impose(Dino &target, Mod *) const
+{
+    target.armor -= factor * (1 - target.kind->armor_reduction_resistance);
+}
+
+void ReducedArmor::Dispose(Dino &target, Mod *) const
+{
+    target.armor += factor * (1 - target.kind->armor_reduction_resistance);
 }

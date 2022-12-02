@@ -160,6 +160,11 @@ def ParseAction(data, guid):
                             action["Action"] = Action("IncreaseSpeed", action_data["p"] / 100000., action_data["d"])
                         else:
                             action["Action"] = Action("ReduceSpeed", -action_data["p"] / 100000., action_data["d"])
+                    elif action_data["aa"] == "Armor":
+                        if action_data["p"] > 0:
+                            action["Action"] = Action("IncreaseArmor", action_data["p"] / 100000., action_data["d"], action_data["eac"])
+                        else:
+                            action["Action"] = Action("ReduceArmor", -action_data["p"] / 100000., action_data["d"], action_data["eac"])
                     else:
                         raise Exception(f'Unknown buff kind "{action_data["aa"]}"')
                 else:
@@ -298,13 +303,14 @@ def GetDino(l10n, data, dino_data, ability_dex):
             'crit': attr['chc'] / 100000,
             'crit_reduction_resistance': attr['rcrit'] / 100000,
             'damage_over_time_resistance': attr['rdot'] / 100000,
-            'reduced_damage_resistance': attr['rd'] / 100000,
+            'damage_reduction_resistance': attr['rd'] / 100000,
             'rend_resistance': attr['rr'] / 100000,
-            'reduce_speed_resistance': attr['rdec'] / 100000,
+            'speed_reduction_resistance': attr['rdec'] / 100000,
             'stun_resistance': attr['rs'] / 100000,
             'swap_prevention_resistance': attr['rsp'] / 100000,
             'taunt_resistance': attr['rt'] / 100000,
             'vulnerable_resistance': attr['rv'] / 100000,
+            'armor_reduction_resistance': attr.get('rarm', 0) / 100000,
             'ability': None,
             'counter': None,
         }
@@ -389,9 +395,9 @@ def GetRaid(l10n, data, raid_dex, boss_dex, boss_ability_dex, minion_dex, abilit
                   # f'{dino["health"]}, {dino["damage"]}, {dino["speed"]}, {dino["armor"]}, {dino["crit"]}, '\
                   # f'{dino["crit_reduction_resistance"]}, '\
                   # f'{dino["damage_over_time_resistance"]}, '\
-                  # f'{dino["reduced_damage_resistance"]}, '\
+                  # f'{dino["damage_reduction_resistance"]}, '\
                   # f'{dino["rend_resistance"]}, '\
-                  # f'{dino["reduce_speed_resistance"]}, '\
+                  # f'{dino["speed_reduction_resistance"]}, '\
                   # f'{dino["stun_resistance"]}, '\
                   # f'{dino["swap_prevention_resistance"]}, '\
                   # f'{dino["taunt_resistance"]}, '\
@@ -412,13 +418,14 @@ def WriteDinoDex(dino_dex, f):
               f'{dino["health"]}, {dino["damage"]}, {dino["speed"]}, {dino["armor"]}, {dino["crit"]}, '\
               f'{dino["crit_reduction_resistance"]}, '\
               f'{dino["damage_over_time_resistance"]}, '\
-              f'{dino["reduced_damage_resistance"]}, '\
+              f'{dino["damage_reduction_resistance"]}, '\
               f'{dino["rend_resistance"]}, '\
-              f'{dino["reduce_speed_resistance"]}, '\
+              f'{dino["speed_reduction_resistance"]}, '\
               f'{dino["stun_resistance"]}, '\
               f'{dino["swap_prevention_resistance"]}, '\
               f'{dino["taunt_resistance"]}, '\
-              f'{dino["vulnerable_resistance"]}, {{', file=f)
+              f'{dino["vulnerable_resistance"]}, '\
+              f'{dino["armor_reduction_resistance"]}, {{', file=f)
         for round in range(len(dino['ability'])):
             print(f'    {{', file=f)
             for ability in range(len(dino['ability'][round])):
