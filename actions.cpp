@@ -67,9 +67,9 @@ void AttackAction::Do(Dino &self, Dino &target) const
     bool dodge = (~flags & PRECISE) && rand() % 100 < target.DodgeChance() * 100;
     if (dodge)
         damage *= 1 - target.DodgeFactor();
-    bool armor = (~flags & BYPASS_ARMOR) && target.armor > 0;
+    bool armor = (~flags & BYPASS_ARMOR) && target.Armor() > 0;
     if (armor)
-        damage *= 1 - target.armor;
+        damage *= 1 - target.Armor();
     damage = floor(damage);
     REMOVE_MODS(target, mod_it->IncomingAttack(), DEBUG("%s used out %s", target.Name().c_str(), modifier->name.c_str()));
     int absorbed = 0;
@@ -237,6 +237,16 @@ void Stun::Do(Dino &self, Dino &target) const
 void Cloak::Do(Dino &self, Dino &target) const
 {
     target.Impose(&cloak, self);
+}
+
+void IncreaseArmor::Do(Dino &self, Dino &target) const
+{
+    target.Impose(&increased_armor, self);
+}
+
+void ReduceArmor::Do(Dino &self, Dino &target) const
+{
+    target.Impose(&reduced_armor, self);
 }
 
 std::list<std::unique_ptr<Action>> actions::UnableToSwap(int _duration)

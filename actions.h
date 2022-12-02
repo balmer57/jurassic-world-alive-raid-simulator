@@ -348,6 +348,24 @@ struct Cloak : public Action
     virtual void Do(Dino &self, Dino &target) const override;
 };
 
+struct IncreaseArmor : public Action
+{
+    modifiers::IncreasedArmor increased_armor;
+    IncreaseArmor(double _factor, int _duration, int _number)
+        : increased_armor(_factor / 100., _duration, _number)
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
+struct ReduceArmor : public Action
+{
+    modifiers::ReducedArmor reduced_armor;
+    ReduceArmor(double _factor, int _duration, int _number)
+        : reduced_armor(_factor / 100., _duration, _number)
+    {}
+    virtual void Do(Dino &self, Dino &target) const override;
+};
+
 std::list<std::unique_ptr<Action>> UnableToSwap(int _duration);
 std::list<std::unique_ptr<Action>> Swap();
 

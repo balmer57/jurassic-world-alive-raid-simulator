@@ -20,9 +20,11 @@ static const int DAMAGE_OVER_TIME = 1 << 11;
 static const int REVENGE = 1 << 12;
 static const int DEVOUR_HEAL = 1 << 13;
 static const int STUN = 1 << 14;
+static const int INCREASED_ARMOR = 1 << 15;
+static const int REDUCED_ARMOR = 1 << 16;
 
-static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE;
-static const int POSITIVE_EFFECTS = DODGE|CLOAK|INCREASED_SPEED|SHIELD|TAUNT|INCREASED_CRIT_CHANCE|INCREASED_DAMAGE|DEVOUR_HEAL;
+static const int NEGATIVE_EFFECTS = REDUCED_DAMAGE|VULNERABILITY|REDUCED_SPEED|DAMAGE_OVER_TIME|REDUCED_CRIT_CHANCE|REDUCED_ARMOR;
+static const int POSITIVE_EFFECTS = DODGE|CLOAK|INCREASED_SPEED|SHIELD|TAUNT|INCREASED_CRIT_CHANCE|INCREASED_DAMAGE|DEVOUR_HEAL|INCREASED_ARMOR;
 static const int ALL_EFFECTS = NEGATIVE_EFFECTS|POSITIVE_EFFECTS|REVENGE|STUN;
 
 namespace modifiers
@@ -442,6 +444,52 @@ struct Cloak : public Modifier
         return --mod->duration == 0;
     }
     virtual bool OnEndOfTurn(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
+};
+
+struct IncreasedArmor: public Modifier
+{
+    double factor;
+    IncreasedArmor(double _factor, int _duration, int _number)
+        : Modifier("increased armor", _duration, _number)
+        , factor(_factor)
+    {}
+    virtual void Impose(Dino &target, Mod *mod) const override;
+    virtual void Dispose(Dino &target, Mod *mod) const override;
+    virtual int Type() const override
+    {
+        return INCREASED_ARMOR;
+    }
+    virtual bool OutgoingAttack(Mod *mod) const override
+    {
+        return !--mod->number;
+    }
+    virtual bool OnAction(Mod *mod) const override
+    {
+        return --mod->duration == 0;
+    }
+};
+
+struct ReducedArmor: public Modifier
+{
+    double factor;
+    ReducedArmor(double _factor, int _duration, int _number)
+        : Modifier("reduced armor", _duration, _number)
+        , factor(_factor)
+    {}
+    virtual void Impose(Dino &target, Mod *mod) const override;
+    virtual void Dispose(Dino &target, Mod *mod) const override;
+    virtual int Type() const override
+    {
+        return REDUCED_ARMOR;
+    }
+    virtual bool OutgoingAttack(Mod *mod) const override
+    {
+        return !--mod->number;
+    }
+    virtual bool OnAction(Mod *mod) const override
     {
         return --mod->duration == 0;
     }
