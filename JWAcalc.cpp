@@ -404,7 +404,7 @@ int main(int argc, char *argv[])
             {"chance", optional_argument, nullptr, 'p'},
             {"explain", optional_argument, nullptr, 'e'},
             {"help", optional_argument, nullptr, 'h'},
-            {"list", no_argument, nullptr, 'l'},
+            {"list", optional_argument, nullptr, 'l'},
             {0, 0, 0, 0}
         };
         int option_index;
